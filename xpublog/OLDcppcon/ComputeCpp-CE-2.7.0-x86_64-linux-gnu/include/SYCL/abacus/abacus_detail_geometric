@@ -1,0 +1,175 @@
+/******************************************************************************
+
+    Copyright (C) 2002-2016 Codeplay Software Limited
+    All Rights Reserved.
+
+    Codeplay's ComputeCpp
+
+*******************************************************************************/
+
+/*!
+  @file abacus_detail_geometric
+
+  @brief This is an abacus detail file.
+  Exposing implementations of non-IP restricted functions.
+*/
+
+#ifndef __ABACUS_DETAIL_GEOMETRIC__
+#define __ABACUS_DETAIL_GEOMETRIC__
+
+#if !defined(__cplusplus)
+#error This header should only be included from C++!
+#endif
+
+#ifndef __ABACUS_ABACUS_CONFIG__
+#include <abacus/abacus_config>
+#endif
+#ifndef __ABACUS_ABACUS_GEOMETRIC__
+#include <abacus/abacus_geometric>
+#endif
+#ifndef __ABACUS_ABACUS_MATH__
+#include <abacus/abacus_math>
+#endif
+#ifndef __ABACUS_TYPE_TRAITS__
+#include <abacus/abacus_type_traits>
+#endif
+#ifndef __ABACUS_ABACUS_CONFIG__
+#include <abacus/abacus_detail_cast>
+#endif
+#ifndef __ABACUS_DETAIL_RELATIONAL__
+#include <abacus/abacus_detail_relational>
+#endif
+
+namespace abacus {
+namespace detail {
+namespace geometric {
+
+template<typename T> T cross(const T& x, const T& y) {
+  T result;
+
+  result[0] = (x[1] * y[2]) - (x[2] * y[1]);
+  result[1] = (x[2] * y[0]) - (x[0] * y[2]);
+  result[2] = (x[0] * y[1]) - (x[1] * y[0]);
+
+  return result;
+}
+
+template <typename T, bool SCALAR = 1 == TypeTraits<T>::num_elements>
+struct dot_helper {
+  static typename TypeTraits<T>::ElementType _(const T& x, const T& y) {
+    const T sum = x * y;
+
+    typename TypeTraits<T>::ElementType result = 0;
+
+    for (unsigned i = 0; i < TypeTraits<T>::num_elements; i++) {
+      result += sum[i];
+    }
+
+    return result;
+  }
+};
+
+template <typename T>
+struct dot_helper<T, true> {
+  static typename TypeTraits<T>::ElementType _(const T& x, const T& y) {
+    return x * y;
+  }
+};
+
+template<typename T>
+typename TypeTraits<T>::ElementType dot(const T& x, const T& y) {
+  return dot_helper<T>::_(x, y);
+}
+
+template <typename T, bool SCALAR = 1 == TypeTraits<T>::num_elements>
+struct length_helper {
+  static typename TypeTraits<T>::ElementType _(const T& x) {
+     typename TypeTraits<T>::ElementType result = 0;
+
+    for (unsigned i = 0; i < TypeTraits<T>::num_elements; i++) {
+      if (x[i] > result) {
+        result = x[i];
+      }
+    }
+    return result;
+  }
+};
+
+template <typename T>
+struct length_helper<T, true> {
+  static typename TypeTraits<T>::ElementType _(const T x) { return x; }
+};
+
+template <typename T> typename TypeTraits<T>::ElementType length(const T& p) {
+  typename TypeTraits<T>::ElementType length =
+    abacus::sqrt(geometric::dot<T>(p, p));
+
+  if (relational::isinf(length))
+  {
+    const T elements = abacus::fabs(p);
+
+    return length_helper<T>::_(elements);
+  }
+
+  return length;
+}
+
+template<typename T> typename TypeTraits<T>::ElementType distance(
+  const T& x, const T& y) {
+  return geometric::length<T>(x - y);
+}
+
+template <typename T, typename E = typename TypeTraits<T>::ElementType>
+  struct fast_length_helper;
+
+template<typename T> struct fast_length_helper<T, abacus_float> {
+  static typename TypeTraits<T>::ElementType _(const T& p) {
+    return abacus::sqrt(geometric::dot<T>(p, p));
+  }
+};
+
+template<typename T> struct fast_length_helper<T, abacus_double> {
+  static typename TypeTraits<T>::ElementType _(const T& p) {
+    return abacus::sqrt(geometric::dot<T>(p, p));
+  }
+};
+
+template <typename T>
+typename TypeTraits<T>::ElementType fast_length(const T& p) {
+  return fast_length_helper<T>::_(p);
+}
+
+template <typename T>
+typename TypeTraits<T>::ElementType fast_distance(const T& x, const T& y) {
+  return geometric::fast_length<T>(x - y);
+}
+
+template <typename T, typename E = typename TypeTraits<T>::ElementType>
+  struct fast_normalize_helper;
+
+template<typename T> struct fast_normalize_helper<T, abacus_float> {
+  static T _(const T& p) {
+    return p * abacus::rsqrt(geometric::dot<T>(p, p));
+  }
+};
+
+template<typename T> struct fast_normalize_helper<T, abacus_double> {
+  static T _(const T& p) {
+    return p * abacus::rsqrt(geometric::dot<T>(p, p));
+  }
+};
+
+template<typename T> T fast_normalize(const T& p) {
+  return fast_normalize_helper<T>::_(p);
+}
+
+template<typename T> T normalize(const T& p) {
+  const T tmp = geometric::fast_normalize<T>(p);
+  return tmp * abacus::rsqrt(geometric::dot<T>(tmp, tmp));
+}
+
+} // namespace geometric
+} // namespace detail
+} // namespace abacus
+
+#endif  //__ABACUS_DETAIL_GEOMETRIC__

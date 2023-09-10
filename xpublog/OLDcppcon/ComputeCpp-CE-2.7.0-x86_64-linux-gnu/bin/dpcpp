@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "PLEASE 'module unload computeCPP' before using dpcpp - so the paths/includes/libraries are correct"

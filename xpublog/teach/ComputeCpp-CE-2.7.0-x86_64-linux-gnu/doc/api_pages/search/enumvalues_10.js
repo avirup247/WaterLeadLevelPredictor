@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['scientific',['scientific',['../namespacecl_1_1sycl.html#aae8e7aa729b49299771cd464d4b17370a55a95650a66b53ecbb960b53d985b964',1,'cl::sycl']]],
+  ['shared',['shared',['../namespacecl_1_1sycl_1_1experimental_1_1usm.html#a6c249557f3c2cb3ff34bce095c8d4125a9e81e7b963c71363e2fb3eefcfecfc0e',1,'cl::sycl::experimental::usm']]],
+  ['showbase',['showbase',['../namespacecl_1_1sycl.html#aae8e7aa729b49299771cd464d4b17370a0facc1862d43dc9dab11fa6b9995e0bd',1,'cl::sycl']]],
+  ['showpos',['showpos',['../namespacecl_1_1sycl.html#aae8e7aa729b49299771cd464d4b17370a5f438397f3deeb8db30329d5f4dd1e02',1,'cl::sycl']]],
+  ['signed_5fint16',['signed_int16',['../namespacecl_1_1sycl.html#a78b713c5436596506d5232e591a3b7aea71ebc5e6f75e026d0d8c4f8b382a9303',1,'cl::sycl']]],
+  ['signed_5fint32',['signed_int32',['../namespacecl_1_1sycl.html#a78b713c5436596506d5232e591a3b7aeae80b65ecd07b33b4ae6e747af1e2c0a7',1,'cl::sycl']]],
+  ['signed_5fint8',['signed_int8',['../namespacecl_1_1sycl.html#a78b713c5436596506d5232e591a3b7aea8562a2d0630b3d8f925faaf9b40977c1',1,'cl::sycl']]],
+  ['single_5ffp_5fconfig',['single_fp_config',['../namespacecl_1_1sycl_1_1info.html#a51f4189fcf4ca86d768d0fcce34d8bc5a8375eb8d178aef6b942b9ac6ae589f89',1,'cl::sycl::info']]],
+  ['snorm_5fint16',['snorm_int16',['../namespacecl_1_1sycl.html#a78b713c5436596506d5232e591a3b7aead733e5fef86c49a97ab675846fc32277',1,'cl::sycl']]],
+  ['snorm_5fint8',['snorm_int8',['../namespacecl_1_1sycl.html#a78b713c5436596506d5232e591a3b7aead4c65045d7c2cb3055c3773d2029a0c1',1,'cl::sycl']]],
+  ['soft_5ffloat',['soft_float',['../namespacecl_1_1sycl_1_1info.html#a1f763ed06ac5c82a02a7425bd7739745a6e6513399f942d48c430159b1fbe93ec',1,'cl::sycl::info']]],
+  ['sub_5fgroup_5fcount_5ffor_5fndrange',['sub_group_count_for_ndrange',['../namespacecl_1_1sycl_1_1info.html#aaee38a765a8d99422ac3d2bbd4a79b8ea319d5a9134645cccc5aaae1f1054f438',1,'cl::sycl::info']]],
+  ['sub_5fgroup_5findependent_5fforward_5fprogress',['sub_group_independent_forward_progress',['../namespacecl_1_1sycl_1_1info.html#a51f4189fcf4ca86d768d0fcce34d8bc5af7787a35537723ea9c6218076245ce24',1,'cl::sycl::info']]],
+  ['sub_5fgroup_5fsizes',['sub_group_sizes',['../namespacecl_1_1sycl_1_1info.html#a51f4189fcf4ca86d768d0fcce34d8bc5a6a85a810baaadbbff72b9ad5fef5e533',1,'cl::sycl::info']]],
+  ['subgroup_5flocal',['subgroup_local',['../namespacecl_1_1sycl_1_1access.html#a6874ae9aff44c453a412c2adefb1b9f7a8691eace5d3df6a9f19618963698f658',1,'cl::sycl::access']]],
+  ['subgroup_5flocal_5fspace',['subgroup_local_space',['../namespacecl_1_1sycl_1_1access.html#a0b32461aa4a1867f288b640d7fc64fbfaa46e05fb69561159d7597a70e37eb76b',1,'cl::sycl::access']]],
+  ['submitted',['submitted',['../namespacecl_1_1sycl_1_1info.html#a475d78cf58a02b3f1abb3b1dcd144c63a410d98939d4116adb562b97046d2a3eb',1,'cl::sycl::info']]]
+];

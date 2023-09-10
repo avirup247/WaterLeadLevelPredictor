@@ -1,0 +1,1248 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>html, body {
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer
+}
+
+h1, h2, h3, h4, h5, h6 {
+    cursor: inherit !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    background-color: white;
+    padding: 2rem 4rem 2rem 4rem;
+}
+
+@media screen and (min-width: 56rem) {
+    html, body {
+        height: 100%;
+    }
+
+    main {
+        box-shadow: 10px 0px 10px -8px rgba(0,0,0,0.1);
+    }
+
+    .combined-document main {
+        margin: 0 0 0 320px;
+        max-width: 1000px;
+        min-height: 100%;
+    }
+
+    .single-document main {
+        margin: 0 auto;
+        width: 1000px;
+    }
+}
+
+article header h1 {
+    font-size: 1.7em;
+}
+
+article#title header h1 {
+    font-size: 2.6rem;
+}
+
+article {
+    padding: 2rem 0 1rem 0;
+    position: relative;
+}
+
+article header a h1 {
+    cursor: pointer;
+}
+
+article div.page-counter {
+    display: block;
+    text-align: right;
+    width: auto;
+    height: auto;
+    color: #666;
+    font-size: .8rem;
+    padding: .2rem .5rem .2rem .5rem;
+    margin-top: 4rem;
+}
+
+article:not(#title):not(:last-of-type) {
+    border-bottom: #efefef 1px solid;
+}
+
+article#title img {
+    width: 160px;
+}
+
+article#title nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+article#title nav > ul > li a {
+    opacity: .9;
+    text-decoration: none;
+}
+
+article#title nav li > a:hover,
+article#title nav li.selected > a {
+    opacity: 1;
+    font-weight: bold;
+}
+
+article#title nav > ul > li a {
+    display: block;
+    padding: .3rem;
+    cursor: pointer;
+}
+
+article#title nav > ul > li > a { padding-left: 0rem; padding-right: 0rem; }
+article#title nav > ul > li > ul > li > a { padding-left: 1rem; padding-right: 1rem; }
+article#title nav > ul > li > ul > li > ul > li > a { padding-left: 2rem; padding-right: 2rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > a { padding-left: 3rem; padding-right: 3rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 4rem; padding-right: 4rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 5rem; padding-right: 5rem; }
+
+@media screen and (min-width: 56rem) {
+    .combined-document article#title {
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: 0;
+        top: 0;
+        overflow: auto;
+    }
+
+    .combined-document article#title header img {
+        width: 100px;
+    }
+
+    .combined-document article#title header h1 {
+        font-size: 1.2rem;
+    }
+
+    .combined-document article#title > header > div {
+        display: block;
+        width: 100%;
+        padding: 0 2rem 1rem 2rem;
+        border-bottom: #bbb 1px solid;
+    }
+
+    .combined-document article#title nav {
+        padding: 2rem 2rem 0 2rem;
+        opacity: .6;
+        transition: .3s all;
+        font-size: .8rem;
+    }
+
+    .combined-document article#title nav h1 {
+        display: none;
+    }
+
+    .combined-document article#title nav:hover {
+        opacity: 1;
+    }
+}
+
+#copyright {
+    font-size: 12px;
+    color: #ccc;
+    padding: 1rem 0 1rem 0;
+    margin-top: 1rem;
+}
+
+
+
+pre {
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+hr,img,legend {
+    border:0;
+}
+
+blockquote,h6 {
+    color:#777;
+}
+
+a,h3,h4,h5,tt {
+    color:#333;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+    display:block;
+}
+
+a {
+    background:0 0;
+}
+
+a:focus {
+    outline:dotted thin;
+}
+
+a:active,a:hover {
+    outline:0;
+}
+
+abbr[title] {
+    border-bottom:1px dotted;
+}
+
+hr {
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    background:url('data:image/png; base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC') repeat-x;
+    color:#ccc;
+    height:4px;
+    padding:0;
+}
+
+mark {
+    background:#ff0;
+}
+
+kbd,samp {
+    font-family:monospace,serif;
+    font-size:1em;
+}
+
+q {
+    quotes:\201C \201D \2018 \2019;
+}
+
+small {
+    font-size:80%;
+}
+
+sup {
+    top:-.5em;
+}
+
+sub {
+    bottom:-.25em;
+    vertical-align:sub;
+    top:-1px;
+}
+
+img {
+    max-width:100%;
+}
+
+svg:not(:root) {
+    overflow:hidden;
+}
+
+figure {
+    margin:0;
+}
+
+dl dt,h1,h2,h3,h4,h5,h6 {
+    font-weight:700;
+    padding:0;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    cursor:text;
+    margin:20px 0 10px;
+}
+
+article:not(#title) h1,
+article:not(#title) h2,
+article:not(#title) h3,
+article:not(#title) h4,
+article:not(#title) h5 {
+    padding: 1rem 0 1rem 0;
+}
+
+dl dt,h5,h6 {
+    font-size:14px;
+}
+
+blockquote,p,table {
+    margin:15px 0;
+}
+
+ol,ul {
+    padding-left:30px;
+}
+
+blockquote>:first-child,dl dd>:first-child,dl dt>:first-child,h1+p,h2+p,h3+p,h4+p,h5+p,h6+p,ol li ul:first-of-type,ol li>:first-child,ul li>:first-child {
+    margin-top:0;
+}
+
+a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6,body>h1:first-child,body>h1:first-child+h2,body>h2:first-child,body>h3:first-child,body>h4:first-child,body>h5:first-child,body>h6:first-child {
+    margin-top:0;
+    padding-top:0;
+}
+
+table td,table th {
+    border:1px solid #ccc;
+    padding:6px 13px;
+}
+
+dl dt {
+    font-style:italic;
+    margin:15px 0 5px;
+}
+
+blockquote>:last-child,dl dd>:last-child,dl dt>:last-child {
+    margin-bottom:0;
+}
+
+dl dd {
+    margin:0 0 15px;
+    padding:0 15px;
+}
+
+blockquote {
+    border-left:4px solid #DDD;
+    padding:0 15px;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    font:inherit;
+    width: 100%;
+}
+
+table tr {
+    border-top:1px solid #ccc;
+    background-color:#fff;
+}
+
+a.footnote,sub,sup {
+    font-size:1.4ex;
+    height:0;
+    line-height:1;
+    vertical-align:super;
+    position:relative;
+}
+
+
+/**
+ * Tables
+ */
+table thead tr {
+    background-color: #111111;
+    color: #efefef;
+}
+
+table th:empty {
+    display: none;
+}
+
+table th,
+table td {
+    padding: 1rem;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #efefef;
+}
+
+/**
+ * General
+ */
+p a {
+    font-weight: bold;
+}
+
+
+span.citation {
+    font-weight: bold;
+    vertical-align: super;
+}
+
+
+.highlight { background-color: #111; color: #efefef; padding: 1rem; }
+.highlight .hll { background-color: #222; font-size: 8px; }
+.highlight .c { color: #75715e } /* Comment */
+.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
+.highlight .k { color: #66d9ef } /* Keyword */
+.highlight .l { color: #ae81ff } /* Literal */
+.highlight .n { color: #f8f8f2 } /* Name */
+.highlight .o { color: #f92672 } /* Operator */
+.highlight .p { color: #f8f8f2 } /* Punctuation */
+.highlight .cm { color: #75715e } /* Comment.Multiline */
+.highlight .cp { color: #75715e } /* Comment.Preproc */
+.highlight .c1 { color: #75715e } /* Comment.Single */
+.highlight .cs { color: #75715e } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .kc { color: #66d9ef } /* Keyword.Constant */
+.highlight .kd { color: #66d9ef } /* Keyword.Declaration */
+.highlight .kn { color: #f92672 } /* Keyword.Namespace */
+.highlight .kp { color: #66d9ef } /* Keyword.Pseudo */
+.highlight .kr { color: #66d9ef } /* Keyword.Reserved */
+.highlight .kt { color: #66d9ef } /* Keyword.Type */
+.highlight .ld { color: #e6db74 } /* Literal.Date */
+.highlight .m { color: #ae81ff } /* Literal.Number */
+.highlight .s { color: #e6db74 } /* Literal.String */
+.highlight .na { color: #a6e22e } /* Name.Attribute */
+.highlight .nb { color: #f8f8f2 } /* Name.Builtin */
+.highlight .nc { color: #a6e22e } /* Name.Class */
+.highlight .no { color: #66d9ef } /* Name.Constant */
+.highlight .nd { color: #a6e22e } /* Name.Decorator */
+.highlight .ni { color: #f8f8f2 } /* Name.Entity */
+.highlight .ne { color: #a6e22e } /* Name.Exception */
+.highlight .nf { color: #a6e22e } /* Name.Function */
+.highlight .nl { color: #f8f8f2 } /* Name.Label */
+.highlight .nn { color: #f8f8f2 } /* Name.Namespace */
+.highlight .nx { color: #a6e22e } /* Name.Other */
+.highlight .py { color: #f8f8f2 } /* Name.Property */
+.highlight .nt { color: #f92672 } /* Name.Tag */
+.highlight .nv { color: #f8f8f2 } /* Name.Variable */
+.highlight .ow { color: #f92672 } /* Operator.Word */
+.highlight .w { color: #f8f8f2 } /* Text.Whitespace */
+.highlight .mf { color: #ae81ff } /* Literal.Number.Float */
+.highlight .mh { color: #ae81ff } /* Literal.Number.Hex */
+.highlight .mi { color: #ae81ff } /* Literal.Number.Integer */
+.highlight .mo { color: #ae81ff } /* Literal.Number.Oct */
+.highlight .sb { color: #e6db74 } /* Literal.String.Backtick */
+.highlight .sc { color: #e6db74 } /* Literal.String.Char */
+.highlight .sd { color: #e6db74 } /* Literal.String.Doc */
+.highlight .s2 { color: #e6db74 } /* Literal.String.Double */
+.highlight .se { color: #ae81ff } /* Literal.String.Escape */
+.highlight .sh { color: #e6db74 } /* Literal.String.Heredoc */
+.highlight .si { color: #e6db74 } /* Literal.String.Interpol */
+.highlight .sx { color: #e6db74 } /* Literal.String.Other */
+.highlight .sr { color: #e6db74 } /* Literal.String.Regex */
+.highlight .s1 { color: #e6db74 } /* Literal.String.Single */
+.highlight .ss { color: #e6db74 } /* Literal.String.Symbol */
+.highlight .bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #f8f8f2 } /* Name.Variable.Class */
+.highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
+.highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
+.highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+.highlight .gh { } /* Generic Heading & Diff Header */
+.highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
+.highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
+.highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */"</style>
+<title>SYCL for CUDA Developers - Migration</title>
+<meta charset="utf-8"/>
+</head>
+<body class="single-document">
+<main>
+<article id="title">
+<header>
+<div>
+<a href="https://www.codeplay.com" id="logo" style="width: 160px; height: 46px; display: block; " target="_blank">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMi4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTG9nbyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzNzkuNSAxMTAuNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzc5LjUgMTEwLjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiNBQkQzRjE7fQ0KCS5zdDF7ZmlsbDojOTYzNTk0O30NCgkuc3Qye2ZpbGw6IzVCMUQ1Nzt9DQoJLnN0M3tmaWxsOnVybCgjU1ZHSURfMV8pO30NCgkuc3Q0e2ZpbGw6dXJsKCNTVkdJRF8yXyk7fQ0KCS5zdDV7ZmlsbDp1cmwoI1NWR0lEXzNfKTt9DQoJLnN0NntmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fQ0KCS5zdDd7ZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7fQ0KCS5zdDh7b3BhY2l0eTowLjczO30NCjwvc3R5bGU+DQo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNTYuNSw0MGMwLDE1LjYtMTIuNywyOC4zLTI4LjUsMjguM1YxMS43QzQzLjgsMTEuNyw1Ni41LDI0LjQsNTYuNSw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0wLDQwYzAtMTUuNiwxMi42LTI4LjMsMjgtMjguM3Y1Ni42QzEyLjYsNjguMywwLDU1LjYsMCw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0yOC4xLDYyYy0xMi4xLDAtMjItOS44LTIyLTIyczkuOC0yMiwyMi0yMlY2MnoiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzkuMDI4OSIgeTE9IjYxLjk4MjEiIHgyPSIzOS4wMjg5IiB5Mj0iMTguMDY1NCI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzlGQ0VFRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM1M0IyRTUiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3QzIiBkPSJNNTAsNDBjMCwxMi4xLTkuOCwyMi0yMiwyMlYxOC4xQzQwLjIsMTguMSw1MCwyNy45LDUwLDQweiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8yXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyMS4yMzIzIiB5MT0iMTguMDkxNyIgeDI9IjIxLjIzMjMiIHkyPSI2MS45ODIxIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojQzJFOEY4Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI0QUJFMiIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik0yOCw2MmMtNy41LDAtMTMuNi05LjgtMTMuNi0yMlMyMC41LDE4LjEsMjgsMTguMVY2MnoiLz4NCjxyYWRpYWxHcmFkaWVudCBpZD0iU1ZHSURfM18iIGN4PSIzMC43NDc3IiBjeT0iMzQuODU3MSIgcj0iMTMuMTc4NCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KCTxzdG9wICBvZmZzZXQ9IjAuMTM5OSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRkZGRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkYyMDAiLz4NCjwvcmFkaWFsR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMjguMywyNC43Yy0wLjQsMC0wLjcsMC4xLTEsMC4yYy01LDAuNi05LDcuMi05LDE1LjJjMCw4LjQsNC40LDE1LjMsOS44LDE1LjN2MGMwLjEsMC0wLjEsMCwwLDANCgljOC41LDAsMTUuNS02LjksMTUuNS0xNS4zUzM2LjcsMjQuNywyOC4zLDI0Ljd6Ii8+DQo8Zz4NCgk8cGF0aCBkPSJNMTAwLjEsMjYuM2wtMy43LDYuNGMtMi0xLjktNC43LTIuOC04LjEtMi44Yy0zLjIsMC01LjgsMS4xLTcuNywzLjJzLTIuOCw1LjEtMi44LDguOWMwLDcuNywzLjcsMTEuNSwxMSwxMS41DQoJCWMzLjIsMCw1LjktMSw4LjQtMy4xbDMuMSw2LjdjLTIuNSwxLjUtNC42LDIuNS02LjUsMi45cy00LDAuNi02LjYsMC42Yy01LjYsMC0xMC4xLTEuNi0xMy40LTQuOXMtNC45LTcuOS00LjktMTMuNw0KCQljMC01LjgsMS44LTEwLjQsNS40LTE0YzMuNi0zLjUsOC40LTUuMywxNC42LTUuM0M5My4zLDIyLjcsOTcsMjMuOSwxMDAuMSwyNi4zeiIvPg0KCTxwYXRoIGQ9Ik0xMDQuOCw0MS42YzAtNS42LDEuNi0xMC4xLDQuOC0xMy42YzMuMi0zLjUsNy41LTUuMywxMi43LTUuM2M1LjYsMCw5LjksMS43LDEyLjksNS4xczQuNiw4LDQuNiwxMy44DQoJCWMwLDUuOC0xLjYsMTAuNS00LjcsMTMuOXMtNy40LDUuMi0xMi44LDUuMmMtNS42LDAtOS45LTEuNy0xMy01LjJDMTA2LjQsNTIsMTA0LjgsNDcuMywxMDQuOCw0MS42eiBNMTEzLjcsNDEuNg0KCQljMCw4LjEsMi45LDEyLjEsOC43LDEyLjFjMi43LDAsNC44LTEsNi4zLTMuMWMxLjYtMi4xLDIuMy01LjEsMi4zLTguOWMwLTcuOS0yLjktMTEuOS04LjctMTEuOWMtMi43LDAtNC44LDEtNi4zLDMuMQ0KCQlDMTE0LjUsMzQuOSwxMTMuNywzNy44LDExMy43LDQxLjZ6Ii8+DQoJPHBhdGggZD0iTTE3MC4zLDU5Ljl2LTIuMmMtMC43LDAuOC0xLjksMS41LTMuNiwyYy0xLjcsMC42LTMuNCwwLjktNS4yLDAuOWMtNS4xLDAtOS4xLTEuNi0xMi00LjhjLTIuOS0zLjItNC40LTcuNy00LjQtMTMuNQ0KCQlzMS43LTEwLjUsNS0xNC4xYzMuNC0zLjYsNy42LTUuNCwxMi42LTUuNGMyLjgsMCw1LjMsMC42LDcuNiwxLjdWOS44bDguNS0ydjUyLjJIMTcwLjN6IE0xNzAuMywzMi4xYy0xLjgtMS41LTMuNy0yLjItNS43LTIuMg0KCQljLTMuNCwwLTYsMS03LjksMy4xcy0yLjgsNS4xLTIuOCw5YzAsNy42LDMuNywxMS40LDExLDExLjRjMC44LDAsMS44LTAuMiwzLTAuN2MxLjItMC41LDItMSwyLjMtMS41VjMyLjF6Ii8+DQoJPHBhdGggZD0iTTIyMCw0NC4zaC0yNi4xYzAuMiwyLjksMS4yLDUuMiwzLDYuOGMxLjgsMS42LDQuMywyLjQsNy40LDIuNGMzLjksMCw2LjgtMSw4LjktM2wzLjMsNi41Yy0zLDIuNC03LjUsMy43LTEzLjQsMy43DQoJCWMtNS42LDAtMTAtMS42LTEzLjItNC45Yy0zLjItMy4zLTQuOS03LjgtNC45LTEzLjdjMC01LjgsMS44LTEwLjQsNS4zLTE0YzMuNi0zLjYsNy44LTUuNCwxMi44LTUuNGM1LjMsMCw5LjYsMS42LDEyLjgsNC43DQoJCWMzLjIsMy4yLDQuOCw3LjIsNC44LDEyLjFDMjIwLjcsNDAuNiwyMjAuNSw0Mi4yLDIyMCw0NC4zeiBNMTk0LjIsMzcuOWgxOGMtMC42LTUuMy0zLjUtOC04LjktOEMxOTguNCwyOS44LDE5NS40LDMyLjUsMTk0LjIsMzcuOQ0KCQl6Ii8+DQoJPHBhdGggZD0iTTIzNS40LDU5djE1LjNoLTguNVYyMy40aDguNXYyLjVjMi4xLTIuMSw0LjgtMy4xLDcuOS0zLjFjMTEuNiwwLDE3LjUsNi40LDE3LjUsMTkuMmMwLDYtMS42LDEwLjYtNC44LDEzLjgNCgkJYy0zLjIsMy4yLTcuNiw0LjgtMTMuMiw0LjhDMjQwLDYwLjYsMjM3LjYsNjAuMSwyMzUuNCw1OXogTTIzNS40LDMyLjN2MTkuMmMxLjUsMS4zLDMuNCwxLjksNS40LDEuOWMzLjksMCw2LjgtMC45LDguNS0yLjgNCgkJYzEuNy0xLjksMi42LTQuOCwyLjYtOC45YzAtNC4zLTAuOS03LjQtMi42LTkuMWMtMS43LTEuOC00LjUtMi42LTguNS0yLjZDMjM4LjgsMjkuOSwyMzcsMzAuNywyMzUuNCwzMi4zeiIvPg0KCTxwYXRoIGQ9Ik0yNjkuNyw5LjhsOC41LTJ2NDEuMWMwLDQuNSwxLjMsNy4yLDQsOC4xYy0xLjMsMi41LTMuNiwzLjgtNi44LDMuOGMtMy45LDAtNS44LTIuNy01LjgtOC4xVjkuOHoiLz4NCgk8cGF0aCBkPSJNMzA5LjIsNTYuM2MtMC44LDEuMy0yLjEsMi4zLTQsMy4xYy0xLjksMC44LTMuOSwxLjItNiwxLjJjLTMuOSwwLTctMS05LjMtM2MtMi4zLTItMy40LTQuOC0zLjQtOC40DQoJCWMwLTQuMiwxLjYtNy41LDQuOC05LjlzNy43LTMuNiwxMy41LTMuNmMxLDAsMi4yLDAuMiwzLjUsMC41YzAtNC4zLTIuNy02LjUtOC4yLTYuNWMtMy4yLDAtNS45LDAuNS04LjEsMS42bC0xLjgtNi42DQoJCWMyLjktMS40LDYuNC0yLjEsMTAuNS0yLjFjNS42LDAsOS43LDEuMywxMi4zLDMuOGMyLjYsMi41LDMuOSw3LjMsMy45LDE0LjR2Ny44YzAsNC45LDEsNy45LDIuOSw5LjJjLTAuNywxLjItMS41LDItMi40LDIuMw0KCQljLTAuOSwwLjMtMS45LDAuNC0zLDAuNGMtMS4yLDAtMi4zLTAuNS0zLjMtMS40UzMwOS41LDU3LjQsMzA5LjIsNTYuM3ogTTMwOC40LDQyLjdjLTEuNS0wLjMtMi41LTAuNC0zLjMtMC40DQoJCWMtNi43LDAtMTAuMSwyLjItMTAuMSw2LjZjMCwzLjMsMS45LDQuOSw1LjcsNC45YzUuMSwwLDcuNy0yLjYsNy43LTcuN1Y0Mi43eiIvPg0KCTxwYXRoIGQ9Ik0zNDIuMyw2NS44Yy0wLjksMi40LTIuOSw0LjUtNS45LDYuMWMtMywxLjYtNi41LDIuNC0xMC41LDIuNHYtNy41YzYuNiwwLDkuOS0xLjcsOS45LTQuOWMwLTIuMi0wLjktNS41LTIuNy0xMA0KCQlsLTExLjQtMjguNGg4LjhsMTAsMjUuM2w5LTI1LjNoOC44TDM0Mi4zLDY1Ljh6Ii8+DQo8L2c+DQo8ZyBpZD0iSGFuZCI+DQoJPGNpcmNsZSBjbGFzcz0ic3Q2IiBjeD0iMzcyLjQiIGN5PSIxNi4zIiByPSI2LjYiLz4NCgk8cGF0aCBjbGFzcz0ic3Q3IiBkPSJNMzc0LjIsMTkuMmMwLDAsMC45LTAuNywxLjEtMC44YzAsMCwwLjktMC41LDAuOS0wLjZjMCwwLDAuNS0wLjIsMC4yLTAuNmMwLDAtMC41LTAuNS0xLjQsMC4zDQoJCWMwLDAtMC4yLDAuMi0wLjMsMC4yYzAsMC0wLjgsMC42LTAuOSwwLjVjMCwwLTAuMy0wLjUsMC0wLjljMCwwLDAuNC0wLjYsMC40LTAuN2MwLDAsMC4xLTAuMiwwLjMtMC4zYzAsMCwwLjQtMC41LDAuNS0wLjYNCgkJYzAsMCwwLjYtMC44LDAuNi0wLjljMCwwLDAuMS0wLjIsMC4yLTAuM2MwLDAsMC42LTAuOSwwLjMtMS4xYzAsMC0wLjMtMC41LTAuOCwwLjNsLTAuMiwwLjNjMCwwLTAuMiwwLjMtMC4zLDAuNA0KCQljMCwwLTAuNCwwLjQtMC41LDAuNmMwLDAtMC41LDAuNS0wLjYsMC43YzAsMC0wLjIsMC4yLTAuMywwLjJjMCwwLTAuMiwwLjEsMC4xLTAuM2MwLDAsMC41LTAuOCwwLjUtMC45YzAsMCwwLjYtMSwwLjUtMS4xDQoJCWMwLDAsMC40LTAuOCwwLjQtMC44YzAsMCwwLjMtMC41LTAuMi0wLjdjMCwwLTAuNCwwLTAuNiwwLjZjMCwwLTAuNCwwLjctMC40LDAuN2MwLDAtMC41LDAuNy0wLjUsMC44YzAsMC0wLjcsMS0wLjgsMS4yDQoJCWMwLDAtMC4zLDAuMi0wLjEtMC4zYzAsMCwwLjItMC42LDAuMi0wLjljMCwwLDAuMy0wLjcsMC4yLTAuOGMwLDAsMC4yLTAuMiwwLjItMC40YzAsMCwwLjYtMC44LDAuMi0xYzAsMC0wLjMtMC4zLTAuNywwLjMNCgkJYzAsMC0wLjMsMC41LTAuMywwLjdjMCwwLTAuNiwxLTAuNiwxLjJjMCwwLTAuNCwxLjItMC41LDEuMmMwLDAtMC40LDAuMS0wLjMtMC4zYzAsMCwwLTAuMywwLTAuNWMwLDAsMC0wLjYsMC0wLjgNCgkJYzAsMCwwLTAuNCwwLjEtMC42YzAsMCwwLjItMC44LTAuMS0wLjljMCwwLTAuNS0wLjItMC42LDEuMWMwLDAtMC4xLDAuOC0wLjEsMWMwLDAtMC4xLDEuMS0wLjEsMS4zYzAsMC0wLjUsMS43LTAuNiwxLjcNCgkJYzAsMC0wLjEsMC44LTAuMSwxLjRjMCwwLDAuMSwwLjgsMSwxLjFsMC41LDAuNGMwLDAsMC45LDAuNCwxLjQsMC4xQzM3MS44LDIwLjUsMzczLjQsMjAsMzc0LjIsMTkuMnoiLz4NCjwvZz4NCjxnIGNsYXNzPSJzdDgiPg0KCTxwYXRoIGQ9Ik03NC45LDk4LjNjLTAuMiwxLjktMC45LDMuMy0yLDQuM2MtMS4xLDEtMi42LDEuNS00LjUsMS41Yy0xLjMsMC0yLjUtMC4zLTMuNS0xYy0xLTAuNy0xLjgtMS42LTIuMy0yLjgNCgkJYy0wLjYtMS4yLTAuOC0yLjYtMC44LTQuMXYtMi4zYzAtMS42LDAuMy0zLDAuOC00LjJjMC42LTEuMiwxLjMtMi4yLDIuNC0yLjhjMS0wLjcsMi4yLTEsMy42LTFjMS45LDAsMy40LDAuNSw0LjUsMS41DQoJCWMxLjEsMSwxLjcsMi40LDEuOSw0LjNoLTEuNWMtMC40LTMtMi00LjUtNC45LTQuNWMtMS42LDAtMi45LDAuNi0zLjksMS44Yy0xLDEuMi0xLjQsMi45LTEuNCw1Vjk2YzAsMi4xLDAuNSwzLjcsMS40LDQuOQ0KCQljMC45LDEuMiwyLjIsMS44LDMuOCwxLjhjMS42LDAsMi44LTAuNCwzLjYtMS4xYzAuOC0wLjgsMS4zLTEuOSwxLjUtMy40SDc0Ljl6Ii8+DQoJPHBhdGggZD0iTTc3LjUsOTdjMC0xLjMsMC4yLTIuNCwwLjctMy40YzAuNS0xLDEuMi0xLjgsMi4xLTIuNGMwLjktMC42LDEuOS0wLjgsMy4xLTAuOGMxLjgsMCwzLjIsMC42LDQuMywxLjgNCgkJYzEuMSwxLjIsMS42LDIuOSwxLjYsNC45djAuM2MwLDEuMy0wLjIsMi40LTAuNywzLjRjLTAuNSwxLTEuMiwxLjgtMi4xLDIuNGMtMC45LDAuNi0xLjksMC44LTMuMSwwLjhjLTEuOCwwLTMuMi0wLjYtNC4zLTEuOA0KCQljLTEuMS0xLjItMS42LTIuOS0xLjYtNC45Vjk3eiBNNzguOSw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTQNCgkJVjk3YzAtMS0wLjItMS45LTAuNi0yLjhjLTAuNC0wLjgtMC45LTEuNS0xLjYtMS45Yy0wLjctMC41LTEuNC0wLjctMi4zLTAuN2MtMS4zLDAtMi40LDAuNS0zLjIsMS41Yy0wLjgsMS0xLjIsMi40LTEuMiw0Vjk3LjR6Ii8+DQoJPHBhdGggZD0iTTkzLjYsOTAuNmwwLDIuM2MwLjUtMC44LDEuMS0xLjQsMS45LTEuOWMwLjctMC40LDEuNi0wLjYsMi41LTAuNmMxLjQsMCwyLjUsMC40LDMuMiwxLjJjMC43LDAuOCwxLDIsMSwzLjZ2OC43aC0xLjV2LTguNw0KCQljMC0xLjItMC4zLTIuMS0wLjgtMi42Yy0wLjUtMC42LTEuMy0wLjktMi40LTAuOWMtMC45LDAtMS43LDAuMy0yLjQsMC44Yy0wLjcsMC42LTEuMiwxLjMtMS41LDIuM3Y5aC0xLjVWOTAuNkg5My42eiIvPg0KCTxwYXRoIGQ9Ik0xMDcuNCw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjlIMTA2VjkwLjZIMTA3LjR6Ii8+DQoJPHBhdGggZD0iTTEyNC44LDEwNC4xYy0xLjEsMC0yLjEtMC4zLTMtMC44Yy0wLjktMC42LTEuNi0xLjMtMi4xLTIuM2MtMC41LTEtMC44LTIuMS0wLjgtMy4zdi0wLjVjMC0xLjMsMC4yLTIuNCwwLjctMy40DQoJCWMwLjUtMSwxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjgtMC45LDIuOS0wLjljMS42LDAsMi45LDAuNSwzLjgsMS42YzAuOSwxLjEsMS40LDIuNiwxLjQsNC41djAuOGgtOS40djAuMw0KCQljMCwxLjUsMC40LDIuNywxLjMsMy43YzAuOSwxLDEuOSwxLjUsMy4yLDEuNWMwLjgsMCwxLjUtMC4xLDIuMS0wLjRjMC42LTAuMywxLjEtMC43LDEuNi0xLjRsMC45LDAuNw0KCQlDMTI4LjQsMTAzLjMsMTI2LjksMTA0LjEsMTI0LjgsMTA0LjF6IE0xMjQuNiw5MS42Yy0xLjEsMC0yLDAuNC0yLjgsMS4yYy0wLjgsMC44LTEuMiwxLjktMS40LDMuMmg3Ljl2LTAuMmMwLTEuMy0wLjQtMi4zLTEuMS0zLjENCgkJUzEyNS43LDkxLjYsMTI0LjYsOTEuNnoiLz4NCgk8cGF0aCBkPSJNMTM3LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41YzAuNS0xLDEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNWMtMC43LTAuNi0xLjUtMS0yLjYtMQ0KCQljLTEuMywwLTIuMywwLjUtMy4xLDEuNGMtMC43LDEtMS4xLDIuMy0xLjEsNHYwLjRjMCwxLjcsMC40LDMsMS4xLDMuOUMxMzUuMiwxMDIuNCwxMzYuMiwxMDIuOCwxMzcuNSwxMDIuOHoiLz4NCgk8cGF0aCBkPSJNMTQ3LjgsODcuMnYzLjRoMi43djEuMmgtMi43djguOGMwLDAuNywwLjEsMS4zLDAuNCwxLjZjMC4zLDAuNCwwLjcsMC41LDEuMywwLjVjMC4yLDAsMC42LDAsMS4yLTAuMWwwLjEsMS4yDQoJCWMtMC40LDAuMS0wLjksMC4yLTEuNiwwLjJjLTEsMC0xLjctMC4zLTIuMi0wLjljLTAuNS0wLjYtMC43LTEuNC0wLjctMi42di04LjhoLTIuNHYtMS4yaDIuNHYtMy40SDE0Ny44eiIvPg0KCTxwYXRoIGQ9Ik0xNTMuNSw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN2MwLjItMC4yLDAuNC0wLjMsMC43LTAuM2MwLjMsMCwwLjYsMC4xLDAuNywwLjNjMC4yLDAuMiwwLjMsMC40LDAuMywwLjcNCgkJYzAsMC4zLTAuMSwwLjUtMC4zLDAuN2MtMC4yLDAuMi0wLjQsMC4zLTAuNywwLjNjLTAuMywwLTAuNi0wLjEtMC43LTAuM0MxNTMuNiw4Ny4zLDE1My41LDg3LjEsMTUzLjUsODYuOHogTTE1NS4yLDEwMy44aC0xLjUNCgkJVjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0xNjAuNSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjloLTEuNVY5MC42SDE2MC41eiIvPg0KCTxwYXRoIGQ9Ik0xNzIuMyw5Ny4xYzAtMi4xLDAuNS0zLjcsMS40LTQuOWMwLjktMS4yLDIuMi0xLjgsMy43LTEuOGMxLjgsMCwzLjIsMC43LDQuMSwyLjFsMC4xLTEuOWgxLjR2MTIuOWMwLDEuNy0wLjUsMy0xLjQsNA0KCQlzLTIuMiwxLjUtMy45LDEuNWMtMC45LDAtMS44LTAuMi0yLjYtMC42Yy0wLjgtMC40LTEuNS0xLTItMS42bDAuOC0wLjljMSwxLjMsMi4zLDEuOSwzLjcsMS45YzEuMiwwLDIuMi0wLjQsMi45LTEuMQ0KCQljMC43LTAuNywxLTEuNywxLjEtM3YtMS43Yy0wLjksMS4zLTIuMywyLTQuMSwyYy0xLjUsMC0yLjgtMC42LTMuNy0xLjhzLTEuNC0yLjktMS40LTQuOVY5Ny4xeiBNMTczLjgsOTcuM2MwLDEuNywwLjMsMywxLDQNCgkJYzAuNywxLDEuNiwxLjUsMi45LDEuNWMxLjgsMCwzLjEtMC44LDMuOC0yLjR2LTYuMWMtMC4zLTAuOC0wLjgtMS41LTEuNS0xLjljLTAuNi0wLjQtMS40LTAuNy0yLjMtMC43Yy0xLjIsMC0yLjIsMC41LTIuOSwxLjQNCgkJQzE3NC4xLDk0LDE3My44LDk1LjUsMTczLjgsOTcuM3oiLz4NCgk8cGF0aCBkPSJNMjAyLjgsOTguOGgtOC4xbC0xLjgsNWgtMS42TDE5OCw4NmgxLjRsNi43LDE3LjhoLTEuNkwyMDIuOCw5OC44eiBNMTk1LjIsOTcuNmg3LjFsLTMuNi05LjdMMTk1LjIsOTcuNnoiLz4NCgk8cGF0aCBkPSJNMjEwLjYsMTAzLjhoLTEuNVY4NmgxLjVWMTAzLjh6Ii8+DQoJPHBhdGggZD0iTTIyMy40LDg3LjJ2My40aDIuN3YxLjJoLTIuN3Y4LjhjMCwwLjcsMC4xLDEuMywwLjQsMS42czAuNywwLjUsMS4zLDAuNWMwLjIsMCwwLjYsMCwxLjItMC4xbDAuMSwxLjINCgkJYy0wLjQsMC4xLTAuOSwwLjItMS42LDAuMmMtMSwwLTEuNy0wLjMtMi4yLTAuOWMtMC41LTAuNi0wLjctMS40LTAuNy0yLjZ2LTguOGgtMi40di0xLjJoMi40di0zLjRIMjIzLjR6Ii8+DQoJPHBhdGggZD0iTTIyOC4yLDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yMjkuNiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0yNTkuNCw5OS40YzAtMS0wLjMtMS44LTEtMi4zYy0wLjctMC42LTItMS4xLTMuOC0xLjZjLTEuOC0wLjUtMy4yLTEuMS00LTEuN2MtMS4yLTAuOS0xLjgtMi0xLjgtMy40DQoJCWMwLTEuNCwwLjYtMi41LDEuNy0zLjNjMS4xLTAuOSwyLjUtMS4zLDQuMy0xLjNjMS4yLDAsMi4yLDAuMiwzLjIsMC43YzAuOSwwLjUsMS43LDEuMSwyLjIsMS45YzAuNSwwLjgsMC44LDEuNywwLjgsMi43aC0xLjUNCgkJYzAtMS4yLTAuNC0yLjItMS4yLTIuOWMtMC44LTAuNy0xLjktMS4xLTMuMy0xLjFjLTEuNCwwLTIuNCwwLjMtMy4yLDAuOWMtMC44LDAuNi0xLjIsMS40LTEuMiwyLjRjMCwwLjksMC40LDEuNiwxLjEsMi4yDQoJCWMwLjcsMC42LDEuOSwxLjEsMy41LDEuNWMxLjYsMC40LDIuOCwwLjksMy42LDEuNGMwLjgsMC41LDEuNCwxLDEuOSwxLjdjMC40LDAuNywwLjYsMS40LDAuNiwyLjNjMCwxLjQtMC42LDIuNS0xLjcsMy40DQoJCWMtMS4xLDAuOC0yLjYsMS4zLTQuNCwxLjNjLTEuMywwLTIuNC0wLjItMy40LTAuN3MtMS44LTEuMS0yLjQtMS45Yy0wLjUtMC44LTAuOC0xLjctMC44LTIuOGgxLjVjMCwxLjMsMC41LDIuMiwxLjQsMw0KCQljMC45LDAuNywyLjIsMS4xLDMuNywxLjFjMS40LDAsMi41LTAuMywzLjMtMC45QzI1OSwxMDEuMywyNTkuNCwxMDAuNSwyNTkuNCw5OS40eiIvPg0KCTxwYXRoIGQ9Ik0yNjMuOCw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN3MwLjQtMC4zLDAuNy0wLjNzMC42LDAuMSwwLjcsMC4zYzAuMiwwLjIsMC4zLDAuNCwwLjMsMC43YzAsMC4zLTAuMSwwLjUtMC4zLDAuNw0KCQljLTAuMiwwLjItMC40LDAuMy0wLjcsMC4zcy0wLjYtMC4xLTAuNy0wLjNTMjYzLjgsODcuMSwyNjMuOCw4Ni44eiBNMjY1LjUsMTAzLjhIMjY0VjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzEuMSwxMDMuOGgtMS41Vjg1LjFoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzUsODYuOGMwLTAuMywwLjEtMC41LDAuMy0wLjdzMC40LTAuMywwLjctMC4zczAuNiwwLjEsMC43LDAuM2MwLjIsMC4yLDAuMywwLjQsMC4zLDAuN2MwLDAuMy0wLjEsMC41LTAuMywwLjcNCgkJYy0wLjIsMC4yLTAuNCwwLjMtMC43LDAuM3MtMC42LTAuMS0wLjctMC4zUzI3NSw4Ny4xLDI3NSw4Ni44eiBNMjc2LjcsMTAzLjhoLTEuNVY5MC42aDEuNVYxMDMuOHoiLz4NCgk8cGF0aCBkPSJNMjg1LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41czEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNXMtMS41LTEtMi42LTENCgkJYy0xLjMsMC0yLjMsMC41LTMuMSwxLjRzLTEuMSwyLjMtMS4xLDR2MC40YzAsMS43LDAuNCwzLDEuMSwzLjlDMjgzLjIsMTAyLjQsMjg0LjIsMTAyLjgsMjg1LjUsMTAyLjh6Ii8+DQoJPHBhdGggZD0iTTI5Mi43LDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yOTQuMiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0zMDguOSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdIMzE2di04LjcNCgkJYzAtMS4yLTAuMy0yLjEtMC44LTIuNmMtMC41LTAuNi0xLjMtMC45LTIuNC0wLjljLTAuOSwwLTEuNywwLjMtMi40LDAuOGMtMC43LDAuNi0xLjIsMS4zLTEuNSwyLjN2OWgtMS41VjkwLjZIMzA4Ljl6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg=="/>
+</a>
+<h1>SYCL for CUDA Developers - Migration</h1>
+</div>
+</header>
+</article>
+<a class="header-link" href="#migrating-from-cuda-to-sycl" id="migrating-from-cuda-to-sycl"><h1>Migrating from CUDA to SYCL</h1></a>
+<p>In this chapter we provide mapping tables for the main nomenclature differences between
+SYCL, CUDA, and OpenCL. Knowing the equivalent nomenclature for each platform
+is essential to migrate a CUDA code to a SYCL code. The actual function call
+for CUDA terminology can be found in <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html">CUDA C programming
+guide</a>. For
+OpenCL, the function call syntax can be found in <a href="https://www.khronos.org/registry/OpenCL/sdk/1.2/docs/man/xhtml/">OpenCL 1.2 reference
+pages</a>. The SYCL syntax function call can be found in <a href="https://www.khronos.org/registry/SYCL/specs/sycl-1.2.1.pdf">Khronos SYCL 1.2.1
+specification</a>.  </p>
+<a class="header-link" href="#execution-model-equivalence" id="execution-model-equivalence"><h2>Execution model equivalence</h2></a>
+<table>
+<thead>
+<tr>
+<th align="center">CUDA</th>
+<th align="center">SYCL</th>
+<th align="center">OpenCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">SM</td>
+<td align="center">CU</td>
+<td align="center">CU</td>
+</tr>
+<tr>
+<td align="center">SM core</td>
+<td align="center">PE</td>
+<td align="center">PE</td>
+</tr>
+<tr>
+<td align="center">thread</td>
+<td align="center">work-item</td>
+<td align="center">work-item</td>
+</tr>
+<tr>
+<td align="center">block</td>
+<td align="center">work-group</td>
+<td align="center">work-group</td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#memory-model-equivalence" id="memory-model-equivalence"><h2>Memory model equivalence</h2></a>
+<table>
+<thead>
+<tr>
+<th align="center">CUDA</th>
+<th align="center">SYCL</th>
+<th align="center">OpenCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">register</td>
+<td align="center">private memory</td>
+<td align="center">private memory</td>
+</tr>
+<tr>
+<td align="center">shared memory</td>
+<td align="center">local memory</td>
+<td align="center">local memory</td>
+</tr>
+<tr>
+<td align="center">constant memory</td>
+<td align="center">constant memory</td>
+<td align="center">constant memory</td>
+</tr>
+<tr>
+<td align="center">global memory</td>
+<td align="center">global memory</td>
+<td align="center">global memory</td>
+</tr>
+<tr>
+<td align="center">local memory</td>
+<td align="center">N/A(device specific)</td>
+<td align="center">N/A(device specific)</td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#host-api-equivalence" id="host-api-equivalence"><h2>Host API equivalence</h2></a>
+<a class="header-link" href="#platform-api-equivalence" id="platform-api-equivalence"><h3>Platform API equivalence</h3></a>
+<table>
+<thead>
+<tr>
+<th align="center">CUDA</th>
+<th align="center">SYCL</th>
+<th align="center">OpenCL</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>cudaStreamCreate()</code></td>
+<td align="center"><code>queue</code> class</td>
+<td align="center"><code>clCreateCommmandQueue()</code></td>
+<td>By default the CUDA stream will be constructed by the CUDA driver.</td>
+</tr>
+<tr>
+<td align="center"><code>cudaStreamDestroy()</code></td>
+<td align="center"><code>N/A</code></td>
+<td align="center"><code>clReleaseCommandQueue()</code></td>
+<td>In CUDA this function is required if the stream is created explicitly.<br/> In SYCL this is handled by the run-time</td>
+</tr>
+<tr>
+<td align="center"><code>cuStreamSynchronize()</code> <br/> <code>cudaDeviceSynchronize()</code></td>
+<td align="center"><code>queue::wait()</code></td>
+<td align="center"><code>clEnqueueBarrierWithWaitList()</code></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>cuStreamWaitEvent()</code></td>
+<td align="center"><code>event::wait()</code></td>
+<td align="center"><code>clWaitForEvents()</code></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>cudaStreamAddCallback()</code></td>
+<td align="center"><code>N/A</code></td>
+<td align="center"><code>clSetEventCallback()</code></td>
+<td>SYCL does not support a callback function.</td>
+</tr>
+<tr>
+<td align="center"><code>N/A</code></td>
+<td align="center"><code>platform::get()</code></td>
+<td align="center"><code>clGetPlatformIDs()</code></td>
+<td>This is optional in SYCL and it can be handled by the SYCL runtime via <code>device_selector</code></td>
+</tr>
+<tr>
+<td align="center"><code>cuCtxCreate()</code></td>
+<td align="center"><code>context</code> class</td>
+<td align="center"><code>clCreateContext()</code></td>
+<td>By default it will be constructed by the CUDA driver. <br/> By default this will be constructed by SYCL via the device selector</td>
+</tr>
+<tr>
+<td align="center"><code>CUDAGetDevice()</code></td>
+<td align="center"><code>device</code> class</td>
+<td align="center"><code>clGetDeviceInfo()</code></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"><code>CUDASetDevice()</code></td>
+<td align="center"><code>device_selector</code> class</td>
+<td align="center"><code>N/A</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#memory-management-api-equivalence" id="memory-management-api-equivalence"><h3>Memory management API equivalence</h3></a>
+<table>
+<thead>
+<tr>
+<th>CUDA</th>
+<th align="center">SYCL</th>
+<th align="center">OpenCL</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cudaMalloc()</code><br/><code>cudaMallocHost()</code> <br/> <code>cudaHostAlloc()</code></td>
+<td align="center"><code>buffer</code> class</td>
+<td align="center"><code>clCreateBuffer()</code> <br/> <code>clEnqueueMapBuffer()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>cudaHostGetDevicePointer()</code></td>
+<td align="center"><code>accessor</code> class</td>
+<td align="center"><code>N/A</code></td>
+<td>OpenCL does not support a unified memory system.</td>
+</tr>
+<tr>
+<td><code>cudaMemset()</code></td>
+<td align="center"><code>handler::fill()</code></td>
+<td align="center"><code>clEnqueueFillBuffer()</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>cudaMemcpyAsync()</code> <br/> <code>cudaMemcpy()</code></td>
+<td align="center"><code>handler::copy()</code></td>
+<td align="center"><code>clEnqueueReadBuffer()</code> <br/> <code>clEnqueueWriteBuffer()</code> <br/> <code>clEnqueueCopyBuffer()</code></td>
+<td>In SYCL explicit copy is optional. This means that a user can explicitly copy the data between host or device. If a user does not provide an explicit copy, the data transfer is handled implicitly.</td>
+</tr>
+<tr>
+<td><code>cudaFree()</code></td>
+<td align="center"><code>N/A</code></td>
+<td align="center"><code>clReleaseMemObject()</code></td>
+<td>The buffer deletion is handled by the SYCL runtime, when an application exits the end of the SYCL scope <code>{}</code>.</td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#runtime-api-equivalent" id="runtime-api-equivalent"><h3>Runtime API equivalent</h3></a>
+<table>
+<thead>
+<tr>
+<th align="center">CUDA</th>
+<th align="center">SYCL</th>
+<th align="center">OpenCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>&lt;&lt;&lt;....&gt;&gt;&gt;</code></td>
+<td align="center"><code>nd_range</code> class</td>
+<td align="center"><code>global_work_size</code> <br/> <code>local_work_size</code> variables</td>
+</tr>
+<tr>
+<td align="center"><code>"kernel function name"&lt;&lt;&lt;...&gt;&gt;&gt;()</code></td>
+<td align="center"><code>queue::submit()</code></td>
+<td align="center"><code>clCreateProgramWithSource/Binary()</code> <br/> <code>clBuildProgram()</code> <br/> <code>clCreateKernel()</code> <br/> <code>clCreateKernel()</code> <br/> <code>clSetKernelArg()</code> <br/> <code>clEnqueueNDRangeKernel()</code></td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#device-api-equivalence" id="device-api-equivalence"><h2>Device API equivalence</h2></a>
+<a class="header-link" href="#kernel-functions-qualifiers" id="kernel-functions-qualifiers"><h3>Kernel functions qualifiers</h3></a>
+<p>Qualifiers are not needed in SYCL as they are all abstracted by the SYCL runtime classes, but OpenCL ones are provided for reference.</p>
+<table>
+<thead>
+<tr>
+<th>CUDA</th>
+<th align="center">SYCL</th>
+<th>OpenCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__global__</code> function</td>
+<td align="center"><code>N/A</code></td>
+<td><code>__kernel</code> function</td>
+</tr>
+<tr>
+<td><code>__device__</code> function</td>
+<td align="center"><code>N/A</code></td>
+<td><code>N/A</code></td>
+</tr>
+<tr>
+<td><code>__constant__</code> variable declaration</td>
+<td align="center"><code>N/A</code></td>
+<td><code>__constant</code> variable declaration</td>
+</tr>
+<tr>
+<td><code>__device__</code> variable declaration</td>
+<td align="center"><code>N/A</code></td>
+<td><code>__global</code> variable declaration</td>
+</tr>
+<tr>
+<td><code>__shared__</code> variable declaration</td>
+<td align="center"><code>N/A</code></td>
+<td><code>__local</code> variable declaration</td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#indexing-equivalence" id="indexing-equivalence"><h3>Indexing equivalence</h3></a>
+<p>Please note that this is the general mapping between CUDA, OpenCL, and SYCL. Some architectures my not support 3 dimensions.</p>
+<table>
+<thead>
+<tr>
+<th>CUDA</th>
+<th align="center">SYCL</th>
+<th>OpenCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>N/A</code></td>
+<td align="center"><code>nd_item</code> class</td>
+<td><code>N/A</code></td>
+</tr>
+<tr>
+<td><code>gridDim.{x, y, z}</code></td>
+<td align="center"><code>nd_item::get_num_group({0,1,2})</code></td>
+<td><code>get_num_group({0,1,2})</code></td>
+</tr>
+<tr>
+<td><code>blockDim.{x, y, z}</code></td>
+<td align="center"><code>nd_item::get_local_range({0,1,2})</code></td>
+<td><code>get_local_size({0,1,2})</code></td>
+</tr>
+<tr>
+<td><code>blockIdx.{x, y, z}</code></td>
+<td align="center"><code>nd_item::get_group({0,1,2})</code></td>
+<td><code>get_group_id({0,1,2})</code></td>
+</tr>
+<tr>
+<td><code>threadIdx.{x, y, z}</code></td>
+<td align="center"><code>nd_item::get_local_id({0,1,2})</code></td>
+<td><code>get_local_id({0,1,2})</code></td>
+</tr>
+<tr>
+<td><code>N/A</code></td>
+<td align="center"><code>nd_item::get_global_id({0,1,2})</code></td>
+<td><code>get_global_id({0,1,2})</code></td>
+</tr>
+<tr>
+<td><code>N/A</code></td>
+<td align="center"><code>nd_item::get_linear_group_id()</code></td>
+<td><code>N/A</code></td>
+</tr>
+<tr>
+<td><code>N/A</code></td>
+<td align="center"><code>nd_item::get_linear_local_id()</code></td>
+<td><code>N/A</code></td>
+</tr>
+<tr>
+<td><code>N/A</code></td>
+<td align="center"><code>nd_item::get_linear_global_id()</code></td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#synchronization-equivalence" id="synchronization-equivalence"><h3>Synchronization equivalence</h3></a>
+<table>
+<thead>
+<tr>
+<th>CUDA</th>
+<th align="center">SYCL</th>
+<th>OpenCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__syncthread()</code></td>
+<td align="center"><code>nd_item::barrier()</code></td>
+<td><code>barrier()</code></td>
+</tr>
+<tr>
+<td><code>__threadfence_block()</code></td>
+<td align="center"><code>nd_item::mem_fence()</code></td>
+<td><code>mem_fence()</code></td>
+</tr>
+<tr>
+<td><code>N/A</code></td>
+<td align="center"><code>nd_item::mem_fence()</code></td>
+<td><code>read_mem_fence()</code></td>
+</tr>
+<tr>
+<td><code>N/A</code></td>
+<td align="center"><code>nd_item::mem_fence()</code></td>
+<td><code>write_mem_fence()</code></td>
+</tr>
+<tr>
+<td><code>__threadfence()</code></td>
+<td align="center"><code>N/A</code></td>
+<td><code>N/A</code></td>
+</tr>
+<tr>
+<td><code>__threadfence_system()</code></td>
+<td align="center"><code>N/A</code></td>
+<td><code>N/A</code></td>
+</tr>
+</tbody>
+</table>
+<a class="header-link" href="#how-to-rewrite-cuda-multi-gpu-code-for-sycl" id="how-to-rewrite-cuda-multi-gpu-code-for-sycl"><h2>How to rewrite CUDA multi-GPU code for SYCL</h2></a>
+<p>NVIDIA CUDA supports using multiple GPUs from versions &gt;= 4.0.
+CUDA can dispatch CUDA kernels, data movement, communication and synchronization
+among all NVIDIA GPUs.</p>
+<p>OpenCL supports using multiple OpenCL-enabled devices for dispatching kernels,
+data movement, communication and synchronization only if they reside in
+the same OpenCL context. NVIDIA devices do not have the context restriction as all
+NVIDIA devices share the same context created for the NVIDIA platform.  In general,
+a computer or a device can accommodate more than one OpenCL-enabled device,
+provided by different vendors. An example could be a desktop computer with both
+Intel and AMD GPUs where each of them has its own OpenCL driver.  Therefore,
+each device belongs to a different OpenCL platform and must have a different context.
+In such case, two separate OpenCL buffers must be created. Data movement,
+communication and synchronization must be handled manually. SYCL, on the other
+hand,  not only supports dispatching the kernels to multiple OpenCL devices, but it can also implicitly handle the data
+movement, synchronization and communication among all OpenCL-enabled
+devices, irrespective of the platform they belong to.</p>
+<a class="header-link" href="#cuda-multiple-gpu" id="cuda-multiple-gpu"><h3>CUDA multiple GPU</h3></a>
+<p>A single CPU thread can be used for handling multiple GPUs in CUDA. The following
+function is used to get the number of available NVIDIA GPU devices in CUDA:</p>
+<p><code>cudaError_t cudaGetDeviceCount(int* num_gpu);</code></p>
+<p><code>cudaSetDevice</code> can be used to choose a specific device for dispatching a CUDA
+kernel. The following pseudo-code demonstrates dispatching a kernel on multiple
+NVIDIA GPUs:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="p">....</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">num_gpu</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// finding available number of NVIDIA GPU devices</span>
+<span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">num_gpu</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">//looping over number of devices and dispatching a kernel per device.</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ngpus</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// selecting the current device</span>
+<span class="w">    </span><span class="n">cudaSetDevice</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// executing a my_kernel on the selected device</span>
+<span class="w">    </span><span class="n">my_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">num_blocks</span><span class="p">,</span><span class="w"> </span><span class="n">block_size</span><span class="o">&gt;&gt;&gt;</span><span class="p">(...);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// transfering data between the host and the selected device</span>
+<span class="w">    </span><span class="n">cudaMemcpy</span><span class="p">(...);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">....</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Note that the above code dispatches a kernel by using a single thread. It is
+possible to parallelize the for loop launching the kernels. However, it is the
+user's responsibility to handle locking when multiple threads use multiple
+devices. See the <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#um-multi-gpu">CUDA C programming
+guide</a>
+for further information.</p>
+<a class="header-link" href="#sycl-multiple-devices" id="sycl-multiple-devices"><h3>SYCL multiple devices</h3></a>
+<p>The list of SYCL supported platforms can be obtained with the list of devices for 
+each platform by calling <code>get_platforms(</code>) and <code>platform.get_devices()</code>
+respectively. Once we have all the devices,  we can construct a queue per
+device and dispatch different kernels to different queues.</p>
+<p>When there is only one device, kernels can be submitted to the same device.
+The following code snippet represents dispatching multiple kernels to a single
+SYCL device:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="p">...;</span><span class="w"></span>
+
+<span class="c1">// constructing the quue for an specefic device</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">my_queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="p">(</span><span class="n">device_selector</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// submitting a kernel to a the sycl queue</span>
+<span class="n">my_queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cgh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">....</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// sycl kernel 1</span>
+<span class="w">  </span><span class="n">cgh</span><span class="p">.</span><span class="n">parallel_for</span><span class="p">(....);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="n">my_queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cgh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">....</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// sycl kernel 2</span>
+<span class="w">  </span><span class="n">cgh</span><span class="p">.</span><span class="n">parallel_for</span><span class="p">(....);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="n">my_queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cgh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">....</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// sycl kernel 3</span>
+<span class="w">  </span><span class="n">cgh</span><span class="p">.</span><span class="n">parallel_for</span><span class="p">(....);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="p">...;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Moreover, when there are multiple devices, the
+kernels can be distributed among all devices. The following code snippet represents dispatching a
+kernel on multiple SYCL devices:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="p">...;</span><span class="w"></span>
+
+<span class="c1">// getting the list of all supported sycl platforms</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">platform_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">platform</span><span class="o">::</span><span class="n">get_platforms</span><span class="p">();</span><span class="w"></span>
+<span class="c1">// looping over platforms</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="nl">platform</span> <span class="p">:</span><span class="w"> </span><span class="n">platform_list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// getting the list of devices from the platform</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">device_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">platform</span><span class="p">.</span><span class="n">get_devices</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// looping over devices</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="nl">device</span> <span class="p">:</span><span class="w"> </span><span class="n">device_list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="p">(</span><span class="n">device</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// submitting a kernel to a the sycl queue</span>
+<span class="w">    </span><span class="n">queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cgh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="p">....</span><span class="w"></span>
+<span class="w">          </span><span class="c1">// sycl kernel</span>
+<span class="w">          </span><span class="n">cgh</span><span class="p">.</span><span class="n">parallel_for</span><span class="p">(....);</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">...;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Unlike CUDA, dispatching kernels to multiple SYCL devices is a thread safe operation, 
+and can be done from different threads of execution.</p>
+<a class="header-link" href="#porting-cuda-cpu-library-functions-to-sycl" id="porting-cuda-cpu-library-functions-to-sycl"><h2>Porting CUDA CPU library functions to SYCL</h2></a>
+<p>At the time of writing this document, the cuBLAS library, which is part of the CUDA 6.0 (and above) ecosystem, is the only library that can be used as a replacement for a CPU BLAS library directly by replacing the link flags in the build system.
+In particular, <a href="https://docs.nvidia.com/cuda/nvblas/index.html">NVBLAS</a> is an interception layer
+that replaces calls to a CPU-based BLAS library into its cuBLAS counterparts.
+No source code modification is required.</p>
+<p>Although technically possible, at the time of writing this document, such intercept layer for SYCL-BLAS has not been added to the SYCL ecosystem.
+In general, the interception layer mechanism is suitable for C-based interfaces, where the symbol name is clearly identifiable in the generated binary. C++-based interfaces rely on template meta-programing, which makes the interception of symbols at linki time difficult. However, a new BLAS library project with a C interface could implement this feature.</p>
+<a class="header-link" href="#porting-cuda-debug-code-to-sycl" id="porting-cuda-debug-code-to-sycl"><h2>Porting CUDA debug code to SYCL</h2></a>
+<a class="header-link" href="#error-handling-and-reporting" id="error-handling-and-reporting"><h3>Error-handling and reporting</h3></a>
+<p>In CUDA, all synchronous functions return an error code.
+Note that asynchronous functions (such as kernel execution) cannot possibly return an error code via its interface, so a later invocation to a function may return an error that comes from a previous API call.
+Typically, the error code returned by <code>cudaDeviceSynchronize</code> is used to query for the error of a previous kernel execution, although <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#error-checking">more advanced functionality is available</a>.
+Developers are encouraged to write their own checking macros to wrap API calls and catch synchronous errors.</p>
+<p>In SYCL, error reporting is done via the C++ exception mechanism. 
+Synchronous operations will throw exceptions derived from <code>cl::sycl::exception</code> and can be catch in-place by developers, like in the example below:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">mySyclProgram</span><span class="p">.</span><span class="n">build_with_kernel_type</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">myKernel</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">compile_program_error</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" The program failed to build "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Asynchronous operations are captured and stored automatically by the SYCL runtime.
+Multiple exceptions are stored in the order they are captured in a list, of type <code>cl::sycl::exception_list</code>.
+On construction of a queue, an optional functor - the <em>asynchronous handler</em> - can be specified.
+Whenever a user calls the <code>wait_and_throw</code> or <code>async_throw</code> methods of the SYCL queue, 
+this functor is called. 
+Developers can use this function to handle custom behavior for dealing with exceptions, such as
+reducing the multiple exceptions in a list to the most severe one and re-throwing it.
+If neither of those methods are called, the exceptions are discarded when the queue object is destroyed.
+The <a href="https://github.com/codeplaysoftware/computecpp-sdk/blob/master/samples/async-handler.cpp">async_handler example of the ComputeCpp SDK</a> illustrates the usage of this mechanism to rethrow and display exceptions.</p>
+<p>In both synchronous and asynchronous cases, when a SYCL-related error occurs, an object of type
+<code>cl::sycl::exception</code> will be thrown. SYCL exception objects are derived from the standard exception type <code>std::exception</code>. 
+Whenever a specific exception type is available, the SYCL exception type can inherit from the particular exception type and throw a more elaborate report regarding the captured error. Refer to the SYCL specification Section 4.9.2 for details on the Exception Class Interface.
+All SYCL exception objects contain a description message, whose contents are implementation defined.
+Whenever possible, a low-level OpenCL error and/or a pointer to a SYCL context is also provided.</p>
+<a class="header-link" href="#debugging-sycl-code" id="debugging-sycl-code"><h3>Debugging SYCL code</h3></a>
+<p>The CUDA ecosystem includes a CUDA debugger, <a href="https://docs.nvidia.com/cuda/cuda-gdb/index.html">cuda-gdb</a>, which is based on gdb with some extensions to facilitate debugging of GPU code.
+Developers can also use printf inside CUDA kernels to display intermediate results.
+In addition, a functional correctness checking suite called <a href="https://docs.nvidia.com/cuda/cuda-memcheck/index.html">cuda-memcheck</a> is available to check different aspects of CUDA applications.</p>
+<p>In SYCL, we have to distinguish two kinds of debugging: (A) Debugging the host application or (B) debugging the device-specific behavior. 
+There is no standard solution for (B), as the code executed on the device can only be debugged within a debugger that contains supports for the given platform. This is inherently device-specific.
+On the other hand, (A) can be dealt with easily in SYCL. Any code that executes on a device must run on the host using a host queue. Hence, replacing a device-queue with a host queue will have the same expected output (minus device-specific behavior) as the original device queue.
+Since the host queue is implemented in pure C++, normal C++ debuggers can be used to inspect the behavior of the kernels on host.
+A host queue can be created on the host simply by creating a queue from a host device. A simple option to enable simple debugging on the host is to use a pre-processor macro when creating a custom debug build, as shown below:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="cp">#if __DEBUG_IN_HOST_DEVICE</span>
+<span class="c1">// Construct a host device</span>
+<span class="n">host_device</span><span class="w"> </span><span class="n">hd</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// Create a queue with a host device</span>
+<span class="n">queue</span><span class="w"> </span><span class="nf">myQueue</span><span class="p">(</span><span class="n">hD</span><span class="p">);</span><span class="w"></span>
+<span class="cp">#else</span>
+<span class="c1">// Use the default selector of the platform</span>
+<span class="n">queue</span><span class="w"> </span><span class="n">myQueue</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</code></pre>
+<p>The rest of the code remains unchanged.</p>
+<p>Using the same mechanism, any C++ check tool can be used to inspect the behavior of the application on the host. For example, <a href="http://valgrind.org/">valgrind</a> can be used to detect out of bounds access to arrays when using the host device without requiring special configuration options.</p>
+<p>To display intermediate results, SYCL developers can still use the low-level printf function, with equivalent behavior as the <a href="https://www.khronos.org/registry/OpenCL/sdk/1.2/docs/man/xhtml/printfFunction.html">OpenCL printf function</a>.
+For device kernels, C++ <em>iostream</em> operations (e.g, cout or cerr) are not available.
+However, a replacement SYCL stream class with equivalent functionality is available on the device.
+The SYCL stream class is defined in Section 4.12 of the SYCL 1.2.1 specification.
+This <a href="SYCL_Guide_-_Debugging.html">part of the SYCL guide</a> illustrates the usage of the stream object.</p>
+<a class="header-link" href="#measuring-sycl-application-performance" id="measuring-sycl-application-performance"><h2>Measuring SYCL application performance</h2></a>
+<p>SYCL application performance can be measured by enabling profiling in each SYCL
+queue. Queue profiling can be enabled by passing the SYCL property list with</p>
+<p><code>cl::sycl::property::queue::enable_profiling()</code> to a SYCL queue. </p>
+<p>Once profiling is enabled, the kernel execution submit time,
+kernel execution start time, and the kernel execution end time can be extracted.</p>
+<p>The following code snippet represents how to enable profiling and extract
+the execution time from a sycl application.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// ...</span>
+
+<span class="w">  </span><span class="c1">// enabling SYCL queue profiling</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">property_list</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">property_list</span><span class="p">{</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">property</span><span class="o">::</span><span class="n">queue</span><span class="o">::</span><span class="n">enable_profiling</span><span class="p">()};</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// adding the property list with profiling enabled option to the sycl queue. </span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">sycl_queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="p">(</span><span class="n">property_list</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">//....</span>
+
+<span class="w">  </span><span class="c1">// submitting sycl kernel</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl_queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgh</span><span class="p">){</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">//...</span>
+
+<span class="w">  </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// waiting for the kernel to finish</span>
+<span class="w">  </span><span class="n">event</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// getting kernel submission time</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">submit_time</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">event</span><span class="p">.</span><span class="n">get_profiling_info</span><span class="o">&lt;</span><span class="w"></span>
+<span class="w">                </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">event_profiling</span><span class="o">::</span><span class="n">command_submit</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// getting kernel start time</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">get_profiling_info</span><span class="o">&lt;</span><span class="w"></span>
+<span class="w">                              </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">event_profiling</span><span class="o">::</span><span class="n">command_start</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// getting kernel end time</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">get_profiling_info</span><span class="o">&lt;</span><span class="w"></span>
+<span class="w">                            </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">event_profiling</span><span class="o">::</span><span class="n">command_end</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// calculating the duration between submitting a sycl kernel and executing </span>
+<span class="w">  </span><span class="c1">// sycl kernel in milliseconds.</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">submission_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">start_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">submit_time</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000000.0f</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// calculating the kernel execution time in milliseconds</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">execution_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000000.0f</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// .....</span>
+
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#porting-cuda-build-system-to-sycl" id="porting-cuda-build-system-to-sycl"><h2>Porting CUDA build system to SYCL</h2></a>
+<p>The CUDA platform offers a single unified compiler that is capable of generating a final application binary from CUDA code, <code>nvcc</code>.
+Different versions of the CUDA platform offer different capabilities, refer to <a href="https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html">The nvcc documentation</a> for details.
+The CUDA compiler can also be used to build only the device code, and use another standard compiler (e.g, gcc) to link and compile on the host.</p>
+<p>In the SYCL standard, two mechanisms of compilation are described: (A) Single unified compiler and (B) Multiple compilers for the same source.
+Different SYCL implementations may implement (A), (B) or both.
+In this document we focus on Codeplay's ComputeCpp implementation. The details of the build system can be found in <a href="Integration_Guide.html">the ComputeCpp integration guide</a>. 
+The integration guide contains detailed examples on integration of different build systems and different compilation options.</p>
+<a class="header-link" href="#switching-from-nvcc-to-compute" id="switching-from-nvcc-to-compute"><h3>Switching from nvcc to compute++</h3></a>
+<p>The simplest way to switch from the NVIDIA CUDA compiler to the ComputeCpp SYCL compiler is to replace the former with the later.
+<code>compute++</code> is a clang driver, hence any standard clang and/or llvm options will be valid.
+For example, building a simple hello world cuda file:</p>
+<pre><code class="bash"><div class="highlight"><pre><span></span>$ nvcc hello_world.cu -o hello_world.exe
+</pre></div>
+</code></pre>
+<p>Is equivalent to using compute++ to build the SYCL C++ source:</p>
+<pre><code class="bash"><div class="highlight"><pre><span></span>$ compute++ hello_world.cpp -o hello_world.exe
+</pre></div>
+</code></pre>
+<p>Note compute++ builds C++ files, whereas CUDA builds <code>.cu</code> files. 
+CUDA is not considered standard C++, hence uses a different file type.
+This implies that CUDA files need to be converted to C++ sources before they can be built with SYCL C++.</p>
+<p>The following table shows the equivalence between <code>nvcc</code>-specific options and <code>compute++</code>.
+<code>nvcc</code>-specific options not listed here are not suported or not applicable to <code>compute++</code>.
+For all the standard options, refer to the <a href="https://clang.llvm.org/docs/ClangCommandLineReference.html">clang command line documentation</a></p>
+<table>
+<thead>
+<tr>
+<th>nvcc</th>
+<th align="center">compute++</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(default behavior)</em></td>
+<td align="center">-sycl-driver</td>
+<td>Compiles both host and device code into a single output binary</td>
+</tr>
+<tr>
+<td>--fatbin , --ptx, --cubin --device-c</td>
+<td align="center">-sycl -c  or -sycl-device-only</td>
+<td>Outputs only the <a href="Integration_Guide.html">integration header</a></td>
+</tr>
+<tr>
+<td>--gpu-architecture, --gpu</td>
+<td align="center">-sycl-target ptx64 --cuda-gpu-arch</td>
+<td>Only when using <em>ptx64</em> target</td>
+</tr>
+</tbody>
+</table>
+<p>If the SYCL compiler-driver is used, there is no need to install any host-side compiler. If
+Single-source multiple-compiler passes is used, the
+installation of a host-side compiler, like g++, is required.</p>
+<a class="header-link" href="#porting-cuda-stream-to-sycl-queue" id="porting-cuda-stream-to-sycl-queue"><h2>Porting CUDA stream to SYCL queue</h2></a>
+<a class="header-link" href="#cuda-stream" id="cuda-stream"><h3>CUDA stream</h3></a>
+<p>A CUDA stream is a sequence of CUDA operations, submitted from host code. These
+operations are executed asynchronously in order of submission.
+It is always users'  responsibility to synchronize the operation
+before using the result. If no CUDA stream is given, a default CUDA stream is
+created and all operations are submitted to the default stream. </p>
+<p>It is possible to overlap the execution of multiple CUDA operations by creating
+multiple CUDA streams and submitting them to different streams. This can be
+used to overlap submission of kernels with data transfer operations.</p>
+<p>The following code snippet demonstrates how to define, create, and release a
+CUDA stream object. See the <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#streams">CUDA C programming guide</a> for
+more information.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="c1">// defining a CUDA stream object</span>
+<span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// creating a CUDA stream object</span>
+<span class="n">cudaError_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cudaStreamCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// releasing a CUDA stream object</span>
+<span class="n">cudaError_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cudaStreamDestroy</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#sycl-queue" id="sycl-queue"><h3>SYCL queue</h3></a>
+<p>In a similar fashion to CUDA streams, SYCL queues submit command groups for
+execution asynchronously.  However, SYCL is a higher-level programming model,
+and data transfer operations are implicitly deduced from the dependencies of
+the kernels submitted to any queue. Furthermore, SYCL queues can map to
+multiple OpenCL queues, enabling transparent overlapping of data-transfer and
+kernel execution.  The SYCL runtime handles the execution order of the
+different command groups (kernel + dependencies) automatically across multiple
+queues in different devices.</p>
+<p>We can create a SYCL queue by instantiating the queue class.</p>
+<p><code>cl::sycl::queue myQueue{device_selector}</code></p>
+<p>The <code>device_selector</code> determines the SYCL device we are going to use.The system
+resources required by the queue are released automatically after it goes out of
+scope following C++ RAII rules.  </p>
+<a class="header-link" href="#event-mechanism" id="event-mechanism"><h3>Event mechanism</h3></a>
+<a class="header-link" href="#cuda-event-function" id="cuda-event-function"><h4>CUDA event function</h4></a>
+<p>A CUDA event is a marker associated with a certain point in the stream. A CUDA
+event can be used either to synchronize the stream execution or to monitor the
+progress in the device. The following code snippet represents the declaration,
+construction and releasing of a CUDA event. More information can be found in
+<a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#events">CUDA C programming guide</a> </p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="c1">// declaration of a CUDA event</span>
+<span class="n">cudaEvent_t</span><span class="w"> </span><span class="n">event</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// creation of a CUDA event</span>
+<span class="n">cudaError_t</span><span class="w"> </span><span class="nf">cudaEventCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// using the event here ...</span>
+
+<span class="c1">// releasing a CUDA event</span>
+<span class="n">cudaError_t</span><span class="w"> </span><span class="nf">cudaEventDestroy</span><span class="p">(</span><span class="n">event</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#sycl-event-object" id="sycl-event-object"><h4>SYCL event object</h4></a>
+<p>An event in SYCL is an abstraction of the OpenCL <code>cl_event</code> object. An OpenCL
+event is used to synchronize memory transfers, dispatch of kernels and
+signaling barriers.  As an abstraction layer on OpenCL events, SYCL events
+accommodate synchronization between different contexts, devices and platforms.
+The <code>submit</code> method in a SYCL queue returns a <code>cl::sycl::event</code>. SYCL events can
+be used to manually define synchronization points irrespective of the
+underlying device and, thus, can be used also to synchronize operations on host
+queues.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="c1">// SYCL events are returned from a command group submission</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">syclQueue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cgh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cm">/** SYCL command group **/</span><span class="w"></span>
+<span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="c1">// Users can wait on a specific event, regardless on where is submitted</span>
+<span class="n">event</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span><span class="w"></span>
+<span class="c1">// Event is released automatically at the end of the scope</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#triggering-user-functions-from-device-events" id="triggering-user-functions-from-device-events"><h3>Triggering user functions from device events</h3></a>
+<a class="header-link" href="#cuda-callback-function" id="cuda-callback-function"><h4>CUDA callback function</h4></a>
+<p>A stream callback function enables the execution of a host function provided by
+the application after all the previous operations in the stream have completed.
+A stream callback can be submitted to a CUDA stream by calling the following
+function:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">cudaError_t</span><span class="w"> </span><span class="nf">cudaStreamAddCallback</span><span class="p">(</span><span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="p">,</span><span class="w"></span>
+<span class="n">cudaStreamCallback_t</span><span class="w"> </span><span class="n">callback</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">userData</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Where the <code>callback</code> is the callback function and the <code>userData</code> is the
+parameter passed to the callback function.</p>
+<p>A CUDA stream callback has the following restrictions: </p>
+<ul>
+<li>A callback function cannot call any CUDA API function</li>
+<li>A callback function cannot contain any synchronization function.</li>
+</ul>
+<p>The following code snippet represents the usage of the CUDA callback example.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">CUDART_CB</span><span class="w"> </span><span class="n">callback_func</span><span class="p">(</span><span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="n">cudaError_t</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"callback function is called"</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="c1">// defining a CUDA stream object</span>
+<span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// creating a CUDA stream object</span>
+<span class="n">cudaError_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cudaStreamCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// launching the first lernel</span>
+<span class="n">first_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">numBlock</span><span class="p">,</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="o">&gt;&gt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="n">second_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">numBlock</span><span class="p">,</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="o">&gt;&gt;&gt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="n">third_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">numBlock</span><span class="p">,</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="o">&gt;&gt;&gt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="n">cudaStreamAddCallback</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="n">callback_func</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// releasing a CUDA stream object</span>
+<span class="n">cudaError_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cudaStreamDestroy</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#sycl-callback-function" id="sycl-callback-function"><h4>SYCL callback function</h4></a>
+<p>There is no direct functionality in SYCL to trigger a host callback from a device function.
+Developers can manually wait on an event and call the callback function afterwards. 
+The following code snippet represents an example of a callback function implementation using this mechanism.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">my_callback</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">my_string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">my_string</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="c1">// constructing the SYCL queue</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="p">{</span><span class="n">default_selector</span><span class="p">};</span><span class="w"></span>
+<span class="c1">// data on host</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="c1">// constructing a SYCL buffer</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">buffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="p">{</span><span class="n">vec</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">100</span><span class="p">}};</span><span class="w"></span>
+
+<span class="c1">// submitting the kernel to the queue</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="w"> </span><span class="o">&amp;</span><span class="n">cgh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// getting a read_write access over SYCL buffer</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="n">get_access</span><span class="o">&lt;</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">read_write</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cgh</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// SYCL device kernel</span>
+<span class="w">  </span><span class="n">cgh</span><span class="p">.</span><span class="n">parallel_for</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">kernel</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">100</span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="p">[](</span><span class="n">cl</span><span class="o">::</span><span class="n">sycl</span><span class="o">::</span><span class="n">id</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">acc</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">acc</span><span class="p">[</span><span class="n">id</span><span class="p">];</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="c1">// The future can be waited or stored elsewhere, and the callback will execute </span>
+<span class="c1">//asynchronously.</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">fut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">async</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// wait for the kernels to finish</span>
+<span class="w">  </span><span class="n">event</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// calling the callback function after the kernel execution</span>
+<span class="w">  </span><span class="n">my_callback</span><span class="p">(</span><span class="s">"This is a callback function"</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>This achieves the same result as a CUDA callback, using pure C++ features.</p>
+<p>Codeplay has proposed to the SYCL standard a new type of handler, the <em>host_handler</em>, 
+that is capable of executing a single task on the host and can be submitted directly to the
+SYCL device queue. It ensures that this task is executed asynchronously and
+in-order w.r.t the other command groups on the same queue. See the <a href="https://github.com/codeplaysoftware/standards-proposals/blob/master/asynchronous-data-flow/sycl-2.2/03_interacting_with_data_on_the_host.md#enqueuing-host-tasks-on-sycl-queues">Enqueuing
+host tasks on SYCL
+queues</a>
+proposal in SYCL for further information. 
+This feature is available since ComputeCpp 0.5.1 and above as a vendor extension.</p>
+<div id="copyright">SYCL is a trademark of the Khronos Group Inc. NVIDIA is a registered trademark of NVIDIA Corporation. AMD is a registered trademark of Advanced Micro Devices, Inc. Intel is a trademark of Intel Corporation in the U.S. and/or other countries Khronos is a trademark of the Khronos Group Inc. OpenCL and the OpenCL logo are trademarks of Apple Inc. used by permission by Khronos.</div>
+</main>
+</body>
+</html>

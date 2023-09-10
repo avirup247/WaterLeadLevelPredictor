@@ -1,0 +1,999 @@
+/******************************************************************************
+
+    Copyright (C) 2002-2016 Codeplay Software Limited
+    All Rights Reserved.
+
+    Codeplay's ComputeCpp
+
+*******************************************************************************/
+
+/*!
+  @file abacus_type_traits
+
+  @brief Abacus type traits.
+*/
+
+#ifndef __ABACUS_TYPE_TRAITS__
+#define __ABACUS_TYPE_TRAITS__
+
+#ifndef __ABACUS_ABACUS_CONFIG__
+#include <abacus/abacus_config>
+#endif
+
+#if defined(__cplusplus)
+// we use a 'fake' abacus_void* type for unencodeable types.
+typedef void abacus_void;
+typedef void abacus_void2;
+typedef void abacus_void3;
+typedef void abacus_void4;
+typedef void abacus_void8;
+typedef void abacus_void16;
+
+template<typename T> struct TypeTraits;
+
+template<typename T, unsigned ELEMENTS> struct MakeType;
+
+template <> struct TypeTraits<abacus_char> {
+  typedef abacus_char ElementType;
+  typedef abacus_void SmallerType;
+  typedef abacus_short LargerType;
+  typedef abacus_char SignedType;
+  typedef abacus_uchar UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_char min() { return (abacus_char)0x80; }
+  static abacus_char max() { return 0x7f; }
+};
+
+template<> struct MakeType<abacus_char, 1> {
+  typedef abacus_char type;
+};
+template <> struct TypeTraits<abacus_char2> {
+  typedef abacus_char ElementType;
+  typedef abacus_void2 SmallerType;
+  typedef abacus_short2 LargerType;
+  typedef abacus_char2 SignedType;
+  typedef abacus_uchar2 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_char2 min() { return (abacus_char)0x80; }
+  static abacus_char2 max() { return 0x7f; }
+};
+
+template<> struct MakeType<abacus_char, 2> {
+  typedef abacus_char2 type;
+};
+template <> struct TypeTraits<abacus_char3> {
+  typedef abacus_char ElementType;
+  typedef abacus_void3 SmallerType;
+  typedef abacus_short3 LargerType;
+  typedef abacus_char3 SignedType;
+  typedef abacus_uchar3 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_char3 min() { return (abacus_char)0x80; }
+  static abacus_char3 max() { return 0x7f; }
+};
+
+template<> struct MakeType<abacus_char, 3> {
+  typedef abacus_char3 type;
+};
+template <> struct TypeTraits<abacus_char4> {
+  typedef abacus_char ElementType;
+  typedef abacus_void4 SmallerType;
+  typedef abacus_short4 LargerType;
+  typedef abacus_char4 SignedType;
+  typedef abacus_uchar4 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_char4 min() { return (abacus_char)0x80; }
+  static abacus_char4 max() { return 0x7f; }
+};
+
+template<> struct MakeType<abacus_char, 4> {
+  typedef abacus_char4 type;
+};
+template <> struct TypeTraits<abacus_char8> {
+  typedef abacus_char ElementType;
+  typedef abacus_void8 SmallerType;
+  typedef abacus_short8 LargerType;
+  typedef abacus_char8 SignedType;
+  typedef abacus_uchar8 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_char8 min() { return (abacus_char)0x80; }
+  static abacus_char8 max() { return 0x7f; }
+};
+
+template<> struct MakeType<abacus_char, 8> {
+  typedef abacus_char8 type;
+};
+template <> struct TypeTraits<abacus_char16> {
+  typedef abacus_char ElementType;
+  typedef abacus_void16 SmallerType;
+  typedef abacus_short16 LargerType;
+  typedef abacus_char16 SignedType;
+  typedef abacus_uchar16 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_char16 min() { return (abacus_char)0x80; }
+  static abacus_char16 max() { return 0x7f; }
+};
+
+template<> struct MakeType<abacus_char, 16> {
+  typedef abacus_char16 type;
+};
+template <> struct TypeTraits<abacus_uchar> {
+  typedef abacus_uchar ElementType;
+  typedef abacus_void SmallerType;
+  typedef abacus_ushort LargerType;
+  typedef abacus_char SignedType;
+  typedef abacus_uchar UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_uchar min() { return (abacus_uchar)0u; }
+  static abacus_uchar max() { return 0xffu; }
+};
+
+template<> struct MakeType<abacus_uchar, 1> {
+  typedef abacus_uchar type;
+};
+template <> struct TypeTraits<abacus_uchar2> {
+  typedef abacus_uchar ElementType;
+  typedef abacus_void2 SmallerType;
+  typedef abacus_ushort2 LargerType;
+  typedef abacus_char2 SignedType;
+  typedef abacus_uchar2 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_uchar2 min() { return (abacus_uchar)0u; }
+  static abacus_uchar2 max() { return 0xffu; }
+};
+
+template<> struct MakeType<abacus_uchar, 2> {
+  typedef abacus_uchar2 type;
+};
+template <> struct TypeTraits<abacus_uchar3> {
+  typedef abacus_uchar ElementType;
+  typedef abacus_void3 SmallerType;
+  typedef abacus_ushort3 LargerType;
+  typedef abacus_char3 SignedType;
+  typedef abacus_uchar3 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_uchar3 min() { return (abacus_uchar)0u; }
+  static abacus_uchar3 max() { return 0xffu; }
+};
+
+template<> struct MakeType<abacus_uchar, 3> {
+  typedef abacus_uchar3 type;
+};
+template <> struct TypeTraits<abacus_uchar4> {
+  typedef abacus_uchar ElementType;
+  typedef abacus_void4 SmallerType;
+  typedef abacus_ushort4 LargerType;
+  typedef abacus_char4 SignedType;
+  typedef abacus_uchar4 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_uchar4 min() { return (abacus_uchar)0u; }
+  static abacus_uchar4 max() { return 0xffu; }
+};
+
+template<> struct MakeType<abacus_uchar, 4> {
+  typedef abacus_uchar4 type;
+};
+template <> struct TypeTraits<abacus_uchar8> {
+  typedef abacus_uchar ElementType;
+  typedef abacus_void8 SmallerType;
+  typedef abacus_ushort8 LargerType;
+  typedef abacus_char8 SignedType;
+  typedef abacus_uchar8 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_uchar8 min() { return (abacus_uchar)0u; }
+  static abacus_uchar8 max() { return 0xffu; }
+};
+
+template<> struct MakeType<abacus_uchar, 8> {
+  typedef abacus_uchar8 type;
+};
+template <> struct TypeTraits<abacus_uchar16> {
+  typedef abacus_uchar ElementType;
+  typedef abacus_void16 SmallerType;
+  typedef abacus_ushort16 LargerType;
+  typedef abacus_char16 SignedType;
+  typedef abacus_uchar16 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_uchar16 min() { return (abacus_uchar)0u; }
+  static abacus_uchar16 max() { return 0xffu; }
+};
+
+template<> struct MakeType<abacus_uchar, 16> {
+  typedef abacus_uchar16 type;
+};
+template <> struct TypeTraits<abacus_short> {
+  typedef abacus_short ElementType;
+  typedef abacus_char SmallerType;
+  typedef abacus_int LargerType;
+  typedef abacus_short SignedType;
+  typedef abacus_ushort UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_short min() { return (abacus_short)0x8000; }
+  static abacus_short max() { return 0x7fff; }
+};
+
+template<> struct MakeType<abacus_short, 1> {
+  typedef abacus_short type;
+};
+template <> struct TypeTraits<abacus_short2> {
+  typedef abacus_short ElementType;
+  typedef abacus_char2 SmallerType;
+  typedef abacus_int2 LargerType;
+  typedef abacus_short2 SignedType;
+  typedef abacus_ushort2 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_short2 min() { return (abacus_short)0x8000; }
+  static abacus_short2 max() { return 0x7fff; }
+};
+
+template<> struct MakeType<abacus_short, 2> {
+  typedef abacus_short2 type;
+};
+template <> struct TypeTraits<abacus_short3> {
+  typedef abacus_short ElementType;
+  typedef abacus_char3 SmallerType;
+  typedef abacus_int3 LargerType;
+  typedef abacus_short3 SignedType;
+  typedef abacus_ushort3 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_short3 min() { return (abacus_short)0x8000; }
+  static abacus_short3 max() { return 0x7fff; }
+};
+
+template<> struct MakeType<abacus_short, 3> {
+  typedef abacus_short3 type;
+};
+template <> struct TypeTraits<abacus_short4> {
+  typedef abacus_short ElementType;
+  typedef abacus_char4 SmallerType;
+  typedef abacus_int4 LargerType;
+  typedef abacus_short4 SignedType;
+  typedef abacus_ushort4 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_short4 min() { return (abacus_short)0x8000; }
+  static abacus_short4 max() { return 0x7fff; }
+};
+
+template<> struct MakeType<abacus_short, 4> {
+  typedef abacus_short4 type;
+};
+template <> struct TypeTraits<abacus_short8> {
+  typedef abacus_short ElementType;
+  typedef abacus_char8 SmallerType;
+  typedef abacus_int8 LargerType;
+  typedef abacus_short8 SignedType;
+  typedef abacus_ushort8 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_short8 min() { return (abacus_short)0x8000; }
+  static abacus_short8 max() { return 0x7fff; }
+};
+
+template<> struct MakeType<abacus_short, 8> {
+  typedef abacus_short8 type;
+};
+template <> struct TypeTraits<abacus_short16> {
+  typedef abacus_short ElementType;
+  typedef abacus_char16 SmallerType;
+  typedef abacus_int16 LargerType;
+  typedef abacus_short16 SignedType;
+  typedef abacus_ushort16 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_short16 min() { return (abacus_short)0x8000; }
+  static abacus_short16 max() { return 0x7fff; }
+};
+
+template<> struct MakeType<abacus_short, 16> {
+  typedef abacus_short16 type;
+};
+template <> struct TypeTraits<abacus_ushort> {
+  typedef abacus_ushort ElementType;
+  typedef abacus_uchar SmallerType;
+  typedef abacus_uint LargerType;
+  typedef abacus_short SignedType;
+  typedef abacus_ushort UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_ushort min() { return (abacus_ushort)0u; }
+  static abacus_ushort max() { return 0xffffu; }
+};
+
+template<> struct MakeType<abacus_ushort, 1> {
+  typedef abacus_ushort type;
+};
+template <> struct TypeTraits<abacus_ushort2> {
+  typedef abacus_ushort ElementType;
+  typedef abacus_uchar2 SmallerType;
+  typedef abacus_uint2 LargerType;
+  typedef abacus_short2 SignedType;
+  typedef abacus_ushort2 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_ushort2 min() { return (abacus_ushort)0u; }
+  static abacus_ushort2 max() { return 0xffffu; }
+};
+
+template<> struct MakeType<abacus_ushort, 2> {
+  typedef abacus_ushort2 type;
+};
+template <> struct TypeTraits<abacus_ushort3> {
+  typedef abacus_ushort ElementType;
+  typedef abacus_uchar3 SmallerType;
+  typedef abacus_uint3 LargerType;
+  typedef abacus_short3 SignedType;
+  typedef abacus_ushort3 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_ushort3 min() { return (abacus_ushort)0u; }
+  static abacus_ushort3 max() { return 0xffffu; }
+};
+
+template<> struct MakeType<abacus_ushort, 3> {
+  typedef abacus_ushort3 type;
+};
+template <> struct TypeTraits<abacus_ushort4> {
+  typedef abacus_ushort ElementType;
+  typedef abacus_uchar4 SmallerType;
+  typedef abacus_uint4 LargerType;
+  typedef abacus_short4 SignedType;
+  typedef abacus_ushort4 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_ushort4 min() { return (abacus_ushort)0u; }
+  static abacus_ushort4 max() { return 0xffffu; }
+};
+
+template<> struct MakeType<abacus_ushort, 4> {
+  typedef abacus_ushort4 type;
+};
+template <> struct TypeTraits<abacus_ushort8> {
+  typedef abacus_ushort ElementType;
+  typedef abacus_uchar8 SmallerType;
+  typedef abacus_uint8 LargerType;
+  typedef abacus_short8 SignedType;
+  typedef abacus_ushort8 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_ushort8 min() { return (abacus_ushort)0u; }
+  static abacus_ushort8 max() { return 0xffffu; }
+};
+
+template<> struct MakeType<abacus_ushort, 8> {
+  typedef abacus_ushort8 type;
+};
+template <> struct TypeTraits<abacus_ushort16> {
+  typedef abacus_ushort ElementType;
+  typedef abacus_uchar16 SmallerType;
+  typedef abacus_uint16 LargerType;
+  typedef abacus_short16 SignedType;
+  typedef abacus_ushort16 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_ushort16 min() { return (abacus_ushort)0u; }
+  static abacus_ushort16 max() { return 0xffffu; }
+};
+
+template<> struct MakeType<abacus_ushort, 16> {
+  typedef abacus_ushort16 type;
+};
+template <> struct TypeTraits<abacus_int> {
+  typedef abacus_int ElementType;
+  typedef abacus_short SmallerType;
+  typedef abacus_long LargerType;
+  typedef abacus_int SignedType;
+  typedef abacus_uint UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_int min() { return (abacus_int)0x80000000; }
+  static abacus_int max() { return 0x7fffffff; }
+};
+
+template<> struct MakeType<abacus_int, 1> {
+  typedef abacus_int type;
+};
+template <> struct TypeTraits<abacus_int2> {
+  typedef abacus_int ElementType;
+  typedef abacus_short2 SmallerType;
+  typedef abacus_long2 LargerType;
+  typedef abacus_int2 SignedType;
+  typedef abacus_uint2 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_int2 min() { return (abacus_int)0x80000000; }
+  static abacus_int2 max() { return 0x7fffffff; }
+};
+
+template<> struct MakeType<abacus_int, 2> {
+  typedef abacus_int2 type;
+};
+template <> struct TypeTraits<abacus_int3> {
+  typedef abacus_int ElementType;
+  typedef abacus_short3 SmallerType;
+  typedef abacus_long3 LargerType;
+  typedef abacus_int3 SignedType;
+  typedef abacus_uint3 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_int3 min() { return (abacus_int)0x80000000; }
+  static abacus_int3 max() { return 0x7fffffff; }
+};
+
+template<> struct MakeType<abacus_int, 3> {
+  typedef abacus_int3 type;
+};
+template <> struct TypeTraits<abacus_int4> {
+  typedef abacus_int ElementType;
+  typedef abacus_short4 SmallerType;
+  typedef abacus_long4 LargerType;
+  typedef abacus_int4 SignedType;
+  typedef abacus_uint4 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_int4 min() { return (abacus_int)0x80000000; }
+  static abacus_int4 max() { return 0x7fffffff; }
+};
+
+template<> struct MakeType<abacus_int, 4> {
+  typedef abacus_int4 type;
+};
+template <> struct TypeTraits<abacus_int8> {
+  typedef abacus_int ElementType;
+  typedef abacus_short8 SmallerType;
+  typedef abacus_long8 LargerType;
+  typedef abacus_int8 SignedType;
+  typedef abacus_uint8 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_int8 min() { return (abacus_int)0x80000000; }
+  static abacus_int8 max() { return 0x7fffffff; }
+};
+
+template<> struct MakeType<abacus_int, 8> {
+  typedef abacus_int8 type;
+};
+template <> struct TypeTraits<abacus_int16> {
+  typedef abacus_int ElementType;
+  typedef abacus_short16 SmallerType;
+  typedef abacus_long16 LargerType;
+  typedef abacus_int16 SignedType;
+  typedef abacus_uint16 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_int16 min() { return (abacus_int)0x80000000; }
+  static abacus_int16 max() { return 0x7fffffff; }
+};
+
+template<> struct MakeType<abacus_int, 16> {
+  typedef abacus_int16 type;
+};
+template <> struct TypeTraits<abacus_uint> {
+  typedef abacus_uint ElementType;
+  typedef abacus_ushort SmallerType;
+  typedef abacus_ulong LargerType;
+  typedef abacus_int SignedType;
+  typedef abacus_uint UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_uint min() { return (abacus_uint)0u; }
+  static abacus_uint max() { return 0xffffffffu; }
+};
+
+template<> struct MakeType<abacus_uint, 1> {
+  typedef abacus_uint type;
+};
+template <> struct TypeTraits<abacus_uint2> {
+  typedef abacus_uint ElementType;
+  typedef abacus_ushort2 SmallerType;
+  typedef abacus_ulong2 LargerType;
+  typedef abacus_int2 SignedType;
+  typedef abacus_uint2 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_uint2 min() { return (abacus_uint)0u; }
+  static abacus_uint2 max() { return 0xffffffffu; }
+};
+
+template<> struct MakeType<abacus_uint, 2> {
+  typedef abacus_uint2 type;
+};
+template <> struct TypeTraits<abacus_uint3> {
+  typedef abacus_uint ElementType;
+  typedef abacus_ushort3 SmallerType;
+  typedef abacus_ulong3 LargerType;
+  typedef abacus_int3 SignedType;
+  typedef abacus_uint3 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_uint3 min() { return (abacus_uint)0u; }
+  static abacus_uint3 max() { return 0xffffffffu; }
+};
+
+template<> struct MakeType<abacus_uint, 3> {
+  typedef abacus_uint3 type;
+};
+template <> struct TypeTraits<abacus_uint4> {
+  typedef abacus_uint ElementType;
+  typedef abacus_ushort4 SmallerType;
+  typedef abacus_ulong4 LargerType;
+  typedef abacus_int4 SignedType;
+  typedef abacus_uint4 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_uint4 min() { return (abacus_uint)0u; }
+  static abacus_uint4 max() { return 0xffffffffu; }
+};
+
+template<> struct MakeType<abacus_uint, 4> {
+  typedef abacus_uint4 type;
+};
+template <> struct TypeTraits<abacus_uint8> {
+  typedef abacus_uint ElementType;
+  typedef abacus_ushort8 SmallerType;
+  typedef abacus_ulong8 LargerType;
+  typedef abacus_int8 SignedType;
+  typedef abacus_uint8 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_uint8 min() { return (abacus_uint)0u; }
+  static abacus_uint8 max() { return 0xffffffffu; }
+};
+
+template<> struct MakeType<abacus_uint, 8> {
+  typedef abacus_uint8 type;
+};
+template <> struct TypeTraits<abacus_uint16> {
+  typedef abacus_uint ElementType;
+  typedef abacus_ushort16 SmallerType;
+  typedef abacus_ulong16 LargerType;
+  typedef abacus_int16 SignedType;
+  typedef abacus_uint16 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_uint16 min() { return (abacus_uint)0u; }
+  static abacus_uint16 max() { return 0xffffffffu; }
+};
+
+template<> struct MakeType<abacus_uint, 16> {
+  typedef abacus_uint16 type;
+};
+template <> struct TypeTraits<abacus_long> {
+  typedef abacus_long ElementType;
+  typedef abacus_int SmallerType;
+  typedef abacus_void LargerType;
+  typedef abacus_long SignedType;
+  typedef abacus_ulong UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_long min() { return (abacus_long)0x8000000000000000; }
+  static abacus_long max() { return 0x7fffffffffffffff; }
+};
+
+template<> struct MakeType<abacus_long, 1> {
+  typedef abacus_long type;
+};
+template <> struct TypeTraits<abacus_long2> {
+  typedef abacus_long ElementType;
+  typedef abacus_int2 SmallerType;
+  typedef abacus_void2 LargerType;
+  typedef abacus_long2 SignedType;
+  typedef abacus_ulong2 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_long2 min() { return (abacus_long)0x8000000000000000; }
+  static abacus_long2 max() { return 0x7fffffffffffffff; }
+};
+
+template<> struct MakeType<abacus_long, 2> {
+  typedef abacus_long2 type;
+};
+template <> struct TypeTraits<abacus_long3> {
+  typedef abacus_long ElementType;
+  typedef abacus_int3 SmallerType;
+  typedef abacus_void3 LargerType;
+  typedef abacus_long3 SignedType;
+  typedef abacus_ulong3 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_long3 min() { return (abacus_long)0x8000000000000000; }
+  static abacus_long3 max() { return 0x7fffffffffffffff; }
+};
+
+template<> struct MakeType<abacus_long, 3> {
+  typedef abacus_long3 type;
+};
+template <> struct TypeTraits<abacus_long4> {
+  typedef abacus_long ElementType;
+  typedef abacus_int4 SmallerType;
+  typedef abacus_void4 LargerType;
+  typedef abacus_long4 SignedType;
+  typedef abacus_ulong4 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_long4 min() { return (abacus_long)0x8000000000000000; }
+  static abacus_long4 max() { return 0x7fffffffffffffff; }
+};
+
+template<> struct MakeType<abacus_long, 4> {
+  typedef abacus_long4 type;
+};
+template <> struct TypeTraits<abacus_long8> {
+  typedef abacus_long ElementType;
+  typedef abacus_int8 SmallerType;
+  typedef abacus_void8 LargerType;
+  typedef abacus_long8 SignedType;
+  typedef abacus_ulong8 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_long8 min() { return (abacus_long)0x8000000000000000; }
+  static abacus_long8 max() { return 0x7fffffffffffffff; }
+};
+
+template<> struct MakeType<abacus_long, 8> {
+  typedef abacus_long8 type;
+};
+template <> struct TypeTraits<abacus_long16> {
+  typedef abacus_long ElementType;
+  typedef abacus_int16 SmallerType;
+  typedef abacus_void16 LargerType;
+  typedef abacus_long16 SignedType;
+  typedef abacus_ulong16 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_long16 min() { return (abacus_long)0x8000000000000000; }
+  static abacus_long16 max() { return 0x7fffffffffffffff; }
+};
+
+template<> struct MakeType<abacus_long, 16> {
+  typedef abacus_long16 type;
+};
+template <> struct TypeTraits<abacus_ulong> {
+  typedef abacus_ulong ElementType;
+  typedef abacus_uint SmallerType;
+  typedef abacus_void LargerType;
+  typedef abacus_long SignedType;
+  typedef abacus_ulong UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 1;
+  static abacus_ulong min() { return (abacus_ulong)0u; }
+  static abacus_ulong max() { return 0xffffffffffffffffu; }
+};
+
+template<> struct MakeType<abacus_ulong, 1> {
+  typedef abacus_ulong type;
+};
+template <> struct TypeTraits<abacus_ulong2> {
+  typedef abacus_ulong ElementType;
+  typedef abacus_uint2 SmallerType;
+  typedef abacus_void2 LargerType;
+  typedef abacus_long2 SignedType;
+  typedef abacus_ulong2 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 2;
+  static abacus_ulong2 min() { return (abacus_ulong)0u; }
+  static abacus_ulong2 max() { return 0xffffffffffffffffu; }
+};
+
+template<> struct MakeType<abacus_ulong, 2> {
+  typedef abacus_ulong2 type;
+};
+template <> struct TypeTraits<abacus_ulong3> {
+  typedef abacus_ulong ElementType;
+  typedef abacus_uint3 SmallerType;
+  typedef abacus_void3 LargerType;
+  typedef abacus_long3 SignedType;
+  typedef abacus_ulong3 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 3;
+  static abacus_ulong3 min() { return (abacus_ulong)0u; }
+  static abacus_ulong3 max() { return 0xffffffffffffffffu; }
+};
+
+template<> struct MakeType<abacus_ulong, 3> {
+  typedef abacus_ulong3 type;
+};
+template <> struct TypeTraits<abacus_ulong4> {
+  typedef abacus_ulong ElementType;
+  typedef abacus_uint4 SmallerType;
+  typedef abacus_void4 LargerType;
+  typedef abacus_long4 SignedType;
+  typedef abacus_ulong4 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 4;
+  static abacus_ulong4 min() { return (abacus_ulong)0u; }
+  static abacus_ulong4 max() { return 0xffffffffffffffffu; }
+};
+
+template<> struct MakeType<abacus_ulong, 4> {
+  typedef abacus_ulong4 type;
+};
+template <> struct TypeTraits<abacus_ulong8> {
+  typedef abacus_ulong ElementType;
+  typedef abacus_uint8 SmallerType;
+  typedef abacus_void8 LargerType;
+  typedef abacus_long8 SignedType;
+  typedef abacus_ulong8 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 8;
+  static abacus_ulong8 min() { return (abacus_ulong)0u; }
+  static abacus_ulong8 max() { return 0xffffffffffffffffu; }
+};
+
+template<> struct MakeType<abacus_ulong, 8> {
+  typedef abacus_ulong8 type;
+};
+template <> struct TypeTraits<abacus_ulong16> {
+  typedef abacus_ulong ElementType;
+  typedef abacus_uint16 SmallerType;
+  typedef abacus_void16 LargerType;
+  typedef abacus_long16 SignedType;
+  typedef abacus_ulong16 UnsignedType;
+  static const bool is_signed = false;
+  static const bool is_int = true;
+	static const unsigned num_elements = 16;
+  static abacus_ulong16 min() { return (abacus_ulong)0u; }
+  static abacus_ulong16 max() { return 0xffffffffffffffffu; }
+};
+
+template<> struct MakeType<abacus_ulong, 16> {
+  typedef abacus_ulong16 type;
+};
+template <> struct TypeTraits<abacus_float> {
+  typedef abacus_float ElementType;
+  typedef abacus_void SmallerType;
+  typedef abacus_double LargerType;
+  typedef abacus_int SignedType;
+  typedef abacus_uint UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 1;
+  static abacus_float min() { return (abacus_float)ABACUS_NAN; }
+  static abacus_float max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_float, 1> {
+  typedef abacus_float type;
+};
+template <> struct TypeTraits<abacus_float2> {
+  typedef abacus_float ElementType;
+  typedef abacus_void2 SmallerType;
+  typedef abacus_double2 LargerType;
+  typedef abacus_int2 SignedType;
+  typedef abacus_uint2 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 2;
+  static abacus_float2 min() { return (abacus_float)ABACUS_NAN; }
+  static abacus_float2 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_float, 2> {
+  typedef abacus_float2 type;
+};
+template <> struct TypeTraits<abacus_float3> {
+  typedef abacus_float ElementType;
+  typedef abacus_void3 SmallerType;
+  typedef abacus_double3 LargerType;
+  typedef abacus_int3 SignedType;
+  typedef abacus_uint3 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 3;
+  static abacus_float3 min() { return (abacus_float)ABACUS_NAN; }
+  static abacus_float3 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_float, 3> {
+  typedef abacus_float3 type;
+};
+template <> struct TypeTraits<abacus_float4> {
+  typedef abacus_float ElementType;
+  typedef abacus_void4 SmallerType;
+  typedef abacus_double4 LargerType;
+  typedef abacus_int4 SignedType;
+  typedef abacus_uint4 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 4;
+  static abacus_float4 min() { return (abacus_float)ABACUS_NAN; }
+  static abacus_float4 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_float, 4> {
+  typedef abacus_float4 type;
+};
+template <> struct TypeTraits<abacus_float8> {
+  typedef abacus_float ElementType;
+  typedef abacus_void8 SmallerType;
+  typedef abacus_double8 LargerType;
+  typedef abacus_int8 SignedType;
+  typedef abacus_uint8 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 8;
+  static abacus_float8 min() { return (abacus_float)ABACUS_NAN; }
+  static abacus_float8 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_float, 8> {
+  typedef abacus_float8 type;
+};
+template <> struct TypeTraits<abacus_float16> {
+  typedef abacus_float ElementType;
+  typedef abacus_void16 SmallerType;
+  typedef abacus_double16 LargerType;
+  typedef abacus_int16 SignedType;
+  typedef abacus_uint16 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 16;
+  static abacus_float16 min() { return (abacus_float)ABACUS_NAN; }
+  static abacus_float16 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_float, 16> {
+  typedef abacus_float16 type;
+};
+template <> struct TypeTraits<abacus_double> {
+  typedef abacus_double ElementType;
+  typedef abacus_float SmallerType;
+  typedef abacus_void LargerType;
+  typedef abacus_long SignedType;
+  typedef abacus_ulong UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 1;
+  static abacus_double min() { return (abacus_double)ABACUS_NAN; }
+  static abacus_double max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_double, 1> {
+  typedef abacus_double type;
+};
+template <> struct TypeTraits<abacus_double2> {
+  typedef abacus_double ElementType;
+  typedef abacus_float2 SmallerType;
+  typedef abacus_void2 LargerType;
+  typedef abacus_long2 SignedType;
+  typedef abacus_ulong2 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 2;
+  static abacus_double2 min() { return (abacus_double)ABACUS_NAN; }
+  static abacus_double2 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_double, 2> {
+  typedef abacus_double2 type;
+};
+template <> struct TypeTraits<abacus_double3> {
+  typedef abacus_double ElementType;
+  typedef abacus_float3 SmallerType;
+  typedef abacus_void3 LargerType;
+  typedef abacus_long3 SignedType;
+  typedef abacus_ulong3 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 3;
+  static abacus_double3 min() { return (abacus_double)ABACUS_NAN; }
+  static abacus_double3 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_double, 3> {
+  typedef abacus_double3 type;
+};
+template <> struct TypeTraits<abacus_double4> {
+  typedef abacus_double ElementType;
+  typedef abacus_float4 SmallerType;
+  typedef abacus_void4 LargerType;
+  typedef abacus_long4 SignedType;
+  typedef abacus_ulong4 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 4;
+  static abacus_double4 min() { return (abacus_double)ABACUS_NAN; }
+  static abacus_double4 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_double, 4> {
+  typedef abacus_double4 type;
+};
+template <> struct TypeTraits<abacus_double8> {
+  typedef abacus_double ElementType;
+  typedef abacus_float8 SmallerType;
+  typedef abacus_void8 LargerType;
+  typedef abacus_long8 SignedType;
+  typedef abacus_ulong8 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 8;
+  static abacus_double8 min() { return (abacus_double)ABACUS_NAN; }
+  static abacus_double8 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_double, 8> {
+  typedef abacus_double8 type;
+};
+template <> struct TypeTraits<abacus_double16> {
+  typedef abacus_double ElementType;
+  typedef abacus_float16 SmallerType;
+  typedef abacus_void16 LargerType;
+  typedef abacus_long16 SignedType;
+  typedef abacus_ulong16 UnsignedType;
+  static const bool is_signed = true;
+  static const bool is_int = false;
+	static const unsigned num_elements = 16;
+  static abacus_double16 min() { return (abacus_double)ABACUS_NAN; }
+  static abacus_double16 max() { return ABACUS_NAN; }
+};
+
+template<> struct MakeType<abacus_double, 16> {
+  typedef abacus_double16 type;
+};
+
+#endif
+
+#endif  //__ABACUS_TYPE_TRAITS__

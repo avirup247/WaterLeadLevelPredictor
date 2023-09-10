@@ -1,0 +1,4 @@
+module use /data/oneapi_workshop/xpublog/teach/Modules/modulefiles
+export CPLUS_INCLUDE_PATH=~/syclacademy/External/Catch2/single_include:$CPLUS_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=~/syclacademy/Utilities/include:$CPLUS_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=~/syclacademy/External/stb:$CPLUS_INCLUDE_PATH

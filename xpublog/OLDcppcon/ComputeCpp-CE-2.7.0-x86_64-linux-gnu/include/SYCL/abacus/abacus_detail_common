@@ -1,0 +1,105 @@
+/******************************************************************************
+
+    Copyright (C) 2002-2016 Codeplay Software Limited
+    All Rights Reserved.
+
+    Codeplay's ComputeCpp
+
+*******************************************************************************/
+
+/*!
+  @file abacus_detail_common
+
+  @brief This is an abacus detail file.
+  Exposing implementations of non-IP restricted functions.
+*/
+
+#ifndef __ABACUS_DETAIL_COMMON__
+#define __ABACUS_DETAIL_COMMON__
+
+#if !defined(__cplusplus)
+#error This header should only be included from C++!
+#endif
+
+#ifndef __ABACUS_ABACUS_CONFIG__
+#include <abacus/abacus_config>
+#endif
+#ifndef __ABACUS_ABACUS_COMMON__
+#include <abacus/abacus_common>
+#endif
+#ifndef __ABACUS_TYPE_TRAITS__
+#include <abacus/abacus_type_traits>
+#endif
+#ifndef __ABACUS_DETAIL_CAST__
+#include <abacus/abacus_detail_cast>
+#endif
+#ifndef __ABACUS_DETAIL_RELATIONAL__
+#include <abacus/abacus_detail_relational>
+#endif
+
+namespace abacus {
+namespace detail {
+namespace common {
+
+template<typename T, typename U> T max(const T& x, const U& y) {
+  const typename TypeTraits<T>::SignedType c = x > (T)y;
+  return relational::select((T)y, x, c);
+}
+
+template<typename T, typename U> T min(const T& x, const U& y) {
+  const typename TypeTraits<T>::SignedType c = x < (T)y;
+  return relational::select((T)y, x, c);
+}
+
+template<typename T, typename U> T clamp(const T& x, const U& y, const U& z) {
+  return common::min<T, U>(common::max<T, U>(x, y), z);
+}
+
+template<typename T> T degrees(const T& t) {
+  return t * (T)57.295779513082320876798154814105170332405472466564321;
+}
+
+template<typename T, typename U> T mix(const T& x, const T& y, const U& a) {
+  return x + ((y - x) * (T)a);
+}
+
+template<typename T> T radians(const T& t) {
+  return t * (T)0.0174532925199432957692369076848861271344287188854172;
+}
+
+template<typename T> T sign(const T& t) {
+  typedef typename TypeTraits<T>::SignedType SignedType;
+
+  const T zero = (T)0.0;
+  const T one = (T)1.0;
+
+  const SignedType mask = ((SignedType)0x1 <<
+    ((sizeof(typename TypeTraits<T>::ElementType) * 8) - 1));
+
+  const SignedType tAs = cast::as<SignedType>(t);
+
+  const SignedType c1 = cast::as<T>(tAs & ~mask) > zero;
+  T preResult = relational::select(zero, one, c1);
+
+  const SignedType maskedResult =
+    cast::as<SignedType>(preResult) | (mask & tAs);
+
+  const SignedType c2 = relational::isnan(t);
+  return relational::select(cast::as<T>(maskedResult), zero, c2);
+}
+
+template<typename T, typename U> T smoothstep(const U& e0, const U& e1, const T& x) {
+  const T t = common::clamp((x - e0) / (e1 - e0), (T)0, (T)1);
+  return t * t * ((T)3 - (T)2 * t);
+}
+
+template<typename T, typename U> T step(const U& e, const T& x) {
+  typename TypeTraits<T>::SignedType bit = (T)e < x;
+  return cast::convert<T>(bit & 1);
+}
+
+} // namespace common
+} // namespace detail
+} // namespace abacus
+
+#endif  //__ABACUS_DETAIL_COMMON__

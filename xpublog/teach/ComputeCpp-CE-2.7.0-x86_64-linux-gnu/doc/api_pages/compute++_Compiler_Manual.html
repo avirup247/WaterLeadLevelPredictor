@@ -1,0 +1,1113 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>html, body {
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer
+}
+
+h1, h2, h3, h4, h5, h6 {
+    cursor: inherit !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    background-color: white;
+    padding: 2rem 4rem 2rem 4rem;
+}
+
+@media screen and (min-width: 56rem) {
+    html, body {
+        height: 100%;
+    }
+
+    main {
+        box-shadow: 10px 0px 10px -8px rgba(0,0,0,0.1);
+    }
+
+    .combined-document main {
+        margin: 0 0 0 320px;
+        max-width: 1000px;
+        min-height: 100%;
+    }
+
+    .single-document main {
+        margin: 0 auto;
+        width: 1000px;
+    }
+}
+
+article header h1 {
+    font-size: 1.7em;
+}
+
+article#title header h1 {
+    font-size: 2.6rem;
+}
+
+article {
+    padding: 2rem 0 1rem 0;
+    position: relative;
+}
+
+article header a h1 {
+    cursor: pointer;
+}
+
+article div.page-counter {
+    display: block;
+    text-align: right;
+    width: auto;
+    height: auto;
+    color: #666;
+    font-size: .8rem;
+    padding: .2rem .5rem .2rem .5rem;
+    margin-top: 4rem;
+}
+
+article:not(#title):not(:last-of-type) {
+    border-bottom: #efefef 1px solid;
+}
+
+article#title img {
+    width: 160px;
+}
+
+article#title nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+article#title nav > ul > li a {
+    opacity: .9;
+    text-decoration: none;
+}
+
+article#title nav li > a:hover,
+article#title nav li.selected > a {
+    opacity: 1;
+    font-weight: bold;
+}
+
+article#title nav > ul > li a {
+    display: block;
+    padding: .3rem;
+    cursor: pointer;
+}
+
+article#title nav > ul > li > a { padding-left: 0rem; padding-right: 0rem; }
+article#title nav > ul > li > ul > li > a { padding-left: 1rem; padding-right: 1rem; }
+article#title nav > ul > li > ul > li > ul > li > a { padding-left: 2rem; padding-right: 2rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > a { padding-left: 3rem; padding-right: 3rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 4rem; padding-right: 4rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 5rem; padding-right: 5rem; }
+
+@media screen and (min-width: 56rem) {
+    .combined-document article#title {
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: 0;
+        top: 0;
+        overflow: auto;
+    }
+
+    .combined-document article#title header img {
+        width: 100px;
+    }
+
+    .combined-document article#title header h1 {
+        font-size: 1.2rem;
+    }
+
+    .combined-document article#title > header > div {
+        display: block;
+        width: 100%;
+        padding: 0 2rem 1rem 2rem;
+        border-bottom: #bbb 1px solid;
+    }
+
+    .combined-document article#title nav {
+        padding: 2rem 2rem 0 2rem;
+        opacity: .6;
+        transition: .3s all;
+        font-size: .8rem;
+    }
+
+    .combined-document article#title nav h1 {
+        display: none;
+    }
+
+    .combined-document article#title nav:hover {
+        opacity: 1;
+    }
+}
+
+#copyright {
+    font-size: 12px;
+    color: #ccc;
+    padding: 1rem 0 1rem 0;
+    margin-top: 1rem;
+}
+
+
+
+pre {
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+hr,img,legend {
+    border:0;
+}
+
+blockquote,h6 {
+    color:#777;
+}
+
+a,h3,h4,h5,tt {
+    color:#333;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+    display:block;
+}
+
+a {
+    background:0 0;
+}
+
+a:focus {
+    outline:dotted thin;
+}
+
+a:active,a:hover {
+    outline:0;
+}
+
+abbr[title] {
+    border-bottom:1px dotted;
+}
+
+hr {
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    background:url('data:image/png; base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC') repeat-x;
+    color:#ccc;
+    height:4px;
+    padding:0;
+}
+
+mark {
+    background:#ff0;
+}
+
+kbd,samp {
+    font-family:monospace,serif;
+    font-size:1em;
+}
+
+q {
+    quotes:\201C \201D \2018 \2019;
+}
+
+small {
+    font-size:80%;
+}
+
+sup {
+    top:-.5em;
+}
+
+sub {
+    bottom:-.25em;
+    vertical-align:sub;
+    top:-1px;
+}
+
+img {
+    max-width:100%;
+}
+
+svg:not(:root) {
+    overflow:hidden;
+}
+
+figure {
+    margin:0;
+}
+
+dl dt,h1,h2,h3,h4,h5,h6 {
+    font-weight:700;
+    padding:0;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    cursor:text;
+    margin:20px 0 10px;
+}
+
+article:not(#title) h1,
+article:not(#title) h2,
+article:not(#title) h3,
+article:not(#title) h4,
+article:not(#title) h5 {
+    padding: 1rem 0 1rem 0;
+}
+
+dl dt,h5,h6 {
+    font-size:14px;
+}
+
+blockquote,p,table {
+    margin:15px 0;
+}
+
+ol,ul {
+    padding-left:30px;
+}
+
+blockquote>:first-child,dl dd>:first-child,dl dt>:first-child,h1+p,h2+p,h3+p,h4+p,h5+p,h6+p,ol li ul:first-of-type,ol li>:first-child,ul li>:first-child {
+    margin-top:0;
+}
+
+a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6,body>h1:first-child,body>h1:first-child+h2,body>h2:first-child,body>h3:first-child,body>h4:first-child,body>h5:first-child,body>h6:first-child {
+    margin-top:0;
+    padding-top:0;
+}
+
+table td,table th {
+    border:1px solid #ccc;
+    padding:6px 13px;
+}
+
+dl dt {
+    font-style:italic;
+    margin:15px 0 5px;
+}
+
+blockquote>:last-child,dl dd>:last-child,dl dt>:last-child {
+    margin-bottom:0;
+}
+
+dl dd {
+    margin:0 0 15px;
+    padding:0 15px;
+}
+
+blockquote {
+    border-left:4px solid #DDD;
+    padding:0 15px;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    font:inherit;
+    width: 100%;
+}
+
+table tr {
+    border-top:1px solid #ccc;
+    background-color:#fff;
+}
+
+a.footnote,sub,sup {
+    font-size:1.4ex;
+    height:0;
+    line-height:1;
+    vertical-align:super;
+    position:relative;
+}
+
+
+/**
+ * Tables
+ */
+table thead tr {
+    background-color: #111111;
+    color: #efefef;
+}
+
+table th:empty {
+    display: none;
+}
+
+table th,
+table td {
+    padding: 1rem;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #efefef;
+}
+
+/**
+ * General
+ */
+p a {
+    font-weight: bold;
+}
+
+
+span.citation {
+    font-weight: bold;
+    vertical-align: super;
+}
+
+
+.highlight { background-color: #111; color: #efefef; padding: 1rem; }
+.highlight .hll { background-color: #222; font-size: 8px; }
+.highlight .c { color: #75715e } /* Comment */
+.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
+.highlight .k { color: #66d9ef } /* Keyword */
+.highlight .l { color: #ae81ff } /* Literal */
+.highlight .n { color: #f8f8f2 } /* Name */
+.highlight .o { color: #f92672 } /* Operator */
+.highlight .p { color: #f8f8f2 } /* Punctuation */
+.highlight .cm { color: #75715e } /* Comment.Multiline */
+.highlight .cp { color: #75715e } /* Comment.Preproc */
+.highlight .c1 { color: #75715e } /* Comment.Single */
+.highlight .cs { color: #75715e } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .kc { color: #66d9ef } /* Keyword.Constant */
+.highlight .kd { color: #66d9ef } /* Keyword.Declaration */
+.highlight .kn { color: #f92672 } /* Keyword.Namespace */
+.highlight .kp { color: #66d9ef } /* Keyword.Pseudo */
+.highlight .kr { color: #66d9ef } /* Keyword.Reserved */
+.highlight .kt { color: #66d9ef } /* Keyword.Type */
+.highlight .ld { color: #e6db74 } /* Literal.Date */
+.highlight .m { color: #ae81ff } /* Literal.Number */
+.highlight .s { color: #e6db74 } /* Literal.String */
+.highlight .na { color: #a6e22e } /* Name.Attribute */
+.highlight .nb { color: #f8f8f2 } /* Name.Builtin */
+.highlight .nc { color: #a6e22e } /* Name.Class */
+.highlight .no { color: #66d9ef } /* Name.Constant */
+.highlight .nd { color: #a6e22e } /* Name.Decorator */
+.highlight .ni { color: #f8f8f2 } /* Name.Entity */
+.highlight .ne { color: #a6e22e } /* Name.Exception */
+.highlight .nf { color: #a6e22e } /* Name.Function */
+.highlight .nl { color: #f8f8f2 } /* Name.Label */
+.highlight .nn { color: #f8f8f2 } /* Name.Namespace */
+.highlight .nx { color: #a6e22e } /* Name.Other */
+.highlight .py { color: #f8f8f2 } /* Name.Property */
+.highlight .nt { color: #f92672 } /* Name.Tag */
+.highlight .nv { color: #f8f8f2 } /* Name.Variable */
+.highlight .ow { color: #f92672 } /* Operator.Word */
+.highlight .w { color: #f8f8f2 } /* Text.Whitespace */
+.highlight .mf { color: #ae81ff } /* Literal.Number.Float */
+.highlight .mh { color: #ae81ff } /* Literal.Number.Hex */
+.highlight .mi { color: #ae81ff } /* Literal.Number.Integer */
+.highlight .mo { color: #ae81ff } /* Literal.Number.Oct */
+.highlight .sb { color: #e6db74 } /* Literal.String.Backtick */
+.highlight .sc { color: #e6db74 } /* Literal.String.Char */
+.highlight .sd { color: #e6db74 } /* Literal.String.Doc */
+.highlight .s2 { color: #e6db74 } /* Literal.String.Double */
+.highlight .se { color: #ae81ff } /* Literal.String.Escape */
+.highlight .sh { color: #e6db74 } /* Literal.String.Heredoc */
+.highlight .si { color: #e6db74 } /* Literal.String.Interpol */
+.highlight .sx { color: #e6db74 } /* Literal.String.Other */
+.highlight .sr { color: #e6db74 } /* Literal.String.Regex */
+.highlight .s1 { color: #e6db74 } /* Literal.String.Single */
+.highlight .ss { color: #e6db74 } /* Literal.String.Symbol */
+.highlight .bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #f8f8f2 } /* Name.Variable.Class */
+.highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
+.highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
+.highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+.highlight .gh { } /* Generic Heading & Diff Header */
+.highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
+.highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
+.highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */"</style>
+<title>compute++ Compiler Manual</title>
+<meta charset="utf-8"/>
+</head>
+<body class="single-document">
+<main>
+<article id="title">
+<header>
+<div>
+<a href="https://www.codeplay.com" id="logo" style="width: 160px; height: 46px; display: block; " target="_blank">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMi4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTG9nbyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzNzkuNSAxMTAuNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzc5LjUgMTEwLjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiNBQkQzRjE7fQ0KCS5zdDF7ZmlsbDojOTYzNTk0O30NCgkuc3Qye2ZpbGw6IzVCMUQ1Nzt9DQoJLnN0M3tmaWxsOnVybCgjU1ZHSURfMV8pO30NCgkuc3Q0e2ZpbGw6dXJsKCNTVkdJRF8yXyk7fQ0KCS5zdDV7ZmlsbDp1cmwoI1NWR0lEXzNfKTt9DQoJLnN0NntmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fQ0KCS5zdDd7ZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7fQ0KCS5zdDh7b3BhY2l0eTowLjczO30NCjwvc3R5bGU+DQo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNTYuNSw0MGMwLDE1LjYtMTIuNywyOC4zLTI4LjUsMjguM1YxMS43QzQzLjgsMTEuNyw1Ni41LDI0LjQsNTYuNSw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0wLDQwYzAtMTUuNiwxMi42LTI4LjMsMjgtMjguM3Y1Ni42QzEyLjYsNjguMywwLDU1LjYsMCw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0yOC4xLDYyYy0xMi4xLDAtMjItOS44LTIyLTIyczkuOC0yMiwyMi0yMlY2MnoiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzkuMDI4OSIgeTE9IjYxLjk4MjEiIHgyPSIzOS4wMjg5IiB5Mj0iMTguMDY1NCI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzlGQ0VFRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM1M0IyRTUiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3QzIiBkPSJNNTAsNDBjMCwxMi4xLTkuOCwyMi0yMiwyMlYxOC4xQzQwLjIsMTguMSw1MCwyNy45LDUwLDQweiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8yXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyMS4yMzIzIiB5MT0iMTguMDkxNyIgeDI9IjIxLjIzMjMiIHkyPSI2MS45ODIxIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojQzJFOEY4Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI0QUJFMiIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik0yOCw2MmMtNy41LDAtMTMuNi05LjgtMTMuNi0yMlMyMC41LDE4LjEsMjgsMTguMVY2MnoiLz4NCjxyYWRpYWxHcmFkaWVudCBpZD0iU1ZHSURfM18iIGN4PSIzMC43NDc3IiBjeT0iMzQuODU3MSIgcj0iMTMuMTc4NCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KCTxzdG9wICBvZmZzZXQ9IjAuMTM5OSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRkZGRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkYyMDAiLz4NCjwvcmFkaWFsR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMjguMywyNC43Yy0wLjQsMC0wLjcsMC4xLTEsMC4yYy01LDAuNi05LDcuMi05LDE1LjJjMCw4LjQsNC40LDE1LjMsOS44LDE1LjN2MGMwLjEsMC0wLjEsMCwwLDANCgljOC41LDAsMTUuNS02LjksMTUuNS0xNS4zUzM2LjcsMjQuNywyOC4zLDI0Ljd6Ii8+DQo8Zz4NCgk8cGF0aCBkPSJNMTAwLjEsMjYuM2wtMy43LDYuNGMtMi0xLjktNC43LTIuOC04LjEtMi44Yy0zLjIsMC01LjgsMS4xLTcuNywzLjJzLTIuOCw1LjEtMi44LDguOWMwLDcuNywzLjcsMTEuNSwxMSwxMS41DQoJCWMzLjIsMCw1LjktMSw4LjQtMy4xbDMuMSw2LjdjLTIuNSwxLjUtNC42LDIuNS02LjUsMi45cy00LDAuNi02LjYsMC42Yy01LjYsMC0xMC4xLTEuNi0xMy40LTQuOXMtNC45LTcuOS00LjktMTMuNw0KCQljMC01LjgsMS44LTEwLjQsNS40LTE0YzMuNi0zLjUsOC40LTUuMywxNC42LTUuM0M5My4zLDIyLjcsOTcsMjMuOSwxMDAuMSwyNi4zeiIvPg0KCTxwYXRoIGQ9Ik0xMDQuOCw0MS42YzAtNS42LDEuNi0xMC4xLDQuOC0xMy42YzMuMi0zLjUsNy41LTUuMywxMi43LTUuM2M1LjYsMCw5LjksMS43LDEyLjksNS4xczQuNiw4LDQuNiwxMy44DQoJCWMwLDUuOC0xLjYsMTAuNS00LjcsMTMuOXMtNy40LDUuMi0xMi44LDUuMmMtNS42LDAtOS45LTEuNy0xMy01LjJDMTA2LjQsNTIsMTA0LjgsNDcuMywxMDQuOCw0MS42eiBNMTEzLjcsNDEuNg0KCQljMCw4LjEsMi45LDEyLjEsOC43LDEyLjFjMi43LDAsNC44LTEsNi4zLTMuMWMxLjYtMi4xLDIuMy01LjEsMi4zLTguOWMwLTcuOS0yLjktMTEuOS04LjctMTEuOWMtMi43LDAtNC44LDEtNi4zLDMuMQ0KCQlDMTE0LjUsMzQuOSwxMTMuNywzNy44LDExMy43LDQxLjZ6Ii8+DQoJPHBhdGggZD0iTTE3MC4zLDU5Ljl2LTIuMmMtMC43LDAuOC0xLjksMS41LTMuNiwyYy0xLjcsMC42LTMuNCwwLjktNS4yLDAuOWMtNS4xLDAtOS4xLTEuNi0xMi00LjhjLTIuOS0zLjItNC40LTcuNy00LjQtMTMuNQ0KCQlzMS43LTEwLjUsNS0xNC4xYzMuNC0zLjYsNy42LTUuNCwxMi42LTUuNGMyLjgsMCw1LjMsMC42LDcuNiwxLjdWOS44bDguNS0ydjUyLjJIMTcwLjN6IE0xNzAuMywzMi4xYy0xLjgtMS41LTMuNy0yLjItNS43LTIuMg0KCQljLTMuNCwwLTYsMS03LjksMy4xcy0yLjgsNS4xLTIuOCw5YzAsNy42LDMuNywxMS40LDExLDExLjRjMC44LDAsMS44LTAuMiwzLTAuN2MxLjItMC41LDItMSwyLjMtMS41VjMyLjF6Ii8+DQoJPHBhdGggZD0iTTIyMCw0NC4zaC0yNi4xYzAuMiwyLjksMS4yLDUuMiwzLDYuOGMxLjgsMS42LDQuMywyLjQsNy40LDIuNGMzLjksMCw2LjgtMSw4LjktM2wzLjMsNi41Yy0zLDIuNC03LjUsMy43LTEzLjQsMy43DQoJCWMtNS42LDAtMTAtMS42LTEzLjItNC45Yy0zLjItMy4zLTQuOS03LjgtNC45LTEzLjdjMC01LjgsMS44LTEwLjQsNS4zLTE0YzMuNi0zLjYsNy44LTUuNCwxMi44LTUuNGM1LjMsMCw5LjYsMS42LDEyLjgsNC43DQoJCWMzLjIsMy4yLDQuOCw3LjIsNC44LDEyLjFDMjIwLjcsNDAuNiwyMjAuNSw0Mi4yLDIyMCw0NC4zeiBNMTk0LjIsMzcuOWgxOGMtMC42LTUuMy0zLjUtOC04LjktOEMxOTguNCwyOS44LDE5NS40LDMyLjUsMTk0LjIsMzcuOQ0KCQl6Ii8+DQoJPHBhdGggZD0iTTIzNS40LDU5djE1LjNoLTguNVYyMy40aDguNXYyLjVjMi4xLTIuMSw0LjgtMy4xLDcuOS0zLjFjMTEuNiwwLDE3LjUsNi40LDE3LjUsMTkuMmMwLDYtMS42LDEwLjYtNC44LDEzLjgNCgkJYy0zLjIsMy4yLTcuNiw0LjgtMTMuMiw0LjhDMjQwLDYwLjYsMjM3LjYsNjAuMSwyMzUuNCw1OXogTTIzNS40LDMyLjN2MTkuMmMxLjUsMS4zLDMuNCwxLjksNS40LDEuOWMzLjksMCw2LjgtMC45LDguNS0yLjgNCgkJYzEuNy0xLjksMi42LTQuOCwyLjYtOC45YzAtNC4zLTAuOS03LjQtMi42LTkuMWMtMS43LTEuOC00LjUtMi42LTguNS0yLjZDMjM4LjgsMjkuOSwyMzcsMzAuNywyMzUuNCwzMi4zeiIvPg0KCTxwYXRoIGQ9Ik0yNjkuNyw5LjhsOC41LTJ2NDEuMWMwLDQuNSwxLjMsNy4yLDQsOC4xYy0xLjMsMi41LTMuNiwzLjgtNi44LDMuOGMtMy45LDAtNS44LTIuNy01LjgtOC4xVjkuOHoiLz4NCgk8cGF0aCBkPSJNMzA5LjIsNTYuM2MtMC44LDEuMy0yLjEsMi4zLTQsMy4xYy0xLjksMC44LTMuOSwxLjItNiwxLjJjLTMuOSwwLTctMS05LjMtM2MtMi4zLTItMy40LTQuOC0zLjQtOC40DQoJCWMwLTQuMiwxLjYtNy41LDQuOC05LjlzNy43LTMuNiwxMy41LTMuNmMxLDAsMi4yLDAuMiwzLjUsMC41YzAtNC4zLTIuNy02LjUtOC4yLTYuNWMtMy4yLDAtNS45LDAuNS04LjEsMS42bC0xLjgtNi42DQoJCWMyLjktMS40LDYuNC0yLjEsMTAuNS0yLjFjNS42LDAsOS43LDEuMywxMi4zLDMuOGMyLjYsMi41LDMuOSw3LjMsMy45LDE0LjR2Ny44YzAsNC45LDEsNy45LDIuOSw5LjJjLTAuNywxLjItMS41LDItMi40LDIuMw0KCQljLTAuOSwwLjMtMS45LDAuNC0zLDAuNGMtMS4yLDAtMi4zLTAuNS0zLjMtMS40UzMwOS41LDU3LjQsMzA5LjIsNTYuM3ogTTMwOC40LDQyLjdjLTEuNS0wLjMtMi41LTAuNC0zLjMtMC40DQoJCWMtNi43LDAtMTAuMSwyLjItMTAuMSw2LjZjMCwzLjMsMS45LDQuOSw1LjcsNC45YzUuMSwwLDcuNy0yLjYsNy43LTcuN1Y0Mi43eiIvPg0KCTxwYXRoIGQ9Ik0zNDIuMyw2NS44Yy0wLjksMi40LTIuOSw0LjUtNS45LDYuMWMtMywxLjYtNi41LDIuNC0xMC41LDIuNHYtNy41YzYuNiwwLDkuOS0xLjcsOS45LTQuOWMwLTIuMi0wLjktNS41LTIuNy0xMA0KCQlsLTExLjQtMjguNGg4LjhsMTAsMjUuM2w5LTI1LjNoOC44TDM0Mi4zLDY1Ljh6Ii8+DQo8L2c+DQo8ZyBpZD0iSGFuZCI+DQoJPGNpcmNsZSBjbGFzcz0ic3Q2IiBjeD0iMzcyLjQiIGN5PSIxNi4zIiByPSI2LjYiLz4NCgk8cGF0aCBjbGFzcz0ic3Q3IiBkPSJNMzc0LjIsMTkuMmMwLDAsMC45LTAuNywxLjEtMC44YzAsMCwwLjktMC41LDAuOS0wLjZjMCwwLDAuNS0wLjIsMC4yLTAuNmMwLDAtMC41LTAuNS0xLjQsMC4zDQoJCWMwLDAtMC4yLDAuMi0wLjMsMC4yYzAsMC0wLjgsMC42LTAuOSwwLjVjMCwwLTAuMy0wLjUsMC0wLjljMCwwLDAuNC0wLjYsMC40LTAuN2MwLDAsMC4xLTAuMiwwLjMtMC4zYzAsMCwwLjQtMC41LDAuNS0wLjYNCgkJYzAsMCwwLjYtMC44LDAuNi0wLjljMCwwLDAuMS0wLjIsMC4yLTAuM2MwLDAsMC42LTAuOSwwLjMtMS4xYzAsMC0wLjMtMC41LTAuOCwwLjNsLTAuMiwwLjNjMCwwLTAuMiwwLjMtMC4zLDAuNA0KCQljMCwwLTAuNCwwLjQtMC41LDAuNmMwLDAtMC41LDAuNS0wLjYsMC43YzAsMC0wLjIsMC4yLTAuMywwLjJjMCwwLTAuMiwwLjEsMC4xLTAuM2MwLDAsMC41LTAuOCwwLjUtMC45YzAsMCwwLjYtMSwwLjUtMS4xDQoJCWMwLDAsMC40LTAuOCwwLjQtMC44YzAsMCwwLjMtMC41LTAuMi0wLjdjMCwwLTAuNCwwLTAuNiwwLjZjMCwwLTAuNCwwLjctMC40LDAuN2MwLDAtMC41LDAuNy0wLjUsMC44YzAsMC0wLjcsMS0wLjgsMS4yDQoJCWMwLDAtMC4zLDAuMi0wLjEtMC4zYzAsMCwwLjItMC42LDAuMi0wLjljMCwwLDAuMy0wLjcsMC4yLTAuOGMwLDAsMC4yLTAuMiwwLjItMC40YzAsMCwwLjYtMC44LDAuMi0xYzAsMC0wLjMtMC4zLTAuNywwLjMNCgkJYzAsMC0wLjMsMC41LTAuMywwLjdjMCwwLTAuNiwxLTAuNiwxLjJjMCwwLTAuNCwxLjItMC41LDEuMmMwLDAtMC40LDAuMS0wLjMtMC4zYzAsMCwwLTAuMywwLTAuNWMwLDAsMC0wLjYsMC0wLjgNCgkJYzAsMCwwLTAuNCwwLjEtMC42YzAsMCwwLjItMC44LTAuMS0wLjljMCwwLTAuNS0wLjItMC42LDEuMWMwLDAtMC4xLDAuOC0wLjEsMWMwLDAtMC4xLDEuMS0wLjEsMS4zYzAsMC0wLjUsMS43LTAuNiwxLjcNCgkJYzAsMC0wLjEsMC44LTAuMSwxLjRjMCwwLDAuMSwwLjgsMSwxLjFsMC41LDAuNGMwLDAsMC45LDAuNCwxLjQsMC4xQzM3MS44LDIwLjUsMzczLjQsMjAsMzc0LjIsMTkuMnoiLz4NCjwvZz4NCjxnIGNsYXNzPSJzdDgiPg0KCTxwYXRoIGQ9Ik03NC45LDk4LjNjLTAuMiwxLjktMC45LDMuMy0yLDQuM2MtMS4xLDEtMi42LDEuNS00LjUsMS41Yy0xLjMsMC0yLjUtMC4zLTMuNS0xYy0xLTAuNy0xLjgtMS42LTIuMy0yLjgNCgkJYy0wLjYtMS4yLTAuOC0yLjYtMC44LTQuMXYtMi4zYzAtMS42LDAuMy0zLDAuOC00LjJjMC42LTEuMiwxLjMtMi4yLDIuNC0yLjhjMS0wLjcsMi4yLTEsMy42LTFjMS45LDAsMy40LDAuNSw0LjUsMS41DQoJCWMxLjEsMSwxLjcsMi40LDEuOSw0LjNoLTEuNWMtMC40LTMtMi00LjUtNC45LTQuNWMtMS42LDAtMi45LDAuNi0zLjksMS44Yy0xLDEuMi0xLjQsMi45LTEuNCw1Vjk2YzAsMi4xLDAuNSwzLjcsMS40LDQuOQ0KCQljMC45LDEuMiwyLjIsMS44LDMuOCwxLjhjMS42LDAsMi44LTAuNCwzLjYtMS4xYzAuOC0wLjgsMS4zLTEuOSwxLjUtMy40SDc0Ljl6Ii8+DQoJPHBhdGggZD0iTTc3LjUsOTdjMC0xLjMsMC4yLTIuNCwwLjctMy40YzAuNS0xLDEuMi0xLjgsMi4xLTIuNGMwLjktMC42LDEuOS0wLjgsMy4xLTAuOGMxLjgsMCwzLjIsMC42LDQuMywxLjgNCgkJYzEuMSwxLjIsMS42LDIuOSwxLjYsNC45djAuM2MwLDEuMy0wLjIsMi40LTAuNywzLjRjLTAuNSwxLTEuMiwxLjgtMi4xLDIuNGMtMC45LDAuNi0xLjksMC44LTMuMSwwLjhjLTEuOCwwLTMuMi0wLjYtNC4zLTEuOA0KCQljLTEuMS0xLjItMS42LTIuOS0xLjYtNC45Vjk3eiBNNzguOSw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTQNCgkJVjk3YzAtMS0wLjItMS45LTAuNi0yLjhjLTAuNC0wLjgtMC45LTEuNS0xLjYtMS45Yy0wLjctMC41LTEuNC0wLjctMi4zLTAuN2MtMS4zLDAtMi40LDAuNS0zLjIsMS41Yy0wLjgsMS0xLjIsMi40LTEuMiw0Vjk3LjR6Ii8+DQoJPHBhdGggZD0iTTkzLjYsOTAuNmwwLDIuM2MwLjUtMC44LDEuMS0xLjQsMS45LTEuOWMwLjctMC40LDEuNi0wLjYsMi41LTAuNmMxLjQsMCwyLjUsMC40LDMuMiwxLjJjMC43LDAuOCwxLDIsMSwzLjZ2OC43aC0xLjV2LTguNw0KCQljMC0xLjItMC4zLTIuMS0wLjgtMi42Yy0wLjUtMC42LTEuMy0wLjktMi40LTAuOWMtMC45LDAtMS43LDAuMy0yLjQsMC44Yy0wLjcsMC42LTEuMiwxLjMtMS41LDIuM3Y5aC0xLjVWOTAuNkg5My42eiIvPg0KCTxwYXRoIGQ9Ik0xMDcuNCw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjlIMTA2VjkwLjZIMTA3LjR6Ii8+DQoJPHBhdGggZD0iTTEyNC44LDEwNC4xYy0xLjEsMC0yLjEtMC4zLTMtMC44Yy0wLjktMC42LTEuNi0xLjMtMi4xLTIuM2MtMC41LTEtMC44LTIuMS0wLjgtMy4zdi0wLjVjMC0xLjMsMC4yLTIuNCwwLjctMy40DQoJCWMwLjUtMSwxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjgtMC45LDIuOS0wLjljMS42LDAsMi45LDAuNSwzLjgsMS42YzAuOSwxLjEsMS40LDIuNiwxLjQsNC41djAuOGgtOS40djAuMw0KCQljMCwxLjUsMC40LDIuNywxLjMsMy43YzAuOSwxLDEuOSwxLjUsMy4yLDEuNWMwLjgsMCwxLjUtMC4xLDIuMS0wLjRjMC42LTAuMywxLjEtMC43LDEuNi0xLjRsMC45LDAuNw0KCQlDMTI4LjQsMTAzLjMsMTI2LjksMTA0LjEsMTI0LjgsMTA0LjF6IE0xMjQuNiw5MS42Yy0xLjEsMC0yLDAuNC0yLjgsMS4yYy0wLjgsMC44LTEuMiwxLjktMS40LDMuMmg3Ljl2LTAuMmMwLTEuMy0wLjQtMi4zLTEuMS0zLjENCgkJUzEyNS43LDkxLjYsMTI0LjYsOTEuNnoiLz4NCgk8cGF0aCBkPSJNMTM3LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41YzAuNS0xLDEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNWMtMC43LTAuNi0xLjUtMS0yLjYtMQ0KCQljLTEuMywwLTIuMywwLjUtMy4xLDEuNGMtMC43LDEtMS4xLDIuMy0xLjEsNHYwLjRjMCwxLjcsMC40LDMsMS4xLDMuOUMxMzUuMiwxMDIuNCwxMzYuMiwxMDIuOCwxMzcuNSwxMDIuOHoiLz4NCgk8cGF0aCBkPSJNMTQ3LjgsODcuMnYzLjRoMi43djEuMmgtMi43djguOGMwLDAuNywwLjEsMS4zLDAuNCwxLjZjMC4zLDAuNCwwLjcsMC41LDEuMywwLjVjMC4yLDAsMC42LDAsMS4yLTAuMWwwLjEsMS4yDQoJCWMtMC40LDAuMS0wLjksMC4yLTEuNiwwLjJjLTEsMC0xLjctMC4zLTIuMi0wLjljLTAuNS0wLjYtMC43LTEuNC0wLjctMi42di04LjhoLTIuNHYtMS4yaDIuNHYtMy40SDE0Ny44eiIvPg0KCTxwYXRoIGQ9Ik0xNTMuNSw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN2MwLjItMC4yLDAuNC0wLjMsMC43LTAuM2MwLjMsMCwwLjYsMC4xLDAuNywwLjNjMC4yLDAuMiwwLjMsMC40LDAuMywwLjcNCgkJYzAsMC4zLTAuMSwwLjUtMC4zLDAuN2MtMC4yLDAuMi0wLjQsMC4zLTAuNywwLjNjLTAuMywwLTAuNi0wLjEtMC43LTAuM0MxNTMuNiw4Ny4zLDE1My41LDg3LjEsMTUzLjUsODYuOHogTTE1NS4yLDEwMy44aC0xLjUNCgkJVjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0xNjAuNSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjloLTEuNVY5MC42SDE2MC41eiIvPg0KCTxwYXRoIGQ9Ik0xNzIuMyw5Ny4xYzAtMi4xLDAuNS0zLjcsMS40LTQuOWMwLjktMS4yLDIuMi0xLjgsMy43LTEuOGMxLjgsMCwzLjIsMC43LDQuMSwyLjFsMC4xLTEuOWgxLjR2MTIuOWMwLDEuNy0wLjUsMy0xLjQsNA0KCQlzLTIuMiwxLjUtMy45LDEuNWMtMC45LDAtMS44LTAuMi0yLjYtMC42Yy0wLjgtMC40LTEuNS0xLTItMS42bDAuOC0wLjljMSwxLjMsMi4zLDEuOSwzLjcsMS45YzEuMiwwLDIuMi0wLjQsMi45LTEuMQ0KCQljMC43LTAuNywxLTEuNywxLjEtM3YtMS43Yy0wLjksMS4zLTIuMywyLTQuMSwyYy0xLjUsMC0yLjgtMC42LTMuNy0xLjhzLTEuNC0yLjktMS40LTQuOVY5Ny4xeiBNMTczLjgsOTcuM2MwLDEuNywwLjMsMywxLDQNCgkJYzAuNywxLDEuNiwxLjUsMi45LDEuNWMxLjgsMCwzLjEtMC44LDMuOC0yLjR2LTYuMWMtMC4zLTAuOC0wLjgtMS41LTEuNS0xLjljLTAuNi0wLjQtMS40LTAuNy0yLjMtMC43Yy0xLjIsMC0yLjIsMC41LTIuOSwxLjQNCgkJQzE3NC4xLDk0LDE3My44LDk1LjUsMTczLjgsOTcuM3oiLz4NCgk8cGF0aCBkPSJNMjAyLjgsOTguOGgtOC4xbC0xLjgsNWgtMS42TDE5OCw4NmgxLjRsNi43LDE3LjhoLTEuNkwyMDIuOCw5OC44eiBNMTk1LjIsOTcuNmg3LjFsLTMuNi05LjdMMTk1LjIsOTcuNnoiLz4NCgk8cGF0aCBkPSJNMjEwLjYsMTAzLjhoLTEuNVY4NmgxLjVWMTAzLjh6Ii8+DQoJPHBhdGggZD0iTTIyMy40LDg3LjJ2My40aDIuN3YxLjJoLTIuN3Y4LjhjMCwwLjcsMC4xLDEuMywwLjQsMS42czAuNywwLjUsMS4zLDAuNWMwLjIsMCwwLjYsMCwxLjItMC4xbDAuMSwxLjINCgkJYy0wLjQsMC4xLTAuOSwwLjItMS42LDAuMmMtMSwwLTEuNy0wLjMtMi4yLTAuOWMtMC41LTAuNi0wLjctMS40LTAuNy0yLjZ2LTguOGgtMi40di0xLjJoMi40di0zLjRIMjIzLjR6Ii8+DQoJPHBhdGggZD0iTTIyOC4yLDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yMjkuNiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0yNTkuNCw5OS40YzAtMS0wLjMtMS44LTEtMi4zYy0wLjctMC42LTItMS4xLTMuOC0xLjZjLTEuOC0wLjUtMy4yLTEuMS00LTEuN2MtMS4yLTAuOS0xLjgtMi0xLjgtMy40DQoJCWMwLTEuNCwwLjYtMi41LDEuNy0zLjNjMS4xLTAuOSwyLjUtMS4zLDQuMy0xLjNjMS4yLDAsMi4yLDAuMiwzLjIsMC43YzAuOSwwLjUsMS43LDEuMSwyLjIsMS45YzAuNSwwLjgsMC44LDEuNywwLjgsMi43aC0xLjUNCgkJYzAtMS4yLTAuNC0yLjItMS4yLTIuOWMtMC44LTAuNy0xLjktMS4xLTMuMy0xLjFjLTEuNCwwLTIuNCwwLjMtMy4yLDAuOWMtMC44LDAuNi0xLjIsMS40LTEuMiwyLjRjMCwwLjksMC40LDEuNiwxLjEsMi4yDQoJCWMwLjcsMC42LDEuOSwxLjEsMy41LDEuNWMxLjYsMC40LDIuOCwwLjksMy42LDEuNGMwLjgsMC41LDEuNCwxLDEuOSwxLjdjMC40LDAuNywwLjYsMS40LDAuNiwyLjNjMCwxLjQtMC42LDIuNS0xLjcsMy40DQoJCWMtMS4xLDAuOC0yLjYsMS4zLTQuNCwxLjNjLTEuMywwLTIuNC0wLjItMy40LTAuN3MtMS44LTEuMS0yLjQtMS45Yy0wLjUtMC44LTAuOC0xLjctMC44LTIuOGgxLjVjMCwxLjMsMC41LDIuMiwxLjQsMw0KCQljMC45LDAuNywyLjIsMS4xLDMuNywxLjFjMS40LDAsMi41LTAuMywzLjMtMC45QzI1OSwxMDEuMywyNTkuNCwxMDAuNSwyNTkuNCw5OS40eiIvPg0KCTxwYXRoIGQ9Ik0yNjMuOCw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN3MwLjQtMC4zLDAuNy0wLjNzMC42LDAuMSwwLjcsMC4zYzAuMiwwLjIsMC4zLDAuNCwwLjMsMC43YzAsMC4zLTAuMSwwLjUtMC4zLDAuNw0KCQljLTAuMiwwLjItMC40LDAuMy0wLjcsMC4zcy0wLjYtMC4xLTAuNy0wLjNTMjYzLjgsODcuMSwyNjMuOCw4Ni44eiBNMjY1LjUsMTAzLjhIMjY0VjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzEuMSwxMDMuOGgtMS41Vjg1LjFoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzUsODYuOGMwLTAuMywwLjEtMC41LDAuMy0wLjdzMC40LTAuMywwLjctMC4zczAuNiwwLjEsMC43LDAuM2MwLjIsMC4yLDAuMywwLjQsMC4zLDAuN2MwLDAuMy0wLjEsMC41LTAuMywwLjcNCgkJYy0wLjIsMC4yLTAuNCwwLjMtMC43LDAuM3MtMC42LTAuMS0wLjctMC4zUzI3NSw4Ny4xLDI3NSw4Ni44eiBNMjc2LjcsMTAzLjhoLTEuNVY5MC42aDEuNVYxMDMuOHoiLz4NCgk8cGF0aCBkPSJNMjg1LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41czEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNXMtMS41LTEtMi42LTENCgkJYy0xLjMsMC0yLjMsMC41LTMuMSwxLjRzLTEuMSwyLjMtMS4xLDR2MC40YzAsMS43LDAuNCwzLDEuMSwzLjlDMjgzLjIsMTAyLjQsMjg0LjIsMTAyLjgsMjg1LjUsMTAyLjh6Ii8+DQoJPHBhdGggZD0iTTI5Mi43LDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yOTQuMiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0zMDguOSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdIMzE2di04LjcNCgkJYzAtMS4yLTAuMy0yLjEtMC44LTIuNmMtMC41LTAuNi0xLjMtMC45LTIuNC0wLjljLTAuOSwwLTEuNywwLjMtMi40LDAuOGMtMC43LDAuNi0xLjIsMS4zLTEuNSwyLjN2OWgtMS41VjkwLjZIMzA4Ljl6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg=="/>
+</a>
+<h1>compute++ Compiler Manual</h1>
+</div>
+</header>
+</article>
+<a class="header-link" href="#compute-information-manual" id="compute-information-manual"><h1>compute++ Information Manual</h1></a>
+<a class="header-link" href="#name" id="name"><h2>NAME</h2></a>
+<p>compute++ - ComputeCpp SYCL compiler based on clang 6.0</p>
+<a class="header-link" href="#command" id="command"><h2>COMMAND</h2></a>
+<pre><code><div class="highlight"><pre><span></span><span class="n">compute</span><span class="o">++</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">sycl</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="n">only</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">driver</span><span class="p">)</span><span class="w"> </span><span class="err">\</span><span class="p">[</span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">target</span><span class="w"> </span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span><span class="err">\</span><span class="p">]</span><span class="w"> </span><span class="err">\</span><span class="p">[</span><span class="n">options</span><span class="err">\</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="n">input</span><span class="w"> </span><span class="n">file</span><span class="o">&gt;</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#description" id="description"><h2>DESCRIPTION</h2></a>
+<p>compute++ is the integrated SYCL driver and compiler for ComputeCpp. </p>
+<p>When using <em>-sycl</em> or <em>-sycl-device-only</em> flag, compute++ takes in a C++ source file, compiles any SYCL kernels it finds (and any functions called from kernels) and outputs the ComputeCpp <em>integration header</em>. The integration header is a C++ header file, generated by compute++, which contains the compiled kernel in the binary format, along with all the required information for the runtime to manage the kernels. Note that <em>-sycl</em> and <em>-sycl-device-only</em> are aliases, there is no difference between them.</p>
+<p>When using <em>-sycl-driver</em> flag, compute++ act as an integrated driver combining the device and host compilation step. It takes in a C++ source file, compiles any SYCL kernels it finds (and any functions called from kernels) and outputs the ComputeCpp <em>integration header</em> as a temporary file. In a second compilation step, it compiles the combined C++ source file and integration header to produce an object file or executable.</p>
+<p>The compiler is based on Clang/LLVM and can support C++11 and partially C++14 with view on supporting increasingly more C++ standards.</p>
+<p>If none of <em>-sycl</em>, <em>-sycl-device-only</em> and <em>-sycl-driver</em> is used, <strong>compute++</strong> acts as the normal clang compiler so it can be used as the host compiler too. Refer to the clang/llvm documentation for general compilation information. Note that <em>-sycl-host-only</em> suppress the effect of <em>-sycl</em>, <em>-sycl-device-only</em> and <em>-sycl-driver</em> when provided after .</p>
+<p><em>Note:</em> the device compiler needs to know on which host the kernels will be invoked from.
+The compiler requires this so it can use the same type definition as the host (size and alignment)
+and layout structures correctly.
+If no <code>-target</code> is given to the device compiler, it will default to a pre-set target.
+The pre-set target can be queried by running <code>clang -v</code>.
+Setting the correct target is particularly important in a cross-compilation setting.</p>
+<a class="header-link" href="#examples" id="examples"><h2>EXAMPLES</h2></a>
+<p>The basic invocation of compute++ to produce an integration header:</p>
+<p><strong>compute++ device compiler invocation</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>This constitutes the bare minimum to produce the integration header from the SYCL kernels in a C++ source file.</p>
+<p>The option <em>-sycl</em> enables the compute++ SYCL specific code paths to extract and compile its kernels to SPIR and emit the integration header. The <em>-sycl</em> option also makes the compiler assume that the input is a C++11 source file. The other option "<em>-c</em>" is a standard clang option to only perform the compilation step (no linking).</p>
+<p>The basic invocation of compute++ to produce a host object file containing the device kernels:</p>
+<p><strong>compute++ integrated driver invocation</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">driver</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>This constitutes the bare minimum to produce an object containing host code and device kernels the SYCL kernels in a C++ source file.</p>
+<p>The option <em>-sycl-driver</em> schedules calls to the compiler to first run with the <em>-sycl</em> flag to extract kernels and emit the integration header and then run without the <em>-sycl</em> flag and automatically include the integration header. The <em>-sycl-driver</em> option also makes the compiler assume that the input is a C++11 source file.</p>
+<a class="header-link" href="#integration-header" id="integration-header"><h2>INTEGRATION HEADER</h2></a>
+<p>By using <em>-sycl</em>, compute++ will create an integration header. By convention, the integration header will have the extension "<em>.sycl</em>".</p>
+<p>The following invocation:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="n">myFile</span><span class="p">.</span><span class="n">cpp</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>will create the integration header as myFile.sycl in the same folder as myFile.cpp. You can have more control over the output file by using <em>-o</em> or <em>-sycl-ih</em>:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="n">myFile</span><span class="p">.</span><span class="n">cpp</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="n">integration</span><span class="p">.</span><span class="n">hpp</span><span class="p">.</span><span class="n">sycl</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="n">myFile</span><span class="p">.</span><span class="n">cpp</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">ih</span><span class="w"> </span><span class="n">integration</span><span class="p">.</span><span class="n">hpp</span><span class="p">.</span><span class="n">sycl</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>compute++ will then create integration.hpp.sycl instead of myFile.sycl.</p>
+<a class="header-link" href="#using-compute-in-a-cross-compilation-setting" id="using-compute-in-a-cross-compilation-setting"><h2>USING COMPUTE++ IN A CROSS-COMPILATION SETTING</h2></a>
+<p>The production of the integration header when the final application is cross-compiled remains similar to a standard build.
+However it is important to set the host target for the device compiler so the ABI can be set correctly.</p>
+<p>To set the host target, compute++ relies on the standard clang flag <code>-target</code> and can be used in conjunction with <code>-sycl</code> or <code>-sycl-driver</code>.
+If used with <code>-sycl-driver</code>, the host compilation step will produce an object file for the target given with the <code>-target</code> flag.</p>
+<p>If no <code>-sycl-target</code> is specified, the <code>-target</code> flag will influence the default target.
+See the description of <code>-sycl-target</code> for more details on the default target and its selection.</p>
+<p>The following invocation:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="n">compute</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="w"> </span><span class="o">-</span><span class="n">target</span><span class="w"> </span><span class="n">aarch64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="n">myFile</span><span class="p">.</span><span class="n">cpp</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">ih</span><span class="w"> </span><span class="n">integration</span><span class="p">.</span><span class="n">hpp</span><span class="p">.</span><span class="n">sycl</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>will create the integration header and device kernel compiled to be invoked from an aarch64 chip.</p>
+<a class="header-link" href="#note-on-host-and-device-abi" id="note-on-host-and-device-abi"><h2>Note on host and device ABI</h2></a>
+<p>ComputeCpp has a check mechanism to ensure the kernel functor as viewed by the host and the device compiler is consistent.
+If not, a static assert is triggered with the following message:</p>
+<pre><code class="quote"><div class="highlight"><pre><span></span><span class="n">The</span><span class="w"> </span><span class="n">kernel</span><span class="w"> </span><span class="n">argument</span><span class="w"> </span><span class="n">memory</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="o">&lt;</span><span class="n">compiler</span><span class="o">&gt;</span><span class="w"></span>
+<span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">compatible</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">compiler</span><span class="p">.</span><span class="w"></span>
+<span class="n">Try</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">driver</span><span class="w"> </span><span class="n">instead</span><span class="p">.</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>In such cases, using the integrated driver should solve the problem.</p>
+<p>SYCL allows to write sections of code that will only be visible by either the device compiler (<code>compute++</code>) or the host compiler by using the macro <code>__SYCL_DEVICE_ONLY__</code>.
+It is however undefined behavior if the functor kernel definition is changed using this macro and this may also trigger this static assert.</p>
+<a class="header-link" href="#options" id="options"><h2>OPTIONS</h2></a>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">serial</span><span class="o">-</span><span class="n">memop</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Deactivate memcpy/memset intrinsics replacement by serial functions.</p>
+<p>To work around some driver issues, memcpy and memset are replaced by serial functions (this can impact performances). If the used driver is not impacted by such issue, this option prevents this replacement and can have a positive impact on performance.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="n">only</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Enables the SYCL extension to C++.</p>
+<p>This enables the SYCL kernel extraction, diagnostics and integration header production. The flags will also force the compiler to assume the input file is a C++11 file.</p>
+<p>If the clang option <code>-std</code> is also used, its argument must be a C++ standard that covers C++11. If the language standard provided to <code>-std</code> is incompatible with SYCL, the language standard will be overridden to C++11.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">driver</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Enables the integrated SYCL driver.</p>
+<p>This enable the compiler to first run in device mode (with the <em>-sycl</em> flag) to produce the integration header and then run in host mode with the integration header automatically included. The flags will also force the compiler to assume the input file is a C++11 file.</p>
+<p>If the clang option <code>-std</code> is also used, its argument must be a C++ standard that covers C++11. If the language standard provided to <code>-std</code> is incompatible with SYCL, the language standard will be overridden to C++11.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">host</span><span class="o">-</span><span class="n">only</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Only perform the host compilation step, equivalent to omitting any of the <em>-sycl-device-only</em>, <em>-sycl</em> and <em>-sycl-driver</em>.</p>
+<p>Note: Only the last of <em>-sycl-device-only</em>, <em>-sycl</em>, <em>-sycl-driver</em>, <em>-sycl-host-only</em> is considered. The flag <em>-sycl-host-only</em> is useful to suppress the action of the other flags.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">compress</span><span class="o">-</span><span class="n">name</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Generate compressed SYCL kernel names.</p>
+<p>This option will rename SYCL kernel functors to shorter names for use with OpenCL device drivers. You should use this option if you get an error from an OpenCL device driver when using heavily-templated kernels. There is a risk that using this option will create name collisions in kernels when using heavily templated code, so this option is not enabled by default. However, some OpenCL drivers, such as AMD®’s GPU drivers, will require this option when kernel names have a large number of template parameters.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">keep</span><span class="o">-</span><span class="n">unused</span><span class="o">-</span><span class="n">args</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Instructs the compiler to keep unused kernel arguments.</p>
+<p>By default, all unused SYCL kernel arguments are removed to speed up kernel enqueue at runtime. This flag disables this behavior.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">keep</span><span class="o">-</span><span class="n">attr</span><span class="o">=&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Don’t allow the compiler to remove the specified attribute.</p>
+<p>To strictly follow SPIR 1.2 specifications, some attributes used internally are removed before the module emission. To prevent the suppression, the attribute name to keep can be specified.</p>
+<p>Current value supported:</p>
+<pre><code><div class="highlight"><pre><span></span><span class="n">noduplicate</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">target</span><span class="w"> </span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Specify the target of the device compilation step.</p>
+<p>Valid values are:</p>
+<pre><code><div class="highlight"><pre><span></span><span class="nl">spir</span><span class="p">:</span><span class="w"> </span><span class="n">SPIR</span><span class="w"> </span><span class="mi">32</span><span class="o">-</span><span class="n">bits</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
+
+<span class="nl">spir64</span><span class="p">:</span><span class="w"> </span><span class="n">SPIR</span><span class="w"> </span><span class="mi">64</span><span class="o">-</span><span class="n">bits</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
+
+<span class="nl">spirv</span><span class="p">:</span><span class="w"> </span><span class="n">SPIR</span><span class="o">-</span><span class="n">V</span><span class="w"> </span><span class="mi">32</span><span class="o">-</span><span class="n">bits</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
+
+<span class="nl">spirv64</span><span class="p">:</span><span class="w"> </span><span class="n">SPIR</span><span class="o">-</span><span class="n">V</span><span class="w"> </span><span class="mi">64</span><span class="o">-</span><span class="n">bits</span><span class="w"> </span><span class="n">target</span><span class="w"></span>
+
+<span class="nl">ptx64</span><span class="p">:</span><span class="w"> </span><span class="n">PTX</span><span class="w"> </span><span class="mi">64</span><span class="o">-</span><span class="n">bits</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="p">(</span><span class="n">experimental</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">custom</span><span class="o">-</span><span class="nl">spir64</span><span class="p">:</span><span class="w"> </span><span class="n">Custom</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">offline</span><span class="w"> </span><span class="n">compilation</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="n">consuming</span><span class="w"> </span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="w"> </span><span class="n">SPIR</span><span class="p">,</span><span class="w"> </span><span class="n">needs</span><span class="w"> </span><span class="s">"--sycl-custom-tool"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">specified</span><span class="w">  </span><span class="p">(</span><span class="n">Professional</span><span class="w"> </span><span class="n">Edition</span><span class="w"> </span><span class="n">only</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">custom</span><span class="o">-</span><span class="nl">spirv32</span><span class="p">:</span><span class="w"> </span><span class="n">Custom</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">offline</span><span class="w"> </span><span class="n">compilation</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="n">consuming</span><span class="w"> </span><span class="mi">32</span><span class="o">-</span><span class="n">bit</span><span class="w"> </span><span class="n">SPIR</span><span class="o">-</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">needs</span><span class="w"> </span><span class="s">"--sycl-custom-tool"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">specified</span><span class="w">  </span><span class="p">(</span><span class="n">Professional</span><span class="w"> </span><span class="n">Edition</span><span class="w"> </span><span class="n">only</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">custom</span><span class="o">-</span><span class="nl">spirv64</span><span class="p">:</span><span class="w"> </span><span class="n">Custom</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">offline</span><span class="w"> </span><span class="n">compilation</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="n">consuming</span><span class="w"> </span><span class="mi">64</span><span class="o">-</span><span class="n">bit</span><span class="w"> </span><span class="n">SPIR</span><span class="o">-</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">needs</span><span class="w"> </span><span class="s">"--sycl-custom-tool"</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">specified</span><span class="w">  </span><span class="p">(</span><span class="n">Professional</span><span class="w"> </span><span class="n">Edition</span><span class="w"> </span><span class="n">only</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>If the option is omitted, the compiler will default to <strong>spir</strong> if the host target is a 32-bits architecture and <strong>spir64</strong> if the host target is a 64-bits architecture.</p>
+<p>Note:</p>
+<ul>
+<li>
+<p>Option <em>-sycl-spir32</em> should now be replaced by <em>-sycl-target spir</em></p>
+</li>
+<li>
+<p>Option <em>-sycl-spir64</em> should now be replaced by <em>-sycl-target spir64</em></p>
+</li>
+</ul>
+<pre><code><div class="highlight"><pre><span></span><span class="o">*</span><span class="w"> </span><span class="o">--</span><span class="n">sycl</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">tool</span><span class="o">=</span><span class="err">\</span><span class="o">&lt;</span><span class="n">path</span><span class="err">\</span><span class="o">&gt;::</span><span class="w"></span>
+
+<span class="n">Path</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">tool</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">offline</span><span class="w"> </span><span class="n">compilation</span><span class="w"> </span><span class="n">back</span><span class="o">-</span><span class="n">end</span><span class="p">.</span><span class="w"> </span><span class="n">Needs</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="s">"custom"</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">compilation</span><span class="w"> </span><span class="n">targets</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">offline</span><span class="w"> </span><span class="n">compilation</span><span class="p">.</span><span class="w"></span>
+
+<span class="o">*</span><span class="w"> </span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="err">\</span><span class="o">&lt;</span><span class="n">value</span><span class="err">\</span><span class="o">&gt;::</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Arguments to pass to the custom tool being used as the offline compilation back-end. Arguments provided in quotes will be unquoted and passed on as separate arguments ("a b" will be passed as two arguments while " 'a b' " will be passed as one argument).</p>
+<p>Can be specified when using one of the "custom" device compilation targets for offline compilation.</p>
+<p>Specify a path to output the integration header.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">ih</span><span class="w"> </span><span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>If no value is specified, the name will be inferred using the output file if specified using <em>-o</em> or the input file.</p>
+<p>Note that this option cannot be used if multiple input files are processed.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">fsycl</span><span class="o">-</span><span class="n">ih</span><span class="o">-</span><span class="n">last</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Force the driver to include the integration header after the main source file. Note that this flag has an effect only when used with <em>-sycl-driver</em>.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">fsycl</span><span class="o">-</span><span class="n">split</span><span class="o">-</span><span class="n">modules</span><span class="o">=&lt;</span><span class="n">N</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>This option lets the compiler generate multiple modules and puts a maximum of <n> kernels into each module. (experimental)</n></p>
+<p>This may improve compilation times when only a small number of kernels are used at run-time and not every module has to be compiled. By default only one module for all kernels will be produced.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">ocl</span><span class="o">-</span><span class="n">target</span><span class="o">-</span><span class="n">builtins</span><span class="o">-</span><span class="n">path</span><span class="w"> </span><span class="o">&lt;</span><span class="n">path</span><span class="o">&gt;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Specify a custom path to an OpenCL builtin implementation for the target</p>
+<p>By default this flag will be automatically set by the Clang driver when targeting PTX. If you provide your own path it will overwrite the default. The default path is to a binary file containing the implementation of several OpenCL builtins. This option is only used for PTX targets. It will be ignored for any other target.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">print</span><span class="o">-</span><span class="n">stats</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Print performance statistics for each SYCL kernel extracted by different analyses (Professional Edition only)</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">fno</span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">space</span><span class="w"></span>
+<span class="o">-</span><span class="n">fsycl</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">space</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>The flag <code>-fno-sycl-address-space</code> prevents the exposure of address spaces in SYCL device compilation mode (experimental).
+This forces the compiler to prevent the emission of address space information in the final module.</p>
+<p>The opposite <code>-fsycl-address-space</code> allows exposure of address spaces (default behavior).
+If both flags are present, only the last provided has an effect.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">Wsycl</span><span class="o">-</span><span class="n">pedantic</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">Werror</span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">pedantic</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Respectively warn or error when using ComputeCpp supported extensions to the SYCL specification. By default no warning is raised in those cases. Enabling the <code>sycl-pedantic</code> warning group will show warnings/errors for when these extensions are used.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">Wsycl</span><span class="o">-</span><span class="n">known</span><span class="o">-</span><span class="k">virtual</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">Werror</span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">known</span><span class="o">-</span><span class="k">virtual</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Respectively warn or error when calling a member function marked as virtual.</p>
+<p>Calling virtual member functions that do not require dynamic dispatch is a ComputeCpp extension. If this flag is set, uses of this extension will emit a warning or error. This is implicitly enabled when <code>-Wsycl-pedantic</code> is enabled.</p>
+<a class="header-link" href="#old-options" id="old-options"><h3>Old Options</h3></a>
+<p>The following options were removed in a previous release, they are no longer recognized</p>
+<pre><code><div class="highlight"><pre><span></span><span class="err">–</span><span class="n">sycl</span><span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="n">diags</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>This option had no effect for several releases.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">spir32</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>This option used to force the compiler to output 32-bit SPIR or SPIR-V bitcode. The target is now specified using the <em>-sycl-target <target></target></em> option.</p>
+<pre><code><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">sycl</span><span class="o">-</span><span class="n">spir64</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>This option used to force the compiler to output 64-bit SPIR or SPIR-V bitcode. The target is now specified using the <em>-sycl-target <target></target></em> option.</p>
+<a class="header-link" href="#clang-standard-options" id="clang-standard-options"><h3>Clang standard options</h3></a>
+<p>As the compiler is based on clang 6, some of the standard clang 6 options are available. This includes:</p>
+<ul>
+<li>
+<p>Warning and error formatting flags</p>
+</li>
+<li>
+<p>Optimisation flags</p>
+</li>
+</ul>
+<p>For more information about clang usage, refer to the <a href="https://releases.llvm.org/6.0.0/tools/clang/docs/">clang 6.0 manual</a></p>
+<a class="header-link" href="#compute-specific-diagnostics" id="compute-specific-diagnostics"><h2>Compute++-specific Diagnostics</h2></a>
+<p>This section describes SYCL specific diagnostics. Compute++ errors, warnings and remarks are in the form of:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nl">Computeccp</span><span class="p">:</span><span class="n">CCxxxx</span><span class="p">]</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="n">message</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Where "<em>xxxx</em>" is an error code index.</p>
+<a class="header-link" href="#computecpp-cc0001" id="computecpp-cc0001"><h3>[Computecpp:CC0001]</h3></a>
+<p>a SYCL kernel must be named with a class, struct, enum or union type</p>
+<a class="header-link" href="#computecpp-cc0002" id="computecpp-cc0002"><h3>[Computecpp:CC0002]</h3></a>
+<p>cannot name a SYCL kernel with <type> - class, struct, enum or union expected</type></p>
+<a class="header-link" href="#computecpp-cc0003" id="computecpp-cc0003"><h3>[Computecpp:CC0003]</h3></a>
+<p>an unnamed type is an invalid template argument for
+classes used to name SYCL kernels.</p>
+<p>Valid SYCL kernel names must be a forward declarable class, struct, enum or union type.</p>
+<p>The following examples are valid SYCL kernel names:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClassKernelName</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">struct</span> <span class="nc">MyStruct</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">enum</span> <span class="k">class</span><span class="w"> </span><span class="nc">MyEnum</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">int</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>The following types are invalid SYCL kernel names:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">unsigned</span><span class="w"> </span><span class="c1">// not a class, struct, enum or union type</span>
+
+<span class="k">enum</span> <span class="nc">MyCpp98Enum</span><span class="w"> </span><span class="p">{</span><span class="cm">/* Definition */</span><span class="p">};</span><span class="w"> </span><span class="c1">// not forward declarable</span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0004" id="computecpp-cc0004"><h3>[Computecpp:CC0004]</h3></a>
+<p>a SYCL kernel with the name <type> (alias <type>) already exists</type></type></p>
+<p>SYCL kernel names must be unique. Therefore, the same type cannot be used twice to name 2 kernels. In such cases, compute++ will emit a note to provide the location of the original name.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyName</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">[...]</span><span class="w"></span>
+
+<span class="n">h</span><span class="p">.</span><span class="n">parallel_for</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">MyName</span><span class="o">&gt;</span><span class="p">(...);</span><span class="w"></span>
+<span class="n">h</span><span class="p">.</span><span class="n">parallel_for</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">MyName</span><span class="o">&gt;</span><span class="p">(...);</span><span class="w"> </span><span class="c1">// CC0004: the name is used twice</span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0005" id="computecpp-cc0005"><h3>[Computecpp:CC0005]</h3></a>
+<p>cannot name a SYCL kernel with nested class, struct, enum or union `<type>'</type></p>
+<p>SYCL kernel names cannot be a nested class as it is not forward declarable.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">MyClass</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span> <span class="nc">Nested</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">h</span><span class="p">.</span><span class="n">parallel_for</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">::</span><span class="n">Nested</span><span class="o">&gt;</span><span class="p">(...);</span><span class="w"> </span><span class="c1">// CC0005</span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0006" id="computecpp-cc0006"><h3>[Computecpp:CC0006]</h3></a>
+<p><c++ construct=""> is not allowed within SYCL device code</c++></p>
+<p>C++ constructions that cannot be converted into a valid OpenCL code are invalid in SYCL. These include:</p>
+<ul>
+<li>
+<p>Exceptions (try / catch expressions)</p>
+</li>
+<li>
+<p>Accessing non-const global variables inside device code</p>
+</li>
+<li>
+<p>Function pointers</p>
+</li>
+<li>
+<p>RTTI (dynamic_cast, typeid)</p>
+</li>
+<li>
+<p>Dynamic memory handling: new, delete</p>
+<ul>
+<li>Note: placement new is allowed</li>
+</ul>
+</li>
+</ul>
+<a class="header-link" href="#computecpp-cc0007" id="computecpp-cc0007"><h3>[Computecpp:CC0007]</h3></a>
+<p>cannot capture <expr> in a SYCL kernel</expr></p>
+<a class="header-link" href="#computecpp-cc0008" id="computecpp-cc0008"><h3>[Computecpp:CC0008]</h3></a>
+<p>a variable of type `<type>' cannot be captured by a SYCL kernel, because it is <reason></reason></type></p>
+<p>A SYCL kernel cannot capture:</p>
+<ul>
+<li>
+<p>By reference</p>
+</li>
+<li>
+<p>The "<em>this</em>" pointer</p>
+</li>
+<li>
+<p>Raw pointers</p>
+</li>
+</ul>
+<p>For instance</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">example</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">[...]</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// Initialise a pointer</span>
+<span class="n">cgh</span><span class="p">.</span><span class="n">single_task</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">example</span><span class="o">&gt;</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">foo</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w"> </span><span class="c1">// Illegal to use that pointer within kernel</span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>The above code would give the error:</p>
+<p>error: a variable of type 'int *' cannot be captured by a SYCL kernel, because it is a pointer type</p>
+<a class="header-link" href="#computecpp-cc0009" id="computecpp-cc0009"><h3>[Computecpp:CC0009]</h3></a>
+<p>cannot capture object instance of class <class name=""> containing field <field name=""> of type `<type>' in a SYCL kernel</type></field></class></p>
+<a class="header-link" href="#computecpp-cc0010" id="computecpp-cc0010"><h3>[Computecpp:CC0010]</h3></a>
+<p>cannot capture object instance of class <class name=""> containing field <field name=""> of type `<type>' in a SYCL kernel (makes class <class name=""> non-standard layout)</class></type></field></class></p>
+<a class="header-link" href="#computecpp-cc0011" id="computecpp-cc0011"><h3>[Computecpp:CC0011]</h3></a>
+<p>cannot capture object <variable> of type `<type>' in a SYCL kernel, because <reason></reason></type></variable></p>
+<a class="header-link" href="#computecpp-cc0020" id="computecpp-cc0020"><h3>[Computecpp:CC0020]</h3></a>
+<p>SYCL kernel parameter `<param/>' of type `<type>' is invalid: <reason></reason></type></p>
+<p>A SYCL kernel cannot capture:</p>
+<ul>
+<li>
+<p>Any objects containing raw pointers</p>
+</li>
+<li>
+<p>Any objects that do not have a C++ standard layout, including:</p>
+<ul>
+<li>
+<p>Objects with private AND public fields (either private or public is OK but not both)</p>
+</li>
+<li>
+<p>Containing a non-static field of reference type</p>
+</li>
+<li>
+<p>Any objects that contain virtual methods</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>For instance</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">example</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">struct</span> <span class="nc">FooClass</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">FooClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">m_pMember</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">m_pMember</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="n">FooClass</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"> </span><span class="c1">// Initialize the instance</span>
+
+<span class="n">cgh</span><span class="p">.</span><span class="n">single_task</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">example</span><span class="o">&gt;</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">foo</span><span class="p">(</span><span class="n">instance</span><span class="p">.</span><span class="n">m_pMember</span><span class="p">);</span><span class="w"> </span><span class="c1">// Illegal to use that pointer within kernel</span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>The above code would give the error:</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="nl">error</span><span class="p">:</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">capture</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="err">'</span><span class="k">struct</span> <span class="nc">FooClass</span><span class="err">'</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">SYCL</span><span class="w"> </span><span class="n">kernel</span><span class="p">,</span><span class="w"> </span><span class="n">because</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">contains</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">pointer</span><span class="w"> </span><span class="n">type</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0012" id="computecpp-cc0012"><h3>[Computecpp:CC0012]</h3></a>
+<p>class <name> cannot be a parameter to a SYCL kernel, because <reason></reason></name></p>
+<a class="header-link" href="#computecpp-cc0013" id="computecpp-cc0013"><h3>[Computecpp:CC0013]</h3></a>
+<p>`<type>' is an invalid argument type for a SYCL kernel, because it is <reason></reason></type></p>
+<p>One or more SYCL kernel parameter restrictions have been violated, which triggered this error.</p>
+<p>This includes the following:</p>
+<ul>
+<li>
+<p>``it is a non standard-layout type'': To pass as a kernel parameter an object, it needs to be standard-layout.</p>
+</li>
+<li>
+<p>``it contains virtual methods'': Objects of a class that contains virtual methods cannot be supported as they are not standard-layout.</p>
+</li>
+<li>
+<p>``it contains a field with a pointer type'': Host raw pointers cannot be used on device with OpenCL 1.2. To pass a pointer to the device, SYCL buffers and accessors must be used instead.</p>
+</li>
+</ul>
+<a class="header-link" href="#computecpp-cc0014" id="computecpp-cc0014"><h3>[Computecpp:CC0014]</h3></a>
+<p>SYCL kernel must return void</p>
+<p>SYCL kernel functors or lambdas cannot return a value.</p>
+<a class="header-link" href="#computecpp-cc0015" id="computecpp-cc0015"><h3>[Computecpp:CC0015]</h3></a>
+<p>recursion is not allowed in SYCL functions</p>
+<a class="header-link" href="#computecpp-cc0016" id="computecpp-cc0016"><h3>[Computecpp:CC0016]</h3></a>
+<p>recursion is not allowed in SYCL functions, but a call graph cycle was detected starting in function `<function name="">'</function></p>
+<p>SYCL restrictions disallow the use of recursive functions as OpenCL disallows their use.</p>
+<p><strong>CC00016</strong> is a recursion caused by a succession of calls that forms in the end a recursive loop.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">recurse</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// CC0015</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">recurse</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">funcA</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">funcB</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">funcA</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">funcA</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// CC0016</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">funcB</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0023" id="computecpp-cc0023"><h3>[Computecpp:CC0023]</h3></a>
+<p>class <name> is not standard layout, because <reason></reason></name></p>
+<p>This error will accompany _[Computecpp:CC0011] cannot capture object <variable> of type `<type>' in a SYCL kernel, because <reason> _and will be thrown on the object definition directly. The reasons are the same as in that error.</reason></type></variable></p>
+<ul>
+<li>
+<p>Any objects containing raw pointers</p>
+</li>
+<li>
+<p>Any objects that do not have a standard layout, including:</p>
+<ul>
+<li>
+<p>Objects with private AND public fields (either private or public is OK but not both)</p>
+</li>
+<li>
+<p>Containing a non-static field of reference type</p>
+</li>
+<li>
+<p>Any objects that contain virtual methods</p>
+</li>
+</ul>
+</li>
+</ul>
+<a class="header-link" href="#computecpp-cc0027" id="computecpp-cc0027"><h3>[Computecpp:CC0027]</h3></a>
+<p>Some memcpy/memset intrinsics added by the llvm optimizer were replaced by serial functions. This is a workaround for OpenCL drivers that do not support those intrinsics. This may impact performance, consider using -no-serial-memop.</p>
+<p>On certain OpenCL drivers we have found that certain LLVM intrinsic functions are not supported so we replace them with our own code, which will work on all drivers. However, this could stop a vendor compiler which does support these intrinsics from performing certain optimisations so we leave the option -no-serial-memop available to instruct compute++ not to remove it. Generally this remark can be ignored as the code is still valid, but there may be a performance impact.</p>
+<a class="header-link" href="#computecpp-cc0028" id="computecpp-cc0028"><h3>[Computecpp:CC0028]</h3></a>
+<p>OpenCL requires the format string of printf to be a constant string.</p>
+<p>This warning will throw if you attempt to pass a string non-literal as the <em>format</em> string of the printf function. Code like below should produce this warning.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"somestring"</span><span class="w"></span>
+<span class="n">printf</span><span class="p">(</span><span class="n">str</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>The preferred method of printing from a SYCL kernel is to pass a stream object into the kernel.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">example</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">[...]</span><span class="w"></span>
+
+<span class="w"> </span><span class="n">myQueue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">stream</span><span class="w"> </span><span class="n">os</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="n">handle</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">cgh</span><span class="p">.</span><span class="n">single_task</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">example</span><span class="o">&gt;</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"somestring"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="w"> </span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0029" id="computecpp-cc0029"><h3>[Computecpp:CC0029]</h3></a>
+<p>The `noduplicate' attribute was removed from some functions in order to guarantee conformance with SPIR 1.2. To keep that attribute the -sycl-keep-attr=<noduplicate> command-line option can be used"&gt;</noduplicate></p>
+<p>This remark will be thrown whenever the compiler removes the attribute "noduplicate’ from a function or function call. This is not a warning or an error, it is a remark as this is expected behavior from the compiler and the code remains valid.</p>
+<a class="header-link" href="#computecpp-cc0030" id="computecpp-cc0030"><h3>[Computecpp:CC0030]</h3></a>
+<p>sycl requires at least C++11, force language standard to C++11</p>
+<p>The SYCL specification is defined to support C++11 features. Therefore, a SYCL program requires a language standard that includes the C++11 feature set.</p>
+<p>The language standard provided to the "<em>-std</em>" command-line option is incompatible with SYCL and the language standard has been forced to <em>C++11</em>.</p>
+<a class="header-link" href="#computecpp-cc0031" id="computecpp-cc0031"><h3>[Computecpp:CC0031]</h3></a>
+<p>`<string>' is not a valid input to spir-keep-attr. Attribute `noduplicate' is the only supported argument</string></p>
+<p>The value <value> given to -sycl-keep-attr is invalid. Currently, only noduplicate is a supported attribute. See -sycl-keep-attr help.</value></p>
+<a class="header-link" href="#computecpp-cc0032" id="computecpp-cc0032"><h3>[Computecpp:CC0032]</h3></a>
+<p>Variadic functions cannot be used in SYCL device code</p>
+<p>SYCL device functions cannot call C-style variadic functions.</p>
+<p>Calls like below are not allowed on device.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">example</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">variadic</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+
+<span class="p">[...]</span><span class="w"></span>
+
+<span class="n">myQueue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">cgh</span><span class="p">.</span><span class="n">single_task</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">example</span><span class="o">&gt;</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">variadic</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">42.</span><span class="p">,</span><span class="w"> </span><span class="s">"str"</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0033-deprecated" id="computecpp-cc0033-deprecated"><h3>[Computecpp:CC0033] (deprecated)</h3></a>
+<p>--sycl-no-diags is deprecated and has no effect.</p>
+<p>The flag --sycl-no-diags is now deprecated and the use of this flag does not have any effect any more.</p>
+<a class="header-link" href="#computecpp-cc0034" id="computecpp-cc0034"><h3>[Computecpp:CC0034]</h3></a>
+<p>Function <name> is undefined but referenced on the device and the associated kernels may fail to build or execute at run time</name></p>
+<p>You will see this warning if an undefined function which does not match one of the known OpenCL builtin functions has been referenced in device code. If the function cannot be resolved by the OpenCL implementation, the kernel is unlikely to compile.</p>
+<a class="header-link" href="#computecpp-cc0035" id="computecpp-cc0035"><h3>[Computecpp:CC0035]</h3></a>
+<p>Intrinsic <intrinsic\_name> has been generated in function <function\_name> which is illegal in SPIR and may result in a compilation failure</function\_name></intrinsic\_name></p>
+<p>The SPIR spec only allows for memset and memcpy intrinsics to be used, anything else is technically illegal and could cause issues with the OpenCL implementation. This warning will tell you if an illegal intrinsic has been generated.</p>
+<a class="header-link" href="#computecpp-cc0036" id="computecpp-cc0036"><h3>[Computecpp:CC0036]</h3></a>
+<p>OpenCL extension cl_khr_fp16 should be enabled before using type half</p>
+<p>This warning will appear if cl::sycl::half (alias to __fp16) is used in code before the OpenCL extension cl_khr_fp16 is enabled. This warning or lack of does not say anything about whether or not the underlaying OpenCL implementation supports half. You must check this manually using the runtime device class "has_extension" method.</p>
+<a class="header-link" href="#computecpp-cc0037" id="computecpp-cc0037"><h3>[Computecpp:CC0037]</h3></a>
+<p>Variable length arrays are not supported in SYCL kernels.</p>
+<p>Variable length arrays (VLA) are disallowed by OpenCL v1.2 s6.9.d, thus cannot be used in a SYCL kernel.</p>
+<p>Note: This is a C99 features but some compilers provide extensions to support it in C++</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">vla</span><span class="p">[</span><span class="n">n</span><span class="p">];</span><span class="w"> </span><span class="c1">// illegal if called from a kernel</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0039" id="computecpp-cc0039"><h3>[Computecpp:CC0039]</h3></a>
+<p>Kernel <sycl kernel="" name="">: conflicting values for attribute <opencl attribute="" name="">
+Attribute <opencl attribute="" name=""> values inherited from <function name="">
+Registered values '<opencl attribute="" values="">'</opencl></function></opencl></opencl></sycl></p>
+<p>OpenCL attributes vec_type_hint, work_group_size_hint and reqd_work_group_size are allowed to be used in SYCL. In SYCL, those attributes are applied to functions (instead of kernel function in OpenCL) and the compiler infers from the function calls which OpenCL attributes should be applied to the kernel. If a function A and a function B both use the same attribute, then they must use the same values. If they do not agree on those values, then the compiler reports an error pointing out the affected kernel and the functions causing the issue.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Ker</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">reqd_work_group_size</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">A</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">reqd_work_group_size</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="n">B</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="p">[...]</span><span class="w"></span>
+
+<span class="n">myQueue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="n">cgh</span><span class="p">.</span><span class="n">single_task</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">Ker</span><span class="o">&gt;</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">A</span><span class="p">();</span><span class="w"></span>
+<span class="w">     </span><span class="n">B</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>The example above will generate the following diagnostic</p>
+<p>error: [Computecpp:CC0039]: Kernel Ker: conflicting values for attribute reqd_work_group_size
+note: [Computecpp:CC0039]: Attribute reqd_work_group_size values inherited from A
+note: [Computecpp:CC0039]: Registered values 'i32 64, i32 64, i32 1'
+note: [Computecpp:CC0039]: Attribute reqd_work_group_size values inherited from B
+note: [Computecpp:CC0039]: Registered values 'i32 64, i32 1, i32 1'</p>
+<a class="header-link" href="#computecpp-cc0040" id="computecpp-cc0040"><h3>[Computecpp:CC0040]</h3></a>
+<p>Accessor appears as member of union used as a kernel argument - associated kernel may not run correctly</p>
+<p>Using unions that contain accessor fields in kernel argument is discouraged and has an undefined behavior.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Ker</span><span class="p">;</span><span class="w"></span>
+<span class="p">[...]</span><span class="w"></span>
+<span class="n">myQueue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">union</span> <span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">accessor</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">access</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">read_write</span><span class="p">,</span><span class="w"> </span><span class="n">access</span><span class="o">::</span><span class="n">target</span><span class="o">::</span><span class="n">global_buffer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Acc</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">IntField</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"> </span><span class="n">Arg</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">cgh</span><span class="p">.</span><span class="n">single_task</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">Ker</span><span class="o">&gt;</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">Arg</span><span class="p">.</span><span class="n">IntField</span><span class="p">;</span><span class="w"> </span><span class="c1">// CC0040</span>
+<span class="w">   </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0042" id="computecpp-cc0042"><h3>[Computecpp:CC0042]</h3></a>
+<p>Invalid SYCL target <target></target></p>
+<p>The value given to <em>-sycl-target</em> is not a valid device targets.</p>
+<a class="header-link" href="#computecpp-cc0043" id="computecpp-cc0043"><h3>[Computecpp:CC0043]</h3></a>
+<p>Community Edition releases do not support multiple device targets</p>
+<p>Community edition releases are restricted to one device target per kernel.</p>
+<a class="header-link" href="#computecpp-cc0047" id="computecpp-cc0047"><h3>[Computecpp:CC0047]</h3></a>
+<p>'-sycl-spir32' is deprecated, use '-sycl-target spir' instead
+'-sycl-spir64' is deprecated, use '-sycl-target spir64' instead</p>
+<p>Options -sycl-spir32 and -sycl-spir64 are deprecated and may be removed in future releases. They both are now aliases to "-sycl-target spir" and "-sycl-target spir64" and they should be used directly.</p>
+<a class="header-link" href="#computecpp-cc0047-1" id="computecpp-cc0047-1"><h3>[Computecpp:CC0047]</h3></a>
+<p>'-sycl-spir32' is deprecated, use '-sycl-target spir' instead
+'-sycl-spir64' is deprecated, use '-sycl-target spir64' instead</p>
+<p>Options -sycl-spir32 and -sycl-spir64 are deprecated and may be removed in future releases. They both are now aliases to "-sycl-target spir" and "-sycl-target spir64" and they should be used directly.</p>
+<a class="header-link" href="#computecpp-cc0048" id="computecpp-cc0048"><h3>[Computecpp:CC0048]</h3></a>
+<p>Kernel name <x> is a local type - consider forward declaring the type inside of an accessible namespace</x></p>
+<p>According to the SYCL specification, kernel name types must be accessible from the global namespace. If a type is locally declared (e. g. in a function), it cannot be accessed from outside that function.</p>
+<p>myQueue.submit([&amp;](handler&amp; handle)
+   cgh.single_task<class ker="">([=]() {}); // CC0048: Ker is a local type
+});</class></p>
+<p>A possible solution is to forward declare the type to make it non-local</p>
+<p>class Ker;</p>
+<p>[...]</p>
+<p>myQueue.submit([&amp;](handler&amp; handle)
+   cgh.single_task<class ker="">([=]() {}); // CC0048: Ker is a local type
+});</class></p>
+<a class="header-link" href="#computecpp-cc0049" id="computecpp-cc0049"><h3>[Computecpp:CC0049]</h3></a>
+<p>Processor <proc1> cannot be specified for the <target> SYCL target. Please use the default (<proc2>) or a later processor.</proc2></target></proc1></p>
+<p>The specified processor with -msyclarch is not usable for the given target.</p>
+<a class="header-link" href="#computecpp-cc0052" id="computecpp-cc0052"><h3>[Computecpp:CC0052]</h3></a>
+<p>During compilation of the current function for the target device, a write to constant memory was detected.</p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// CC0052 triggered by assignment to int in constant memory</span>
+<span class="p">[</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="n">myQueue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">handler</span><span class="w"> </span><span class="o">&amp;</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="n">get_access</span><span class="o">&lt;</span><span class="n">access</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">write</span><span class="p">,</span><span class="w"> </span><span class="n">access</span><span class="o">::</span><span class="n">target</span><span class="o">::</span><span class="n">constant_buffer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">handle</span><span class="p">.</span><span class="n">single_task</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">Ker</span><span class="o">&gt;</span><span class="p">(([</span><span class="o">=</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"> </span><span class="p">}));</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<a class="header-link" href="#computecpp-cc0056" id="computecpp-cc0056"><h3>[Computecpp:CC0056]</h3></a>
+<p>Custom target specified but the tool to use not provided. Provide the tool using --sycl-custom-tool.</p>
+<p>A SYCL target for offline compilation using a custom tool was specified but the tool to use not provided.</p>
+<a class="header-link" href="#computecpp-cc0057" id="computecpp-cc0057"><h3>[Computecpp:CC0057]</h3></a>
+<p>Community Edition releases do not support offline compilation</p>
+<p>A SYCL target for offline compilation was specified but Community Edition releases do not support this feature.</p>
+<a class="header-link" href="#computecpp-cc0058" id="computecpp-cc0058"><h3>[Computecpp:CC0058]</h3></a>
+<p>This error is no longer emitted by ComputeCPP.</p>
+<p>In previous versions, split modules (<code>-fsycl-split-modules</code>) were incompatible with some features such as offline compilation.</p>
+<a class="header-link" href="#computecpp-cc0059" id="computecpp-cc0059"><h3>[Computecpp:CC0059]</h3></a>
+<p>Community Edition releases do not support printing performance statistics for SYCL kernels using <code>-sycl-print-stats</code>.</p>
+<a class="header-link" href="#computecpp-cc0061" id="computecpp-cc0061"><h3>[Computecpp:CC0061]</h3></a>
+<p>Community Edition releases do not support dumping kernel information using <code>-sycl-kernel-info</code>.</p>
+<a class="header-link" href="#computecpp-cc0062" id="computecpp-cc0062"><h3>[Computecpp:CC0062]</h3></a>
+<p>An IO error was encountered when opening or writing to the output file specified by <code>-sycl-kernel-info</code>.</p>
+<a class="header-link" href="#computecpp-cc0060" id="computecpp-cc0060"><h3>[Computecpp:CC0060]</h3></a>
+<p>The SYCL specification requires that virtual functions not be supported, however ComputeCpp supports this in cases where dynamic dispatch does not occur. This warning is raised when <code>-Wsycl-pedantic</code> or <code>-Wsycl-known-virtual</code> is set.</p>
+<a class="header-link" href="#computecpp-cc0063" id="computecpp-cc0063"><h3>[Computecpp:CC0063]</h3></a>
+<p>The SYCL bundler tool encountered an error while trying to read a file.</p>
+<a class="header-link" href="#computecpp-cc0064" id="computecpp-cc0064"><h3>[Computecpp:CC0064]</h3></a>
+<p>The SYCL bundler tool encountered an error while trying to parse a module pack.</p>
+<a class="header-link" href="#computecpp-cc0065" id="computecpp-cc0065"><h3>[Computecpp:CC0065]</h3></a>
+<p>Community Edition releases do not support bundling multiple binaries.</p>
+<p>The bundler was given multiple bundle sources on the command line, and the release is a Community Edition one.</p>
+<a class="header-link" href="#compute-internal-diagnostics" id="compute-internal-diagnostics"><h2>Compute++ Internal Diagnostics</h2></a>
+<p>The following diagnostics are internal. If the ComputeCpp package is correctly installed, please file a bug report.</p>
+<a class="header-link" href="#computecpp-cc0017" id="computecpp-cc0017"><h3>[Computecpp:CC0017]</h3></a>
+<p>ignored invalid use of SYCL kernel attribute</p>
+<a class="header-link" href="#computecpp-cc0018" id="computecpp-cc0018"><h3>[Computecpp:CC0018]</h3></a>
+<p>template specialization of a SYCL kernel is not a SYCL kernel without the proper attributes</p>
+<a class="header-link" href="#computecpp-cc0019" id="computecpp-cc0019"><h3>[Computecpp:CC0019]</h3></a>
+<p>`%0' is invalid for a SYCL kernel and was ignored</p>
+<a class="header-link" href="#computecpp-cc0021" id="computecpp-cc0021"><h3>[Computecpp:CC0021]</h3></a>
+<p>SYCL kernels can only have one functor parameter: parameter `<param/>' of type `<type>' cannot be one, because parameter `<param/>' of type `<type>' already is</type></type></p>
+<a class="header-link" href="#computecpp-cc0022-deprecated" id="computecpp-cc0022-deprecated"><h3>[Computecpp:CC0022] (deprecated)</h3></a>
+<p>a SYCL kernel cannot also be an OpenCL kernel</p>
+<a class="header-link" href="#computecpp-cc0024" id="computecpp-cc0024"><h3>[Computecpp:CC0024]</h3></a>
+<p>Missing serial function equivalent for intrinsic <name> (expected prototype <name> for serial function)</name></name></p>
+<a class="header-link" href="#computecpp-cc0025" id="computecpp-cc0025"><h3>[Computecpp:CC0025]</h3></a>
+<p>Serial function <name> has no body (equivalent for intrinsic <name>)</name></name></p>
+<a class="header-link" href="#computecpp-cc0026" id="computecpp-cc0026"><h3>[Computecpp:CC0026]</h3></a>
+<p>Serial function <name> has an incorrect signature (equivalent for intrinsic <name>)</name></name></p>
+<a class="header-link" href="#computecpp-cc0038" id="computecpp-cc0038"><h3>[Computecpp:CC0038]</h3></a>
+<p>Invalid SYCL attribute for function <reason>
+Invalid OpenCL attribute for function <reason></reason></reason></p>
+<p>Some internal metadata are not correctly formed.</p>
+<a class="header-link" href="#computecpp-cc0041" id="computecpp-cc0041"><h3>[Computecpp:CC0041]</h3></a>
+<p>Redefinition of binary metadata for target <target> (<arch-size> bits)</arch-size></target></p>
+<a class="header-link" href="#computecpp-cc0044" id="computecpp-cc0044"><h3>[Computecpp:CC0044]</h3></a>
+<p>Redefinition of kernel <kernel name=""> metadata</kernel></p>
+<a class="header-link" href="#computecpp-cc0045" id="computecpp-cc0045"><h3>[Computecpp:CC0045]</h3></a>
+<p>Error reading SYCL metadata file: <file></file></p>
+<a class="header-link" href="#computecpp-cc0046" id="computecpp-cc0046"><h3>[Computecpp:CC0046]</h3></a>
+<p>Expect the same number of binary information placeholders (got <i>) and kernel input files (got <j>)</j></i></p>
+<p>AMD is a registered trademark of Advanced Micro Devices, Inc. Intel is a trademark of Intel Corporation or its subsidiaries in the U.S. and/or other countries. NVIDIA and CUDA are registered trademarks of NVIDIA Corporation</p>
+<div id="copyright">SYCL is a trademark of the Khronos Group Inc. NVIDIA is a registered trademark of NVIDIA Corporation. AMD is a registered trademark of Advanced Micro Devices, Inc. Intel is a trademark of Intel Corporation in the U.S. and/or other countries SPIR is a trademark of the Khronos Group Inc. OpenCL and the OpenCL logo are trademarks of Apple Inc. used by permission by Khronos.</div>
+</main>
+</body>
+</html>

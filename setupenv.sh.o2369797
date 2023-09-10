@@ -1,0 +1,1761 @@
+
+########################################################################
+#      Date:           Sat 09 Sep 2023 06:59:51 AM PDT
+#    Job ID:           2369797.v-qsvr-1.aidevcloud
+#      User:           u199964
+# Resources:           cput=75:00:00,neednodes=1:ppn=2,nodes=1:ppn=2,walltime=06:00:00
+########################################################################
+
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/u199964/.conda/envs/stock-tensorflow
+
+  added / updated specs:
+    - gitpython
+    - ipykernel
+    - matplotlib
+    - pandas
+    - psutil
+    - python
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    asttokens-2.0.5            |     pyhd3eb1b0_0          20 KB
+    backcall-0.2.0             |     pyhd3eb1b0_0          13 KB
+    comm-0.1.2                 |   py39h06a4308_0          13 KB
+    debugpy-1.6.7              |   py39h6a678d5_0         2.0 MB
+    decorator-5.0.9            |     pyhd3eb1b0_0          12 KB  intel
+    entrypoints-0.4            |   py39h06a4308_0          16 KB
+    executing-0.8.3            |     pyhd3eb1b0_0          18 KB
+    freetype-2.10.4            |       h8e2d9d6_0         976 KB  intel
+    gitdb-4.0.7                |     pyhd3eb1b0_0          50 KB
+    gitpython-3.1.30           |   py39h06a4308_0         267 KB
+    ipykernel-6.25.0           |   py39h2f386ee_0         228 KB
+    ipython-8.12.2             |   py39h06a4308_0         1.1 MB
+    jedi-0.18.1                |   py39h06a4308_1         982 KB
+    jupyter_client-7.1.2       |     pyhd3eb1b0_0          93 KB
+    jupyter_core-5.3.0         |   py39h06a4308_0          89 KB
+    libsodium-1.0.18           |       h7b6447c_0         244 KB
+    matplotlib-3.1.2           |  py39h1d9d6cc_11         8.5 MB  intel
+    matplotlib-inline-0.1.6    |   py39h06a4308_0          16 KB
+    nest-asyncio-1.5.6         |   py39h06a4308_0          14 KB
+    parso-0.8.3                |     pyhd3eb1b0_0          70 KB
+    pexpect-4.8.0              |     pyhd3eb1b0_3          53 KB
+    pickleshare-0.7.5          |  pyhd3eb1b0_1003          13 KB
+    prompt-toolkit-3.0.36      |   py39h06a4308_0         574 KB
+    ptyprocess-0.7.0           |     pyhd3eb1b0_2          17 KB
+    pure_eval-0.2.2            |     pyhd3eb1b0_0          14 KB
+    pygments-2.15.1            |   py39h06a4308_1         1.7 MB
+    pyzmq-25.1.0               |   py39h6a678d5_0         459 KB
+    smmap-4.0.0                |     pyhd3eb1b0_0          23 KB
+    stack_data-0.2.0           |     pyhd3eb1b0_0          22 KB
+    tcl-8.6.10                 |                2           3 KB  intel
+    tornado-6.1                |   py39h27cfd23_0         646 KB  intel
+    traitlets-5.7.1            |   py39h06a4308_0         200 KB
+    zeromq-4.3.4               |       h2531618_0         331 KB
+    ------------------------------------------------------------
+                                           Total:        18.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      conda_channel/linux-64::_libgcc_mutex-0.1-conda_forge 
+  _openmp_mutex      conda_channel/linux-64::_openmp_mutex-4.5-2_gnu 
+  asttokens          pkgs/main/noarch::asttokens-2.0.5-pyhd3eb1b0_0 
+  backcall           pkgs/main/noarch::backcall-0.2.0-pyhd3eb1b0_0 
+  backports          conda_channel/noarch::backports-1.0-pyhd8ed1ab_3 
+  backports.functoo~ conda_channel/noarch::backports.functools_lru_cache-1.6.4-pyhd8ed1ab_0 
+  bzip2              conda_channel/linux-64::bzip2-1.0.8-h7f98852_4 
+  ca-certificates    conda_channel/linux-64::ca-certificates-2023.5.7-hbcca054_0 
+  comm               pkgs/main/linux-64::comm-0.1.2-py39h06a4308_0 
+  cycler             conda_channel/noarch::cycler-0.11.0-pyhd8ed1ab_0 
+  debugpy            pkgs/main/linux-64::debugpy-1.6.7-py39h6a678d5_0 
+  decorator          intel/noarch::decorator-5.0.9-pyhd3eb1b0_0 
+  dpcpp-cpp-rt       conda_channel/linux-64::dpcpp-cpp-rt-2023.2.1-intel_16 
+  dpcpp_cpp_rt       conda_channel/linux-64::dpcpp_cpp_rt-2023.2.1-intel_16 
+  entrypoints        pkgs/main/linux-64::entrypoints-0.4-py39h06a4308_0 
+  executing          pkgs/main/noarch::executing-0.8.3-pyhd3eb1b0_0 
+  freetype           intel/linux-64::freetype-2.10.4-h8e2d9d6_0 
+  gitdb              pkgs/main/noarch::gitdb-4.0.7-pyhd3eb1b0_0 
+  gitpython          pkgs/main/linux-64::gitpython-3.1.30-py39h06a4308_0 
+  icc_rt             conda_channel/linux-64::icc_rt-2023.2.1-intel_16 
+  intel-cmplr-lib-rt conda_channel/linux-64::intel-cmplr-lib-rt-2023.2.1-intel_16 
+  intel-cmplr-lic-rt conda_channel/linux-64::intel-cmplr-lic-rt-2023.2.1-intel_16 
+  intel-opencl-rt    conda_channel/linux-64::intel-opencl-rt-2023.2.1-intel_16 
+  intel-openmp       conda_channel/linux-64::intel-openmp-2023.2.1-intel_16 
+  intelpython        conda_channel/linux-64::intelpython-2023.2.0-0 
+  ipykernel          pkgs/main/linux-64::ipykernel-6.25.0-py39h2f386ee_0 
+  ipython            pkgs/main/linux-64::ipython-8.12.2-py39h06a4308_0 
+  jedi               pkgs/main/linux-64::jedi-0.18.1-py39h06a4308_1 
+  jupyter_client     pkgs/main/noarch::jupyter_client-7.1.2-pyhd3eb1b0_0 
+  jupyter_core       pkgs/main/linux-64::jupyter_core-5.3.0-py39h06a4308_0 
+  kiwisolver         conda_channel/linux-64::kiwisolver-1.4.4-py39hf939315_1 
+  libffi             conda_channel/linux-64::libffi-3.4.2-h7f98852_5 
+  libgcc-ng          conda_channel/linux-64::libgcc-ng-12.2.0-h65d4601_19 
+  libgomp            conda_channel/linux-64::libgomp-12.2.0-h65d4601_19 
+  libnsl             conda_channel/linux-64::libnsl-2.0.0-h7f98852_0 
+  libpng             conda_channel/linux-64::libpng-1.6.39-h753d276_0 
+  libsodium          pkgs/main/linux-64::libsodium-1.0.18-h7b6447c_0 
+  libsqlite          conda_channel/linux-64::libsqlite-3.42.0-h2797004_0 
+  libstdcxx-ng       conda_channel/linux-64::libstdcxx-ng-13.1.0-hfd8a6a1_0 
+  libuuid            conda_channel/linux-64::libuuid-2.38.1-h0b41bf4_0 
+  libzlib            conda_channel/linux-64::libzlib-1.2.13-hd590300_5 
+  matplotlib         intel/linux-64::matplotlib-3.1.2-py39h1d9d6cc_11 
+  matplotlib-inline  pkgs/main/linux-64::matplotlib-inline-0.1.6-py39h06a4308_0 
+  mkl                conda_channel/linux-64::mkl-2023.2.0-intel_49495 
+  mkl-service        conda_channel/linux-64::mkl-service-2.4.0-py39hae59892_35 
+  mkl_fft            conda_channel/linux-64::mkl_fft-1.3.6-py39h173b8ae_56 
+  mkl_random         conda_channel/linux-64::mkl_random-1.2.2-py39h1595b48_76 
+  mkl_umath          conda_channel/linux-64::mkl_umath-0.1.1-py39hd987cd3_86 
+  ncurses            conda_channel/linux-64::ncurses-6.4-hcb278e6_0 
+  nest-asyncio       pkgs/main/linux-64::nest-asyncio-1.5.6-py39h06a4308_0 
+  numpy              conda_channel/linux-64::numpy-1.24.3-py39hed7eef7_0 
+  numpy-base         conda_channel/linux-64::numpy-base-1.24.3-py39he88ecf9_0 
+  openssl            conda_channel/linux-64::openssl-3.1.1-hd590300_1 
+  packaging          conda_channel/noarch::packaging-23.1-pyhd8ed1ab_0 
+  pandas             conda_channel/linux-64::pandas-2.0.3-py39h40cae4c_3 
+  parso              pkgs/main/noarch::parso-0.8.3-pyhd3eb1b0_0 
+  pexpect            pkgs/main/noarch::pexpect-4.8.0-pyhd3eb1b0_3 
+  pickleshare        pkgs/main/noarch::pickleshare-0.7.5-pyhd3eb1b0_1003 
+  pip                conda_channel/noarch::pip-23.1.2-pyhd8ed1ab_0 
+  platformdirs       conda_channel/noarch::platformdirs-3.6.0-pyhd8ed1ab_0 
+  prompt-toolkit     pkgs/main/linux-64::prompt-toolkit-3.0.36-py39h06a4308_0 
+  psutil             conda_channel/linux-64::psutil-5.9.5-py39h72bdee0_2 
+  ptyprocess         pkgs/main/noarch::ptyprocess-0.7.0-pyhd3eb1b0_2 
+  pure_eval          pkgs/main/noarch::pure_eval-0.2.2-pyhd3eb1b0_0 
+  pygments           pkgs/main/linux-64::pygments-2.15.1-py39h06a4308_1 
+  pyparsing          conda_channel/noarch::pyparsing-3.1.0-pyhd8ed1ab_0 
+  python             conda_channel/linux-64::python-3.9.16-hef7c979_23 
+  python-dateutil    conda_channel/noarch::python-dateutil-2.8.2-pyhd8ed1ab_0 
+  python-tzdata      conda_channel/linux-64::python-tzdata-2023.3-pyhd8ed1ab_1 
+  python_abi         conda_channel/linux-64::python_abi-3.9-2_cp39 
+  pytz               conda_channel/noarch::pytz-2023.3-pyhd8ed1ab_0 
+  pyzmq              pkgs/main/linux-64::pyzmq-25.1.0-py39h6a678d5_0 
+  readline           conda_channel/linux-64::readline-8.2-h8228510_1 
+  setuptools         conda_channel/noarch::setuptools-67.7.2-pyhd8ed1ab_0 
+  six                conda_channel/noarch::six-1.16.0-pyh6c4a22f_0 
+  smmap              pkgs/main/noarch::smmap-4.0.0-pyhd3eb1b0_0 
+  stack_data         pkgs/main/noarch::stack_data-0.2.0-pyhd3eb1b0_0 
+  tbb                conda_channel/linux-64::tbb-2021.10.0-intel_49541 
+  tbb4py             conda_channel/linux-64::tbb4py-2021.10.0-py39_intel_49541 
+  tcl                intel/linux-64::tcl-8.6.10-2 
+  tk                 conda_channel/linux-64::tk-8.6.12-h27826a3_0 
+  tornado            intel/linux-64::tornado-6.1-py39h27cfd23_0 
+  traitlets          pkgs/main/linux-64::traitlets-5.7.1-py39h06a4308_0 
+  typing-extensions  conda_channel/noarch::typing-extensions-4.6.3-hd8ed1ab_0 
+  typing_extensions  conda_channel/noarch::typing_extensions-4.6.3-pyha770c72_0 
+  tzdata             conda_channel/noarch::tzdata-2023c-h71feb2d_0 
+  wcwidth            conda_channel/noarch::wcwidth-0.2.6-pyhd8ed1ab_1 
+  wheel              conda_channel/noarch::wheel-0.40.0-pyhd8ed1ab_0 
+  xz                 conda_channel/linux-64::xz-5.2.6-h166bdaf_0 
+  zeromq             pkgs/main/linux-64::zeromq-4.3.4-h2531618_0 
+  zlib               conda_channel/linux-64::zlib-1.2.13-hd590300_5 
+
+
+Proceed ([y]/n)? 
+
+Downloading and Extracting Packages
+pygments-2.15.1      | 1.7 MB    |            |   0% 
+ipython-8.12.2       | 1.1 MB    |            |   0% [A
+
+parso-0.8.3          | 70 KB     |            |   0% [A[A
+
+
+matplotlib-inline-0. | 16 KB     |            |   0% [A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    |            |   0% [A[A[A[A
+
+
+
+
+decorator-5.0.9      | 12 KB     |            |   0% [A[A[A[A[A
+
+
+
+
+
+pure_eval-0.2.2      | 14 KB     |            |   0% [A[A[A[A[A[A
+
+
+
+
+
+
+gitdb-4.0.7          | 50 KB     |            |   0% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+backcall-0.2.0       | 13 KB     |            |   0% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+pickleshare-0.7.5    | 13 KB     |            |   0% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+comm-0.1.2           | 13 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+gitpython-3.1.30     | 267 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+nest-asyncio-1.5.6   | 14 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+executing-0.8.3      | 18 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+zeromq-4.3.4         | 331 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prompt-toolkit-3.0.3 | 574 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ptyprocess-0.7.0     | 17 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[Apygments-2.15.1      | 1.7 MB    | 3          |   4% 
+
+parso-0.8.3          | 70 KB     | ##2        |  23% [A[A
+ipython-8.12.2       | 1.1 MB    | 1          |   1% [Apygments-2.15.1      | 1.7 MB    | #4         |  14% 
+
+parso-0.8.3          | 70 KB     | ######8    |  68% [A[A
+
+
+matplotlib-inline-0. | 16 KB     | ########## | 100% [A[A[A
+
+
+matplotlib-inline-0. | 16 KB     | ########## | 100% [A[A[Apygments-2.15.1      | 1.7 MB    | ###4       |  35% 
+ipython-8.12.2       | 1.1 MB    | #          |  10% [A
+
+
+
+
+
+pure_eval-0.2.2      | 14 KB     | ########## | 100% [A[A[A[A[A[Apygments-2.15.1      | 1.7 MB    | #####4     |  55% 
+ipython-8.12.2       | 1.1 MB    | ##         |  20% [A
+
+parso-0.8.3          | 70 KB     | ########## | 100% [A[A
+
+
+
+
+
+
+gitdb-4.0.7          | 50 KB     | ###2       |  32% [A[A[A[A[A[A[A
+
+
+
+
+
+pure_eval-0.2.2      | 14 KB     | ########## | 100% [A[A[A[A[A[Apygments-2.15.1      | 1.7 MB    | #######    |  71% 
+ipython-8.12.2       | 1.1 MB    | ##7        |  27% [A
+
+
+
+
+
+
+
+backcall-0.2.0       | 13 KB     | ########## | 100% [A[A[A[A[A[A[A[Apygments-2.15.1      | 1.7 MB    | ########7  |  88% 
+ipython-8.12.2       | 1.1 MB    | ###5       |  36% [A
+
+
+
+
+
+
+
+
+pickleshare-0.7.5    | 13 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+comm-0.1.2           | 13 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+backcall-0.2.0       | 13 KB     | ########## | 100% [A[A[A[A[A[A[A[A
+ipython-8.12.2       | 1.1 MB    | ####4      |  44% [A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    |            |   1% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+gitdb-4.0.7          | 50 KB     | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+gitdb-4.0.7          | 50 KB     | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+gitpython-3.1.30     | 267 KB    | 5          |   6% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+pickleshare-0.7.5    | 13 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+comm-0.1.2           | 13 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A
+ipython-8.12.2       | 1.1 MB    | #####2     |  53% [A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | #3         |  14% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+gitpython-3.1.30     | 267 KB    | ##3        |  24% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | ##7        |  27% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+gitpython-3.1.30     | 267 KB    | #####9     |  60% [A[A[A[A[A[A[A[A[A[A[A[A
+ipython-8.12.2       | 1.1 MB    | ######1    |  61% [A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | ###8       |  39% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+gitpython-3.1.30     | 267 KB    | #########5 |  96% [A[A[A[A[A[A[A[A[A[A[A[A
+ipython-8.12.2       | 1.1 MB    | #######2   |  73% [A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | #####3     |  54% [A[A[A[A[A[A[A[A[A[A[A
+ipython-8.12.2       | 1.1 MB    | ########5  |  86% [A
+
+
+
+
+decorator-5.0.9      | 12 KB     | ########## | 100% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | ######5    |  65% [A[A[A[A[A[A[A[A[A[A[A
+ipython-8.12.2       | 1.1 MB    | #########5 |  96% [A
+
+
+
+
+
+
+
+
+
+
+
+
+
+nest-asyncio-1.5.6   | 14 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    |            |   0% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+executing-0.8.3      | 18 KB     | ########7  |  88% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+zeromq-4.3.4         | 331 KB    | 4          |   5% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | #######9   |  79% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+decorator-5.0.9      | 12 KB     | ########## | 100% [A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prompt-toolkit-3.0.3 | 574 KB    | 2          |   3% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+gitpython-3.1.30     | 267 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+zeromq-4.3.4         | 331 KB    | ##9        |  29% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | #########1 |  92% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prompt-toolkit-3.0.3 | 574 KB    | #6         |  17% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    |            |   1% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ptyprocess-0.7.0     | 17 KB     | #########3 |  94% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+nest-asyncio-1.5.6   | 14 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prompt-toolkit-3.0.3 | 574 KB    | #####      |  50% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+executing-0.8.3      | 18 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+executing-0.8.3      | 18 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prompt-toolkit-3.0.3 | 574 KB    | ########9  |  89% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    |            |   1% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+zeromq-4.3.4         | 331 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+zeromq-4.3.4         | 331 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ptyprocess-0.7.0     | 17 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ptyprocess-0.7.0     | 17 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    |            |   1% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | 2          |   2% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | 4          |   5% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 1          |   1% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | 9          |  10% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 1          |   1% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | #4         |  15% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | #9         |  20% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 1          |   1% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ##4        |  25% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 1          |   2% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ###2       |  32% [A[A[A[A[A[A[A[A[A[A[A[A[Apygments-2.15.1      | 1.7 MB    | ########## | 100% 
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ###7       |  37% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 2          |   2% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ####7      |  47% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 2          |   3% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | #####4     |  54% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 2          |   3% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ######1    |  62% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 3          |   3% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ######9    |  69% [A[A[A[A[A[A[A[A[A[A[A[A[A
+ipython-8.12.2       | 1.1 MB    | ########## | 100% [A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 3          |   4% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | #######9   |  79% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 4          |   4% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ########9  |  89% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 4          |   5% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | #########9 |  99% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 4          |   5% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 5          |   6% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 5          |   6% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prompt-toolkit-3.0.3 | 574 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 6          |   7% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+debugpy-1.6.7        | 2.0 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 7          |   7% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 7          |   8% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 8          |   8% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | 9          |   9% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #          |  10% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #          |  11% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #1         |  12% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #2         |  12% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #3         |  13% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #4         |  14% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #5         |  15% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #6         |  16% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #7         |  17% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #8         |  18% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #9         |  19% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##         |  20% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##1        |  21% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+tornado-6.1          | 646 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##2        |  23% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##3        |  24% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##4        |  25% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##6        |  26% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##7        |  27% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ##8        |  29% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ###        |  30% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ###1       |  32% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ###3       |  33% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ###4       |  35% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ###6       |  36% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ###7       |  37% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ###9       |  39% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ####       |  41% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ####2      |  42% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ####3      |  44% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ####5      |  46% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ####7      |  48% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ####9      |  49% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #####1     |  52% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #####4     |  54% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #####6     |  56% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #####9     |  59% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ######1    |  62% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ######4    |  65% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ######8    |  68% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #######1   |  71% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #######4   |  75% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #######7   |  78% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ########   |  81% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ########4  |  85% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ########7  |  87% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #########1 |  92% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #########4 |  95% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | #########8 |  99% [A[A[A[A
+
+
+
+matplotlib-3.1.2     | 8.5 MB    | ########## | 100% [A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A                                                     
+                                                     [A
+
+                                                     [A[A
+
+
+                                                     [A[A[A
+
+
+
+                                                     [A[A[A[A
+
+
+
+
+                                                     [A[A[A[A[A
+
+
+
+
+
+                                                     [A[A[A[A[A[A
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+[A
+
+[A[A
+
+
+[A[A[A
+
+
+
+[A[A[A[A
+
+
+
+
+[A[A[A[A[A
+
+
+
+
+
+[A[A[A[A[A[A
+
+
+
+
+
+
+[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate stock-tensorflow
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+########################################################################
+# End of output for job 2369797.v-qsvr-1.aidevcloud
+# Date: Sat 09 Sep 2023 07:04:27 AM PDT
+########################################################################
+

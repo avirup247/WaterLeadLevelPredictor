@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "PLEASE 'module unload hipSYCL' before using dpcpp - so the paths/includes/libraries are correct"

@@ -1,0 +1,1382 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>html, body {
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer
+}
+
+h1, h2, h3, h4, h5, h6 {
+    cursor: inherit !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    background-color: white;
+    padding: 2rem 4rem 2rem 4rem;
+}
+
+@media screen and (min-width: 56rem) {
+    html, body {
+        height: 100%;
+    }
+
+    main {
+        box-shadow: 10px 0px 10px -8px rgba(0,0,0,0.1);
+    }
+
+    .combined-document main {
+        margin: 0 0 0 320px;
+        max-width: 1000px;
+        min-height: 100%;
+    }
+
+    .single-document main {
+        margin: 0 auto;
+        width: 1000px;
+    }
+}
+
+article header h1 {
+    font-size: 1.7em;
+}
+
+article#title header h1 {
+    font-size: 2.6rem;
+}
+
+article {
+    padding: 2rem 0 1rem 0;
+    position: relative;
+}
+
+article header a h1 {
+    cursor: pointer;
+}
+
+article div.page-counter {
+    display: block;
+    text-align: right;
+    width: auto;
+    height: auto;
+    color: #666;
+    font-size: .8rem;
+    padding: .2rem .5rem .2rem .5rem;
+    margin-top: 4rem;
+}
+
+article:not(#title):not(:last-of-type) {
+    border-bottom: #efefef 1px solid;
+}
+
+article#title img {
+    width: 160px;
+}
+
+article#title nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+article#title nav > ul > li a {
+    opacity: .9;
+    text-decoration: none;
+}
+
+article#title nav li > a:hover,
+article#title nav li.selected > a {
+    opacity: 1;
+    font-weight: bold;
+}
+
+article#title nav > ul > li a {
+    display: block;
+    padding: .3rem;
+    cursor: pointer;
+}
+
+article#title nav > ul > li > a { padding-left: 0rem; padding-right: 0rem; }
+article#title nav > ul > li > ul > li > a { padding-left: 1rem; padding-right: 1rem; }
+article#title nav > ul > li > ul > li > ul > li > a { padding-left: 2rem; padding-right: 2rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > a { padding-left: 3rem; padding-right: 3rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 4rem; padding-right: 4rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 5rem; padding-right: 5rem; }
+
+@media screen and (min-width: 56rem) {
+    .combined-document article#title {
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: 0;
+        top: 0;
+        overflow: auto;
+    }
+
+    .combined-document article#title header img {
+        width: 100px;
+    }
+
+    .combined-document article#title header h1 {
+        font-size: 1.2rem;
+    }
+
+    .combined-document article#title > header > div {
+        display: block;
+        width: 100%;
+        padding: 0 2rem 1rem 2rem;
+        border-bottom: #bbb 1px solid;
+    }
+
+    .combined-document article#title nav {
+        padding: 2rem 2rem 0 2rem;
+        opacity: .6;
+        transition: .3s all;
+        font-size: .8rem;
+    }
+
+    .combined-document article#title nav h1 {
+        display: none;
+    }
+
+    .combined-document article#title nav:hover {
+        opacity: 1;
+    }
+}
+
+#copyright {
+    font-size: 12px;
+    color: #ccc;
+    padding: 1rem 0 1rem 0;
+    margin-top: 1rem;
+}
+
+
+
+pre {
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+hr,img,legend {
+    border:0;
+}
+
+blockquote,h6 {
+    color:#777;
+}
+
+a,h3,h4,h5,tt {
+    color:#333;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+    display:block;
+}
+
+a {
+    background:0 0;
+}
+
+a:focus {
+    outline:dotted thin;
+}
+
+a:active,a:hover {
+    outline:0;
+}
+
+abbr[title] {
+    border-bottom:1px dotted;
+}
+
+hr {
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    background:url('data:image/png; base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC') repeat-x;
+    color:#ccc;
+    height:4px;
+    padding:0;
+}
+
+mark {
+    background:#ff0;
+}
+
+kbd,samp {
+    font-family:monospace,serif;
+    font-size:1em;
+}
+
+q {
+    quotes:\201C \201D \2018 \2019;
+}
+
+small {
+    font-size:80%;
+}
+
+sup {
+    top:-.5em;
+}
+
+sub {
+    bottom:-.25em;
+    vertical-align:sub;
+    top:-1px;
+}
+
+img {
+    max-width:100%;
+}
+
+svg:not(:root) {
+    overflow:hidden;
+}
+
+figure {
+    margin:0;
+}
+
+dl dt,h1,h2,h3,h4,h5,h6 {
+    font-weight:700;
+    padding:0;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    cursor:text;
+    margin:20px 0 10px;
+}
+
+article:not(#title) h1,
+article:not(#title) h2,
+article:not(#title) h3,
+article:not(#title) h4,
+article:not(#title) h5 {
+    padding: 1rem 0 1rem 0;
+}
+
+dl dt,h5,h6 {
+    font-size:14px;
+}
+
+blockquote,p,table {
+    margin:15px 0;
+}
+
+ol,ul {
+    padding-left:30px;
+}
+
+blockquote>:first-child,dl dd>:first-child,dl dt>:first-child,h1+p,h2+p,h3+p,h4+p,h5+p,h6+p,ol li ul:first-of-type,ol li>:first-child,ul li>:first-child {
+    margin-top:0;
+}
+
+a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6,body>h1:first-child,body>h1:first-child+h2,body>h2:first-child,body>h3:first-child,body>h4:first-child,body>h5:first-child,body>h6:first-child {
+    margin-top:0;
+    padding-top:0;
+}
+
+table td,table th {
+    border:1px solid #ccc;
+    padding:6px 13px;
+}
+
+dl dt {
+    font-style:italic;
+    margin:15px 0 5px;
+}
+
+blockquote>:last-child,dl dd>:last-child,dl dt>:last-child {
+    margin-bottom:0;
+}
+
+dl dd {
+    margin:0 0 15px;
+    padding:0 15px;
+}
+
+blockquote {
+    border-left:4px solid #DDD;
+    padding:0 15px;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    font:inherit;
+    width: 100%;
+}
+
+table tr {
+    border-top:1px solid #ccc;
+    background-color:#fff;
+}
+
+a.footnote,sub,sup {
+    font-size:1.4ex;
+    height:0;
+    line-height:1;
+    vertical-align:super;
+    position:relative;
+}
+
+
+/**
+ * Tables
+ */
+table thead tr {
+    background-color: #111111;
+    color: #efefef;
+}
+
+table th:empty {
+    display: none;
+}
+
+table th,
+table td {
+    padding: 1rem;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #efefef;
+}
+
+/**
+ * General
+ */
+p a {
+    font-weight: bold;
+}
+
+
+span.citation {
+    font-weight: bold;
+    vertical-align: super;
+}
+
+
+.highlight { background-color: #111; color: #efefef; padding: 1rem; }
+.highlight .hll { background-color: #222; font-size: 8px; }
+.highlight .c { color: #75715e } /* Comment */
+.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
+.highlight .k { color: #66d9ef } /* Keyword */
+.highlight .l { color: #ae81ff } /* Literal */
+.highlight .n { color: #f8f8f2 } /* Name */
+.highlight .o { color: #f92672 } /* Operator */
+.highlight .p { color: #f8f8f2 } /* Punctuation */
+.highlight .cm { color: #75715e } /* Comment.Multiline */
+.highlight .cp { color: #75715e } /* Comment.Preproc */
+.highlight .c1 { color: #75715e } /* Comment.Single */
+.highlight .cs { color: #75715e } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .kc { color: #66d9ef } /* Keyword.Constant */
+.highlight .kd { color: #66d9ef } /* Keyword.Declaration */
+.highlight .kn { color: #f92672 } /* Keyword.Namespace */
+.highlight .kp { color: #66d9ef } /* Keyword.Pseudo */
+.highlight .kr { color: #66d9ef } /* Keyword.Reserved */
+.highlight .kt { color: #66d9ef } /* Keyword.Type */
+.highlight .ld { color: #e6db74 } /* Literal.Date */
+.highlight .m { color: #ae81ff } /* Literal.Number */
+.highlight .s { color: #e6db74 } /* Literal.String */
+.highlight .na { color: #a6e22e } /* Name.Attribute */
+.highlight .nb { color: #f8f8f2 } /* Name.Builtin */
+.highlight .nc { color: #a6e22e } /* Name.Class */
+.highlight .no { color: #66d9ef } /* Name.Constant */
+.highlight .nd { color: #a6e22e } /* Name.Decorator */
+.highlight .ni { color: #f8f8f2 } /* Name.Entity */
+.highlight .ne { color: #a6e22e } /* Name.Exception */
+.highlight .nf { color: #a6e22e } /* Name.Function */
+.highlight .nl { color: #f8f8f2 } /* Name.Label */
+.highlight .nn { color: #f8f8f2 } /* Name.Namespace */
+.highlight .nx { color: #a6e22e } /* Name.Other */
+.highlight .py { color: #f8f8f2 } /* Name.Property */
+.highlight .nt { color: #f92672 } /* Name.Tag */
+.highlight .nv { color: #f8f8f2 } /* Name.Variable */
+.highlight .ow { color: #f92672 } /* Operator.Word */
+.highlight .w { color: #f8f8f2 } /* Text.Whitespace */
+.highlight .mf { color: #ae81ff } /* Literal.Number.Float */
+.highlight .mh { color: #ae81ff } /* Literal.Number.Hex */
+.highlight .mi { color: #ae81ff } /* Literal.Number.Integer */
+.highlight .mo { color: #ae81ff } /* Literal.Number.Oct */
+.highlight .sb { color: #e6db74 } /* Literal.String.Backtick */
+.highlight .sc { color: #e6db74 } /* Literal.String.Char */
+.highlight .sd { color: #e6db74 } /* Literal.String.Doc */
+.highlight .s2 { color: #e6db74 } /* Literal.String.Double */
+.highlight .se { color: #ae81ff } /* Literal.String.Escape */
+.highlight .sh { color: #e6db74 } /* Literal.String.Heredoc */
+.highlight .si { color: #e6db74 } /* Literal.String.Interpol */
+.highlight .sx { color: #e6db74 } /* Literal.String.Other */
+.highlight .sr { color: #e6db74 } /* Literal.String.Regex */
+.highlight .s1 { color: #e6db74 } /* Literal.String.Single */
+.highlight .ss { color: #e6db74 } /* Literal.String.Symbol */
+.highlight .bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #f8f8f2 } /* Name.Variable.Class */
+.highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
+.highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
+.highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+.highlight .gh { } /* Generic Heading & Diff Header */
+.highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
+.highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
+.highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */"</style>
+<title>Release Notes</title>
+<meta charset="utf-8"/>
+</head>
+<body class="single-document">
+<main>
+<article id="title">
+<header>
+<div>
+<a href="https://www.codeplay.com" id="logo" style="width: 160px; height: 46px; display: block; " target="_blank">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMi4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTG9nbyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzNzkuNSAxMTAuNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzc5LjUgMTEwLjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiNBQkQzRjE7fQ0KCS5zdDF7ZmlsbDojOTYzNTk0O30NCgkuc3Qye2ZpbGw6IzVCMUQ1Nzt9DQoJLnN0M3tmaWxsOnVybCgjU1ZHSURfMV8pO30NCgkuc3Q0e2ZpbGw6dXJsKCNTVkdJRF8yXyk7fQ0KCS5zdDV7ZmlsbDp1cmwoI1NWR0lEXzNfKTt9DQoJLnN0NntmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fQ0KCS5zdDd7ZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7fQ0KCS5zdDh7b3BhY2l0eTowLjczO30NCjwvc3R5bGU+DQo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNTYuNSw0MGMwLDE1LjYtMTIuNywyOC4zLTI4LjUsMjguM1YxMS43QzQzLjgsMTEuNyw1Ni41LDI0LjQsNTYuNSw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0wLDQwYzAtMTUuNiwxMi42LTI4LjMsMjgtMjguM3Y1Ni42QzEyLjYsNjguMywwLDU1LjYsMCw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0yOC4xLDYyYy0xMi4xLDAtMjItOS44LTIyLTIyczkuOC0yMiwyMi0yMlY2MnoiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzkuMDI4OSIgeTE9IjYxLjk4MjEiIHgyPSIzOS4wMjg5IiB5Mj0iMTguMDY1NCI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzlGQ0VFRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM1M0IyRTUiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3QzIiBkPSJNNTAsNDBjMCwxMi4xLTkuOCwyMi0yMiwyMlYxOC4xQzQwLjIsMTguMSw1MCwyNy45LDUwLDQweiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8yXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyMS4yMzIzIiB5MT0iMTguMDkxNyIgeDI9IjIxLjIzMjMiIHkyPSI2MS45ODIxIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojQzJFOEY4Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI0QUJFMiIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik0yOCw2MmMtNy41LDAtMTMuNi05LjgtMTMuNi0yMlMyMC41LDE4LjEsMjgsMTguMVY2MnoiLz4NCjxyYWRpYWxHcmFkaWVudCBpZD0iU1ZHSURfM18iIGN4PSIzMC43NDc3IiBjeT0iMzQuODU3MSIgcj0iMTMuMTc4NCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KCTxzdG9wICBvZmZzZXQ9IjAuMTM5OSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRkZGRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkYyMDAiLz4NCjwvcmFkaWFsR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMjguMywyNC43Yy0wLjQsMC0wLjcsMC4xLTEsMC4yYy01LDAuNi05LDcuMi05LDE1LjJjMCw4LjQsNC40LDE1LjMsOS44LDE1LjN2MGMwLjEsMC0wLjEsMCwwLDANCgljOC41LDAsMTUuNS02LjksMTUuNS0xNS4zUzM2LjcsMjQuNywyOC4zLDI0Ljd6Ii8+DQo8Zz4NCgk8cGF0aCBkPSJNMTAwLjEsMjYuM2wtMy43LDYuNGMtMi0xLjktNC43LTIuOC04LjEtMi44Yy0zLjIsMC01LjgsMS4xLTcuNywzLjJzLTIuOCw1LjEtMi44LDguOWMwLDcuNywzLjcsMTEuNSwxMSwxMS41DQoJCWMzLjIsMCw1LjktMSw4LjQtMy4xbDMuMSw2LjdjLTIuNSwxLjUtNC42LDIuNS02LjUsMi45cy00LDAuNi02LjYsMC42Yy01LjYsMC0xMC4xLTEuNi0xMy40LTQuOXMtNC45LTcuOS00LjktMTMuNw0KCQljMC01LjgsMS44LTEwLjQsNS40LTE0YzMuNi0zLjUsOC40LTUuMywxNC42LTUuM0M5My4zLDIyLjcsOTcsMjMuOSwxMDAuMSwyNi4zeiIvPg0KCTxwYXRoIGQ9Ik0xMDQuOCw0MS42YzAtNS42LDEuNi0xMC4xLDQuOC0xMy42YzMuMi0zLjUsNy41LTUuMywxMi43LTUuM2M1LjYsMCw5LjksMS43LDEyLjksNS4xczQuNiw4LDQuNiwxMy44DQoJCWMwLDUuOC0xLjYsMTAuNS00LjcsMTMuOXMtNy40LDUuMi0xMi44LDUuMmMtNS42LDAtOS45LTEuNy0xMy01LjJDMTA2LjQsNTIsMTA0LjgsNDcuMywxMDQuOCw0MS42eiBNMTEzLjcsNDEuNg0KCQljMCw4LjEsMi45LDEyLjEsOC43LDEyLjFjMi43LDAsNC44LTEsNi4zLTMuMWMxLjYtMi4xLDIuMy01LjEsMi4zLTguOWMwLTcuOS0yLjktMTEuOS04LjctMTEuOWMtMi43LDAtNC44LDEtNi4zLDMuMQ0KCQlDMTE0LjUsMzQuOSwxMTMuNywzNy44LDExMy43LDQxLjZ6Ii8+DQoJPHBhdGggZD0iTTE3MC4zLDU5Ljl2LTIuMmMtMC43LDAuOC0xLjksMS41LTMuNiwyYy0xLjcsMC42LTMuNCwwLjktNS4yLDAuOWMtNS4xLDAtOS4xLTEuNi0xMi00LjhjLTIuOS0zLjItNC40LTcuNy00LjQtMTMuNQ0KCQlzMS43LTEwLjUsNS0xNC4xYzMuNC0zLjYsNy42LTUuNCwxMi42LTUuNGMyLjgsMCw1LjMsMC42LDcuNiwxLjdWOS44bDguNS0ydjUyLjJIMTcwLjN6IE0xNzAuMywzMi4xYy0xLjgtMS41LTMuNy0yLjItNS43LTIuMg0KCQljLTMuNCwwLTYsMS03LjksMy4xcy0yLjgsNS4xLTIuOCw5YzAsNy42LDMuNywxMS40LDExLDExLjRjMC44LDAsMS44LTAuMiwzLTAuN2MxLjItMC41LDItMSwyLjMtMS41VjMyLjF6Ii8+DQoJPHBhdGggZD0iTTIyMCw0NC4zaC0yNi4xYzAuMiwyLjksMS4yLDUuMiwzLDYuOGMxLjgsMS42LDQuMywyLjQsNy40LDIuNGMzLjksMCw2LjgtMSw4LjktM2wzLjMsNi41Yy0zLDIuNC03LjUsMy43LTEzLjQsMy43DQoJCWMtNS42LDAtMTAtMS42LTEzLjItNC45Yy0zLjItMy4zLTQuOS03LjgtNC45LTEzLjdjMC01LjgsMS44LTEwLjQsNS4zLTE0YzMuNi0zLjYsNy44LTUuNCwxMi44LTUuNGM1LjMsMCw5LjYsMS42LDEyLjgsNC43DQoJCWMzLjIsMy4yLDQuOCw3LjIsNC44LDEyLjFDMjIwLjcsNDAuNiwyMjAuNSw0Mi4yLDIyMCw0NC4zeiBNMTk0LjIsMzcuOWgxOGMtMC42LTUuMy0zLjUtOC04LjktOEMxOTguNCwyOS44LDE5NS40LDMyLjUsMTk0LjIsMzcuOQ0KCQl6Ii8+DQoJPHBhdGggZD0iTTIzNS40LDU5djE1LjNoLTguNVYyMy40aDguNXYyLjVjMi4xLTIuMSw0LjgtMy4xLDcuOS0zLjFjMTEuNiwwLDE3LjUsNi40LDE3LjUsMTkuMmMwLDYtMS42LDEwLjYtNC44LDEzLjgNCgkJYy0zLjIsMy4yLTcuNiw0LjgtMTMuMiw0LjhDMjQwLDYwLjYsMjM3LjYsNjAuMSwyMzUuNCw1OXogTTIzNS40LDMyLjN2MTkuMmMxLjUsMS4zLDMuNCwxLjksNS40LDEuOWMzLjksMCw2LjgtMC45LDguNS0yLjgNCgkJYzEuNy0xLjksMi42LTQuOCwyLjYtOC45YzAtNC4zLTAuOS03LjQtMi42LTkuMWMtMS43LTEuOC00LjUtMi42LTguNS0yLjZDMjM4LjgsMjkuOSwyMzcsMzAuNywyMzUuNCwzMi4zeiIvPg0KCTxwYXRoIGQ9Ik0yNjkuNyw5LjhsOC41LTJ2NDEuMWMwLDQuNSwxLjMsNy4yLDQsOC4xYy0xLjMsMi41LTMuNiwzLjgtNi44LDMuOGMtMy45LDAtNS44LTIuNy01LjgtOC4xVjkuOHoiLz4NCgk8cGF0aCBkPSJNMzA5LjIsNTYuM2MtMC44LDEuMy0yLjEsMi4zLTQsMy4xYy0xLjksMC44LTMuOSwxLjItNiwxLjJjLTMuOSwwLTctMS05LjMtM2MtMi4zLTItMy40LTQuOC0zLjQtOC40DQoJCWMwLTQuMiwxLjYtNy41LDQuOC05LjlzNy43LTMuNiwxMy41LTMuNmMxLDAsMi4yLDAuMiwzLjUsMC41YzAtNC4zLTIuNy02LjUtOC4yLTYuNWMtMy4yLDAtNS45LDAuNS04LjEsMS42bC0xLjgtNi42DQoJCWMyLjktMS40LDYuNC0yLjEsMTAuNS0yLjFjNS42LDAsOS43LDEuMywxMi4zLDMuOGMyLjYsMi41LDMuOSw3LjMsMy45LDE0LjR2Ny44YzAsNC45LDEsNy45LDIuOSw5LjJjLTAuNywxLjItMS41LDItMi40LDIuMw0KCQljLTAuOSwwLjMtMS45LDAuNC0zLDAuNGMtMS4yLDAtMi4zLTAuNS0zLjMtMS40UzMwOS41LDU3LjQsMzA5LjIsNTYuM3ogTTMwOC40LDQyLjdjLTEuNS0wLjMtMi41LTAuNC0zLjMtMC40DQoJCWMtNi43LDAtMTAuMSwyLjItMTAuMSw2LjZjMCwzLjMsMS45LDQuOSw1LjcsNC45YzUuMSwwLDcuNy0yLjYsNy43LTcuN1Y0Mi43eiIvPg0KCTxwYXRoIGQ9Ik0zNDIuMyw2NS44Yy0wLjksMi40LTIuOSw0LjUtNS45LDYuMWMtMywxLjYtNi41LDIuNC0xMC41LDIuNHYtNy41YzYuNiwwLDkuOS0xLjcsOS45LTQuOWMwLTIuMi0wLjktNS41LTIuNy0xMA0KCQlsLTExLjQtMjguNGg4LjhsMTAsMjUuM2w5LTI1LjNoOC44TDM0Mi4zLDY1Ljh6Ii8+DQo8L2c+DQo8ZyBpZD0iSGFuZCI+DQoJPGNpcmNsZSBjbGFzcz0ic3Q2IiBjeD0iMzcyLjQiIGN5PSIxNi4zIiByPSI2LjYiLz4NCgk8cGF0aCBjbGFzcz0ic3Q3IiBkPSJNMzc0LjIsMTkuMmMwLDAsMC45LTAuNywxLjEtMC44YzAsMCwwLjktMC41LDAuOS0wLjZjMCwwLDAuNS0wLjIsMC4yLTAuNmMwLDAtMC41LTAuNS0xLjQsMC4zDQoJCWMwLDAtMC4yLDAuMi0wLjMsMC4yYzAsMC0wLjgsMC42LTAuOSwwLjVjMCwwLTAuMy0wLjUsMC0wLjljMCwwLDAuNC0wLjYsMC40LTAuN2MwLDAsMC4xLTAuMiwwLjMtMC4zYzAsMCwwLjQtMC41LDAuNS0wLjYNCgkJYzAsMCwwLjYtMC44LDAuNi0wLjljMCwwLDAuMS0wLjIsMC4yLTAuM2MwLDAsMC42LTAuOSwwLjMtMS4xYzAsMC0wLjMtMC41LTAuOCwwLjNsLTAuMiwwLjNjMCwwLTAuMiwwLjMtMC4zLDAuNA0KCQljMCwwLTAuNCwwLjQtMC41LDAuNmMwLDAtMC41LDAuNS0wLjYsMC43YzAsMC0wLjIsMC4yLTAuMywwLjJjMCwwLTAuMiwwLjEsMC4xLTAuM2MwLDAsMC41LTAuOCwwLjUtMC45YzAsMCwwLjYtMSwwLjUtMS4xDQoJCWMwLDAsMC40LTAuOCwwLjQtMC44YzAsMCwwLjMtMC41LTAuMi0wLjdjMCwwLTAuNCwwLTAuNiwwLjZjMCwwLTAuNCwwLjctMC40LDAuN2MwLDAtMC41LDAuNy0wLjUsMC44YzAsMC0wLjcsMS0wLjgsMS4yDQoJCWMwLDAtMC4zLDAuMi0wLjEtMC4zYzAsMCwwLjItMC42LDAuMi0wLjljMCwwLDAuMy0wLjcsMC4yLTAuOGMwLDAsMC4yLTAuMiwwLjItMC40YzAsMCwwLjYtMC44LDAuMi0xYzAsMC0wLjMtMC4zLTAuNywwLjMNCgkJYzAsMC0wLjMsMC41LTAuMywwLjdjMCwwLTAuNiwxLTAuNiwxLjJjMCwwLTAuNCwxLjItMC41LDEuMmMwLDAtMC40LDAuMS0wLjMtMC4zYzAsMCwwLTAuMywwLTAuNWMwLDAsMC0wLjYsMC0wLjgNCgkJYzAsMCwwLTAuNCwwLjEtMC42YzAsMCwwLjItMC44LTAuMS0wLjljMCwwLTAuNS0wLjItMC42LDEuMWMwLDAtMC4xLDAuOC0wLjEsMWMwLDAtMC4xLDEuMS0wLjEsMS4zYzAsMC0wLjUsMS43LTAuNiwxLjcNCgkJYzAsMC0wLjEsMC44LTAuMSwxLjRjMCwwLDAuMSwwLjgsMSwxLjFsMC41LDAuNGMwLDAsMC45LDAuNCwxLjQsMC4xQzM3MS44LDIwLjUsMzczLjQsMjAsMzc0LjIsMTkuMnoiLz4NCjwvZz4NCjxnIGNsYXNzPSJzdDgiPg0KCTxwYXRoIGQ9Ik03NC45LDk4LjNjLTAuMiwxLjktMC45LDMuMy0yLDQuM2MtMS4xLDEtMi42LDEuNS00LjUsMS41Yy0xLjMsMC0yLjUtMC4zLTMuNS0xYy0xLTAuNy0xLjgtMS42LTIuMy0yLjgNCgkJYy0wLjYtMS4yLTAuOC0yLjYtMC44LTQuMXYtMi4zYzAtMS42LDAuMy0zLDAuOC00LjJjMC42LTEuMiwxLjMtMi4yLDIuNC0yLjhjMS0wLjcsMi4yLTEsMy42LTFjMS45LDAsMy40LDAuNSw0LjUsMS41DQoJCWMxLjEsMSwxLjcsMi40LDEuOSw0LjNoLTEuNWMtMC40LTMtMi00LjUtNC45LTQuNWMtMS42LDAtMi45LDAuNi0zLjksMS44Yy0xLDEuMi0xLjQsMi45LTEuNCw1Vjk2YzAsMi4xLDAuNSwzLjcsMS40LDQuOQ0KCQljMC45LDEuMiwyLjIsMS44LDMuOCwxLjhjMS42LDAsMi44LTAuNCwzLjYtMS4xYzAuOC0wLjgsMS4zLTEuOSwxLjUtMy40SDc0Ljl6Ii8+DQoJPHBhdGggZD0iTTc3LjUsOTdjMC0xLjMsMC4yLTIuNCwwLjctMy40YzAuNS0xLDEuMi0xLjgsMi4xLTIuNGMwLjktMC42LDEuOS0wLjgsMy4xLTAuOGMxLjgsMCwzLjIsMC42LDQuMywxLjgNCgkJYzEuMSwxLjIsMS42LDIuOSwxLjYsNC45djAuM2MwLDEuMy0wLjIsMi40LTAuNywzLjRjLTAuNSwxLTEuMiwxLjgtMi4xLDIuNGMtMC45LDAuNi0xLjksMC44LTMuMSwwLjhjLTEuOCwwLTMuMi0wLjYtNC4zLTEuOA0KCQljLTEuMS0xLjItMS42LTIuOS0xLjYtNC45Vjk3eiBNNzguOSw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTQNCgkJVjk3YzAtMS0wLjItMS45LTAuNi0yLjhjLTAuNC0wLjgtMC45LTEuNS0xLjYtMS45Yy0wLjctMC41LTEuNC0wLjctMi4zLTAuN2MtMS4zLDAtMi40LDAuNS0zLjIsMS41Yy0wLjgsMS0xLjIsMi40LTEuMiw0Vjk3LjR6Ii8+DQoJPHBhdGggZD0iTTkzLjYsOTAuNmwwLDIuM2MwLjUtMC44LDEuMS0xLjQsMS45LTEuOWMwLjctMC40LDEuNi0wLjYsMi41LTAuNmMxLjQsMCwyLjUsMC40LDMuMiwxLjJjMC43LDAuOCwxLDIsMSwzLjZ2OC43aC0xLjV2LTguNw0KCQljMC0xLjItMC4zLTIuMS0wLjgtMi42Yy0wLjUtMC42LTEuMy0wLjktMi40LTAuOWMtMC45LDAtMS43LDAuMy0yLjQsMC44Yy0wLjcsMC42LTEuMiwxLjMtMS41LDIuM3Y5aC0xLjVWOTAuNkg5My42eiIvPg0KCTxwYXRoIGQ9Ik0xMDcuNCw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjlIMTA2VjkwLjZIMTA3LjR6Ii8+DQoJPHBhdGggZD0iTTEyNC44LDEwNC4xYy0xLjEsMC0yLjEtMC4zLTMtMC44Yy0wLjktMC42LTEuNi0xLjMtMi4xLTIuM2MtMC41LTEtMC44LTIuMS0wLjgtMy4zdi0wLjVjMC0xLjMsMC4yLTIuNCwwLjctMy40DQoJCWMwLjUtMSwxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjgtMC45LDIuOS0wLjljMS42LDAsMi45LDAuNSwzLjgsMS42YzAuOSwxLjEsMS40LDIuNiwxLjQsNC41djAuOGgtOS40djAuMw0KCQljMCwxLjUsMC40LDIuNywxLjMsMy43YzAuOSwxLDEuOSwxLjUsMy4yLDEuNWMwLjgsMCwxLjUtMC4xLDIuMS0wLjRjMC42LTAuMywxLjEtMC43LDEuNi0xLjRsMC45LDAuNw0KCQlDMTI4LjQsMTAzLjMsMTI2LjksMTA0LjEsMTI0LjgsMTA0LjF6IE0xMjQuNiw5MS42Yy0xLjEsMC0yLDAuNC0yLjgsMS4yYy0wLjgsMC44LTEuMiwxLjktMS40LDMuMmg3Ljl2LTAuMmMwLTEuMy0wLjQtMi4zLTEuMS0zLjENCgkJUzEyNS43LDkxLjYsMTI0LjYsOTEuNnoiLz4NCgk8cGF0aCBkPSJNMTM3LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41YzAuNS0xLDEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNWMtMC43LTAuNi0xLjUtMS0yLjYtMQ0KCQljLTEuMywwLTIuMywwLjUtMy4xLDEuNGMtMC43LDEtMS4xLDIuMy0xLjEsNHYwLjRjMCwxLjcsMC40LDMsMS4xLDMuOUMxMzUuMiwxMDIuNCwxMzYuMiwxMDIuOCwxMzcuNSwxMDIuOHoiLz4NCgk8cGF0aCBkPSJNMTQ3LjgsODcuMnYzLjRoMi43djEuMmgtMi43djguOGMwLDAuNywwLjEsMS4zLDAuNCwxLjZjMC4zLDAuNCwwLjcsMC41LDEuMywwLjVjMC4yLDAsMC42LDAsMS4yLTAuMWwwLjEsMS4yDQoJCWMtMC40LDAuMS0wLjksMC4yLTEuNiwwLjJjLTEsMC0xLjctMC4zLTIuMi0wLjljLTAuNS0wLjYtMC43LTEuNC0wLjctMi42di04LjhoLTIuNHYtMS4yaDIuNHYtMy40SDE0Ny44eiIvPg0KCTxwYXRoIGQ9Ik0xNTMuNSw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN2MwLjItMC4yLDAuNC0wLjMsMC43LTAuM2MwLjMsMCwwLjYsMC4xLDAuNywwLjNjMC4yLDAuMiwwLjMsMC40LDAuMywwLjcNCgkJYzAsMC4zLTAuMSwwLjUtMC4zLDAuN2MtMC4yLDAuMi0wLjQsMC4zLTAuNywwLjNjLTAuMywwLTAuNi0wLjEtMC43LTAuM0MxNTMuNiw4Ny4zLDE1My41LDg3LjEsMTUzLjUsODYuOHogTTE1NS4yLDEwMy44aC0xLjUNCgkJVjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0xNjAuNSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjloLTEuNVY5MC42SDE2MC41eiIvPg0KCTxwYXRoIGQ9Ik0xNzIuMyw5Ny4xYzAtMi4xLDAuNS0zLjcsMS40LTQuOWMwLjktMS4yLDIuMi0xLjgsMy43LTEuOGMxLjgsMCwzLjIsMC43LDQuMSwyLjFsMC4xLTEuOWgxLjR2MTIuOWMwLDEuNy0wLjUsMy0xLjQsNA0KCQlzLTIuMiwxLjUtMy45LDEuNWMtMC45LDAtMS44LTAuMi0yLjYtMC42Yy0wLjgtMC40LTEuNS0xLTItMS42bDAuOC0wLjljMSwxLjMsMi4zLDEuOSwzLjcsMS45YzEuMiwwLDIuMi0wLjQsMi45LTEuMQ0KCQljMC43LTAuNywxLTEuNywxLjEtM3YtMS43Yy0wLjksMS4zLTIuMywyLTQuMSwyYy0xLjUsMC0yLjgtMC42LTMuNy0xLjhzLTEuNC0yLjktMS40LTQuOVY5Ny4xeiBNMTczLjgsOTcuM2MwLDEuNywwLjMsMywxLDQNCgkJYzAuNywxLDEuNiwxLjUsMi45LDEuNWMxLjgsMCwzLjEtMC44LDMuOC0yLjR2LTYuMWMtMC4zLTAuOC0wLjgtMS41LTEuNS0xLjljLTAuNi0wLjQtMS40LTAuNy0yLjMtMC43Yy0xLjIsMC0yLjIsMC41LTIuOSwxLjQNCgkJQzE3NC4xLDk0LDE3My44LDk1LjUsMTczLjgsOTcuM3oiLz4NCgk8cGF0aCBkPSJNMjAyLjgsOTguOGgtOC4xbC0xLjgsNWgtMS42TDE5OCw4NmgxLjRsNi43LDE3LjhoLTEuNkwyMDIuOCw5OC44eiBNMTk1LjIsOTcuNmg3LjFsLTMuNi05LjdMMTk1LjIsOTcuNnoiLz4NCgk8cGF0aCBkPSJNMjEwLjYsMTAzLjhoLTEuNVY4NmgxLjVWMTAzLjh6Ii8+DQoJPHBhdGggZD0iTTIyMy40LDg3LjJ2My40aDIuN3YxLjJoLTIuN3Y4LjhjMCwwLjcsMC4xLDEuMywwLjQsMS42czAuNywwLjUsMS4zLDAuNWMwLjIsMCwwLjYsMCwxLjItMC4xbDAuMSwxLjINCgkJYy0wLjQsMC4xLTAuOSwwLjItMS42LDAuMmMtMSwwLTEuNy0wLjMtMi4yLTAuOWMtMC41LTAuNi0wLjctMS40LTAuNy0yLjZ2LTguOGgtMi40di0xLjJoMi40di0zLjRIMjIzLjR6Ii8+DQoJPHBhdGggZD0iTTIyOC4yLDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yMjkuNiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0yNTkuNCw5OS40YzAtMS0wLjMtMS44LTEtMi4zYy0wLjctMC42LTItMS4xLTMuOC0xLjZjLTEuOC0wLjUtMy4yLTEuMS00LTEuN2MtMS4yLTAuOS0xLjgtMi0xLjgtMy40DQoJCWMwLTEuNCwwLjYtMi41LDEuNy0zLjNjMS4xLTAuOSwyLjUtMS4zLDQuMy0xLjNjMS4yLDAsMi4yLDAuMiwzLjIsMC43YzAuOSwwLjUsMS43LDEuMSwyLjIsMS45YzAuNSwwLjgsMC44LDEuNywwLjgsMi43aC0xLjUNCgkJYzAtMS4yLTAuNC0yLjItMS4yLTIuOWMtMC44LTAuNy0xLjktMS4xLTMuMy0xLjFjLTEuNCwwLTIuNCwwLjMtMy4yLDAuOWMtMC44LDAuNi0xLjIsMS40LTEuMiwyLjRjMCwwLjksMC40LDEuNiwxLjEsMi4yDQoJCWMwLjcsMC42LDEuOSwxLjEsMy41LDEuNWMxLjYsMC40LDIuOCwwLjksMy42LDEuNGMwLjgsMC41LDEuNCwxLDEuOSwxLjdjMC40LDAuNywwLjYsMS40LDAuNiwyLjNjMCwxLjQtMC42LDIuNS0xLjcsMy40DQoJCWMtMS4xLDAuOC0yLjYsMS4zLTQuNCwxLjNjLTEuMywwLTIuNC0wLjItMy40LTAuN3MtMS44LTEuMS0yLjQtMS45Yy0wLjUtMC44LTAuOC0xLjctMC44LTIuOGgxLjVjMCwxLjMsMC41LDIuMiwxLjQsMw0KCQljMC45LDAuNywyLjIsMS4xLDMuNywxLjFjMS40LDAsMi41LTAuMywzLjMtMC45QzI1OSwxMDEuMywyNTkuNCwxMDAuNSwyNTkuNCw5OS40eiIvPg0KCTxwYXRoIGQ9Ik0yNjMuOCw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN3MwLjQtMC4zLDAuNy0wLjNzMC42LDAuMSwwLjcsMC4zYzAuMiwwLjIsMC4zLDAuNCwwLjMsMC43YzAsMC4zLTAuMSwwLjUtMC4zLDAuNw0KCQljLTAuMiwwLjItMC40LDAuMy0wLjcsMC4zcy0wLjYtMC4xLTAuNy0wLjNTMjYzLjgsODcuMSwyNjMuOCw4Ni44eiBNMjY1LjUsMTAzLjhIMjY0VjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzEuMSwxMDMuOGgtMS41Vjg1LjFoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzUsODYuOGMwLTAuMywwLjEtMC41LDAuMy0wLjdzMC40LTAuMywwLjctMC4zczAuNiwwLjEsMC43LDAuM2MwLjIsMC4yLDAuMywwLjQsMC4zLDAuN2MwLDAuMy0wLjEsMC41LTAuMywwLjcNCgkJYy0wLjIsMC4yLTAuNCwwLjMtMC43LDAuM3MtMC42LTAuMS0wLjctMC4zUzI3NSw4Ny4xLDI3NSw4Ni44eiBNMjc2LjcsMTAzLjhoLTEuNVY5MC42aDEuNVYxMDMuOHoiLz4NCgk8cGF0aCBkPSJNMjg1LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41czEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNXMtMS41LTEtMi42LTENCgkJYy0xLjMsMC0yLjMsMC41LTMuMSwxLjRzLTEuMSwyLjMtMS4xLDR2MC40YzAsMS43LDAuNCwzLDEuMSwzLjlDMjgzLjIsMTAyLjQsMjg0LjIsMTAyLjgsMjg1LjUsMTAyLjh6Ii8+DQoJPHBhdGggZD0iTTI5Mi43LDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yOTQuMiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0zMDguOSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdIMzE2di04LjcNCgkJYzAtMS4yLTAuMy0yLjEtMC44LTIuNmMtMC41LTAuNi0xLjMtMC45LTIuNC0wLjljLTAuOSwwLTEuNywwLjMtMi40LDAuOGMtMC43LDAuNi0xLjIsMS4zLTEuNSwyLjN2OWgtMS41VjkwLjZIMzA4Ljl6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg=="/>
+</a>
+<h1>Release Notes</h1>
+</div>
+</header>
+</article>
+<a class="header-link" href="#release-notes" id="release-notes"><h1>Release Notes</h1></a>
+<p>The ComputeCpp™ Community Edition 2.0.0 targets the SYCL™ 1.2.1 Khronos <a href="http://www.khronos.org/registry/sycl/specs/sycl-1.2.1.pdf">specification</a>. This release provides a conformant edition for OpenCL™ 1.2 host and devices with SPIR™ 1.2 support. ComputeCpp supports AMD® and Intel® OpenCL 1.2 devices with compatible drivers. It also provides the capability of using the system for targeting the SYCL host device and experimental support for NVIDIA® OpenCL 1.2 devices with compatible drivers.</p>
+<p>The ComputeCpp SDK complements the ComputeCpp package with build system integration, sample code and documentation. The ComputeCpp SDK is available at <a href="https://github.com/codeplaysoftware/computecpp-sdk">computecpp-sdk @ <strong>GitHub</strong></a>. A <em>Getting Started</em> document can be found in <a href="Getting_Started.html">Getting Started Guide</a> (local copy at <em>doc/computecpp_getting_started.pdf</em>).</p>
+<p>Further documentation of the system can also be found in the <a href="https://developer.codeplay.com">Codeplay developer website</a> (local copy at <em>doc/api_pages/index.html</em>).</p>
+<p>ComputeCpp is SYCL 1.2.1 conformant.</p>
+<p>Please, refer to the <a href="Platform_Support.html">Platform Support Notes</a> for details on the supported platforms and limitations. Alongside with this document there is a local copy of the supported platforms at <em>doc/computecpp_platform_support_notes.pdf</em>.</p>
+<a class="header-link" href="#changelog" id="changelog"><h1>Changelog</h1></a>
+<a class="header-link" href="#community-edition-2-7-0" id="community-edition-2-7-0"><h2>Community Edition 2.7.0</h2></a>
+<a class="header-link" href="#new-features" id="new-features"><h3>New features</h3></a>
+<ul>
+<li>More SYCL 2020 features</li>
+<li>Reductions<ul>
+<li>Supports buffers and USM</li>
+<li>Limited to single reducer for now</li>
+<li>Requires support for atomic integers on device</li>
+</ul>
+</li>
+<li>Ranged accessor subscript operator takes into account the access offset
+    (only works for contiguous ranges for now)</li>
+<li><code>atomic_ref</code> support on the host device</li>
+<li><code>handler::memset</code> and <code>queue::memset</code></li>
+<li>Support for generic lambdas as <code>parallel_for</code> kernels (i.e. <code>auto index</code> parameters)</li>
+<li>Ability to pass <code>size_t</code> instead of <code>range&lt;1&gt;</code> to <code>parallel_for</code></li>
+<li>Deny list for <code>aspect_selector</code> (specify device aspects that should be avoided)</li>
+<li>Added aspects <code>emulated</code>, <code>host_debuggable</code>, <code>atomic64</code>,
+    <code>usm_atomic_host_allocations</code>, <code>usm_atomic_shared_allocations</code>, <code>usm_system_allocations</code><ul>
+<li>Deprecated some other aspects from the SYCL 2020 provisional</li>
+</ul>
+</li>
+<li><code>sycl::bit_cast</code></li>
+<li>Throw error codes from existing runtime errors (but not to all places as required by the spec)</li>
+<li>Experimental support for USM/buffer interop</li>
+<li>Requires <code>context_bound</code> and <code>use_host_ptr</code> buffer properties</li>
+<li>Configuration option for setting the workgroup size of a reduction: <code>reduction_workgroup_size</code></li>
+<li>ComputeCpp SYCL extension that marks internal pointers of read-only accessors
+  as <code>const</code></li>
+<li>Enabled by defining <code>COMPUTECPP_EXT_READ_ACC_CONST_PTR_ENABLE</code> for the device compiler</li>
+<li>Experimental support for a new address space inference system</li>
+<li>Separate package that ships <code>compute++</code> based on LLVM 13</li>
+<li>Enables the use of USM without the <code>usm_wrapper</code> class</li>
+</ul>
+<a class="header-link" href="#improvements" id="improvements"><h3>Improvements</h3></a>
+<ul>
+<li>Support <code>async_work_group_copy</code> for boolean data</li>
+<li>Better support for different data types used in kernel names</li>
+<li>E.g. pointer types can now be used as kernel name template parameters</li>
+<li>Header files have been cleaned up to not raise warnings under the following warning flags:</li>
+<li><code>-Wunused-parameter</code>, <code>-Wshadow</code>, <code>-Wreserved-id-macro</code>, <code>-Wexit-time-destructors</code>, <code>-Wshadow-field-in-constructor</code></li>
+<li>Added <code>buffer::dimensions</code> member variable</li>
+</ul>
+<a class="header-link" href="#bug-fixes" id="bug-fixes"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed an issue with the MDd library in the Windows Debug package</li>
+<li>Fixed an issue with device compiler generating invalid integer sizes</li>
+<li>USM <code>malloc</code> calls no longer throw when size 0 is passed, just return <code>nullptr</code></li>
+<li><code>get_size</code> on an empty accessor does not segfault anymore</li>
+<li>Various minor device compiler and runtime fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-2-6-0" id="community-edition-2-6-0"><h2>Community Edition 2.6.0</h2></a>
+<a class="header-link" href="#new-features-1" id="new-features-1"><h3>New features</h3></a>
+<ul>
+<li>Implemented more SYCL 2020 features:</li>
+<li>New device selector API</li>
+<li><code>host_task</code> using <code>interop_handle</code> (without image support, without host task accessors)</li>
+<li><code>backend_traits</code> (without image support)</li>
+<li><code>Container</code> interface for host and device accessors</li>
+<li>Initial support for the new error code mechanism -
+    users can construct and retrieve error codes, but the runtime does not throw them yet</li>
+<li>Property traits</li>
+</ul>
+<a class="header-link" href="#improvements-1" id="improvements-1"><h3>Improvements</h3></a>
+<ul>
+<li>Header files have been cleaned up to not raise warnings under the following warning flags:</li>
+<li><code>-Wdouble-promotion</code>, <code>-Wdeprecated</code>, <code>-Wmaybe-uninitialized</code>, <code>-Wold-style-cast</code></li>
+<li><code>std::numeric_limits</code> and <code>std::hash</code> support for the <code>half</code> data type</li>
+</ul>
+<a class="header-link" href="#bug-fixes-1" id="bug-fixes-1"><h3>Bug Fixes</h3></a>
+<ul>
+<li><code>async_work_group_copy</code> now supports more types than before</li>
+<li>Various minor device compiler and runtime fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-2-5-0" id="community-edition-2-5-0"><h2>Community Edition 2.5.0</h2></a>
+<a class="header-link" href="#new-features-2" id="new-features-2"><h3>New features</h3></a>
+<ul>
+<li>Implemented more SYCL 2020 features:</li>
+<li>Support for Class Template Argument Deduction (CTAD) for accessors.</li>
+<li>Support for the <code>aspect_selector</code> factory function.</li>
+<li><code>byte_size</code> and <code>size</code> functions replace <code>get_size</code> and <code>get_count</code>, respectively.</li>
+<li>Added the <code>sycl/sycl.hpp</code> header.</li>
+<li><code>id</code> and <code>range</code> classes can now be used in a <code>constexpr</code> context when compiling with C++14 or higher.
+  Both classes also supports more than 3 dimensions.
+  Please note that these improvements are a Codeplay extension to the SYCL specification.</li>
+</ul>
+<a class="header-link" href="#improvements-2" id="improvements-2"><h3>Improvements</h3></a>
+<ul>
+<li>Reduced size of device builtins header.</li>
+<li>Refactored <code>id</code> and <code>range</code> classes provide better memory usage guarantees.</li>
+<li>Header files have been cleaned up for certain warning flags:</li>
+<li><code>-Wall</code>, <code>-Wextra</code>, <code>-Wundef</code>, <code>-Wextra-semi</code>, <code>-Wnewline-eof</code></li>
+</ul>
+<a class="header-link" href="#bug-fixes-2" id="bug-fixes-2"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixes to the Tracy Profiler.</li>
+<li>Device compiler would in some circumstances emit invalid scalar types,
+  this is no longer the case.</li>
+<li>Various minor device compiler and runtime fixes.</li>
+<li>Fixed a potential assert when using the <code>on_wait</code> flushing policy.</li>
+</ul>
+<a class="header-link" href="#community-edition-2-4-0" id="community-edition-2-4-0"><h2>Community Edition 2.4.0</h2></a>
+<a class="header-link" href="#new-features-3" id="new-features-3"><h3>New features</h3></a>
+<ul>
+<li>Improved kernel binary selection for the Professional Edition.
+  When multiple device binaries are available,
+  the runtime ranks each of them to find the most suitable one.</li>
+<li><code>half</code> class has been made <code>constexpr</code> when compiling in C++14 or higher mode.
+  Please note that this is a Codeplay extension to the SYCL specification.</li>
+<li>Implemented buffer constructors from contiguous containers as a SYCL 2020 feature</li>
+<li>Added <code>stream_manipulator::flush</code></li>
+</ul>
+<a class="header-link" href="#bug-fixes-3" id="bug-fixes-3"><h3>Bug Fixes</h3></a>
+<ul>
+<li><code>SYCL_LANGUAGE_VERSION</code> updated to include the revision number:
+  SYCL 2020 provisional uses version <code>202001</code>.
+  Setting <code>SYCL_LANGUAGE_VERSION</code> to <code>2020</code> still works,
+  ComputeCpp will internally set it
+  to the latest revision it supports.</li>
+<li>Fixed an issue when using builtins that take a pointer as an output argument</li>
+<li>Changes to SYCL events fixed an issue where the incorrect event status is reported after a wait</li>
+<li>Fixed a segfault when using the <code>on_wait</code> flushing policy</li>
+<li>Support <code>abgr</code> image channel</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#known-issues" id="known-issues"><h3>Known Issues</h3></a>
+<ul>
+<li><code>compute++</code> will fail to compile on Windows with Visual Studio 16.8.2
+  when using the toolset MSVC 14.28.
+  To work around this you must use MSVC 14.26.
+  Please see <a href="https://devblogs.microsoft.com/cppblog/side-by-side-minor-version-msvc-toolsets-in-visual-studio-2019/">Side-by-side Minor Version MSVC Toolsets in Visual Studio 2019</a>
+  for information on how to change the toolset for your project.
+  Note that this is not limited to ComputeCpp 2.4.</li>
+<li>The Visual Studio template project does not allow changing the toolset for <code>compute++</code> targets,
+  thus you must switch to a CMake based solution.</li>
+</ul>
+<a class="header-link" href="#community-edition-2-3-0" id="community-edition-2-3-0"><h2>Community Edition 2.3.0</h2></a>
+<a class="header-link" href="#new-features-4" id="new-features-4"><h3>New features</h3></a>
+<ul>
+<li>Experimental support for USM without address spaces
+  allows explicit USM on some devices with raw pointers,
+  without having to use <code>usm_wrapper</code>.
+  Enabled by the <code>-fno-sycl-address-space</code> device compiler flag.</li>
+</ul>
+<a class="header-link" href="#breaking-changes" id="breaking-changes"><h3>Breaking changes</h3></a>
+<ul>
+<li>The PTX backend has been marked as <code>unsupported</code> instead of <code>untested</code>.
+  Please see <a href="Platform_Support.html#nvidia-1-nvidia-ptx-support">Platform Support Notes</a> for more info.</li>
+</ul>
+<a class="header-link" href="#bug-fixes-4" id="bug-fixes-4"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Removed incorrect check for libstdc++ in computecpp_info.</li>
+<li>Fixed multiple definition issue when linking multiple sources into same program.</li>
+<li>Fixed segfault in spirv-ll-tool when copying elements of certain types.</li>
+<li>Fixed issue with spirv-ll-tool requiring a newer GLIBCXX version than other compiler tools. </li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-2-2-1" id="community-edition-2-2-1"><h2>Community Edition 2.2.1</h2></a>
+<a class="header-link" href="#new-features-5" id="new-features-5"><h3>New features</h3></a>
+<ul>
+<li>Support for custom profiling zones (Codeplay extension, PE feature)</li>
+<li>Time based sampling of performance counters (PE feature)</li>
+</ul>
+<a class="header-link" href="#bug-fixes-5" id="bug-fixes-5"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Scheduler improvements on program termination</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-2-2-0" id="community-edition-2-2-0"><h2>Community Edition 2.2.0</h2></a>
+<a class="header-link" href="#new-features-6" id="new-features-6"><h3>New features</h3></a>
+<ul>
+<li>Several SYCL 2020 features have been implemented (please set <code>SYCL_LANGUAGE_VERSION</code> to <code>2020</code>)</li>
+<li>Support for querying the backend used<ul>
+<li><code>host</code> and <code>opencl</code> supported at the moment</li>
+</ul>
+</li>
+<li>USM and subgroups no longer require the <code>experimental</code> namespace</li>
+<li>Device selector global variables</li>
+<li><code>multi_ptr</code> can act as an iterator</li>
+<li>group_barrier functions</li>
+<li>queue shortcuts interface</li>
+<li><code>host_accessor</code> class</li>
+<li>range, id, vec, and buffer deduction guides</li>
+<li>In-order queues</li>
+<li>Querying device and platform aspects</li>
+<li>Terminating async handler</li>
+<li><code>memcpy</code> and <code>fill</code> overloads that take a dependency</li>
+<li>Tracy profiling support for PE users</li>
+<li>Controlled by <code>enable_tracy_profiling</code> configuration option</li>
+</ul>
+<a class="header-link" href="#bug-fixes-6" id="bug-fixes-6"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-2-1-0" id="community-edition-2-1-0"><h2>Community Edition 2.1.0</h2></a>
+<a class="header-link" href="#new-features-7" id="new-features-7"><h3>New features</h3></a>
+<ul>
+<li>Added version information and other metadata to <code>ComputeCpp.dll</code></li>
+<li>Our USM implementation now aligns with
+<a href="https://github.com/intel/llvm/blob/sycl/sycl/doc/extensions/USM/USM.adoc">intel's USM specification proposal</a></li>
+<li>Still requires wrapping pointers into <code>experimental::usm_wrapper</code>.</li>
+</ul>
+<a class="header-link" href="#bug-fixes-7" id="bug-fixes-7"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed bug where kernel validation failed when using a custom workgroup size on a device where the maximum workgroup sizes are not uniform across all dimensions.</li>
+</ul>
+<a class="header-link" href="#community-edition-2-0-0" id="community-edition-2-0-0"><h2>Community Edition 2.0.0</h2></a>
+<a class="header-link" href="#new-features-8" id="new-features-8"><h3>New features</h3></a>
+<ul>
+<li>Experimental support for Unified Shared Memory (USM)</li>
+<li>Added support for passing <code>property_list</code> to the following class constructors:</li>
+<li><code>accessor</code>, <code>context</code>, <code>program</code>, <code>sampler</code></li>
+<li>See https://github.com/KhronosGroup/SYCL-Docs/pull/73</li>
+<li>Improvements to build systems below to enable support for future platforms in 
+  preparation for updates to the sycl specification </li>
+<li>Upgraded supported version of Microsoft Visual Studio to 2019</li>
+<li>Toolset version v142</li>
+<li>New templates and updated installer files</li>
+<li>Unified Linux X86 release package:</li>
+<li>Package naming follows industry standard conventions name-version-triple</li>
+<li>Package base version minimum supported libstdc++ 3.4.19 and glibc 2.17</li>
+</ul>
+<a class="header-link" href="#breaking-changes-1" id="breaking-changes-1"><h3>Breaking changes</h3></a>
+<ul>
+<li>Deprecated <code>codeplay::sub_group</code>, use <code>experimental::sub_group</code> instead.</li>
+<li>Deprecated <code>nd_item::sub_group_barrier</code>, use <code>sub_group::barrier</code> instead.</li>
+<li>Deprecated <code>info::queue::queue_profiling</code>, use <code>info::device::queue_profiling</code> instead.</li>
+<li>Mark all <code>cl::sycl::queue</code> constructors <code>explicit</code> aside from the copy and
+  move constructors.</li>
+<li><code>accessor::operator[]</code> returns a const reference to the underlying element
+  when in read access mode.</li>
+<li>Post version 2.0.0, AMD, NVIDIA, CentOS, and Ubuntu16 will become unsupported platforms.
+  Please get in touch with us at https://support.codeplay.com/ for future support requests.</li>
+<li>Removed support for Visual Studio 2015 and 2017.
+  Only Visual Studio 2019 is now officially supported.</li>
+<li>Name of the ComputeCpp runtime library on Windows changed to <code>ComputeCpp.dll</code></li>
+</ul>
+<a class="header-link" href="#bug-fixes-8" id="bug-fixes-8"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-3-0" id="community-edition-1-3-0"><h2>Community Edition 1.3.0</h2></a>
+<a class="header-link" href="#new-features-9" id="new-features-9"><h3>New features</h3></a>
+<ul>
+<li>ARM Mali public driver support for HiKey 960 devices. User experience may vary dependant on SYCL ecosystem application.</li>
+<li>Configuration option <code>scheduler_sleep_time_ns</code> for setting scheduler sleep time
+  (Professional Edition only)</li>
+<li>LLVM version updated to 8</li>
+</ul>
+<a class="header-link" href="#improvement" id="improvement"><h3>Improvement</h3></a>
+<ul>
+<li>Improvements to configuration options</li>
+<li>computecpp_info reports target bitcodes supported by each device</li>
+<li>Minor scheduler improvements</li>
+</ul>
+<a class="header-link" href="#bug-fixes-9" id="bug-fixes-9"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed <code>cl::sycl::memory_order</code> not compatible with C++20</li>
+<li>Various minor device compiler and runtime fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-1-2-0" id="community-edition-1-2-0"><h2>Community Edition 1.2.0</h2></a>
+<a class="header-link" href="#improvement-1" id="improvement-1"><h3>Improvement</h3></a>
+<ul>
+<li>LLVM version updated to 7</li>
+<li>Improvements to how the scheduler starts and stops worker threads</li>
+</ul>
+<a class="header-link" href="#bug-fixes-10" id="bug-fixes-10"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-1-6" id="community-edition-1-1-6"><h2>Community Edition 1.1.6</h2></a>
+<a class="header-link" href="#improvement-2" id="improvement-2"><h3>Improvement</h3></a>
+<ul>
+<li>Enqueue index is now double flipped (see blog post for details)</li>
+<li>SYCL alias to cl::sycl is enabled by default on modern compilers</li>
+</ul>
+<a class="header-link" href="#bug-fixes-11" id="bug-fixes-11"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Transaction order is now defended against accidental reordering preventing unexpected scheduler pending list changes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-1-5" id="community-edition-1-1-5"><h2>Community Edition 1.1.5</h2></a>
+<a class="header-link" href="#new-features-10" id="new-features-10"><h3>New features</h3></a>
+<ul>
+<li>Profiling of host OpenCL calls via Professional Edition</li>
+<li>Output iterators can now be used for <code>set_final_data</code></li>
+</ul>
+<a class="header-link" href="#improvement-3" id="improvement-3"><h3>Improvement</h3></a>
+<ul>
+<li>Faster profiling (via PE)</li>
+<li>Improvements to asynchronous execution</li>
+<li>Faster <code>fetch_min</code> and <code>fetch_max</code> for host atomics</li>
+<li>Various compiler and runtime improvements</li>
+<li>Removed <code>volatile</code> qualifiers from atomic</li>
+</ul>
+<a class="header-link" href="#bug-fixes-12" id="bug-fixes-12"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed an address space bug with <code>std::swap</code> inside kernels</li>
+<li>Various fixes for SYCL event</li>
+<li>Fixed ABI issues with <code>property_list</code> in Visual Studio</li>
+<li>Fixed issue with nullary kernels not working with the OpenCL interop</li>
+</ul>
+<a class="header-link" href="#community-edition-1-1-4" id="community-edition-1-1-4"><h2>Community Edition 1.1.4</h2></a>
+<a class="header-link" href="#improvement-4" id="improvement-4"><h3>Improvement</h3></a>
+<ul>
+<li>Fixed a potential for a resource deadlock on event wait</li>
+</ul>
+<a class="header-link" href="#bug-fixes-13" id="bug-fixes-13"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Queue constructor and worker thread join mechanisms improved to solve issues with global objects being destroyed after main completes.</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-1-3" id="community-edition-1-1-3"><h2>Community Edition 1.1.3</h2></a>
+<a class="header-link" href="#new-features-11" id="new-features-11"><h3>New features</h3></a>
+<ul>
+<li>Performance counter data extraction for intel GPU Gen 7.5 and up via Professional Edition (contact support.)</li>
+</ul>
+<a class="header-link" href="#improvement-5" id="improvement-5"><h3>Improvement</h3></a>
+<ul>
+<li>Improvements to rectangular accessor-to-accessor copies.</li>
+<li>The target selector now uses platform vendor when the platform name check fails.</li>
+<li><code>computecpp_info</code> now reports <code>CL_DEVICE_IL_VERSION</code> in verbose mode.</li>
+<li>Host device now reports local memory type as global.</li>
+</ul>
+<a class="header-link" href="#bug-fixes-14" id="bug-fixes-14"><h3>Bug Fixes</h3></a>
+<ul>
+<li>The size of memory available on the host is not zero anymore.</li>
+<li>Memory checking on submit is now disabled by default.</li>
+<li><code>get_info</code> strings no longer have an extra null terminator.</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-1-2" id="community-edition-1-1-2"><h2>Community Edition 1.1.2</h2></a>
+<a class="header-link" href="#new-features-12" id="new-features-12"><h3>New features</h3></a>
+<ul>
+<li>Memory checks now implemented for all memory types.</li>
+</ul>
+<a class="header-link" href="#improvement-6" id="improvement-6"><h3>Improvement</h3></a>
+<ul>
+<li>Store allocated memory for different memory types.</li>
+<li>Insufficient memory errors now throw synchronously.</li>
+</ul>
+<a class="header-link" href="#bug-fixes-15" id="bug-fixes-15"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-1-1" id="community-edition-1-1-1"><h2>Community Edition 1.1.1</h2></a>
+<a class="header-link" href="#new-features-13" id="new-features-13"><h3>New features</h3></a>
+<ul>
+<li>Experimental support for consuming SPIR-V on OpenCL 2.1 devices</li>
+</ul>
+<a class="header-link" href="#improvement-7" id="improvement-7"><h3>Improvement</h3></a>
+<ul>
+<li>Support for <code>const</code> type in <code>multi_ptr</code></li>
+<li>Extension to track allocated global memory on the SYCL device</li>
+<li>Exposed via <code>cl::sycl::codeplay::get_allocated_memory_size</code></li>
+</ul>
+<a class="header-link" href="#bug-fixes-16" id="bug-fixes-16"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-1-0" id="community-edition-1-1-0"><h2>Community Edition 1.1.0</h2></a>
+<a class="header-link" href="#improvement-8" id="improvement-8"><h3>Improvement</h3></a>
+<ul>
+<li>Reduced overhead of accessors</li>
+<li>Queue no longer waits on instruction anymore</li>
+<li>Multiple placeholder accessor can now be used in the same command group</li>
+<li>Relaxed restrictions on overlapping accessors to improve performance</li>
+</ul>
+<a class="header-link" href="#bug-fixes-17" id="bug-fixes-17"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed issue with sub-buffers on host (reported by users)</li>
+<li>Abacus symbols now present for the Windows debug library</li>
+<li>Build options return empty string when no custom flags are provided</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-0-5" id="community-edition-1-0-5"><h2>Community Edition 1.0.5</h2></a>
+<a class="header-link" href="#new-features-14" id="new-features-14"><h3>New features</h3></a>
+<ul>
+<li>[DEPRECATION] require() function that takes a buffer and a placeholder
+  accessor will no longer be supported in future releases.</li>
+<li>Added a Codeplay extension handler that features an interop_task() function.
+  This can be used to integrate OpenCL libraries with SYCL code
+  where the SYCL runtime will take care of data availability.</li>
+</ul>
+<a class="header-link" href="#improvement-9" id="improvement-9"><h3>Improvement</h3></a>
+<ul>
+<li>A default constructed placeholder accessor is constructed in a null state.</li>
+<li>Default constructed placeholder accessors can be passed to kernels
+  without being bound to a buffer.</li>
+<li>make_placeholder_accessor() extension member function can be used to
+  create a placeholder accessor from a buffer.</li>
+<li>Placeholder accessor acquired the is_null() function which can be used
+  to query whether a buffer has been bound to it.</li>
+</ul>
+<a class="header-link" href="#bug-fixes-18" id="bug-fixes-18"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-0-4" id="community-edition-1-0-4"><h2>Community Edition 1.0.4</h2></a>
+<a class="header-link" href="#new-features-15" id="new-features-15"><h3>New features</h3></a>
+<ul>
+<li>Added accelerator_selector.</li>
+</ul>
+<a class="header-link" href="#improvement-10" id="improvement-10"><h3>Improvement</h3></a>
+<ul>
+<li>Default constructed events no longer throw on wait_and_throw.</li>
+</ul>
+<a class="header-link" href="#bug-fixes-19" id="bug-fixes-19"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Rectangular copy now uses correct element sizes.</li>
+<li>Fixes to the reinterpret buffer dependency tracking.</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-0-3" id="community-edition-1-0-3"><h2>Community Edition 1.0.3</h2></a>
+<a class="header-link" href="#new-features-16" id="new-features-16"><h3>New features</h3></a>
+<ul>
+<li>No-host-access extension added, See CP017 in https://github.com/codeplaysoftware/standards-proposals/blob/master/host_access/index.md</li>
+<li>Builtin-kernel extension added, See CP018 https://github.com/codeplaysoftware/standards-proposals/blob/master/builtin_kernels/sycl-1.2.1/builtin_kernels.md</li>
+<li>On-chip memory extension added, See CP019 in https://github.com/AerialMantis/standards-proposals/blob/CP019/onchip-memory/index.md</li>
+<li>Host-device now support rectangular copies</li>
+</ul>
+<a class="header-link" href="#improvement-11" id="improvement-11"><h3>Improvement</h3></a>
+<ul>
+<li>Invalid host access will now throw for a subset of functions</li>
+<li>Interface between compiler and runtime is now more robust</li>
+<li>Use of OpenCL flags is now based on host_access property</li>
+</ul>
+<a class="header-link" href="#bug-fixes-20" id="bug-fixes-20"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Support for clCreatePRogramWithILKHR for ARM Mali</li>
+<li>Various minor device compiler and runtime fixes.</li>
+<li>Fixed: Event wait_and_throw still forward exceptions to async_handler</li>
+<li>Fixed: Rectangular copies on multi-dimensional accessors</li>
+</ul>
+<a class="header-link" href="#community-edition-1-0-2" id="community-edition-1-0-2"><h2>Community Edition 1.0.2</h2></a>
+<a class="header-link" href="#new-features-17" id="new-features-17"><h3>New features</h3></a>
+<ul>
+<li>ComputeCpp runtime makes better usage of clCreateBuffer options and reduces copies whenever possible favouring map/unmap and ALLOC_HOST_PTR | COPY_PTR options.</li>
+<li>Added verbose error build logs</li>
+</ul>
+<a class="header-link" href="#improvements-3" id="improvements-3"><h3>Improvements</h3></a>
+<ul>
+<li>Improved Device selector order, now by device type (accelerator &gt; gpu &gt; cpu &gt; host)</li>
+<li>Allocators are now non-type matching SYCL 1.2.1 rev 3</li>
+<li>computecpp_info tool now displays the available builtin kernels.</li>
+<li>Better runtime detection when the host-device copies can be omitted</li>
+</ul>
+<a class="header-link" href="#bug-fixes-21" id="bug-fixes-21"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed issue with incorrectly reported empty command group error when thrown.</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-0-1" id="community-edition-1-0-1"><h2>Community Edition 1.0.1</h2></a>
+<a class="header-link" href="#improvements-4" id="improvements-4"><h3>Improvements</h3></a>
+<ul>
+<li>Exception types are now properly reported.</li>
+<li>Improved dependency tracking for reinterpreted buffers. It is no longer necessary to force host access to synchronize reinterpreted buffers.</li>
+</ul>
+<a class="header-link" href="#bug-fixes-22" id="bug-fixes-22"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed issue with reinterpreted buffers overwriting original data</li>
+<li>Various minor device compiler and runtime fixes.</li>
+</ul>
+<a class="header-link" href="#community-edition-1-0-0" id="community-edition-1-0-0"><h2>Community Edition 1.0.0</h2></a>
+<a class="header-link" href="#new-features-18" id="new-features-18"><h3>New features</h3></a>
+<ul>
+<li>[SYCL 1.2.1] Runtime now conforms to the SYCL 1.2.1 revision 3 spec</li>
+</ul>
+<a class="header-link" href="#improvements-5" id="improvements-5"><h3>Improvements</h3></a>
+<ul>
+<li>Warnings added for locally defined types</li>
+<li>The runtime does not over-allocate data anymore</li>
+<li>Fixes to tracking data dependencies across reinterpreted buffers</li>
+</ul>
+<a class="header-link" href="#bug-fixes-23" id="bug-fixes-23"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-9-1" id="community-edition-0-9-1"><h2>Community Edition 0.9.1</h2></a>
+<a class="header-link" href="#new-features-19" id="new-features-19"><h3>New features</h3></a>
+<ul>
+<li>[SYCL 1.2.1] Runtime now follows SYCL 1.2.1 revision 3 spec, please note that you will need to change any instances of the following:</li>
+<li>size_t group::get_linear() replaced with:<ul>
+<li>size_t group::get_linear_id()</li>
+</ul>
+</li>
+<li>range<dimensions> nd_range::get_local()replaced with:<ul>
+<li>size_t range<dimensions> nd_range::get_local_range()</dimensions></li>
+</ul>
+</dimensions></li>
+<li>nd_range::get_local(int dimension) replaced with:<ul>
+<li>size_t nd_range::get_local_range(int dimension)</li>
+</ul>
+</li>
+<li>range<dimensions> nd_range::get_group()  replaced with:<ul>
+<li>range<dimensions> nd_range::get_group_range()</dimensions></li>
+</ul>
+</dimensions></li>
+<li>size_t nd_range::get_group(int dimension) replaced with:<ul>
+<li>size_t nd_range::get_group_range(int dimension)</li>
+</ul>
+</li>
+<li>range<dimensions> nd_range::get_global()  replaced with:<ul>
+<li>range<dimensions> nd_range::get_global_range()</dimensions></li>
+</ul>
+</dimensions></li>
+<li>size_t nd_range::get_global(int dimension) replaced with:<ul>
+<li>size_t nd_range::get_global_range(int dimension)</li>
+</ul>
+</li>
+<li>id<dimensions> nd_item::get_num_groups() replaced with:<ul>
+<li>range<dimensions> nd_item::get_group_range()</dimensions></li>
+</ul>
+</dimensions></li>
+<li>size_t nd_item::get_num_groups(int dimension) replaced with:<ul>
+<li>size_t nd_item::get_group_range(int dimension)</li>
+</ul>
+</li>
+<li>id<dimensions> nd_item::get_local() replaced with:<ul>
+<li>size_t nd_item::get_local_id(int dimension)</li>
+</ul>
+</dimensions></li>
+<li>size_t nd_item::get_local(int dimension) replaced with:<ul>
+<li>size_t nd_item::get_local_id(int dimension)</li>
+</ul>
+</li>
+<li>id<dimensions> nd_item::get_global() replaced with:<ul>
+<li>id<dimensions> nd_item::get_global_id()</dimensions></li>
+</ul>
+</dimensions></li>
+<li>size_t nd_item::get_global(int dimension)replaced with:<ul>
+<li>size_t nd_item::get_global_id(int dimension)</li>
+</ul>
+</li>
+</ul>
+<a class="header-link" href="#bug-fixes-24" id="bug-fixes-24"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler and runtime fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-9-0" id="community-edition-0-9-0"><h2>Community Edition 0.9.0</h2></a>
+<a class="header-link" href="#new-features-20" id="new-features-20"><h3>New features</h3></a>
+<ul>
+<li>Candidate version for SYCL 1.2.1 conformance, all features and API implemented</li>
+</ul>
+<a class="header-link" href="#improvements-6" id="improvements-6"><h3>Improvements</h3></a>
+<ul>
+<li>Clang version bumped to 6.0</li>
+<li>Improvements to scheduler thread locking strategy increasing performance in low-power CPUs.</li>
+<li>Improvements to compiler driver to enable cross-compilation support</li>
+</ul>
+<a class="header-link" href="#bug-fixes-25" id="bug-fixes-25"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler fixes</li>
+<li>Fixed: Event profile information for kernel can now be queried inmediatly after a command group submission</li>
+<li>Fixed: Accessor range incorrect when using offsets</li>
+</ul>
+<a class="header-link" href="#community-edition-0-8-0" id="community-edition-0-8-0"><h2>Community Edition 0.8.0</h2></a>
+<a class="header-link" href="#new-features-21" id="new-features-21"><h3>New features</h3></a>
+<ul>
+<li>[SYCL 1.2.1] Vector classes fully conformant to the 1.2.1 specification</li>
+<li>[SYCL 1.2.1] Major updates to built-in functions towards conformance 1.2.1 specification</li>
+<li>[SYCL 1.2.1] Stream class changes to match SYCL 1.2.1 specification</li>
+<li>[SYCL 1.2.1] Interop constructor for buffers now match SYCL 1.2.1 specification</li>
+<li>[SYCL 1.2.1] Fully implemented 1.2.1 specification requirements for by-value and by-reference semantics</li>
+<li>[SYCL 1.2.1] Implemented buffer::set_write_back according to SYCL 1.2.1 specification</li>
+<li>[SYCL 1.2.1] Implemented buffer::h_item according to SYCL 1.2.1 specification</li>
+</ul>
+<a class="header-link" href="#improvements-7" id="improvements-7"><h3>Improvements</h3></a>
+<ul>
+<li>Numerous minor runtime fixes</li>
+</ul>
+<a class="header-link" href="#bug-fixes-26" id="bug-fixes-26"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-7-0" id="community-edition-0-7-0"><h2>Community Edition 0.7.0</h2></a>
+<a class="header-link" href="#new-features-22" id="new-features-22"><h3>New features</h3></a>
+<ul>
+<li>[SYCL 1.2.1] Stream class changes to match 1.2.1 specification</li>
+<li>[SYCL 1.2.1] is_sub_buffer method added to API</li>
+<li>[SYCL 1.2.1] has_property and get_property support added for public queue interface</li>
+<li>[SYCL 1.2.1] Missing pointer class functions added</li>
+<li>[SYCL 1.2.1] event get_profiling_info implemented</li>
+<li>[SYCL 1.2.1] Swizzled vectors can now be swizzled, this includes:</li>
+<li>Simple swizzles (xyzw(), rgba())</li>
+<li>Index access swizzles from s0() to sF()</li>
+<li>The swizzle template function<ul>
+<li>e.g. cl::sycl::float4.xyzw().xxx().template swizzle<cl::sycl::elem::s0, cl::sycl::elem::s1="">().y();</cl::sycl::elem::s0,></li>
+</ul>
+</li>
+<li>[SYCL 1.2.1] Vector hi lo odd and even functions are now available for all vector sizes</li>
+</ul>
+<a class="header-link" href="#improvements-8" id="improvements-8"><h3>Improvements</h3></a>
+<ul>
+<li>Switched to a new scheduling policy with less overhead</li>
+<li>Optimised swizzle transformation functions for improved compile times</li>
+</ul>
+<a class="header-link" href="#bug-fixes-27" id="bug-fixes-27"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Race condition in program and kernel cache fixed</li>
+<li>Various minor device compiler fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-6-1" id="community-edition-0-6-1"><h2>Community Edition 0.6.1</h2></a>
+<a class="header-link" href="#new-features-23" id="new-features-23"><h3>New features</h3></a>
+<ul>
+<li>[SYCL 1.2.1 REMOVALS] Get_access host_buffer and target parameters removals</li>
+<li>[SYCL 1.2.1 DEPRECATIONS] Buffer accessor interface - order of offest and range deprecations.</li>
+<li>[SYCL 1.2.1] Atomic class changes to match 1.2.1 specification</li>
+<li>[SYCL 1.2.1] Exception types implemented for logging</li>
+<li>[SYCL 1.2.1] Introduced support for image array accessors</li>
+<li>[SYCL 1.2.1] Missing pointer class functions added</li>
+<li>[SYCL 1.2.1] Not_Null implemented</li>
+<li>[SYCL 1.2.1] Vector Hi, Lo, Odd, and Even methods for vec<t,3></t,3></li>
+</ul>
+<a class="header-link" href="#improvements-9" id="improvements-9"><h3>Improvements</h3></a>
+<ul>
+<li>Minor improvements to scheduler</li>
+</ul>
+<a class="header-link" href="#bug-fixes-28" id="bug-fixes-28"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Exception class now uses size_type</li>
+<li>Various minor device compiler fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-6-0" id="community-edition-0-6-0"><h2>Community Edition 0.6.0</h2></a>
+<a class="header-link" href="#new-features-24" id="new-features-24"><h3>New features</h3></a>
+<ul>
+<li>[SYCL 1.2.1] Implemented buffer reinterpret: creates a new view of the same buffer with a different underlying type</li>
+<li>[SYCL 1.2.1] Program, kernel, context get_info method now return SYCL objects as per specification</li>
+<li>[SYCL 1.2.1] Updated context and kernel interface to match 1.2.1</li>
+<li>[SYCL 1.2.1] Deprecated Kernel interop constructor in favour of new syntax</li>
+<li>[SYCL-1.2.1] Template argument of various classes is now defaulted to 1</li>
+</ul>
+<a class="header-link" href="#improvements-10" id="improvements-10"><h3>Improvements</h3></a>
+<ul>
+<li>Vectors can now reliably take swizzles on the right hand side of an expression and is not restricted to cl_* alias types</li>
+<li>Added remaining <code>cl_half</code> builtins</li>
+</ul>
+<a class="header-link" href="#bug-fixes-29" id="bug-fixes-29"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler fixes, including 64/32 bit</li>
+</ul>
+<a class="header-link" href="#community-edition-0-5-1" id="community-edition-0-5-1"><h2>Community Edition 0.5.1</h2></a>
+<a class="header-link" href="#new-feature" id="new-feature"><h3>New feature</h3></a>
+<ul>
+<li>[SYCL 1.2.1] Added functions to group and item classes as per specification</li>
+</ul>
+<a class="header-link" href="#improvements-11" id="improvements-11"><h3>Improvements</h3></a>
+<ul>
+<li>Error message clarification for host out of memory</li>
+</ul>
+<a class="header-link" href="#bug-fixes-30" id="bug-fixes-30"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Various minor device compiler fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-5-0" id="community-edition-0-5-0"><h2>Community Edition 0.5.0</h2></a>
+<a class="header-link" href="#new-feature-1" id="new-feature-1"><h3>New feature</h3></a>
+<ul>
+<li>Bumped SYCL interface to SYCL 1.2.1, see the relevant announcement in http://sycl.tech</li>
+<li>Note the interface of most of the classes is now matching the SYCL 1.2.1 specification.</li>
+<li>See the ComputeCpp Implementation Notes for the details on the mismatch between spec and implementation.</li>
+<li>[SYCL 1.2.1] All the copy functions are now SYCL core functionality hence move from the codeplay namespace to cl::sycl</li>
+<li>[SYCL 1.2.1] Buffer/Image properties for use_host_pointer, context_bound and use_mutex</li>
+<li>Note this replaces the map_allocator from SYCL 1.2</li>
+<li>[SYCL 1.2.1] Complete device and host SYCL vector interface (cl::sycl::vec<t, dim="">)</t,></li>
+<li>[SYCL 1.2.1] Implemented simple vector swizzles (e.g vec.abc())</li>
+<li>[compute++] New -sycl-target option to specify the target of the binary</li>
+<li>[compute++] Added -fsycl-ih-last option which forces inclusion of the integration header at the end of the translation unit.</li>
+</ul>
+<a class="header-link" href="#improvements-12" id="improvements-12"><h3>Improvements</h3></a>
+<ul>
+<li>Performance improvements for applications using large number of command groups</li>
+<li>Performance improvements when dispatching multiple short-lived kernels to a device</li>
+</ul>
+<a class="header-link" href="#bug-fixes-31" id="bug-fixes-31"><h3>Bug Fixes</h3></a>
+<ul>
+<li>Fixed sporadic deadlock that appeared in TensorFlow test suite</li>
+<li>Fixed multiple bugs on the vector interface</li>
+<li>Various minor device compiler fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-4-0" id="community-edition-0-4-0"><h2>Community Edition 0.4.0</h2></a>
+<a class="header-link" href="#new-features-25" id="new-features-25"><h3>New features</h3></a>
+<ul>
+<li>New ComputeCpp unified driver to simplify build process
+  (using a single compiler call)</li>
+<li>Added experimental support for PTX generation</li>
+</ul>
+<a class="header-link" href="#bug-fixes-32" id="bug-fixes-32"><h3>Bug fixes</h3></a>
+<ul>
+<li>Accelerator devices are now reported also during device selection</li>
+<li>Various minor device compiler fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-3-3" id="community-edition-0-3-3"><h2>Community Edition 0.3.3</h2></a>
+<a class="header-link" href="#new-features-26" id="new-features-26"><h3>New features</h3></a>
+<ul>
+<li>Added ARM support for OpenCL SPIR or SPIR-V enabled devices</li>
+<li>The SYCL explicit copy operations on command groups now support fall-back queue</li>
+</ul>
+<a class="header-link" href="#improvements-13" id="improvements-13"><h3>Improvements</h3></a>
+<ul>
+<li>Improved error reporting when kernels fails to execute</li>
+<li>Reduced execution time when multiple command groups are enqueued to the same
+   OpenCL queue</li>
+<li>Reduced overall latency of SYCL command group submission</li>
+</ul>
+<a class="header-link" href="#bug-fixes-33" id="bug-fixes-33"><h3>Bug fixes</h3></a>
+<ul>
+<li>Various bug fixes for command groups with fall-back execution</li>
+</ul>
+<a class="header-link" href="#community-edition-0-3-2" id="community-edition-0-3-2"><h2>Community Edition 0.3.2</h2></a>
+<a class="header-link" href="#new-features-27" id="new-features-27"><h3>New features</h3></a>
+<ul>
+<li>Added ranged get_access method to buffer</li>
+<li>Added a method retrieve the get_allocator from the buffer</li>
+</ul>
+<a class="header-link" href="#improvements-14" id="improvements-14"><h3>Improvements</h3></a>
+<ul>
+<li>Reduced the number of OpenCL build program calls</li>
+<li>Improved error message for address-space resolution</li>
+<li>Improved error for placeholder accessor in parameters</li>
+<li>Improved ranged copy functions to and from device</li>
+<li>Improved error reporting when building kernels</li>
+</ul>
+<a class="header-link" href="#bug-fixes-34" id="bug-fixes-34"><h3>Bug fixes</h3></a>
+<ul>
+<li>Various Windows bug fixes</li>
+<li>Added missing const to vstore method</li>
+<li>Size method of range is now marked as const</li>
+<li>Get device method of the queue is now const</li>
+<li>Several bug fixes in the compiler</li>
+</ul>
+<a class="header-link" href="#community-edition-0-3-1" id="community-edition-0-3-1"><h2>Community Edition 0.3.1</h2></a>
+<a class="header-link" href="#new-features-28" id="new-features-28"><h3>New features</h3></a>
+<ul>
+<li>N/A</li>
+</ul>
+<a class="header-link" href="#improvements-15" id="improvements-15"><h3>Improvements</h3></a>
+<ul>
+<li>Several improvements on placeholder accessor support</li>
+</ul>
+<a class="header-link" href="#bug-fixes-35" id="bug-fixes-35"><h3>Bug fixes</h3></a>
+<ul>
+<li>Fixed: Copy functions now work with ranged accessors</li>
+<li>Fixed: Copy constructor of placeholder accessor</li>
+</ul>
+<a class="header-link" href="#community-edition-0-3-0" id="community-edition-0-3-0"><h2>Community Edition 0.3.0</h2></a>
+<a class="header-link" href="#new-features-29" id="new-features-29"><h3>New features</h3></a>
+<ul>
+<li>compute++ now based on clang/llvm 3.9</li>
+<li>Added support for vload/vstore functions (See CP007  https://github.com/codeplaysoftware/standards-proposals )</li>
+<li>Updated syntax of update_to functions to match latest CP001 status https://github.com/codeplaysoftware/standards-proposals</li>
+<li>ComputeCpp Package supports Visual Studio 2015 and above</li>
+<li>[Experimental] Added SPIR-V generation support</li>
+<li>[Experimental] Added Default placeholder constructor (See https://github.com/codeplaysoftware/standards-proposals/pull/18)</li>
+</ul>
+<a class="header-link" href="#improvements-16" id="improvements-16"><h3>Improvements</h3></a>
+<ul>
+<li>Removed dependencies on C headers</li>
+</ul>
+<a class="header-link" href="#bug-fixes-36" id="bug-fixes-36"><h3>Bug fixes</h3></a>
+<ul>
+<li>Some combinations of OpenCL builtins were not available (select, min/max, vload, ...)</li>
+<li><code>cl::sycl::kernel::get_work_group_info&lt;param&gt;(cl_device_id device)</code> now returns the correct value for the platform</li>
+</ul>
+<a class="header-link" href="#community-edition-0-2-1" id="community-edition-0-2-1"><h2>Community Edition 0.2.1</h2></a>
+<a class="header-link" href="#new-features-30" id="new-features-30"><h3>New features</h3></a>
+<ul>
+<li>Implemented a Placeholder Accessor type extension (See CP004 in https://github.com/codeplaysoftware/standards-proposals)</li>
+</ul>
+<a class="header-link" href="#improvements-17" id="improvements-17"><h3>Improvements</h3></a>
+<ul>
+<li>Converted the stream class delimiters to static const char arrays following SYCL 1.2 specification</li>
+<li>Update_to/From device now support ranged accessors</li>
+<li>Host Accessors use map operations on devices where <em>CL_DEVICE_HOST_UNIFIED_MEMORY</em> is <em>cl_true</em></li>
+</ul>
+<a class="header-link" href="#bug-fixes-37" id="bug-fixes-37"><h3>Bug fixes</h3></a>
+<ul>
+<li>Removed exception throwing in public header file</li>
+<li>Various compiler fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-2-0" id="community-edition-0-2-0"><h2>Community Edition 0.2.0</h2></a>
+<a class="header-link" href="#new-features-31" id="new-features-31"><h3>New features</h3></a>
+<ul>
+<li>Added support for 16.04 Ubuntu</li>
+</ul>
+<a class="header-link" href="#improvements-18" id="improvements-18"><h3>Improvements</h3></a>
+<ul>
+<li>Various compiler fixes</li>
+</ul>
+<a class="header-link" href="#bug-fixes-38" id="bug-fixes-38"><h3>Bug fixes</h3></a>
+<ul>
+<li>Several host fixes for the program class</li>
+<li>Minor Buffer/Subbuffer error code corrections</li>
+</ul>
+<a class="header-link" href="#community-edition-0-1-4" id="community-edition-0-1-4"><h2>Community Edition 0.1.4</h2></a>
+<a class="header-link" href="#new-features-32" id="new-features-32"><h3>New features</h3></a>
+<ul>
+<li>NA</li>
+</ul>
+<a class="header-link" href="#improvements-19" id="improvements-19"><h3>Improvements</h3></a>
+<ul>
+<li><code>computecpp_info</code> now prints a link to platform support notes:
+  https://computecpp.codeplay.com/releases/latest/platform-support-notes.</li>
+<li>Added <code>CL_DEVICE_VERSION</code> to <code>computecpp_info</code> verbose output.</li>
+<li>Performance optimizations relating to long running programs with many buffers.</li>
+<li>Added attributes as presented in section 5.7 of the specification are now handled by the compiler</li>
+<li>Various compiler fixes</li>
+</ul>
+<a class="header-link" href="#bug-fixes-39" id="bug-fixes-39"><h3>Bug fixes</h3></a>
+<ul>
+<li>Fixed  target parsing for <code>computecpp_info</code> so that now all devices in the
+  system are properly displayed.</li>
+<li><code>computecpp_info</code> no longer reports Intel CPU devices without SSE4.1
+  support as "Tested".</li>
+</ul>
+<a class="header-link" href="#community-edition-0-1-3" id="community-edition-0-1-3"><h2>Community Edition 0.1.3</h2></a>
+<a class="header-link" href="#new-features-33" id="new-features-33"><h3>New features</h3></a>
+<ul>
+<li>Added Codeplay host task API extension (See Standards proposals https://github.com/codeplaysoftware/standards-proposals/blob/master/asynchronous-data-flow/index.md[CE01])</li>
+<li>Added Codeplay command group API extensions <code>update_from_device</code> and <code>update_to_device</code>
+  (See Standards proposals https://github.com/codeplaysoftware/standards-proposals/blob/master/asynchronous-data-flow/index.md[CE01]).
+  Versions of these methods that take an iterator have not yet been implemented.</li>
+<li>As requested by various users, the SPIR is not cyphered anymore.
+This enables writing extra compiler passes that work on top of the SPIR produced by ComputeCpp.</li>
+</ul>
+<a class="header-link" href="#improvements-20" id="improvements-20"><h3>Improvements</h3></a>
+<ul>
+<li>Improved behaviour when SIGINT is triggered to avoid crashing underlying OpenCL implementation whenever possible</li>
+<li>Variadic Lenght Arrays (VLA) are now reported as errors in SYCL device kernels</li>
+<li><code>computecpp_info</code> now returns error code when error occurs</li>
+</ul>
+<a class="header-link" href="#bug-fixes-40" id="bug-fixes-40"><h3>Bug fixes</h3></a>
+<ul>
+<li>Default constructor for SYCL event created incorrect OpenCL object.</li>
+<li>Several device compiler bug-fixes</li>
+</ul>
+<a class="header-link" href="#community-edition-0-1-2" id="community-edition-0-1-2"><h2>Community Edition 0.1.2</h2></a>
+<a class="header-link" href="#new-features-34" id="new-features-34"><h3>New features</h3></a>
+<ul>
+<li>Basic extensions support enabled</li>
+</ul>
+<a class="header-link" href="#improvements-21" id="improvements-21"><h3>Improvements</h3></a>
+<ul>
+<li>Improved device compiler speed</li>
+<li>The device compiler will now warn if an undefined function is used inside a SYCL kernel</li>
+<li>Improved handling of SIGINT</li>
+<li>Device support status now reported as tested/untested/unsupported in computecpp_info</li>
+</ul>
+<a class="header-link" href="#bug-fixes-41" id="bug-fixes-41"><h3>Bug fixes</h3></a>
+<ul>
+<li>Fixed issues related to SPIR module conformance</li>
+<li>Various compiler fixes</li>
+<li>Fixed 2D atomics</li>
+<li>Fixed buffer memory leak</li>
+<li>Resolved an OpenCL related memory leak</li>
+</ul>
+<a class="header-link" href="#breaking-changes-2" id="breaking-changes-2"><h3>Breaking changes</h3></a>
+<ul>
+<li>Added the <code>info::gl_context_interop flag</code> to the context constructors</li>
+<li>Removed the <code>--all</code> flag from computecpp_info</li>
+<li><code>--sycl-no-diags</code> is now deprecated and will be removed in the next release</li>
+</ul>
+<a class="header-link" href="#community-edition-0-1-1" id="community-edition-0-1-1"><h2>Community Edition 0.1.1</h2></a>
+<ul>
+<li>Various compiler bug fixes after feedback from users</li>
+<li>The macro <code>__SYCL_DEVICE_ONLY__</code> is now defined by the device compiler</li>
+<li>Disallowed call to variadic functions inside SYCL kernels</li>
+<li>Relying on the OpenCL-platform default local workgroup size when
+  user does not provide a local workgroup side on the parallel for call.</li>
+</ul>
+<a class="header-link" href="#community-edition-0-1-0" id="community-edition-0-1-0"><h2>Community Edition 0.1.0</h2></a>
+<ul>
+<li>Initial Release.</li>
+</ul>
+<a class="header-link" href="#computecpp-package" id="computecpp-package"><h3>ComputeCpp package</h3></a>
+<p>The ComputeCpp package includes the components of the ComputeCpp SYCL implementation. ComputeCpp uses the <em>single source multi-pass</em> techinique, where multiple compilers are providing maximum flexibility in terms of creating host and device binaries from a <em>single SYCL source file</em>. The main components of ComputeCpp are:</p>
+<ul>
+<li>the SYCL compiler: compute++,</li>
+<li>the SYCL C++ header: <code>CL/sycl.hpp</code>,</li>
+<li>the C++ shared library: <code>libComputeCpp.so</code>,</li>
+<li>the C++ library headers included by : <code>CL/sycl.hpp</code>.</li>
+</ul>
+<p>Note: The version of each the components matches the version number of the ComputeCpp package. No component can be used in isolation, independently or without matching the versioning of each of them.</p>
+<p>The ComputeCpp package provides the <code>computecpp_info</code> tool for checking the configuration of the target platform.</p>
+<a class="header-link" href="#compiler" id="compiler"><h3>Compiler</h3></a>
+<p>The compute++ compiler takes as input SYCL C++ source code and outputs the ComputeCpp <em>integration header</em>.</p>
+<p>compute++ is a clang-based C++ compiler that supports C++11 and partially C++14. The version of compute++ matches the version of the ComputeCpp package.</p>
+<p>Documentation of the SYCL compiler, compute++, can be found <a href="compute++_Compiler_Manual.html">documentation</a> (local copy can be found at <em>doc/computepp_man.pdf</em>).</p>
+<a class="header-link" href="#library-and-headers" id="library-and-headers"><h3>Library and headers</h3></a>
+<p>The C++ headers and shared library are a work-in-progress implementation of the SYCL runtime, kernel library and SYCL host device implementation. The headers have a single entry point the <code>CL\sycl.hpp</code> header. The shared library that any application needs to link against is <code>lib\libComputeCpp.so</code>.</p>
+<p>The macro <code>_COMPUTECPP_</code> is defined to have the version of the ComputeCpp shared library and headers, which is matching the ComputeCpp package versioning.</p>
+<p>The documentation of the ComputeCpp API can be found on the <a href="https://developer.codeplay.com">Codeplay developer website</a> (local copy at <em>doc/api_pages/index.html</em>).</p>
+<a class="header-link" href="#computecpp_info-tool" id="computecpp_info-tool"><h3>computecpp_info tool</h3></a>
+<p>The <code>computecpp_info</code> tool makes it possible to check the target platform configuration. It provides information about the OpenCL devices and drivers, and whether they are supported by the ComputeCpp package.</p>
+<p>The tool can be found in <code>bin\computecpp_info</code>.</p>
+<p>For further documentation please look at link: <a href="Platform_Support.html">Platform Support Notes</a> (local copy at <em>doc/computecpp_info_man.pdf</em>).</p>
+<a class="header-link" href="#computecpp-implementation-notes" id="computecpp-implementation-notes"><h3>ComputeCpp implementation notes</h3></a>
+<p>All SYCL 1.2.1 features are implemented, although they may not have an optimal implementation for all supported platforms.</p>
+<a class="header-link" href="#unsupported-features" id="unsupported-features"><h3>Unsupported features</h3></a>
+<p><strong>The current version does not support any of the non-core features of the SYCL 1.2 specification.</strong></p>
+<p>Unsupported SYCL features:</p>
+<ul>
+<li>Enabling OpenCL extensions</li>
+<li>Writting to 3D image memory objects</li>
+<li>Depth and depth-stencil images</li>
+<li>No support of <code>SYCL_EXTERNAL</code>. All command-group kernels need to be defined in headers in order to be processed in one translation unit.</li>
+</ul>
+<a class="header-link" href="#computecpp-extensions" id="computecpp-extensions"><h3>ComputeCpp extensions</h3></a>
+<p>ComputeCpp supports various extensions through the <code>_codeplay::handler_ class</code>. See <a href="https://github.com/codeplaysoftware/standards-proposals">https://github.com/codeplaysoftware/standards-proposals</a> for details on the different extensions available.</p>
+<p>AMD is a registered trademark of Advanced Micro Devices, Inc. Intel is a trademark of Intel Corporation or its subsidiaries in the U.S. and/or other countries. NVIDIA and CUDA are registered trademarks of NVIDIA Corporation</p>
+<div id="copyright">SYCL is a trademark of the Khronos Group Inc. NVIDIA is a registered trademark of NVIDIA Corporation. AMD is a registered trademark of Advanced Micro Devices, Inc. ARM is a registered trademark of ARM Limited (or its subsidiaries) in the EU and/or elsewhere. All rights reserved Intel is a trademark of Intel Corporation in the U.S. and/or other countries SPIR is a trademark of the Khronos Group Inc. Khronos is a trademark of the Khronos Group Inc. TensorFlow and the TensorFlow logo and any related marks are trademarks of Google Inc. OpenCL and the OpenCL logo are trademarks of Apple Inc. used by permission by Khronos.</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,4 @@
+var structstd_1_1hash_3_01cl_1_1sycl_1_1accessor_3_01elem_t_00_01k_dims_00_01k_mode_00_01k_target_00_01is_placeholder_01_4_01_4 =
+[
+    [ "operator()", "structstd_1_1hash_3_01cl_1_1sycl_1_1accessor_3_01elem_t_00_01k_dims_00_01k_mode_00_01k_target_00_01is_placeholder_01_4_01_4.html#a175334456c7686738d964918068c8864", null ]
+];

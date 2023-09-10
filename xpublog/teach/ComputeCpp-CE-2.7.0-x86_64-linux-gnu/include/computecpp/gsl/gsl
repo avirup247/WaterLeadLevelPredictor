@@ -1,0 +1,16 @@
+//
+// Copyright (C) 2002-2018 Codeplay Software Limited
+// All Rights Reserved.
+//
+#ifndef RUNTIME_INCLUDE_GSL_GSL_
+#define RUNTIME_INCLUDE_GSL_GSL_
+
+#include "computecpp/gsl/impl/cast.h"
+#include "computecpp/gsl/impl/contracts.h"
+#include "computecpp/gsl/impl/meta.h"
+#include "computecpp/gsl/impl/not_null.h"
+#include "computecpp/gsl/impl/type_traits.h"
+#include "computecpp/gsl/impl/pre_cpp17_constexpr_global.h"
+#include "computecpp/gsl/impl/integer_sequence.h"
+
+#endif  // RUNTIME_INCLUDE_GSL_GSL_

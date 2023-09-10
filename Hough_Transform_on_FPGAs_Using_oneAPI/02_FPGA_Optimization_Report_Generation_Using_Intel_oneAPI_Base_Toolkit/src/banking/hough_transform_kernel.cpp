@@ -1,0 +1,106 @@
+//==============================================================
+// Copyright © 2020 Intel Corporation
+//
+// SPDX-License-Identifier: MIT
+// =============================================================
+
+#include "../split/hough_transform_kernel.hpp"
+
+class Hough_transform_kernel;
+
+void RunKernel(char pixels[], short accumulators[])
+{
+    event queue_event;
+    auto my_property_list = property_list{sycl::property::queue::enable_profiling()};
+
+    // Buffer setup: The SYCL buffer creation expects a type of sycl:: range for the size
+    range<1> num_pixels{IMAGE_SIZE};
+    range<1> num_accumulators{THETAS*RHOS*2};
+    range<1> num_table_values{180};
+
+    // Create the buffers that pass data between the host and FPGA
+    buffer<char, 1> pixels_buf(pixels, num_pixels);
+    buffer<short, 1> accumulators_buf(accumulators,num_accumulators);
+    buffer<float, 1> sin_table_buf(sinvals,num_table_values);
+    buffer<float, 1> cos_table_buf(cosvals,num_table_values);
+  
+    // Device selection: Explicitly compile for the FPGA_EMULATOR or FPGA
+    #if defined(FPGA_EMULATOR)
+        INTEL::fpga_emulator_selector device_selector;
+    #else
+        INTEL::fpga_selector device_selector;
+    #endif
+
+    try {
+    
+        queue device_queue(device_selector,NULL,my_property_list);
+        platform platform = device_queue.get_context().get_platform();
+        device my_device = device_queue.get_device();
+        std::cout << "Platform name: " <<  platform.get_info<sycl::info::platform::name>().c_str() << std::endl;
+        std::cout << "Device name: " <<  my_device.get_info<sycl::info::device::name>().c_str() << std::endl;
+
+        // Submit device queue 
+        queue_event = device_queue.submit([&](sycl::handler &cgh) {    
+          // Create accessors
+          auto _pixels = pixels_buf.get_access<sycl::access::mode::read>(cgh);
+          auto _sin_table = sin_table_buf.get_access<sycl::access::mode::read>(cgh);
+          auto _cos_table = cos_table_buf.get_access<sycl::access::mode::read>(cgh);
+          auto _accumulators = accumulators_buf.get_access<sycl::access::mode::read_write>(cgh);
+
+          //Call the kernel
+          cgh.single_task<class Hough_transform_kernel>([=]() [[intel::kernel_args_restrict]] {
+            
+            //Load from global to local memory
+            [[intel::numbanks(256)]]
+            short accum_local[RHOS*2][256];
+            for (int i = 0; i < RHOS*2; i++) {
+              for (int j=0; j<THETAS; j++) {
+                accum_local[i][j] = 0;
+      	       }
+            }
+            for (uint y=0; y<HEIGHT; y++) {
+              for (uint x=0; x<WIDTH; x++) {
+                unsigned short int increment = 0;
+                if (_pixels[(WIDTH*y)+x] != 0) {
+                  increment = 1;
+                } else {
+                  increment = 0;
+                }
+                
+                #pragma unroll 32 
+                [[intel::ivdep]]
+                for (int theta=0; theta<THETAS; theta++){
+                  int rho = x*_cos_table[theta] + y*_sin_table[theta];
+                  accum_local[rho+RHOS][theta] += increment;
+                }
+              }
+            }
+            //Store from local to global memory
+            for (int i = 0; i < RHOS*2; i++) {
+              for (int j=0; j<THETAS; j++) {
+    	           _accumulators[i*THETAS+j] = accum_local[i][j];
+              }
+            }
+              
+          });
+        });
+    } catch (sycl::exception const &e) {
+        // Catches exceptions in the host code
+        std::cout << "Caught a SYCL host exception:\n" << e.what() << "\n";
+
+        // Most likely the runtime could not find FPGA hardware!
+        if (e.get_cl_code() == CL_DEVICE_NOT_FOUND) {
+          std::cout << "If you are targeting an FPGA, ensure that your "
+                       "system has a correctly configured FPGA board.\n";
+          std::cout << "If you are targeting the FPGA emulator, compile with "
+                       "-DFPGA_EMULATOR.\n";
+        }
+        std::terminate();
+    }
+
+    // Report kernel execution time and throughput
+    cl_ulong t1_kernel = queue_event.get_profiling_info<sycl::info::event_profiling::command_start>();
+    cl_ulong t2_kernel = queue_event.get_profiling_info<sycl::info::event_profiling::command_end>();
+    double time_kernel = (t2_kernel - t1_kernel) / NS;
+    std::cout << "Kernel execution time: " << time_kernel << " seconds" << std::endl;
+}

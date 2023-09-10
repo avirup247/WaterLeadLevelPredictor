@@ -1,0 +1,21 @@
+#%Module
+
+proc ModulesHelp { } {
+   puts stderr "This module adds hipSYCL (syclcc) to your path"
+}
+
+module-whatis "This module adds hipSYCL (syclcc) to your path\n"
+ 
+conflict computeCPP
+
+set basedir "/data/oneapi_workshop/xpublog/cppcon/hipSYCL"
+prepend-path PATH "${basedir}/bin"
+prepend-path LIBRARY_PATH "${basedir}/lib"
+prepend-path LD_LIBRARY_PATH "${basedir}/lib"
+prepend-path LD_LIBRARY_PATH "${basedir}/lib"
+prepend-path CPLUS_INCLUDE_PATH  "${basedir}/include"
+setenv HIPSYCL_CLANG /glob/development-tools/versions/oneapi/2021.4/inteloneapi/compiler/2021.4.0/linux/bin/clang 
+setenv HIPSYCL_TARGETS omp 
+setenv HIPSYCL_CUDA_PATH /tmp 
+setenv HIPSYCL_CLANG_INCLUDE_PATH /glob/development-tools/versions/oneapi/2021.4/inteloneapi/compiler/2021.4.0/linux/compiler/include
+

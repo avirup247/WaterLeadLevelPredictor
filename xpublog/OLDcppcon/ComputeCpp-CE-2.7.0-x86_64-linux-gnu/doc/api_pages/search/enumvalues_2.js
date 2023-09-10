@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['clamp',['clamp',['../namespacecl_1_1sycl.html#a1b4377b5144c86548305fcdc66aa42dfaa597a055c00d084069e4bb23dc789ac9',1,'cl::sycl']]],
+  ['clamp_5fto_5fedge',['clamp_to_edge',['../namespacecl_1_1sycl.html#a1b4377b5144c86548305fcdc66aa42dfa7ff5ead6fef18ca5f63119754ac76c3e',1,'cl::sycl']]],
+  ['codeplay_5fonchip_5fmemory_5fsize',['codeplay_onchip_memory_size',['../namespacecl_1_1sycl_1_1info.html#a51f4189fcf4ca86d768d0fcce34d8bc5a7035c04f30bdabc5c24a89fa54bc4107',1,'cl::sycl::info']]],
+  ['command_5fend',['command_end',['../namespacecl_1_1sycl_1_1info.html#a982c34d609e64bcf30c733257890f157adfac728d996ea99618fb8a5dfb2e48d4',1,'cl::sycl::info']]],
+  ['command_5fexecution_5fstatus',['command_execution_status',['../namespacecl_1_1sycl_1_1info.html#ad6dde1d8cdb42ae488540a7c276e4c56a3d3e95b5ca362889794d2881a835b9d4',1,'cl::sycl::info']]],
+  ['command_5fstart',['command_start',['../namespacecl_1_1sycl_1_1info.html#a982c34d609e64bcf30c733257890f157a86443f0d367ba2434ee11958c89f85e9',1,'cl::sycl::info']]],
+  ['command_5fsubmit',['command_submit',['../namespacecl_1_1sycl_1_1info.html#a982c34d609e64bcf30c733257890f157a1c2215f8145b8a68dcb5b72abb77c05d',1,'cl::sycl::info']]],
+  ['compile_5fnum_5fsub_5fgroups',['compile_num_sub_groups',['../namespacecl_1_1sycl_1_1info.html#aaee38a765a8d99422ac3d2bbd4a79b8eaf627003994720d30c79116693a802167',1,'cl::sycl::info']]],
+  ['compile_5fsub_5fgroup_5fsize',['compile_sub_group_size',['../namespacecl_1_1sycl_1_1info.html#aaee38a765a8d99422ac3d2bbd4a79b8ea796b440435ffb2b1d7e43c90ed04f9b3',1,'cl::sycl::info']]],
+  ['compile_5fwork_5fgroup_5fsize',['compile_work_group_size',['../namespacecl_1_1sycl_1_1info.html#a592a8baeff484e312c7f5ce6192a6ccfaf44f9ae6cb6cd32abe3bcafdc0802db5',1,'cl::sycl::info']]],
+  ['compiled',['compiled',['../namespacecl_1_1sycl.html#a104e4e04504c3752e3ba5a3d4013e0ebacb5185196ad3147d58c13c22b2a32292',1,'cl::sycl']]],
+  ['complete',['complete',['../namespacecl_1_1sycl_1_1info.html#a475d78cf58a02b3f1abb3b1dcd144c63ad9a22d7a8178d5b42a8750123cbfe5b1',1,'cl::sycl::info']]],
+  ['computecpp_5fdeprecated_5fby_5fsycl_5f202001',['COMPUTECPP_DEPRECATED_BY_SYCL_202001',['../namespacecl_1_1sycl.html#aa64f3cdf8b4712806126ec95efa7d1b6a524bfc18950ca2eb0d1244ad5cc3ffcc',1,'cl::sycl::COMPUTECPP_DEPRECATED_BY_SYCL_202001()'],['../namespacecl_1_1sycl.html#aa64f3cdf8b4712806126ec95efa7d1b6a524bfc18950ca2eb0d1244ad5cc3ffcc',1,'cl::sycl::COMPUTECPP_DEPRECATED_BY_SYCL_202001()'],['../namespacecl_1_1sycl.html#aa64f3cdf8b4712806126ec95efa7d1b6a524bfc18950ca2eb0d1244ad5cc3ffcc',1,'cl::sycl::COMPUTECPP_DEPRECATED_BY_SYCL_202001()'],['../namespacecl_1_1sycl.html#aa64f3cdf8b4712806126ec95efa7d1b6a524bfc18950ca2eb0d1244ad5cc3ffcc',1,'cl::sycl::COMPUTECPP_DEPRECATED_BY_SYCL_202001()']]],
+  ['constant_5fbuffer',['constant_buffer',['../namespacecl_1_1sycl_1_1access.html#a6874ae9aff44c453a412c2adefb1b9f7ade1df516592d6089a5a1d4c9280f257b',1,'cl::sycl::access']]],
+  ['constant_5fspace',['constant_space',['../namespacecl_1_1sycl_1_1access.html#a0b32461aa4a1867f288b640d7fc64fbfac7a17f9f56c653a22f0e5cb25b241aeb',1,'cl::sycl::access']]],
+  ['context',['context',['../namespacecl_1_1sycl_1_1info.html#a9845a480a36d09200c5355a775fc1fa1a5c18ef72771564b7f43c497dc507aeab',1,'cl::sycl::info::context()'],['../namespacecl_1_1sycl_1_1info.html#a6645cc5581516494ff2409d887258574a5c18ef72771564b7f43c497dc507aeab',1,'cl::sycl::info::context()']]],
+  ['correctly_5frounded_5fdivide_5fsqrt',['correctly_rounded_divide_sqrt',['../namespacecl_1_1sycl_1_1info.html#a1f763ed06ac5c82a02a7425bd7739745a2bb70665b20f6bfbb2cc54a1c8ae3680',1,'cl::sycl::info']]],
+  ['cpu',['cpu',['../namespacecl_1_1sycl.html#aa64f3cdf8b4712806126ec95efa7d1b6ad9747e2da342bdb995f6389533ad1a3d',1,'cl::sycl::cpu()'],['../namespacecl_1_1sycl_1_1info.html#a839771ab6b37e25ae67d5c8a2d4d97f8ad9747e2da342bdb995f6389533ad1a3d',1,'cl::sycl::info::cpu()']]],
+  ['custom',['custom',['../namespacecl_1_1sycl.html#aa64f3cdf8b4712806126ec95efa7d1b6a8b9035807842a4e4dbe009f3f1478127',1,'cl::sycl::custom()'],['../namespacecl_1_1sycl_1_1info.html#a839771ab6b37e25ae67d5c8a2d4d97f8a8b9035807842a4e4dbe009f3f1478127',1,'cl::sycl::info::custom()']]]
+];

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['fabs',['fabs',['../namespacecl_1_1sycl.html#aa0e208e73e5fc152e1760b0c816f622e',1,'cl::sycl']]],
+  ['fast_5fdistance',['fast_distance',['../namespacecl_1_1sycl.html#a8f63f60c67b7ccd661dc11ac14c5b1e2',1,'cl::sycl']]],
+  ['fast_5flength',['fast_length',['../namespacecl_1_1sycl.html#ac1a5d7b23ac9bcb6e9c37f0bdcc0a98b',1,'cl::sycl']]],
+  ['fast_5fnormalize',['fast_normalize',['../namespacecl_1_1sycl.html#aaab1631fc360bf5fdc0fab469184e00c',1,'cl::sycl']]],
+  ['fdim',['fdim',['../namespacecl_1_1sycl.html#a8aa9a2b60e5a77ac7144c23d537f9c91',1,'cl::sycl']]],
+  ['fetch_5fadd',['fetch_add',['../structcl_1_1sycl_1_1atomic.html#a971bcb519e822d108a905bd3ccd0d782',1,'cl::sycl::atomic']]],
+  ['fetch_5fand',['fetch_and',['../structcl_1_1sycl_1_1atomic.html#a0c8ed2cdf141be3362e5467c087b7ae1',1,'cl::sycl::atomic']]],
+  ['fetch_5fmax',['fetch_max',['../structcl_1_1sycl_1_1atomic.html#ad272c770ff91f550930d2daee540cc6a',1,'cl::sycl::atomic']]],
+  ['fetch_5fmin',['fetch_min',['../structcl_1_1sycl_1_1atomic.html#a90d4ceb2edb9da2ed6289c25f08d69ff',1,'cl::sycl::atomic']]],
+  ['fetch_5for',['fetch_or',['../structcl_1_1sycl_1_1atomic.html#a9d438f1b491d1ac0a5b563d3db03ea13',1,'cl::sycl::atomic']]],
+  ['fetch_5fsub',['fetch_sub',['../structcl_1_1sycl_1_1atomic.html#ae4e72f59e687715e333fa0040ae29fe6',1,'cl::sycl::atomic']]],
+  ['fetch_5fxor',['fetch_xor',['../structcl_1_1sycl_1_1atomic.html#a4f698f63bcb12981bed2a5d639965a0a',1,'cl::sycl::atomic']]],
+  ['fill',['fill',['../classcl_1_1sycl_1_1handler.html#ad360f52d93770802e350f10754f7ed6d',1,'cl::sycl::handler::fill(accessor&lt; TAcc, dims, accessMode, accessTarget, isPlaceholder &gt; acc, T val)'],['../classcl_1_1sycl_1_1handler.html#a96f34754b90172152e6e68a8b76c0446',1,'cl::sycl::handler::fill(void *ptr, const T &amp;pattern, size_t count)'],['../classcl_1_1sycl_1_1handler.html#ae6d7565b85886156bf0a9e2b775472fb',1,'cl::sycl::handler::fill(const accessor_base &amp;acc, const void *patternData, const size_t patternSize)'],['../classcl_1_1sycl_1_1handler.html#af3387bd5b8faaba3ed169d9fb45b8952',1,'cl::sycl::handler::fill(void *ptr, const void *patternData, size_t patternSize, size_t size)'],['../classcl_1_1sycl_1_1queue.html#a58e20098a9c4645173a7768b054a64e9',1,'cl::sycl::queue::fill()']]],
+  ['floor',['floor',['../namespacecl_1_1sycl.html#afe54dad3eca75959925ab84f85cc5001',1,'cl::sycl']]],
+  ['flush',['flush',['../namespacecl_1_1sycl_1_1codeplay.html#a12b56459e5d460461feabb6a8020d4dc',1,'cl::sycl::codeplay']]],
+  ['fma',['fma',['../namespacecl_1_1sycl.html#aa7d9c025116e09413ab461e140b84870',1,'cl::sycl']]],
+  ['fmax',['fmax',['../namespacecl_1_1sycl.html#a940aa0b9ff721e94caa483dcd9efd071',1,'cl::sycl']]],
+  ['fmin',['fmin',['../namespacecl_1_1sycl.html#a51c269a4ea273315fb71f9ce9f5d3ae8',1,'cl::sycl']]],
+  ['fmod',['fmod',['../namespacecl_1_1sycl.html#ad8e588493ab9ee3616ec15daa0fbe6ca',1,'cl::sycl']]],
+  ['fract',['fract',['../namespacecl_1_1sycl.html#a1717420606d3ee2cd47c58660b571248',1,'cl::sycl']]],
+  ['free',['free',['../namespacecl_1_1sycl_1_1experimental.html#ac8492d055ffd5ef06a921c77c2752fe2',1,'cl::sycl::experimental::free(void *ptr, const context &amp;ctx)'],['../namespacecl_1_1sycl_1_1experimental.html#a8f61061ff147f29b88e1ec6b6876feec',1,'cl::sycl::experimental::free(void *ptr, const queue &amp;q)']]],
+  ['frexp',['frexp',['../namespacecl_1_1sycl.html#ab39ea7a93a59a196653933df7893ff13',1,'cl::sycl']]]
+];

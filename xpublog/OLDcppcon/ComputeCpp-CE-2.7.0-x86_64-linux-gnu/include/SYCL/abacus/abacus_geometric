@@ -1,0 +1,1468 @@
+/******************************************************************************
+
+    Copyright (C) 2002-2016 Codeplay Software Limited
+    All Rights Reserved.
+
+    Codeplay's ComputeCpp
+
+*******************************************************************************/
+
+/*!
+  @file abacus_geometric
+
+  @brief Abacus geometric built-ins.
+*/
+
+#ifndef __ABACUS_ABACUS_GEOMETRIC__
+#define __ABACUS_ABACUS_GEOMETRIC__
+
+#ifndef __ABACUS_ABACUS_CONFIG__
+#include <abacus/abacus_config>
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+/// @defgroup abacus_geometric abacus_geometric
+/// @{
+
+/// @brief Dot product.
+/// @param[in] x A abacus_float.
+/// @param[in] y A abacus_float.
+/// @return      A abacus_float.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_float ABACUS_EXPORT_API __abacus_dot(abacus_float x, abacus_float y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_float.
+/// @param[in] y A abacus_float.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API dot(abacus_float x, abacus_float y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float.
+/// @param[in] y A abacus_float.
+/// @return      A abacus_float.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_float ABACUS_EXPORT_API __abacus_distance(abacus_float x, abacus_float y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_float.
+/// @param[in] y A abacus_float.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API distance(abacus_float x, abacus_float y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_float ABACUS_EXPORT_API __abacus_length(abacus_float x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API length(abacus_float x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_float ABACUS_EXPORT_API __abacus_normalize(abacus_float x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API normalize(abacus_float x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float.
+/// @param[in] y A abacus_float.
+/// @return      A abacus_float.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_distance(abacus_float x, abacus_float y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_float.
+/// @param[in] y A abacus_float.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_distance(abacus_float x, abacus_float y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_length(abacus_float x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_length(abacus_float x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_normalize(abacus_float x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_float.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_normalize(abacus_float x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Dot product.
+/// @param[in] x A abacus_float2.
+/// @param[in] y A abacus_float2.
+/// @return      A abacus_float.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_float ABACUS_EXPORT_API __abacus_dot(abacus_float2 x, abacus_float2 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_float2.
+/// @param[in] y A abacus_float2.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API dot(abacus_float2 x, abacus_float2 y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float2.
+/// @param[in] y A abacus_float2.
+/// @return      A abacus_float.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_float ABACUS_EXPORT_API __abacus_distance(abacus_float2 x, abacus_float2 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_float2.
+/// @param[in] y A abacus_float2.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API distance(abacus_float2 x, abacus_float2 y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_float ABACUS_EXPORT_API __abacus_length(abacus_float2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API length(abacus_float2 x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float2.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_float2 ABACUS_EXPORT_API __abacus_normalize(abacus_float2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float2.
+inline abacus_float2 ABACUS_API normalize(abacus_float2 x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float2.
+/// @param[in] y A abacus_float2.
+/// @return      A abacus_float.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_distance(abacus_float2 x, abacus_float2 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_float2.
+/// @param[in] y A abacus_float2.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_distance(abacus_float2 x, abacus_float2 y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_length(abacus_float2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_length(abacus_float2 x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float2.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_float2 ABACUS_EXPORT_API __abacus_fast_normalize(abacus_float2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_float2.
+/// @return      A abacus_float2.
+inline abacus_float2 ABACUS_API fast_normalize(abacus_float2 x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Dot product.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_float ABACUS_EXPORT_API __abacus_dot(abacus_float3 x, abacus_float3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API dot(abacus_float3 x, abacus_float3 y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_float ABACUS_EXPORT_API __abacus_distance(abacus_float3 x, abacus_float3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API distance(abacus_float3 x, abacus_float3 y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_float ABACUS_EXPORT_API __abacus_length(abacus_float3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API length(abacus_float3 x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float3.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_float3 ABACUS_EXPORT_API __abacus_normalize(abacus_float3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float3.
+inline abacus_float3 ABACUS_API normalize(abacus_float3 x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_distance(abacus_float3 x, abacus_float3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_distance(abacus_float3 x, abacus_float3 y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_length(abacus_float3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_length(abacus_float3 x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float3.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_float3 ABACUS_EXPORT_API __abacus_fast_normalize(abacus_float3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_float3.
+/// @return      A abacus_float3.
+inline abacus_float3 ABACUS_API fast_normalize(abacus_float3 x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Dot product.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_float ABACUS_EXPORT_API __abacus_dot(abacus_float4 x, abacus_float4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API dot(abacus_float4 x, abacus_float4 y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_float ABACUS_EXPORT_API __abacus_distance(abacus_float4 x, abacus_float4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API distance(abacus_float4 x, abacus_float4 y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_float ABACUS_EXPORT_API __abacus_length(abacus_float4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API length(abacus_float4 x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float4.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_float4 ABACUS_EXPORT_API __abacus_normalize(abacus_float4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float4.
+inline abacus_float4 ABACUS_API normalize(abacus_float4 x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_distance(abacus_float4 x, abacus_float4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_distance(abacus_float4 x, abacus_float4 y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_float ABACUS_EXPORT_API __abacus_fast_length(abacus_float4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float.
+inline abacus_float ABACUS_API fast_length(abacus_float4 x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float4.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_float4 ABACUS_EXPORT_API __abacus_fast_normalize(abacus_float4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_float4.
+/// @return      A abacus_float4.
+inline abacus_float4 ABACUS_API fast_normalize(abacus_float4 x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Dot product.
+/// @param[in] x A abacus_double.
+/// @param[in] y A abacus_double.
+/// @return      A abacus_double.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_double ABACUS_EXPORT_API __abacus_dot(abacus_double x, abacus_double y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_double.
+/// @param[in] y A abacus_double.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API dot(abacus_double x, abacus_double y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double.
+/// @param[in] y A abacus_double.
+/// @return      A abacus_double.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_double ABACUS_EXPORT_API __abacus_distance(abacus_double x, abacus_double y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_double.
+/// @param[in] y A abacus_double.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API distance(abacus_double x, abacus_double y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_double ABACUS_EXPORT_API __abacus_length(abacus_double x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API length(abacus_double x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_double ABACUS_EXPORT_API __abacus_normalize(abacus_double x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API normalize(abacus_double x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double.
+/// @param[in] y A abacus_double.
+/// @return      A abacus_double.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_distance(abacus_double x, abacus_double y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_double.
+/// @param[in] y A abacus_double.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_distance(abacus_double x, abacus_double y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_length(abacus_double x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_length(abacus_double x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_normalize(abacus_double x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_double.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_normalize(abacus_double x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Dot product.
+/// @param[in] x A abacus_double2.
+/// @param[in] y A abacus_double2.
+/// @return      A abacus_double.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_double ABACUS_EXPORT_API __abacus_dot(abacus_double2 x, abacus_double2 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_double2.
+/// @param[in] y A abacus_double2.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API dot(abacus_double2 x, abacus_double2 y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double2.
+/// @param[in] y A abacus_double2.
+/// @return      A abacus_double.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_double ABACUS_EXPORT_API __abacus_distance(abacus_double2 x, abacus_double2 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_double2.
+/// @param[in] y A abacus_double2.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API distance(abacus_double2 x, abacus_double2 y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_double ABACUS_EXPORT_API __abacus_length(abacus_double2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API length(abacus_double2 x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double2.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_double2 ABACUS_EXPORT_API __abacus_normalize(abacus_double2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double2.
+inline abacus_double2 ABACUS_API normalize(abacus_double2 x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double2.
+/// @param[in] y A abacus_double2.
+/// @return      A abacus_double.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_distance(abacus_double2 x, abacus_double2 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_double2.
+/// @param[in] y A abacus_double2.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_distance(abacus_double2 x, abacus_double2 y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_length(abacus_double2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_length(abacus_double2 x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double2.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_double2 ABACUS_EXPORT_API __abacus_fast_normalize(abacus_double2 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_double2.
+/// @return      A abacus_double2.
+inline abacus_double2 ABACUS_API fast_normalize(abacus_double2 x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Dot product.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_double ABACUS_EXPORT_API __abacus_dot(abacus_double3 x, abacus_double3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API dot(abacus_double3 x, abacus_double3 y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_double ABACUS_EXPORT_API __abacus_distance(abacus_double3 x, abacus_double3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API distance(abacus_double3 x, abacus_double3 y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_double ABACUS_EXPORT_API __abacus_length(abacus_double3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API length(abacus_double3 x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double3.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_double3 ABACUS_EXPORT_API __abacus_normalize(abacus_double3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double3.
+inline abacus_double3 ABACUS_API normalize(abacus_double3 x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_distance(abacus_double3 x, abacus_double3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_distance(abacus_double3 x, abacus_double3 y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_length(abacus_double3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_length(abacus_double3 x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double3.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_double3 ABACUS_EXPORT_API __abacus_fast_normalize(abacus_double3 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_double3.
+/// @return      A abacus_double3.
+inline abacus_double3 ABACUS_API fast_normalize(abacus_double3 x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Dot product.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double.
+///
+/// Dot product of @a x and @a y.
+///
+/// Standards compliant implementation of OpenCL 1.2 dot.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/dot.html
+abacus_double ABACUS_EXPORT_API __abacus_dot(abacus_double4 x, abacus_double4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_dot.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API dot(abacus_double4 x, abacus_double4 y) {
+  return __abacus_dot(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double.
+///
+/// This is calculated as length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/distance.html
+abacus_double ABACUS_EXPORT_API __abacus_distance(abacus_double4 x, abacus_double4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_distance.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API distance(abacus_double4 x, abacus_double4 y) {
+  return __abacus_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/length.html
+abacus_double ABACUS_EXPORT_API __abacus_length(abacus_double4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_length.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API length(abacus_double4 x) {
+  return __abacus_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double4.
+///
+/// Standards compliant implementation of OpenCL 1.2 normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/normalize.html
+abacus_double4 ABACUS_EXPORT_API __abacus_normalize(abacus_double4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_normalize.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double4.
+inline abacus_double4 ABACUS_API normalize(abacus_double4 x) {
+  return __abacus_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector distance.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double.
+///
+/// This is calculated as fast_length(x - y).
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_distance.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_distance.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_distance(abacus_double4 x, abacus_double4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_distance.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_distance(abacus_double4 x, abacus_double4 y) {
+  return __abacus_fast_distance(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector length.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_length.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_length.html
+abacus_double ABACUS_EXPORT_API __abacus_fast_length(abacus_double4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_length.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double.
+inline abacus_double ABACUS_API fast_length(abacus_double4 x) {
+  return __abacus_fast_length(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @brief Vector in the same direction as x but with a length of 1.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double4.
+///
+/// Standards compliant implementation of OpenCL 1.2 fast_normalize.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/fast_normalize.html
+abacus_double4 ABACUS_EXPORT_API __abacus_fast_normalize(abacus_double4 x);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_fast_normalize.
+/// @param[in] x A abacus_double4.
+/// @return      A abacus_double4.
+inline abacus_double4 ABACUS_API fast_normalize(abacus_double4 x) {
+  return __abacus_fast_normalize(x);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+
+/// @brief Cross product.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float3.
+///
+/// Cross product of @a x and @a y. The .w components of @a x and @a y are 
+/// ignored, and the result .w is 0.
+///
+/// Standards compliant implementation of OpenCL 1.2 cross.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/cross.html
+abacus_float3 ABACUS_EXPORT_API __abacus_cross(abacus_float3 x, abacus_float3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_cross.
+/// @param[in] x A abacus_float3.
+/// @param[in] y A abacus_float3.
+/// @return      A abacus_float3.
+inline abacus_float3 ABACUS_API cross(abacus_float3 x, abacus_float3 y) {
+  return __abacus_cross(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif/// @brief Cross product.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float4.
+///
+/// Cross product of @a x and @a y. The .w components of @a x and @a y are 
+/// ignored, and the result .w is 0.
+///
+/// Standards compliant implementation of OpenCL 1.2 cross.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/cross.html
+abacus_float4 ABACUS_EXPORT_API __abacus_cross(abacus_float4 x, abacus_float4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_cross.
+/// @param[in] x A abacus_float4.
+/// @param[in] y A abacus_float4.
+/// @return      A abacus_float4.
+inline abacus_float4 ABACUS_API cross(abacus_float4 x, abacus_float4 y) {
+  return __abacus_cross(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif/// @brief Cross product.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double3.
+///
+/// Cross product of @a x and @a y. The .w components of @a x and @a y are 
+/// ignored, and the result .w is 0.
+///
+/// Standards compliant implementation of OpenCL 1.2 cross.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/cross.html
+abacus_double3 ABACUS_EXPORT_API __abacus_cross(abacus_double3 x, abacus_double3 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_cross.
+/// @param[in] x A abacus_double3.
+/// @param[in] y A abacus_double3.
+/// @return      A abacus_double3.
+inline abacus_double3 ABACUS_API cross(abacus_double3 x, abacus_double3 y) {
+  return __abacus_cross(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif/// @brief Cross product.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double4.
+///
+/// Cross product of @a x and @a y. The .w components of @a x and @a y are 
+/// ignored, and the result .w is 0.
+///
+/// Standards compliant implementation of OpenCL 1.2 cross.
+///
+/// @see https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/cross.html
+abacus_double4 ABACUS_EXPORT_API __abacus_cross(abacus_double4 x, abacus_double4 y);
+
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+namespace abacus {
+#endif
+/// @brief Wrapper for __abacus_cross.
+/// @param[in] x A abacus_double4.
+/// @param[in] y A abacus_double4.
+/// @return      A abacus_double4.
+inline abacus_double4 ABACUS_API cross(abacus_double4 x, abacus_double4 y) {
+  return __abacus_cross(x, y);
+}
+#if defined(__cplusplus) && !defined(__OPENCL_VERSION__)
+}
+#endif
+
+/// @}
+////////////////////////////////////////////////////////////////////////////////
+
+#endif  //__ABACUS_ABACUS_GEOMETRIC__

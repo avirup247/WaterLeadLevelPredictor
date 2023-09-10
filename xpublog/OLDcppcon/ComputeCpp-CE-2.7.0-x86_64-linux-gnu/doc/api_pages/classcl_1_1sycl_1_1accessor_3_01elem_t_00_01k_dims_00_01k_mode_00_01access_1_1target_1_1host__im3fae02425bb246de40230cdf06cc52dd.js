@@ -1,0 +1,4 @@
+var classcl_1_1sycl_1_1accessor_3_01elem_t_00_01k_dims_00_01k_mode_00_01access_1_1target_1_1host__im3fae02425bb246de40230cdf06cc52dd =
+[
+    [ "accessor", "classcl_1_1sycl_1_1accessor_3_01elem_t_00_01k_dims_00_01k_mode_00_01access_1_1target_1_1host__im3fae02425bb246de40230cdf06cc52dd.html#a97adf3dec9a7090e26fc2a5cf0141ef5", null ]
+];

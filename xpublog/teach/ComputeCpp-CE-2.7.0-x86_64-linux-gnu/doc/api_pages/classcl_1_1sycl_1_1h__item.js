@@ -1,0 +1,27 @@
+var classcl_1_1sycl_1_1h__item =
+[
+    [ "h_item", "classcl_1_1sycl_1_1h__item.html#a0d4da9c1c0d40b08b3c50541dd7a1b95", null ],
+    [ "get_global", "classcl_1_1sycl_1_1h__item.html#aa0cdd9047ab6bc452b820c6557457088", null ],
+    [ "get_global_id", "classcl_1_1sycl_1_1h__item.html#a19f8b0636c6abfafa735514af33fb6ba", null ],
+    [ "get_global_id", "classcl_1_1sycl_1_1h__item.html#a85d7c8efcd828e94b84cacb433e48a7a", null ],
+    [ "get_global_range", "classcl_1_1sycl_1_1h__item.html#aa0be26619c27b205dc20be66acc7c31a", null ],
+    [ "get_global_range", "classcl_1_1sycl_1_1h__item.html#abc6e901a39e06860d6b97e1665913166", null ],
+    [ "get_local", "classcl_1_1sycl_1_1h__item.html#aaa63c707e00194591b106a8e4f496eb0", null ],
+    [ "get_local_id", "classcl_1_1sycl_1_1h__item.html#a4876a95ddab9eda5343f16ced183474c", null ],
+    [ "get_local_id", "classcl_1_1sycl_1_1h__item.html#a25d317fda195b9d1345b463a43d57c00", null ],
+    [ "get_local_range", "classcl_1_1sycl_1_1h__item.html#a1443c880ddf9a4a827ee9b6aedf45914", null ],
+    [ "get_local_range", "classcl_1_1sycl_1_1h__item.html#a2879405d2e41ebf972f4ce3d2476832d", null ],
+    [ "get_logical_local", "classcl_1_1sycl_1_1h__item.html#a34e24e8d40b6c0e65322e94000ed6149", null ],
+    [ "get_logical_local_id", "classcl_1_1sycl_1_1h__item.html#a90e9109d15fa6259ab216eaa6ec3a1a6", null ],
+    [ "get_logical_local_id", "classcl_1_1sycl_1_1h__item.html#a5dd7fee4552a75c90bfba5a207a49d46", null ],
+    [ "get_logical_local_range", "classcl_1_1sycl_1_1h__item.html#a6acca12254a3402e8dd104e6da8ea3dd", null ],
+    [ "get_logical_local_range", "classcl_1_1sycl_1_1h__item.html#a1d02a89c0aa95e1f037dbbba283598b4", null ],
+    [ "get_physical_local", "classcl_1_1sycl_1_1h__item.html#ab69816e0fc5ed491680e1bbeb51c8409", null ],
+    [ "get_physical_local_id", "classcl_1_1sycl_1_1h__item.html#a653384f52f7004288275b42e2961c6dd", null ],
+    [ "get_physical_local_id", "classcl_1_1sycl_1_1h__item.html#a094c0685fba9a4c580f832b23f7b23d3", null ],
+    [ "get_physical_local_range", "classcl_1_1sycl_1_1h__item.html#a9bae2e7b9ffa2a32c4647ba827926800", null ],
+    [ "get_physical_local_range", "classcl_1_1sycl_1_1h__item.html#afeda044583d9e6f987e8ef137ae97e6c", null ],
+    [ "is_equal", "classcl_1_1sycl_1_1h__item.html#a00b2eb82f17846667b911c9215628ea1", null ],
+    [ "operator!=", "classcl_1_1sycl_1_1h__item.html#a34d6f8c8124dcb04760951dab04c731c", null ],
+    [ "operator==", "classcl_1_1sycl_1_1h__item.html#a6ac2f9cec7fb7ad6665d9201d19fa3e6", null ]
+];

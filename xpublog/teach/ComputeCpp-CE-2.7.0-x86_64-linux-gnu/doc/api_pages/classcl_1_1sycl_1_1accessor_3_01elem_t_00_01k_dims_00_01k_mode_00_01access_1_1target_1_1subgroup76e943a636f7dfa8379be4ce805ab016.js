@@ -1,0 +1,5 @@
+var classcl_1_1sycl_1_1accessor_3_01elem_t_00_01k_dims_00_01k_mode_00_01access_1_1target_1_1subgroup76e943a636f7dfa8379be4ce805ab016 =
+[
+    [ "accessor", "classcl_1_1sycl_1_1accessor_3_01elem_t_00_01k_dims_00_01k_mode_00_01access_1_1target_1_1subgroup76e943a636f7dfa8379be4ce805ab016.html#a58ee38b5962a1b903347e1e32645076e", null ],
+    [ "accessor", "classcl_1_1sycl_1_1accessor_3_01elem_t_00_01k_dims_00_01k_mode_00_01access_1_1target_1_1subgroup76e943a636f7dfa8379be4ce805ab016.html#a2db0b412bb59fbe7d56b64721d0ebf4d", null ]
+];

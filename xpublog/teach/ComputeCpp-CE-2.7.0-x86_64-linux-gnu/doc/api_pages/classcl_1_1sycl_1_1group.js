@@ -1,0 +1,25 @@
+var classcl_1_1sycl_1_1group =
+[
+    [ "group", "classcl_1_1sycl_1_1group.html#ad4b628a7a2f387c266c40c63aa438925", null ],
+    [ "async_work_group_copy", "classcl_1_1sycl_1_1group.html#a181947c03aab5454e7dfda6872385369", null ],
+    [ "async_work_group_copy", "classcl_1_1sycl_1_1group.html#a2035ebce612085e0f9ae0c0ec557ac18", null ],
+    [ "async_work_group_copy", "classcl_1_1sycl_1_1group.html#ad90723ceb80aded290eedcb8b9a3486a", null ],
+    [ "async_work_group_copy", "classcl_1_1sycl_1_1group.html#a57860524b95f23c67b54ce6c6c71718b", null ],
+    [ "COMPUTECPP_DEPRECATED_BY_SYCL_VER", "classcl_1_1sycl_1_1group.html#ae35d0a730cb2f895a0fc5a20ab793b09", null ],
+    [ "get", "classcl_1_1sycl_1_1group.html#a4eddd6231972437eb42889dd5dcaf6c4", null ],
+    [ "get_global_range", "classcl_1_1sycl_1_1group.html#ab57cbcf1fc9bf5fa09e07bb2578fb9e3", null ],
+    [ "get_global_range", "classcl_1_1sycl_1_1group.html#acfd530a9dbfccf2458b2131c6f16405e", null ],
+    [ "get_group_range", "classcl_1_1sycl_1_1group.html#ae3635628ce75b5d7b1142bbd07664a61", null ],
+    [ "get_group_range", "classcl_1_1sycl_1_1group.html#a7a44c6b81159db344577c2d1470b9a01", null ],
+    [ "get_id", "classcl_1_1sycl_1_1group.html#a3e99765ce6087f78ba4326aaf9c3d8ec", null ],
+    [ "get_id", "classcl_1_1sycl_1_1group.html#a4ad5d32a406d6c0d8ebacb106b530ec9", null ],
+    [ "get_local_range", "classcl_1_1sycl_1_1group.html#a4fb8862762a1acf21c7f634dcfe7ef52", null ],
+    [ "get_local_range", "classcl_1_1sycl_1_1group.html#abd1d674fc1c445896cd69602f0a5ffca", null ],
+    [ "is_zero_id", "classcl_1_1sycl_1_1group.html#aeb0e488f9dbf3e39b5f3c25da8b18b92", null ],
+    [ "operator[]", "classcl_1_1sycl_1_1group.html#a930d1b80b5e9c3df54a074bc397f0aa2", null ],
+    [ "parallel_for_work_item", "classcl_1_1sycl_1_1group.html#a96ce13c37374a5786c010912464f37b6", null ],
+    [ "parallel_for_work_item", "classcl_1_1sycl_1_1group.html#a56e9ddc4b134bc517a909ee9ff836de6", null ],
+    [ "wait_for", "classcl_1_1sycl_1_1group.html#afb7f92025ff0f53ea43010425f2ef9d1", null ],
+    [ "operator!=", "classcl_1_1sycl_1_1group.html#a1bafe697bb9274476a1a2b40c49279fb", null ],
+    [ "operator==", "classcl_1_1sycl_1_1group.html#abaf1222e7d2cea6c84da8a0babfc3210", null ]
+];

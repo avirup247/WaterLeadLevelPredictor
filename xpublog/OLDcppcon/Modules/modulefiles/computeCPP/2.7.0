@@ -1,0 +1,18 @@
+#%Module
+
+proc ModulesHelp { } {
+   puts stderr "This module adds ComputeCPP 2.7.0 (compute++) to your path"
+}
+
+module-whatis "This module adds ComputeCPP 2.7.0 (compute++) to your path\n"
+
+conflict hipSYCL
+conflict computeCPP/2.10.0
+
+set basedir "/data/oneapi_workshop/xpublog/cppcon/ComputeCpp-CE-2.7.0-x86_64-linux-gnu"
+prepend-path PATH "${basedir}/bin"
+prepend-path LIBRARY_PATH "${basedir}/lib"
+prepend-path LD_LIBRARY_PATH "${basedir}/lib"
+prepend-path CPLUS_INCLUDE_PATH /data/oneapi_workshop/xpublog/cppcon/OpenCL-Headers/include
+prepend-path CPLUS_INCLUDE_PATH "${basedir}/include"
+

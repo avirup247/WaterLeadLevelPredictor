@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['r',['r',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfa4b43b0aee35624cd95b910189b3dc231',1,'cl::sycl']]],
+  ['ra',['ra',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfadb26ee047a4c86fbd2fba73503feccb6',1,'cl::sycl']]],
+  ['read',['read',['../namespacecl_1_1sycl_1_1codeplay.html#aa647be847f5f30d9ea39f4a6a2e8cb6eaecae13117d6f0584c25a9da6c8f8415e',1,'cl::sycl::codeplay::read()'],['../namespacecl_1_1sycl_1_1access.html#ade7472cc9b6db9b3cd47fb9f3bc8c450aecae13117d6f0584c25a9da6c8f8415e',1,'cl::sycl::access::read()']]],
+  ['read_5fonly',['read_only',['../namespacecl_1_1sycl_1_1info.html#a8986fcccc4479065bdbf37d9b9d8def5abefe72871b2de8f4f0e20108517e31fe',1,'cl::sycl::info']]],
+  ['read_5fwrite',['read_write',['../namespacecl_1_1sycl_1_1codeplay.html#aa647be847f5f30d9ea39f4a6a2e8cb6ea06ad287ea83b37a6f9db3d8d10d72c8f',1,'cl::sycl::codeplay::read_write()'],['../namespacecl_1_1sycl_1_1access.html#ade7472cc9b6db9b3cd47fb9f3bc8c450a06ad287ea83b37a6f9db3d8d10d72c8f',1,'cl::sycl::access::read_write()'],['../namespacecl_1_1sycl_1_1info.html#a8986fcccc4479065bdbf37d9b9d8def5a06ad287ea83b37a6f9db3d8d10d72c8f',1,'cl::sycl::info::read_write()']]],
+  ['reference_5fcount',['reference_count',['../namespacecl_1_1sycl_1_1info.html#a1a5898274a448ac592ebbcee928939c1a40d852658166dc8a786c23023cb20f92',1,'cl::sycl::info::reference_count()'],['../namespacecl_1_1sycl_1_1info.html#a51f4189fcf4ca86d768d0fcce34d8bc5a40d852658166dc8a786c23023cb20f92',1,'cl::sycl::info::reference_count()'],['../namespacecl_1_1sycl_1_1info.html#ad6dde1d8cdb42ae488540a7c276e4c56a40d852658166dc8a786c23023cb20f92',1,'cl::sycl::info::reference_count()'],['../namespacecl_1_1sycl_1_1info.html#a9845a480a36d09200c5355a775fc1fa1a40d852658166dc8a786c23023cb20f92',1,'cl::sycl::info::reference_count()'],['../namespacecl_1_1sycl_1_1info.html#a6645cc5581516494ff2409d887258574a40d852658166dc8a786c23023cb20f92',1,'cl::sycl::info::reference_count()']]],
+  ['relaxed',['relaxed',['../namespacecl_1_1sycl.html#a2145358fe52a1f70ad8cb1ca7ce89a76a81f32be24a2a62fc472cc43edc97e65b',1,'cl::sycl']]],
+  ['repeat',['repeat',['../namespacecl_1_1sycl.html#a1b4377b5144c86548305fcdc66aa42dfa32cf6da134a8b268cf4ab6b79a9a5ad9',1,'cl::sycl']]],
+  ['rg',['rg',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfa0ecb2b966eca6994910caee2947f6679',1,'cl::sycl']]],
+  ['rgb',['rgb',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfaef70a6546536ccd835479f6cddc0188e',1,'cl::sycl']]],
+  ['rgba',['rgba',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfa7082a31b8759c9d59795876351ec63aa',1,'cl::sycl']]],
+  ['rgbx',['rgbx',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfa736de31f272b0413466a22ff8973f316',1,'cl::sycl']]],
+  ['rgx',['rgx',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfaa4597575732905133f8563ec41addd20',1,'cl::sycl']]],
+  ['round_5fto_5finf',['round_to_inf',['../namespacecl_1_1sycl_1_1info.html#a1f763ed06ac5c82a02a7425bd7739745aaeaf73f92321ce91814a9da33c1cf3b9',1,'cl::sycl::info']]],
+  ['round_5fto_5fnearest',['round_to_nearest',['../namespacecl_1_1sycl_1_1info.html#a1f763ed06ac5c82a02a7425bd7739745a280b2492e1afdb76d63ad6a4cd4f38d7',1,'cl::sycl::info']]],
+  ['round_5fto_5fzero',['round_to_zero',['../namespacecl_1_1sycl_1_1info.html#a1f763ed06ac5c82a02a7425bd7739745ae7352523b7ed11176e94c9ca6cbbec9c',1,'cl::sycl::info']]],
+  ['rte',['rte',['../namespacecl_1_1sycl.html#a16ab217f4d07c904f763adf0a270d1c0ae3fd2afa75b6e2e40021c7054361fbf4',1,'cl::sycl']]],
+  ['rtn',['rtn',['../namespacecl_1_1sycl.html#a16ab217f4d07c904f763adf0a270d1c0aa1ddc56bf1413a90046522963aaf37ab',1,'cl::sycl']]],
+  ['rtp',['rtp',['../namespacecl_1_1sycl.html#a16ab217f4d07c904f763adf0a270d1c0ac766e112de79c244fdaed0ed34ca5e12',1,'cl::sycl']]],
+  ['rtz',['rtz',['../namespacecl_1_1sycl.html#a16ab217f4d07c904f763adf0a270d1c0acf5c5662f49f76f9bbd776d77935b422',1,'cl::sycl']]],
+  ['running',['running',['../namespacecl_1_1sycl_1_1info.html#a475d78cf58a02b3f1abb3b1dcd144c63a75101dcdfc88455bcafc9e53e0b06689',1,'cl::sycl::info']]],
+  ['rx',['rx',['../namespacecl_1_1sycl.html#a8557ea72c6739001cf30a301567cf3dfa22770fbdd1177351a869401a0e1427bc',1,'cl::sycl']]]
+];

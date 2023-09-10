@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>html, body {
+    background-color: #ccc;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer
+}
+
+h1, h2, h3, h4, h5, h6 {
+    cursor: inherit !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    background-color: white;
+    padding: 2rem 4rem 2rem 4rem;
+}
+
+@media screen and (min-width: 56rem) {
+    html, body {
+        height: 100%;
+    }
+
+    main {
+        box-shadow: 10px 0px 10px -8px rgba(0,0,0,0.1);
+    }
+
+    .combined-document main {
+        margin: 0 0 0 320px;
+        max-width: 1000px;
+        min-height: 100%;
+    }
+
+    .single-document main {
+        margin: 0 auto;
+        width: 1000px;
+    }
+}
+
+article header h1 {
+    font-size: 1.7em;
+}
+
+article#title header h1 {
+    font-size: 2.6rem;
+}
+
+article {
+    padding: 2rem 0 1rem 0;
+    position: relative;
+}
+
+article header a h1 {
+    cursor: pointer;
+}
+
+article div.page-counter {
+    display: block;
+    text-align: right;
+    width: auto;
+    height: auto;
+    color: #666;
+    font-size: .8rem;
+    padding: .2rem .5rem .2rem .5rem;
+    margin-top: 4rem;
+}
+
+article:not(#title):not(:last-of-type) {
+    border-bottom: #efefef 1px solid;
+}
+
+article#title img {
+    width: 160px;
+}
+
+article#title nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+article#title nav > ul > li a {
+    opacity: .9;
+    text-decoration: none;
+}
+
+article#title nav li > a:hover,
+article#title nav li.selected > a {
+    opacity: 1;
+    font-weight: bold;
+}
+
+article#title nav > ul > li a {
+    display: block;
+    padding: .3rem;
+    cursor: pointer;
+}
+
+article#title nav > ul > li > a { padding-left: 0rem; padding-right: 0rem; }
+article#title nav > ul > li > ul > li > a { padding-left: 1rem; padding-right: 1rem; }
+article#title nav > ul > li > ul > li > ul > li > a { padding-left: 2rem; padding-right: 2rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > a { padding-left: 3rem; padding-right: 3rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 4rem; padding-right: 4rem; }
+article#title nav > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a { padding-left: 5rem; padding-right: 5rem; }
+
+@media screen and (min-width: 56rem) {
+    .combined-document article#title {
+        position: fixed;
+        height: 100%;
+        width: 320px;
+        left: 0;
+        top: 0;
+        overflow: auto;
+    }
+
+    .combined-document article#title header img {
+        width: 100px;
+    }
+
+    .combined-document article#title header h1 {
+        font-size: 1.2rem;
+    }
+
+    .combined-document article#title > header > div {
+        display: block;
+        width: 100%;
+        padding: 0 2rem 1rem 2rem;
+        border-bottom: #bbb 1px solid;
+    }
+
+    .combined-document article#title nav {
+        padding: 2rem 2rem 0 2rem;
+        opacity: .6;
+        transition: .3s all;
+        font-size: .8rem;
+    }
+
+    .combined-document article#title nav h1 {
+        display: none;
+    }
+
+    .combined-document article#title nav:hover {
+        opacity: 1;
+    }
+}
+
+#copyright {
+    font-size: 12px;
+    color: #ccc;
+    padding: 1rem 0 1rem 0;
+    margin-top: 1rem;
+}
+
+
+
+pre {
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+hr,img,legend {
+    border:0;
+}
+
+blockquote,h6 {
+    color:#777;
+}
+
+a,h3,h4,h5,tt {
+    color:#333;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+    display:block;
+}
+
+a {
+    background:0 0;
+}
+
+a:focus {
+    outline:dotted thin;
+}
+
+a:active,a:hover {
+    outline:0;
+}
+
+abbr[title] {
+    border-bottom:1px dotted;
+}
+
+hr {
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    background:url('data:image/png; base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC') repeat-x;
+    color:#ccc;
+    height:4px;
+    padding:0;
+}
+
+mark {
+    background:#ff0;
+}
+
+kbd,samp {
+    font-family:monospace,serif;
+    font-size:1em;
+}
+
+q {
+    quotes:\201C \201D \2018 \2019;
+}
+
+small {
+    font-size:80%;
+}
+
+sup {
+    top:-.5em;
+}
+
+sub {
+    bottom:-.25em;
+    vertical-align:sub;
+    top:-1px;
+}
+
+img {
+    max-width:100%;
+}
+
+svg:not(:root) {
+    overflow:hidden;
+}
+
+figure {
+    margin:0;
+}
+
+dl dt,h1,h2,h3,h4,h5,h6 {
+    font-weight:700;
+    padding:0;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    cursor:text;
+    margin:20px 0 10px;
+}
+
+article:not(#title) h1,
+article:not(#title) h2,
+article:not(#title) h3,
+article:not(#title) h4,
+article:not(#title) h5 {
+    padding: 1rem 0 1rem 0;
+}
+
+dl dt,h5,h6 {
+    font-size:14px;
+}
+
+blockquote,p,table {
+    margin:15px 0;
+}
+
+ol,ul {
+    padding-left:30px;
+}
+
+blockquote>:first-child,dl dd>:first-child,dl dt>:first-child,h1+p,h2+p,h3+p,h4+p,h5+p,h6+p,ol li ul:first-of-type,ol li>:first-child,ul li>:first-child {
+    margin-top:0;
+}
+
+a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6,body>h1:first-child,body>h1:first-child+h2,body>h2:first-child,body>h3:first-child,body>h4:first-child,body>h5:first-child,body>h6:first-child {
+    margin-top:0;
+    padding-top:0;
+}
+
+table td,table th {
+    border:1px solid #ccc;
+    padding:6px 13px;
+}
+
+dl dt {
+    font-style:italic;
+    margin:15px 0 5px;
+}
+
+blockquote>:last-child,dl dd>:last-child,dl dt>:last-child {
+    margin-bottom:0;
+}
+
+dl dd {
+    margin:0 0 15px;
+    padding:0 15px;
+}
+
+blockquote {
+    border-left:4px solid #DDD;
+    padding:0 15px;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+    font:inherit;
+    width: 100%;
+}
+
+table tr {
+    border-top:1px solid #ccc;
+    background-color:#fff;
+}
+
+a.footnote,sub,sup {
+    font-size:1.4ex;
+    height:0;
+    line-height:1;
+    vertical-align:super;
+    position:relative;
+}
+
+
+/**
+ * Tables
+ */
+table thead tr {
+    background-color: #111111;
+    color: #efefef;
+}
+
+table th:empty {
+    display: none;
+}
+
+table th,
+table td {
+    padding: 1rem;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #efefef;
+}
+
+/**
+ * General
+ */
+p a {
+    font-weight: bold;
+}
+
+
+span.citation {
+    font-weight: bold;
+    vertical-align: super;
+}
+
+
+.highlight { background-color: #111; color: #efefef; padding: 1rem; }
+.highlight .hll { background-color: #222; font-size: 8px; }
+.highlight .c { color: #75715e } /* Comment */
+.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
+.highlight .k { color: #66d9ef } /* Keyword */
+.highlight .l { color: #ae81ff } /* Literal */
+.highlight .n { color: #f8f8f2 } /* Name */
+.highlight .o { color: #f92672 } /* Operator */
+.highlight .p { color: #f8f8f2 } /* Punctuation */
+.highlight .cm { color: #75715e } /* Comment.Multiline */
+.highlight .cp { color: #75715e } /* Comment.Preproc */
+.highlight .c1 { color: #75715e } /* Comment.Single */
+.highlight .cs { color: #75715e } /* Comment.Special */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .kc { color: #66d9ef } /* Keyword.Constant */
+.highlight .kd { color: #66d9ef } /* Keyword.Declaration */
+.highlight .kn { color: #f92672 } /* Keyword.Namespace */
+.highlight .kp { color: #66d9ef } /* Keyword.Pseudo */
+.highlight .kr { color: #66d9ef } /* Keyword.Reserved */
+.highlight .kt { color: #66d9ef } /* Keyword.Type */
+.highlight .ld { color: #e6db74 } /* Literal.Date */
+.highlight .m { color: #ae81ff } /* Literal.Number */
+.highlight .s { color: #e6db74 } /* Literal.String */
+.highlight .na { color: #a6e22e } /* Name.Attribute */
+.highlight .nb { color: #f8f8f2 } /* Name.Builtin */
+.highlight .nc { color: #a6e22e } /* Name.Class */
+.highlight .no { color: #66d9ef } /* Name.Constant */
+.highlight .nd { color: #a6e22e } /* Name.Decorator */
+.highlight .ni { color: #f8f8f2 } /* Name.Entity */
+.highlight .ne { color: #a6e22e } /* Name.Exception */
+.highlight .nf { color: #a6e22e } /* Name.Function */
+.highlight .nl { color: #f8f8f2 } /* Name.Label */
+.highlight .nn { color: #f8f8f2 } /* Name.Namespace */
+.highlight .nx { color: #a6e22e } /* Name.Other */
+.highlight .py { color: #f8f8f2 } /* Name.Property */
+.highlight .nt { color: #f92672 } /* Name.Tag */
+.highlight .nv { color: #f8f8f2 } /* Name.Variable */
+.highlight .ow { color: #f92672 } /* Operator.Word */
+.highlight .w { color: #f8f8f2 } /* Text.Whitespace */
+.highlight .mf { color: #ae81ff } /* Literal.Number.Float */
+.highlight .mh { color: #ae81ff } /* Literal.Number.Hex */
+.highlight .mi { color: #ae81ff } /* Literal.Number.Integer */
+.highlight .mo { color: #ae81ff } /* Literal.Number.Oct */
+.highlight .sb { color: #e6db74 } /* Literal.String.Backtick */
+.highlight .sc { color: #e6db74 } /* Literal.String.Char */
+.highlight .sd { color: #e6db74 } /* Literal.String.Doc */
+.highlight .s2 { color: #e6db74 } /* Literal.String.Double */
+.highlight .se { color: #ae81ff } /* Literal.String.Escape */
+.highlight .sh { color: #e6db74 } /* Literal.String.Heredoc */
+.highlight .si { color: #e6db74 } /* Literal.String.Interpol */
+.highlight .sx { color: #e6db74 } /* Literal.String.Other */
+.highlight .sr { color: #e6db74 } /* Literal.String.Regex */
+.highlight .s1 { color: #e6db74 } /* Literal.String.Single */
+.highlight .ss { color: #e6db74 } /* Literal.String.Symbol */
+.highlight .bp { color: #f8f8f2 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #f8f8f2 } /* Name.Variable.Class */
+.highlight .vg { color: #f8f8f2 } /* Name.Variable.Global */
+.highlight .vi { color: #f8f8f2 } /* Name.Variable.Instance */
+.highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+.highlight .gh { } /* Generic Heading & Diff Header */
+.highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
+.highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
+.highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */"</style>
+<title>SYCL Guide - Memory</title>
+<meta charset="utf-8"/>
+</head>
+<body class="single-document">
+<main>
+<article id="title">
+<header>
+<div>
+<a href="https://www.codeplay.com" id="logo" style="width: 160px; height: 46px; display: block; " target="_blank">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMi4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTG9nbyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAzNzkuNSAxMTAuNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzc5LjUgMTEwLjY7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiNBQkQzRjE7fQ0KCS5zdDF7ZmlsbDojOTYzNTk0O30NCgkuc3Qye2ZpbGw6IzVCMUQ1Nzt9DQoJLnN0M3tmaWxsOnVybCgjU1ZHSURfMV8pO30NCgkuc3Q0e2ZpbGw6dXJsKCNTVkdJRF8yXyk7fQ0KCS5zdDV7ZmlsbDp1cmwoI1NWR0lEXzNfKTt9DQoJLnN0NntmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLW1pdGVybGltaXQ6MTA7fQ0KCS5zdDd7ZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7fQ0KCS5zdDh7b3BhY2l0eTowLjczO30NCjwvc3R5bGU+DQo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNTYuNSw0MGMwLDE1LjYtMTIuNywyOC4zLTI4LjUsMjguM1YxMS43QzQzLjgsMTEuNyw1Ni41LDI0LjQsNTYuNSw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0wLDQwYzAtMTUuNiwxMi42LTI4LjMsMjgtMjguM3Y1Ni42QzEyLjYsNjguMywwLDU1LjYsMCw0MHoiLz4NCjxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0yOC4xLDYyYy0xMi4xLDAtMjItOS44LTIyLTIyczkuOC0yMiwyMi0yMlY2MnoiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzkuMDI4OSIgeTE9IjYxLjk4MjEiIHgyPSIzOS4wMjg5IiB5Mj0iMTguMDY1NCI+DQoJPHN0b3AgIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzlGQ0VFRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiM1M0IyRTUiLz4NCjwvbGluZWFyR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3QzIiBkPSJNNTAsNDBjMCwxMi4xLTkuOCwyMi0yMiwyMlYxOC4xQzQwLjIsMTguMSw1MCwyNy45LDUwLDQweiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8yXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyMS4yMzIzIiB5MT0iMTguMDkxNyIgeDI9IjIxLjIzMjMiIHkyPSI2MS45ODIxIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojQzJFOEY4Ii8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzI0QUJFMiIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIGNsYXNzPSJzdDQiIGQ9Ik0yOCw2MmMtNy41LDAtMTMuNi05LjgtMTMuNi0yMlMyMC41LDE4LjEsMjgsMTguMVY2MnoiLz4NCjxyYWRpYWxHcmFkaWVudCBpZD0iU1ZHSURfM18iIGN4PSIzMC43NDc3IiBjeT0iMzQuODU3MSIgcj0iMTMuMTc4NCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPg0KCTxzdG9wICBvZmZzZXQ9IjAuMTM5OSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGRkZGRiIvPg0KCTxzdG9wICBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNGRkYyMDAiLz4NCjwvcmFkaWFsR3JhZGllbnQ+DQo8cGF0aCBjbGFzcz0ic3Q1IiBkPSJNMjguMywyNC43Yy0wLjQsMC0wLjcsMC4xLTEsMC4yYy01LDAuNi05LDcuMi05LDE1LjJjMCw4LjQsNC40LDE1LjMsOS44LDE1LjN2MGMwLjEsMC0wLjEsMCwwLDANCgljOC41LDAsMTUuNS02LjksMTUuNS0xNS4zUzM2LjcsMjQuNywyOC4zLDI0Ljd6Ii8+DQo8Zz4NCgk8cGF0aCBkPSJNMTAwLjEsMjYuM2wtMy43LDYuNGMtMi0xLjktNC43LTIuOC04LjEtMi44Yy0zLjIsMC01LjgsMS4xLTcuNywzLjJzLTIuOCw1LjEtMi44LDguOWMwLDcuNywzLjcsMTEuNSwxMSwxMS41DQoJCWMzLjIsMCw1LjktMSw4LjQtMy4xbDMuMSw2LjdjLTIuNSwxLjUtNC42LDIuNS02LjUsMi45cy00LDAuNi02LjYsMC42Yy01LjYsMC0xMC4xLTEuNi0xMy40LTQuOXMtNC45LTcuOS00LjktMTMuNw0KCQljMC01LjgsMS44LTEwLjQsNS40LTE0YzMuNi0zLjUsOC40LTUuMywxNC42LTUuM0M5My4zLDIyLjcsOTcsMjMuOSwxMDAuMSwyNi4zeiIvPg0KCTxwYXRoIGQ9Ik0xMDQuOCw0MS42YzAtNS42LDEuNi0xMC4xLDQuOC0xMy42YzMuMi0zLjUsNy41LTUuMywxMi43LTUuM2M1LjYsMCw5LjksMS43LDEyLjksNS4xczQuNiw4LDQuNiwxMy44DQoJCWMwLDUuOC0xLjYsMTAuNS00LjcsMTMuOXMtNy40LDUuMi0xMi44LDUuMmMtNS42LDAtOS45LTEuNy0xMy01LjJDMTA2LjQsNTIsMTA0LjgsNDcuMywxMDQuOCw0MS42eiBNMTEzLjcsNDEuNg0KCQljMCw4LjEsMi45LDEyLjEsOC43LDEyLjFjMi43LDAsNC44LTEsNi4zLTMuMWMxLjYtMi4xLDIuMy01LjEsMi4zLTguOWMwLTcuOS0yLjktMTEuOS04LjctMTEuOWMtMi43LDAtNC44LDEtNi4zLDMuMQ0KCQlDMTE0LjUsMzQuOSwxMTMuNywzNy44LDExMy43LDQxLjZ6Ii8+DQoJPHBhdGggZD0iTTE3MC4zLDU5Ljl2LTIuMmMtMC43LDAuOC0xLjksMS41LTMuNiwyYy0xLjcsMC42LTMuNCwwLjktNS4yLDAuOWMtNS4xLDAtOS4xLTEuNi0xMi00LjhjLTIuOS0zLjItNC40LTcuNy00LjQtMTMuNQ0KCQlzMS43LTEwLjUsNS0xNC4xYzMuNC0zLjYsNy42LTUuNCwxMi42LTUuNGMyLjgsMCw1LjMsMC42LDcuNiwxLjdWOS44bDguNS0ydjUyLjJIMTcwLjN6IE0xNzAuMywzMi4xYy0xLjgtMS41LTMuNy0yLjItNS43LTIuMg0KCQljLTMuNCwwLTYsMS03LjksMy4xcy0yLjgsNS4xLTIuOCw5YzAsNy42LDMuNywxMS40LDExLDExLjRjMC44LDAsMS44LTAuMiwzLTAuN2MxLjItMC41LDItMSwyLjMtMS41VjMyLjF6Ii8+DQoJPHBhdGggZD0iTTIyMCw0NC4zaC0yNi4xYzAuMiwyLjksMS4yLDUuMiwzLDYuOGMxLjgsMS42LDQuMywyLjQsNy40LDIuNGMzLjksMCw2LjgtMSw4LjktM2wzLjMsNi41Yy0zLDIuNC03LjUsMy43LTEzLjQsMy43DQoJCWMtNS42LDAtMTAtMS42LTEzLjItNC45Yy0zLjItMy4zLTQuOS03LjgtNC45LTEzLjdjMC01LjgsMS44LTEwLjQsNS4zLTE0YzMuNi0zLjYsNy44LTUuNCwxMi44LTUuNGM1LjMsMCw5LjYsMS42LDEyLjgsNC43DQoJCWMzLjIsMy4yLDQuOCw3LjIsNC44LDEyLjFDMjIwLjcsNDAuNiwyMjAuNSw0Mi4yLDIyMCw0NC4zeiBNMTk0LjIsMzcuOWgxOGMtMC42LTUuMy0zLjUtOC04LjktOEMxOTguNCwyOS44LDE5NS40LDMyLjUsMTk0LjIsMzcuOQ0KCQl6Ii8+DQoJPHBhdGggZD0iTTIzNS40LDU5djE1LjNoLTguNVYyMy40aDguNXYyLjVjMi4xLTIuMSw0LjgtMy4xLDcuOS0zLjFjMTEuNiwwLDE3LjUsNi40LDE3LjUsMTkuMmMwLDYtMS42LDEwLjYtNC44LDEzLjgNCgkJYy0zLjIsMy4yLTcuNiw0LjgtMTMuMiw0LjhDMjQwLDYwLjYsMjM3LjYsNjAuMSwyMzUuNCw1OXogTTIzNS40LDMyLjN2MTkuMmMxLjUsMS4zLDMuNCwxLjksNS40LDEuOWMzLjksMCw2LjgtMC45LDguNS0yLjgNCgkJYzEuNy0xLjksMi42LTQuOCwyLjYtOC45YzAtNC4zLTAuOS03LjQtMi42LTkuMWMtMS43LTEuOC00LjUtMi42LTguNS0yLjZDMjM4LjgsMjkuOSwyMzcsMzAuNywyMzUuNCwzMi4zeiIvPg0KCTxwYXRoIGQ9Ik0yNjkuNyw5LjhsOC41LTJ2NDEuMWMwLDQuNSwxLjMsNy4yLDQsOC4xYy0xLjMsMi41LTMuNiwzLjgtNi44LDMuOGMtMy45LDAtNS44LTIuNy01LjgtOC4xVjkuOHoiLz4NCgk8cGF0aCBkPSJNMzA5LjIsNTYuM2MtMC44LDEuMy0yLjEsMi4zLTQsMy4xYy0xLjksMC44LTMuOSwxLjItNiwxLjJjLTMuOSwwLTctMS05LjMtM2MtMi4zLTItMy40LTQuOC0zLjQtOC40DQoJCWMwLTQuMiwxLjYtNy41LDQuOC05LjlzNy43LTMuNiwxMy41LTMuNmMxLDAsMi4yLDAuMiwzLjUsMC41YzAtNC4zLTIuNy02LjUtOC4yLTYuNWMtMy4yLDAtNS45LDAuNS04LjEsMS42bC0xLjgtNi42DQoJCWMyLjktMS40LDYuNC0yLjEsMTAuNS0yLjFjNS42LDAsOS43LDEuMywxMi4zLDMuOGMyLjYsMi41LDMuOSw3LjMsMy45LDE0LjR2Ny44YzAsNC45LDEsNy45LDIuOSw5LjJjLTAuNywxLjItMS41LDItMi40LDIuMw0KCQljLTAuOSwwLjMtMS45LDAuNC0zLDAuNGMtMS4yLDAtMi4zLTAuNS0zLjMtMS40UzMwOS41LDU3LjQsMzA5LjIsNTYuM3ogTTMwOC40LDQyLjdjLTEuNS0wLjMtMi41LTAuNC0zLjMtMC40DQoJCWMtNi43LDAtMTAuMSwyLjItMTAuMSw2LjZjMCwzLjMsMS45LDQuOSw1LjcsNC45YzUuMSwwLDcuNy0yLjYsNy43LTcuN1Y0Mi43eiIvPg0KCTxwYXRoIGQ9Ik0zNDIuMyw2NS44Yy0wLjksMi40LTIuOSw0LjUtNS45LDYuMWMtMywxLjYtNi41LDIuNC0xMC41LDIuNHYtNy41YzYuNiwwLDkuOS0xLjcsOS45LTQuOWMwLTIuMi0wLjktNS41LTIuNy0xMA0KCQlsLTExLjQtMjguNGg4LjhsMTAsMjUuM2w5LTI1LjNoOC44TDM0Mi4zLDY1Ljh6Ii8+DQo8L2c+DQo8ZyBpZD0iSGFuZCI+DQoJPGNpcmNsZSBjbGFzcz0ic3Q2IiBjeD0iMzcyLjQiIGN5PSIxNi4zIiByPSI2LjYiLz4NCgk8cGF0aCBjbGFzcz0ic3Q3IiBkPSJNMzc0LjIsMTkuMmMwLDAsMC45LTAuNywxLjEtMC44YzAsMCwwLjktMC41LDAuOS0wLjZjMCwwLDAuNS0wLjIsMC4yLTAuNmMwLDAtMC41LTAuNS0xLjQsMC4zDQoJCWMwLDAtMC4yLDAuMi0wLjMsMC4yYzAsMC0wLjgsMC42LTAuOSwwLjVjMCwwLTAuMy0wLjUsMC0wLjljMCwwLDAuNC0wLjYsMC40LTAuN2MwLDAsMC4xLTAuMiwwLjMtMC4zYzAsMCwwLjQtMC41LDAuNS0wLjYNCgkJYzAsMCwwLjYtMC44LDAuNi0wLjljMCwwLDAuMS0wLjIsMC4yLTAuM2MwLDAsMC42LTAuOSwwLjMtMS4xYzAsMC0wLjMtMC41LTAuOCwwLjNsLTAuMiwwLjNjMCwwLTAuMiwwLjMtMC4zLDAuNA0KCQljMCwwLTAuNCwwLjQtMC41LDAuNmMwLDAtMC41LDAuNS0wLjYsMC43YzAsMC0wLjIsMC4yLTAuMywwLjJjMCwwLTAuMiwwLjEsMC4xLTAuM2MwLDAsMC41LTAuOCwwLjUtMC45YzAsMCwwLjYtMSwwLjUtMS4xDQoJCWMwLDAsMC40LTAuOCwwLjQtMC44YzAsMCwwLjMtMC41LTAuMi0wLjdjMCwwLTAuNCwwLTAuNiwwLjZjMCwwLTAuNCwwLjctMC40LDAuN2MwLDAtMC41LDAuNy0wLjUsMC44YzAsMC0wLjcsMS0wLjgsMS4yDQoJCWMwLDAtMC4zLDAuMi0wLjEtMC4zYzAsMCwwLjItMC42LDAuMi0wLjljMCwwLDAuMy0wLjcsMC4yLTAuOGMwLDAsMC4yLTAuMiwwLjItMC40YzAsMCwwLjYtMC44LDAuMi0xYzAsMC0wLjMtMC4zLTAuNywwLjMNCgkJYzAsMC0wLjMsMC41LTAuMywwLjdjMCwwLTAuNiwxLTAuNiwxLjJjMCwwLTAuNCwxLjItMC41LDEuMmMwLDAtMC40LDAuMS0wLjMtMC4zYzAsMCwwLTAuMywwLTAuNWMwLDAsMC0wLjYsMC0wLjgNCgkJYzAsMCwwLTAuNCwwLjEtMC42YzAsMCwwLjItMC44LTAuMS0wLjljMCwwLTAuNS0wLjItMC42LDEuMWMwLDAtMC4xLDAuOC0wLjEsMWMwLDAtMC4xLDEuMS0wLjEsMS4zYzAsMC0wLjUsMS43LTAuNiwxLjcNCgkJYzAsMC0wLjEsMC44LTAuMSwxLjRjMCwwLDAuMSwwLjgsMSwxLjFsMC41LDAuNGMwLDAsMC45LDAuNCwxLjQsMC4xQzM3MS44LDIwLjUsMzczLjQsMjAsMzc0LjIsMTkuMnoiLz4NCjwvZz4NCjxnIGNsYXNzPSJzdDgiPg0KCTxwYXRoIGQ9Ik03NC45LDk4LjNjLTAuMiwxLjktMC45LDMuMy0yLDQuM2MtMS4xLDEtMi42LDEuNS00LjUsMS41Yy0xLjMsMC0yLjUtMC4zLTMuNS0xYy0xLTAuNy0xLjgtMS42LTIuMy0yLjgNCgkJYy0wLjYtMS4yLTAuOC0yLjYtMC44LTQuMXYtMi4zYzAtMS42LDAuMy0zLDAuOC00LjJjMC42LTEuMiwxLjMtMi4yLDIuNC0yLjhjMS0wLjcsMi4yLTEsMy42LTFjMS45LDAsMy40LDAuNSw0LjUsMS41DQoJCWMxLjEsMSwxLjcsMi40LDEuOSw0LjNoLTEuNWMtMC40LTMtMi00LjUtNC45LTQuNWMtMS42LDAtMi45LDAuNi0zLjksMS44Yy0xLDEuMi0xLjQsMi45LTEuNCw1Vjk2YzAsMi4xLDAuNSwzLjcsMS40LDQuOQ0KCQljMC45LDEuMiwyLjIsMS44LDMuOCwxLjhjMS42LDAsMi44LTAuNCwzLjYtMS4xYzAuOC0wLjgsMS4zLTEuOSwxLjUtMy40SDc0Ljl6Ii8+DQoJPHBhdGggZD0iTTc3LjUsOTdjMC0xLjMsMC4yLTIuNCwwLjctMy40YzAuNS0xLDEuMi0xLjgsMi4xLTIuNGMwLjktMC42LDEuOS0wLjgsMy4xLTAuOGMxLjgsMCwzLjIsMC42LDQuMywxLjgNCgkJYzEuMSwxLjIsMS42LDIuOSwxLjYsNC45djAuM2MwLDEuMy0wLjIsMi40LTAuNywzLjRjLTAuNSwxLTEuMiwxLjgtMi4xLDIuNGMtMC45LDAuNi0xLjksMC44LTMuMSwwLjhjLTEuOCwwLTMuMi0wLjYtNC4zLTEuOA0KCQljLTEuMS0xLjItMS42LTIuOS0xLjYtNC45Vjk3eiBNNzguOSw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTQNCgkJVjk3YzAtMS0wLjItMS45LTAuNi0yLjhjLTAuNC0wLjgtMC45LTEuNS0xLjYtMS45Yy0wLjctMC41LTEuNC0wLjctMi4zLTAuN2MtMS4zLDAtMi40LDAuNS0zLjIsMS41Yy0wLjgsMS0xLjIsMi40LTEuMiw0Vjk3LjR6Ii8+DQoJPHBhdGggZD0iTTkzLjYsOTAuNmwwLDIuM2MwLjUtMC44LDEuMS0xLjQsMS45LTEuOWMwLjctMC40LDEuNi0wLjYsMi41LTAuNmMxLjQsMCwyLjUsMC40LDMuMiwxLjJjMC43LDAuOCwxLDIsMSwzLjZ2OC43aC0xLjV2LTguNw0KCQljMC0xLjItMC4zLTIuMS0wLjgtMi42Yy0wLjUtMC42LTEuMy0wLjktMi40LTAuOWMtMC45LDAtMS43LDAuMy0yLjQsMC44Yy0wLjcsMC42LTEuMiwxLjMtMS41LDIuM3Y5aC0xLjVWOTAuNkg5My42eiIvPg0KCTxwYXRoIGQ9Ik0xMDcuNCw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjlIMTA2VjkwLjZIMTA3LjR6Ii8+DQoJPHBhdGggZD0iTTEyNC44LDEwNC4xYy0xLjEsMC0yLjEtMC4zLTMtMC44Yy0wLjktMC42LTEuNi0xLjMtMi4xLTIuM2MtMC41LTEtMC44LTIuMS0wLjgtMy4zdi0wLjVjMC0xLjMsMC4yLTIuNCwwLjctMy40DQoJCWMwLjUtMSwxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjgtMC45LDIuOS0wLjljMS42LDAsMi45LDAuNSwzLjgsMS42YzAuOSwxLjEsMS40LDIuNiwxLjQsNC41djAuOGgtOS40djAuMw0KCQljMCwxLjUsMC40LDIuNywxLjMsMy43YzAuOSwxLDEuOSwxLjUsMy4yLDEuNWMwLjgsMCwxLjUtMC4xLDIuMS0wLjRjMC42LTAuMywxLjEtMC43LDEuNi0xLjRsMC45LDAuNw0KCQlDMTI4LjQsMTAzLjMsMTI2LjksMTA0LjEsMTI0LjgsMTA0LjF6IE0xMjQuNiw5MS42Yy0xLjEsMC0yLDAuNC0yLjgsMS4yYy0wLjgsMC44LTEuMiwxLjktMS40LDMuMmg3Ljl2LTAuMmMwLTEuMy0wLjQtMi4zLTEuMS0zLjENCgkJUzEyNS43LDkxLjYsMTI0LjYsOTEuNnoiLz4NCgk8cGF0aCBkPSJNMTM3LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41YzAuNS0xLDEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNWMtMC43LTAuNi0xLjUtMS0yLjYtMQ0KCQljLTEuMywwLTIuMywwLjUtMy4xLDEuNGMtMC43LDEtMS4xLDIuMy0xLjEsNHYwLjRjMCwxLjcsMC40LDMsMS4xLDMuOUMxMzUuMiwxMDIuNCwxMzYuMiwxMDIuOCwxMzcuNSwxMDIuOHoiLz4NCgk8cGF0aCBkPSJNMTQ3LjgsODcuMnYzLjRoMi43djEuMmgtMi43djguOGMwLDAuNywwLjEsMS4zLDAuNCwxLjZjMC4zLDAuNCwwLjcsMC41LDEuMywwLjVjMC4yLDAsMC42LDAsMS4yLTAuMWwwLjEsMS4yDQoJCWMtMC40LDAuMS0wLjksMC4yLTEuNiwwLjJjLTEsMC0xLjctMC4zLTIuMi0wLjljLTAuNS0wLjYtMC43LTEuNC0wLjctMi42di04LjhoLTIuNHYtMS4yaDIuNHYtMy40SDE0Ny44eiIvPg0KCTxwYXRoIGQ9Ik0xNTMuNSw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN2MwLjItMC4yLDAuNC0wLjMsMC43LTAuM2MwLjMsMCwwLjYsMC4xLDAuNywwLjNjMC4yLDAuMiwwLjMsMC40LDAuMywwLjcNCgkJYzAsMC4zLTAuMSwwLjUtMC4zLDAuN2MtMC4yLDAuMi0wLjQsMC4zLTAuNywwLjNjLTAuMywwLTAuNi0wLjEtMC43LTAuM0MxNTMuNiw4Ny4zLDE1My41LDg3LjEsMTUzLjUsODYuOHogTTE1NS4yLDEwMy44aC0xLjUNCgkJVjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0xNjAuNSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdoLTEuNQ0KCQl2LTguN2MwLTEuMi0wLjMtMi4xLTAuOC0yLjZjLTAuNS0wLjYtMS4zLTAuOS0yLjQtMC45Yy0wLjksMC0xLjcsMC4zLTIuNCwwLjhjLTAuNywwLjYtMS4yLDEuMy0xLjUsMi4zdjloLTEuNVY5MC42SDE2MC41eiIvPg0KCTxwYXRoIGQ9Ik0xNzIuMyw5Ny4xYzAtMi4xLDAuNS0zLjcsMS40LTQuOWMwLjktMS4yLDIuMi0xLjgsMy43LTEuOGMxLjgsMCwzLjIsMC43LDQuMSwyLjFsMC4xLTEuOWgxLjR2MTIuOWMwLDEuNy0wLjUsMy0xLjQsNA0KCQlzLTIuMiwxLjUtMy45LDEuNWMtMC45LDAtMS44LTAuMi0yLjYtMC42Yy0wLjgtMC40LTEuNS0xLTItMS42bDAuOC0wLjljMSwxLjMsMi4zLDEuOSwzLjcsMS45YzEuMiwwLDIuMi0wLjQsMi45LTEuMQ0KCQljMC43LTAuNywxLTEuNywxLjEtM3YtMS43Yy0wLjksMS4zLTIuMywyLTQuMSwyYy0xLjUsMC0yLjgtMC42LTMuNy0xLjhzLTEuNC0yLjktMS40LTQuOVY5Ny4xeiBNMTczLjgsOTcuM2MwLDEuNywwLjMsMywxLDQNCgkJYzAuNywxLDEuNiwxLjUsMi45LDEuNWMxLjgsMCwzLjEtMC44LDMuOC0yLjR2LTYuMWMtMC4zLTAuOC0wLjgtMS41LTEuNS0xLjljLTAuNi0wLjQtMS40LTAuNy0yLjMtMC43Yy0xLjIsMC0yLjIsMC41LTIuOSwxLjQNCgkJQzE3NC4xLDk0LDE3My44LDk1LjUsMTczLjgsOTcuM3oiLz4NCgk8cGF0aCBkPSJNMjAyLjgsOTguOGgtOC4xbC0xLjgsNWgtMS42TDE5OCw4NmgxLjRsNi43LDE3LjhoLTEuNkwyMDIuOCw5OC44eiBNMTk1LjIsOTcuNmg3LjFsLTMuNi05LjdMMTk1LjIsOTcuNnoiLz4NCgk8cGF0aCBkPSJNMjEwLjYsMTAzLjhoLTEuNVY4NmgxLjVWMTAzLjh6Ii8+DQoJPHBhdGggZD0iTTIyMy40LDg3LjJ2My40aDIuN3YxLjJoLTIuN3Y4LjhjMCwwLjcsMC4xLDEuMywwLjQsMS42czAuNywwLjUsMS4zLDAuNWMwLjIsMCwwLjYsMCwxLjItMC4xbDAuMSwxLjINCgkJYy0wLjQsMC4xLTAuOSwwLjItMS42LDAuMmMtMSwwLTEuNy0wLjMtMi4yLTAuOWMtMC41LTAuNi0wLjctMS40LTAuNy0yLjZ2LTguOGgtMi40di0xLjJoMi40di0zLjRIMjIzLjR6Ii8+DQoJPHBhdGggZD0iTTIyOC4yLDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yMjkuNiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0yNTkuNCw5OS40YzAtMS0wLjMtMS44LTEtMi4zYy0wLjctMC42LTItMS4xLTMuOC0xLjZjLTEuOC0wLjUtMy4yLTEuMS00LTEuN2MtMS4yLTAuOS0xLjgtMi0xLjgtMy40DQoJCWMwLTEuNCwwLjYtMi41LDEuNy0zLjNjMS4xLTAuOSwyLjUtMS4zLDQuMy0xLjNjMS4yLDAsMi4yLDAuMiwzLjIsMC43YzAuOSwwLjUsMS43LDEuMSwyLjIsMS45YzAuNSwwLjgsMC44LDEuNywwLjgsMi43aC0xLjUNCgkJYzAtMS4yLTAuNC0yLjItMS4yLTIuOWMtMC44LTAuNy0xLjktMS4xLTMuMy0xLjFjLTEuNCwwLTIuNCwwLjMtMy4yLDAuOWMtMC44LDAuNi0xLjIsMS40LTEuMiwyLjRjMCwwLjksMC40LDEuNiwxLjEsMi4yDQoJCWMwLjcsMC42LDEuOSwxLjEsMy41LDEuNWMxLjYsMC40LDIuOCwwLjksMy42LDEuNGMwLjgsMC41LDEuNCwxLDEuOSwxLjdjMC40LDAuNywwLjYsMS40LDAuNiwyLjNjMCwxLjQtMC42LDIuNS0xLjcsMy40DQoJCWMtMS4xLDAuOC0yLjYsMS4zLTQuNCwxLjNjLTEuMywwLTIuNC0wLjItMy40LTAuN3MtMS44LTEuMS0yLjQtMS45Yy0wLjUtMC44LTAuOC0xLjctMC44LTIuOGgxLjVjMCwxLjMsMC41LDIuMiwxLjQsMw0KCQljMC45LDAuNywyLjIsMS4xLDMuNywxLjFjMS40LDAsMi41LTAuMywzLjMtMC45QzI1OSwxMDEuMywyNTkuNCwxMDAuNSwyNTkuNCw5OS40eiIvPg0KCTxwYXRoIGQ9Ik0yNjMuOCw4Ni44YzAtMC4zLDAuMS0wLjUsMC4zLTAuN3MwLjQtMC4zLDAuNy0wLjNzMC42LDAuMSwwLjcsMC4zYzAuMiwwLjIsMC4zLDAuNCwwLjMsMC43YzAsMC4zLTAuMSwwLjUtMC4zLDAuNw0KCQljLTAuMiwwLjItMC40LDAuMy0wLjcsMC4zcy0wLjYtMC4xLTAuNy0wLjNTMjYzLjgsODcuMSwyNjMuOCw4Ni44eiBNMjY1LjUsMTAzLjhIMjY0VjkwLjZoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzEuMSwxMDMuOGgtMS41Vjg1LjFoMS41VjEwMy44eiIvPg0KCTxwYXRoIGQ9Ik0yNzUsODYuOGMwLTAuMywwLjEtMC41LDAuMy0wLjdzMC40LTAuMywwLjctMC4zczAuNiwwLjEsMC43LDAuM2MwLjIsMC4yLDAuMywwLjQsMC4zLDAuN2MwLDAuMy0wLjEsMC41LTAuMywwLjcNCgkJYy0wLjIsMC4yLTAuNCwwLjMtMC43LDAuM3MtMC42LTAuMS0wLjctMC4zUzI3NSw4Ny4xLDI3NSw4Ni44eiBNMjc2LjcsMTAzLjhoLTEuNVY5MC42aDEuNVYxMDMuOHoiLz4NCgk8cGF0aCBkPSJNMjg1LjUsMTAyLjhjMSwwLDEuOS0wLjMsMi42LTAuOWMwLjctMC42LDEuMS0xLjMsMS4xLTIuMmgxLjRjMCwwLjgtMC4zLDEuNS0wLjgsMi4ycy0xLjEsMS4yLTEuOCwxLjYNCgkJYy0wLjgsMC40LTEuNiwwLjYtMi41LDAuNmMtMS43LDAtMy4xLTAuNi00LjEtMS44Yy0xLTEuMi0xLjUtMi44LTEuNS00LjlWOTdjMC0xLjMsMC4yLTIuNSwwLjctMy41czEuMS0xLjgsMi0yLjMNCgkJYzAuOS0wLjUsMS44LTAuOCwzLTAuOGMxLjQsMCwyLjYsMC40LDMuNiwxLjNjMC45LDAuOSwxLjQsMiwxLjUsMy40aC0xLjRjLTAuMS0xLTAuNC0xLjktMS4xLTIuNXMtMS41LTEtMi42LTENCgkJYy0xLjMsMC0yLjMsMC41LTMuMSwxLjRzLTEuMSwyLjMtMS4xLDR2MC40YzAsMS43LDAuNCwzLDEuMSwzLjlDMjgzLjIsMTAyLjQsMjg0LjIsMTAyLjgsMjg1LjUsMTAyLjh6Ii8+DQoJPHBhdGggZD0iTTI5Mi43LDk3YzAtMS4zLDAuMi0yLjQsMC43LTMuNHMxLjItMS44LDIuMS0yLjRjMC45LTAuNiwxLjktMC44LDMuMS0wLjhjMS44LDAsMy4yLDAuNiw0LjMsMS44YzEuMSwxLjIsMS42LDIuOSwxLjYsNC45DQoJCXYwLjNjMCwxLjMtMC4yLDIuNC0wLjcsMy40Yy0wLjUsMS0xLjIsMS44LTIuMSwyLjRzLTEuOSwwLjgtMy4xLDAuOGMtMS44LDAtMy4yLTAuNi00LjMtMS44Yy0xLjEtMS4yLTEuNi0yLjktMS42LTQuOVY5N3oNCgkJIE0yOTQuMiw5Ny40YzAsMS42LDAuNCwyLjksMS4yLDMuOWMwLjgsMSwxLjksMS41LDMuMiwxLjVjMS4zLDAsMi40LTAuNSwzLjItMS41YzAuOC0xLDEuMi0yLjMsMS4yLTRWOTdjMC0xLTAuMi0xLjktMC42LTIuOA0KCQlzLTAuOS0xLjUtMS42LTEuOWMtMC43LTAuNS0xLjQtMC43LTIuMy0wLjdjLTEuMywwLTIuNCwwLjUtMy4yLDEuNWMtMC44LDEtMS4yLDIuNC0xLjIsNFY5Ny40eiIvPg0KCTxwYXRoIGQ9Ik0zMDguOSw5MC42bDAsMi4zYzAuNS0wLjgsMS4xLTEuNCwxLjktMS45YzAuNy0wLjQsMS42LTAuNiwyLjUtMC42YzEuNCwwLDIuNSwwLjQsMy4yLDEuMmMwLjcsMC44LDEsMiwxLDMuNnY4LjdIMzE2di04LjcNCgkJYzAtMS4yLTAuMy0yLjEtMC44LTIuNmMtMC41LTAuNi0xLjMtMC45LTIuNC0wLjljLTAuOSwwLTEuNywwLjMtMi40LDAuOGMtMC43LDAuNi0xLjIsMS4zLTEuNSwyLjN2OWgtMS41VjkwLjZIMzA4Ljl6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg=="/>
+</a>
+<h1>SYCL Guide - Memory</h1>
+</div>
+</header>
+</article>
+<a class="header-link" href="#memory-and-synchronization" id="memory-and-synchronization"><h1>Memory and synchronization</h1></a>
+<p>While for simple computations it is okay to operate purely on work-items, any more complex workload will require finer-grained control. Unfortunately, this comes at the cost of introducing some complexity. Hopefully though, we can clear everything up!</p>
+<p>You might remember that work-items are grouped into work-groups. The splitting into work-groups is not purely conceptual - it has very real implications on memory accesses and performance. Work-groups are independent of each other. In fact, there is no way to synchronize between them in a single kernel. For this reason, two work-groups should never write to the same memory location (although they can read shared data).</p>
+<p>OpenCL and SYCL define a clear distinction between various regions in memory and rules that govern accesses to these. Everything on the CPU side is known as <strong>host memory</strong>. It is not directly accessible from kernels, but as we've seen, buffers and accessors provide facilities for copying host data to the device and accessing it there. The corresponding accessor target is <code>access::target::host_buffer</code>.</p>
+<p>On the device side, more memory regions exist:</p>
+<ul>
+<li><strong>Global memory</strong> is available in the same form to all work-groups and items. It can be thought of as a device-side equivalent of RAM. 
+The corresponding target, <code>access::target::global_buffer</code>, is the default target for <code>buffer::get_access</code>. 
+In previous examples we didn't explicitly specify a target, so this one was used.</li>
+<li><strong>Local memory</strong> is specific to a single work-group. Work-groups cannot access others' local memory, but it is shared between all work-items in a group. 
+It can be thought of as a user-controlled cache. It is especially useful for divide-and-conquer problems where each part of computation is handled by one work-group. 
+Local memory can be used to store the result of such a computation. 
+Local memory is allocated per kernel execution and it cannot be filled with host data, so you have to initialize it yourself. 
+The canonical way to allocate it is to create a <code>access::target::local</code> accessor inside a command group, passing it the requested allocation size.</li>
+<li><strong>Private memory</strong> is a small region dedicated to each work-item. It is much like CPU register memory. 
+All variables created in a kernel are stored in private memory. Additionally, dedicated <code>private_memory</code> objects can be created for this purpose.</li>
+<li>Finally, <strong>constant memory</strong> is a read-only part of global memory, which similarly can reference a host-side buffer.</li>
+</ul>
+<p>In this example we will try to compute a vector reduction - the sum of all its elements. 
+The overall structure of the example is as follows:</p>
+<p><strong>Parallel reduction</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span><span class="cp"></span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;random&gt;</span><span class="cp"></span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sycl/sycl.hpp&gt;</span><span class="cp"></span>
+
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="n">int_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">int32_t</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">class</span> <span class="nc">reduction_kernel</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">int_type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vec</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">mt19937</span><span class="w"> </span><span class="n">mt_engine</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">random_device</span><span class="p">{}());</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">uniform_int_distribution</span><span class="o">&lt;</span><span class="n">int_type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">idist</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Data: "</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="nl">el</span> <span class="p">:</span><span class="w"> </span><span class="n">vec</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">idist</span><span class="p">(</span><span class="n">mt_engine</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">el</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">int_type</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">accumulate</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="n">Read</span><span class="w"> </span><span class="n">hardware</span><span class="w"> </span><span class="n">information</span><span class="o">&gt;&gt;</span><span class="w"></span>
+
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="n">Reduction</span><span class="w"> </span><span class="n">loop</span><span class="o">&gt;&gt;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Sum: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Reference sum: "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>The first thing we do is initialize a vector of random values to be added together and a buffer for that data. 
+We then print the values. And compute a reference sum using <code>std::accumulate</code>.</p>
+<p><strong>Read hardware information</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">device</span><span class="p">{</span><span class="n">sycl</span><span class="o">::</span><span class="n">default_selector</span><span class="p">{}};</span><span class="w"></span>
+<span class="w">  </span><span class="n">sycl</span><span class="o">::</span><span class="n">queue</span><span class="w"> </span><span class="nf">queue</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">exception_list</span><span class="o">&amp;</span><span class="w"> </span><span class="n">el</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="nl">ex</span> <span class="p">:</span><span class="w"> </span><span class="n">el</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">rethrow_exception</span><span class="p">(</span><span class="n">ex</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// Make sure the size is not too large</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">wgroup_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">max_work_group_size</span><span class="o">&gt;</span><span class="p">(),</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">));</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wgroup_size</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s">"Work-group size has to be even!"</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">part_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wgroup_size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">has_local_mem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">is_host</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">local_mem_type</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">local_mem_type</span><span class="o">::</span><span class="n">none</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">local_mem_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="n">get_info</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">info</span><span class="o">::</span><span class="n">device</span><span class="o">::</span><span class="n">local_mem_size</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">has_local_mem</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">local_mem_size</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">wgroup_size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">int_type</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="s">"Device doesn't have enough local memory!"</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>We use the <code>default_selector</code> to get a device. This allows us to access hardware information. Then we will make a <code>queue</code> on this device. You might want to change the default selector for something more precise like a <code>cpu_selector</code> or <code>host_selector</code>, depending on your setup.</p>
+<p>The <code>device::get_info</code> function has a single template parameter specifying the piece of information that we want to retrieve. <code>info::device::max_work_group_size</code> is defined to be the maximum number of work-items in a work-group executing on a single compute unit. Exceeding this size should result in an error. It is not necessarily the optimal size, but it can be expected to yield good performance. We take the minimum between this value and the work size padded to the next even integer.</p>
+<p>We initialize a <code>part_size</code> variable to be the number of elements in the vector that work-group reduces. Since each work-item initially reduces two elements, it is twice the work-group size.</p>
+<p>We also test the device for the local memory size - we cannot perform the reduction if there is too little of it or if local memory is unsupported altogether. Of course, in a real-world application a special case would have to be made to also support such devices.</p>
+<p><strong>Reduction loop</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"></span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// division rounding up</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">n_wgroups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">part_size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">part_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">int_type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tmp</span><span class="p">(</span><span class="n">n_wgroups</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">buffer</span><span class="o">&lt;</span><span class="n">int_type</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buf</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">size</span><span class="p">()));</span><span class="w"></span>
+<span class="w">    </span><span class="n">sycl</span><span class="o">::</span><span class="n">buffer</span><span class="o">&lt;</span><span class="n">int_type</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tmp_buf</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">size</span><span class="p">()));</span><span class="w"></span>
+<span class="w">    </span><span class="n">queue</span><span class="p">.</span><span class="n">submit</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="n">sycl</span><span class="o">::</span><span class="n">handler</span><span class="o">&amp;</span><span class="w"> </span><span class="n">cgh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">sycl</span><span class="o">::</span><span class="n">accessor</span><span class="o">&lt;</span><span class="n">int_type</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">read_write</span><span class="p">,</span><span class="w"> </span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">target</span><span class="o">::</span><span class="n">local</span><span class="o">&gt;</span><span class="w"> </span><span class="n">local_mem</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">wgroup_size</span><span class="p">),</span><span class="w"> </span><span class="n">cgh</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">global_mem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf</span><span class="p">.</span><span class="n">get_access</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">read</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cgh</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">global_tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp_buf</span><span class="p">.</span><span class="n">get_access</span><span class="o">&lt;</span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">mode</span><span class="o">::</span><span class="n">write</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cgh</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">cgh</span><span class="p">.</span><span class="n">parallel_for</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">reduction_kernel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">nd_range</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n_wgroups</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">wgroup_size</span><span class="p">,</span><span class="w"> </span><span class="n">wgroup_size</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="n">sycl</span><span class="o">::</span><span class="n">nd_item</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="o">&lt;&lt;</span><span class="n">Perform</span><span class="w"> </span><span class="n">load</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">memory</span><span class="o">&gt;&gt;</span><span class="w"></span>
+
+<span class="w">          </span><span class="o">&lt;&lt;</span><span class="n">Reduce</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">element</span><span class="o">&gt;&gt;</span><span class="w"></span>
+
+<span class="w">          </span><span class="o">&lt;&lt;</span><span class="n">Write</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">global_tmp</span><span class="w"> </span><span class="n">memory</span><span class="o">&gt;&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">      </span><span class="p">}).</span><span class="n">wait_and_throw</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span><span class="w"> </span><span class="n">tmp</span><span class="p">);</span><span class="w"> </span><span class="c1">// We swap the vectors to avoid copying memory</span>
+<span class="w">  </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_wgroups</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Inside the reduction loop, we first find the number of work-groups for this step of reduction. It is the length <code>len</code> left to be reduced divided by the number of elements that each work-group reduces.</p>
+<p>Next, in the command group, we allocate a part of local memory by creating an accessor with <code>access::target::local</code> and a range equal to the work-group size. We checked the memory size earlier, so we know that it is available. As stated above, this region of memory looks different to each work-group and its use is for temporary storage.</p>
+<p>You might wonder, why do we even bother with using local memory when we could carry out the whole operation in global? The answer is that it is much faster. Local memory is (usually) physically closer to the chip than global and it does not suffer from problems such as false sharing, since it is exclusive to each compute unit. It is therefore a good idea to always carry out all temporary operations in local memory for best performance.</p>
+<p>We also obtain an accessor to the data available in global memory. This time <code>get_access</code> is explicitly qualified with <code>access::target::global_buffer</code>, while previously it took on that value by default.</p>
+<p>Lastly, we launch a parallel kernel. We use the <code>nd_range</code> variant, which allows us to specify both the global and local size. The <code>nd_range</code> constructor takes in two <code>range</code> objects of the same dimensionality as itself. The first one describes the number of work-items per dimension (recall that there can be up to three dimensions). The second range argument to <code>nd_range&lt;n&gt;</code> describes the number of work-items in a work-group. To find the number of work-groups per dimension, divide the first argument by the second. In this case the result is <code>n_wgroups</code>, which is how many work-groups will be instantiated. In this variant the kernel lambda takes an <code>nd_item</code> argument. It represents the current work-item and features methods to get detailed information from it, such as local, global, and work-group info.</p>
+<p>Since each step of the reduction loop produces one number per work-group, we set the <code>len</code> to <code>n_wgroups</code> on every iteration, which will continue reducing over the results.</p>
+<p><strong>Perform load into local memory</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="kt">size_t</span><span class="w"> </span><span class="n">local_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">get_local_linear_id</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">size_t</span><span class="w"> </span><span class="n">global_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">get_global_linear_id</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">local_mem</span><span class="p">[</span><span class="n">local_id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">global_id</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">local_mem</span><span class="p">[</span><span class="n">local_id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">global_mem</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">global_id</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">global_mem</span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">global_id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">item</span><span class="p">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">fence_space</span><span class="o">::</span><span class="n">local_space</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>In the kernel, we firstly zero-initialize the local memory, since it can in fact contain garbage data. The key point here is that 0 is the invariant of our reduction, meaning that <code>x + 0 = x</code>, so we can add the whole vector safely even if it isn't entirely filled with data to be reduced.</p>
+<p>We divide our data into parts, each one being computed by a single work-group. The input data is required to be of even size, but it doesn't have to be a multiple of the work-group size. Hence, a few work-items in the last work-group can have no corresponding data. For this reason, the initial load from global to local memory is guarded by an if-statement. As mentioned in the "parallelism" section, this is usually a bad idea. In this case, however, it is okay, because at most one work-group will have divergent work-items. We use a small vector for illustration purposes and a specialized kernel would technically be faster, but any real use case can be expected to have much more input data.</p>
+<p>After the load is performed with an addition of the two elements corresponding to each work-item, we emit a <strong>barrier</strong> with a local memory fence. We have to stop for a bit and understand why this is necessary. In the OpenCL memory model, all operations across work-items have relaxed semantics. For example, in the following pseudocode we execute two functions in parallel over the same data:</p>
+<p><strong>Relaxed write</strong></p>
+<pre><code class="c++"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">thread_a</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">thread_b</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load</span><span class="p">(</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">load</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%i %i"</span><span class="p">,</span><span class="w"> </span><span class="n">lx</span><span class="p">,</span><span class="w"> </span><span class="n">ly</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">in_parallel</span><span class="p">(</span><span class="n">thread_a</span><span class="p">,</span><span class="w"> </span><span class="n">thread_b</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>In a relaxed memory model, work-item B can in fact print <code>0 2</code>. This looks wrong, because work-item A must have written <code>x</code> into memory before it wrote <code>y</code>. The key point is that operation work-item B can observe A's operations in a different order. This 'really' helps hardware performance, but it comes at the cost of confusing behaviour. To deal with this problem, we have to emit memory fences. Moreover, even if we don't mind reordering, we might want to make sure that all results of write operations propagate between work-items - otherwise they could stay in per-work-item cache and not be visible across work-items.</p>
+<p>To synchronize the state of memory, we use the <code>item::barrier(access::fence_space)</code> operation. A SYCL barrier does two things. Firstly, it makes sure that each work-item within the work-group reaches the barrier call. In other words, it guarantees that the work-group is synchronized at a certain point in the code. It is very important to make sure that 'either all work-items reach the barrier or none do'. For example, the following code is <strong>invalid</strong>:</p>
+<p><strong>Branch barrier</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">local_id</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">fence_space</span><span class="o">::</span><span class="n">local_space</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">fence_space</span><span class="o">::</span><span class="n">local_space</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>It looks innocent, but the problem is that the two instructions are not the same barrier. Work-items below local id 5 will get to the first barrier while the rest will get to the other one, and the execution will stall, both groups waiting on each other forever. A simple transformation of factoring the barrier call out of the conditional would fix it.</p>
+<p>Secondly, <code>item::barrier</code> emits a memory fence in the specified space. It can be either <code>access::fence_space::local_space</code>, <code>::global_space</code> or <code>::global_and_local</code>. A fence ensures that the state of the specified space is consistent across all work-items within the work-group. Importantly, it is 'not possible' to synchronize between work-groups. They are entirely independent, and any write or read in the same global memory area done by two work-groups is a data race. For this reason, it is important to make sure each work-group only works on a dedicated region of global memory without crossover.</p>
+<p>Next, we reduce each work-group's vector in local memory:</p>
+<p><strong>Reduce into one element</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">stride</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">stride</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">wgroup_size</span><span class="p">;</span><span class="w"> </span><span class="n">stride</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">stride</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">local_id</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">wgroup_size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">local_mem</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_mem</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">local_mem</span><span class="p">[</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stride</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">item</span><span class="p">.</span><span class="n">barrier</span><span class="p">(</span><span class="n">sycl</span><span class="o">::</span><span class="n">access</span><span class="o">::</span><span class="n">fence_space</span><span class="o">::</span><span class="n">local_space</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>Since each iteration of the <code>for</code> loop depends on the previous one, we emit a barrier every time to synchronise work-items.</p>
+<p>Lastly, write a single number which is the result of this work-group's reduction into a temporary global memory buffer.</p>
+<p><strong>Write group result to global memory</strong></p>
+<pre><code class="cpp"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">local_id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">global_tmp</span><span class="p">[</span><span class="n">item</span><span class="p">.</span><span class="n">get_group_linear_id</span><span class="p">()]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_mem</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</code></pre>
+<p>We have to use a temporary buffer as we cannot ensure all work-groups are working in parallel as previously explained. Writing to the original memory could produce
+a data race as some work-groups could be loading data just written by others. A solution would be to create a "device-wide" barrier, but that it not recommended nor is in the SYCL specification.</p>
+<p>Finally we leave the scope where the buffers are created so memory is synchronised. Then we swap the temporary vector with the one containing previous data. </p>
+<p>And the result is obtained:</p>
+<p>Data: 1 8 5 9 4 2 6 0 1 8 6 2 10 9 0 5
+Sum: 76
+Reference sum: 76</p>
+<div id="copyright">SYCL is a trademark of the Khronos Group Inc. OpenCL and the OpenCL logo are trademarks of Apple Inc. used by permission by Khronos.</div>
+</main>
+</body>
+</html>
